@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\ProductOption;
 use App\Models\ProductPhoto;
+use Intervention\Image\Facades\Image;
+use ImageOptimizer;
 
 class ProductController extends Controller
 {
@@ -19,7 +21,7 @@ class ProductController extends Controller
   }
 
   public function store(Request $request){
-    dd($request->all());
+    // dd($request->all());
     $product = new Product;
     $product->name = $request->name;
     $product->price = $request->price;
@@ -28,12 +30,14 @@ class ProductController extends Controller
     $product_image_folder = date('Y-m-d') .'_'. str_replace(' ', '-', strtolower($request->name));
     $product_image_path = base_path() . '/public/images/productImages/' . $product_image_folder;
     $photo_name = Str::random(10);
+
+    
     if($request->hasFile('product_photo') || $request->hasFile('product_photos')){
       $request->file('product_photo')->move($product_image_path, $photo_name .  '.' . $request->file('product_photo')->getClientOriginalExtension());
       $product->main_photo_path = '/public/images/productImages/' . $product_image_folder;
       $product->main_photo = $photo_name .  '.' . $request->file('product_photo')->getClientOriginalExtension();
+      $product->save();
       if($request->hasFile('product_photos')){
-        $product->save();
         $num = 1;
         foreach($request->file('product_photos') as $product_photo){
           $productPhoto = new ProductPhoto;
@@ -48,52 +52,37 @@ class ProductController extends Controller
       }
     };
 
-    if($request->i != null){
+
+    if($request->option_id){
       $productOption = new ProductOption();
-      $productOption->product_id = $product->id;
-      if($request->i == 1){
-        $productOption->option_id = $request->optionId;
-        $productOption->price = $request->productOptionPrice;
 
-        if($request->hasFile('productOptionPhotos')){
-          $num = 1;
-          foreach($request->file('productOptionPhotos') as $productOptionPhoto){
-            $productPhotoOption = new ProductPhoto;
-            $product_option_photo_name = $photo_name . '-option_'. $num++ . '.' . $productOptionPhoto->getClientOriginalExtension();
-            $productOptionPhoto->move($product_image_path, $product_option_photo_name);
-            $productPhotoOption->product_id = null;
-            $productPhotoOption->product_option_id = $productOption->id;
-            $productPhotoOption->photo = $product_option_photo_name;
-            $productPhotoOption->photo_path = '/public/images/productImages/' . $product_image_folder;
-            $productPhotoOption->save();
-          }
-        }
-      }elseif($request->i > 1){
-        for ($i=0; $i < $request->i; $i++) { 
-          $productOption->option_id = $request->optionId[$i];
-          $productOption->price = $request->productOptionPrice[$i];
+      foreach($request->option_id as $id=>$option_value){
+        $productOption->product_id = $product->id;
+        $productOption->option_id = $option_value;
+        $productOption->price = $request->product_option_price[$id];
+        $productOption->save();
 
-          if($request->hasFile("productOptionPhotos[$i]")){
-            $num = 1;
-            foreach($request->file("productOptionPhotos[$i]") as $productOptionPhoto[$i]){
-              $productPhotoOption = new ProductPhoto;
-              $product_option_photo_name = $photo_name . '-option_'. $num++ . '.' . $productOptionPhoto[$i]->getClientOriginalExtension();
-              $productOptionPhoto[$i]->move($product_image_path, $product_option_photo_name);
+        if($request->product_option_photos != null){
+          $num = 0;
+          foreach($request->product_option_photos as $key=>$value){
+            if($id == $key){
+              $productOptionPhoto = new ProductPhoto;
+              $productOptionPhoto->product_id = null;
+              $productOptionPhoto->product_option_id = $productOption->id;
               
-              $productPhotoOption->product_id = null;
-              $productPhotoOption->product_option_id = $productOption->id;
-              $productPhotoOption->photo = $product_option_photo_name;
-              $productPhotoOption->photo_path = '/public/images/productImages/' . $product_image_folder;
-              $productPhotoOption->save();
+              // storing images in public/images/productOptionImages/
+              $product_option_photo_name = $photo_name . '-option_'. $num . '.' . $request->product_option_photos[$id][$num]->getClientOriginalExtension();
+              $request->product_option_photos[$id][$num]->move($product_image_path, $product_option_photo_name);
+              $productOptionPhoto->photo = $product_option_photo_name;
+              $productOptionPhoto->photo_path = '/public/images/productImages/' . $product_image_folder;
+              $productOptionPhoto->save();
+              $num++;
             }
           }
         }
       }
-
-      
-
-      $productOption->save();
     }
+
 
 
     $categories = Category::all();

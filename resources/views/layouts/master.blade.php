@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -29,4 +29,4 @@
 @stack('modals')
 @livewireScripts
 </body>
-</html>
+</html> --}}

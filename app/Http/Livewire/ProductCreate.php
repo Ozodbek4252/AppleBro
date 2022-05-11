@@ -17,17 +17,15 @@ class ProductCreate extends Component
   public 
     $xususiyat_name,
     $xususiyat_value,
-    $xususiyat_photo,
-    $optionImage
+    $xususiyat_photo
     ;
 
   public 
-  $i = 1,
-  $inputs = [],
-  $option_id = [],
-  $product_option_price = [],
-  $product_option_photos = []
-  ;
+    $i = 1,
+    $inputs = [],
+    $option_id = [],
+    $product_option_price = [],
+    $product_option_photos = [];
 
   public function add($i){
     $this->i = $i + 1;
@@ -39,6 +37,30 @@ class ProductCreate extends Component
     unset($this->option_id[$i]);
     unset($this->product_option_price[$i]);
     unset($this->product_option_photos[$i]);
+  }
+
+  protected $rules = [
+    'xususiyat_name' => 'required|max:20',
+    'xususiyat_value' => 'required',
+  ];
+
+  public function resetVal(){
+    $this->xususiyat_name = null;
+    $this->xususiyat_value = null;
+    // $this->xususiyat_photo = null;
+  }
+
+  public function addXususiyat(){
+    $this->validate();
+    $option = new Option;
+    $option->name = $this->xususiyat_name;
+    $option->value = $this->xususiyat_value;
+    $option->save();
+    $this->resetVal();
+
+    if($this->xususiyat_photo != null){
+      dd($this->xususiyat_photo);
+    }
   }
 
 
