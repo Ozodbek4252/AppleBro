@@ -9,6 +9,11 @@ use App\Models\Product as ProductModel;
 
 class Product extends Component
 {
+    public $category_id;
+
+    public function selectCategory($id){
+        $this->category_id = $id;
+    }
 
     public function render()
     {
