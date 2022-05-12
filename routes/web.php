@@ -37,11 +37,6 @@ Route::middleware([
     Route::get('/product', Product::class)->name('admin.products');
     Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('products.store');
-
-    // Route::resources([
-        // 'categories' => 'CategoryController',
-        // 'products' => ProductController::class,
-    // ]);
 });
 
 

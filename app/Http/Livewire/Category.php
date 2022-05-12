@@ -78,7 +78,6 @@ class Category extends Component
     public function createShowModal(){
         $this->resetValidation();
         $this->resetVars();
-
         $this->modalFormVisible = true;
     }
 
