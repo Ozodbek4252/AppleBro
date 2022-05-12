@@ -65,11 +65,10 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Xususiyatlari</h4>
-
               <div class="mb-3">
                 <label class="form-label">Kategoriyani tanlang</label>
-                <select wire:model="xususiyat" name="category" class="form-control select2">
-                  <option value="{{null}}">Select</option>
+                <select wire:model="xususiyatSelected" name="category" wire:change="changeOption()" class="form-control select2">
+                  <option value="Select">Select</option>
                   @foreach($xususiyatlar as $xususiyat)  
                     <option  value="{{$xususiyat->id}}">@if($xususiyat) {{$xususiyat->name}} - {{$xususiyat->value}} @endif </option>
                   @endforeach
@@ -101,7 +100,11 @@
               
               <div class="col-md-12">
                 <div class="mb-3">
-                  <button type="button" wire:click="addXususiyat" class="btn btn-success">Add</button>
+                  <button type="button" wire:click="addXususiyat" class="btn btn-success mr-3">Add</button>
+                  @if($xususiyatSelected != 'Select')
+                    <button type="button" wire:click="deleteOption()" class="btn btn-danger">Delete</button>
+                  @endif
+
                 </div>
               </div>
             </div>
