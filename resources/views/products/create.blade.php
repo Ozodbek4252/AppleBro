@@ -16,7 +16,7 @@
                       <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                   </select>
-                  @error('category') <span class="error">{{$message}}</span> @enderror
+                  {{-- @error('category') <span class="error">{{$message}}</span> @enderror --}}
                 </div>
               </div>
 
@@ -24,7 +24,7 @@
                   <div class="mb-3">
                       <label class="form-label" for="name">Name</label>
                       <input name="name" type="text" class="form-control" id="name" placeholder="Product Name" value="">
-                      @error('name') <span class="error">{{$message}}</span> @enderror
+                      {{-- @error('name') <span class="error">{{$message}}</span> @enderror --}}
                   </div>
               </div>
 
@@ -32,7 +32,7 @@
                   <div class="mb-3">
                       <label class="form-label" for="price">Price</label>
                       <input name="price" type="text" class="form-control" id="price" placeholder="Price" value="">
-                      @error('price') <span class="error">{{$message}}</span> @enderror
+                      {{-- @error('price') <span class="error">{{$message}}</span> @enderror --}}
                   </div>
               </div>
 
@@ -67,13 +67,13 @@
               <h4 class="card-title">Xususiyatlari</h4>
               <div class="mb-3">
                 <label class="form-label">Kategoriyani tanlang</label>
-                <select wire:model="xususiyatSelected" name="category" wire:change="changeOption()" class="form-control select2">
+                <select wire:model="xususiyatSelected" name="xususiyatSelected" wire:change="changeOption()" class="form-control select2">
                   <option value="Select">Select</option>
                   @foreach($xususiyatlar as $xususiyat)  
                     <option  value="{{$xususiyat->id}}">@if($xususiyat) {{$xususiyat->name}} - {{$xususiyat->value}} @endif </option>
                   @endforeach
                 </select>
-                @error('category') <span class="error">{{$message}}</span> @enderror
+                {{-- @error('category') <span class="error">{{$message}}</span> @enderror --}}
               </div>
 
               <div class="col-md-12">

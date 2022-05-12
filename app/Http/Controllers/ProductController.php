@@ -15,22 +15,21 @@ use ImageOptimizer;
 class ProductController extends Controller
 {
   public function index(){}
-   
+  
   public function create(){
     
   }
 
   public function store(Request $request){
-    // dd($request->all());
     $product = new Product;
     $product->name = $request->name;
     $product->price = $request->price;
     $product->category_id = $request->category;
-
+    
     $product_image_folder = date('Y-m-d') .'_'. str_replace(' ', '-', strtolower($request->name));
     $product_image_path = base_path() . '/public/images/productImages/' . $product_image_folder;
     $photo_name = Str::random(10);
-
+    
     
     if($request->hasFile('product_photo') || $request->hasFile('product_photos')){
       $request->file('product_photo')->move($product_image_path, $photo_name .  '.' . $request->file('product_photo')->getClientOriginalExtension());
@@ -51,17 +50,17 @@ class ProductController extends Controller
         }
       }
     };
-
-
+    
+    
     if($request->option_id){
-      $productOption = new ProductOption();
-
+      
       foreach($request->option_id as $id=>$option_value){
+        $productOption = new ProductOption();
         $productOption->product_id = $product->id;
         $productOption->option_id = $option_value;
         $productOption->price = $request->product_option_price[$id];
         $productOption->save();
-
+        
         if($request->product_option_photos != null){
           $num = 0;
           foreach($request->product_option_photos as $key=>$value){
