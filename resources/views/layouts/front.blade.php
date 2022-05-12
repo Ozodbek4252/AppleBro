@@ -1,33 +1,23 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  @include('components.styles')
-  @yield('style')
+  @include('components.front_links')
 
-  <!-- Scripts -->
-  <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body>
-  <div id="layout-wrapper">
-    @include('components.header')
-    @include('components.sidebar')
-    
-    <div class="main-content">
-      
-      <div class="page-content">
-        <main>
-          {{ isset($slot) ? $slot : ''}}
-          @yield('content')
-        </main>
-      </div>
-      
-      @include('components.footer')
-    </div>
-    
-  </div>
+  @include('components.front_header')
   
-  @include('components.scripts')
-  @yield('scripts')
-  @stack('modals')
+
+  @yield('content')
+
+  @include('components.front_footer')
+  @include('components.front_scripts')
 </body>
-</html> --}}
+</html>
+
+
+
+
+
+
+
