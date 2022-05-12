@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 	<!-- PRODUCT -->
 
 	<section class="product">
