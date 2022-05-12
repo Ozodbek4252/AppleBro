@@ -1,4 +1,4 @@
-
+<div>
 <div class="row">
   <div class="col-lg">
       <div class="card">
@@ -93,50 +93,29 @@
 </div>
 
 
+  {{-- The Delete Modal --}}
+  <x-jet-dialog-modal wire:model="modalConfirmDeleteVisible">
+    <x-slot name="title">
+        {{ __('Delete Category') }}
+    </x-slot>
+  
+    <x-slot name="content">
+        {{ __('Are you sure you want to delete this category? Once this category is deleted, all of its resources and data will be permanently deleted.') }}
+    </x-slot>
+  
+    <x-slot name="footer">
+        <button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled" type="button" class="btn btn-primary waves-effect waves-light mr-2">
+          {{ __('Cancel') }}
+        </button>
+  
+        <button wire:click="delete()" wire:loading.attr="disabled" type="button" class="btn btn-danger waves-effect waves-light">
+          {{ __('Delete') }}
+        </button>
+  
+    </x-slot>
+  </x-jet-dialog-modal>
 
 
 
 
-{{-- <div class="col-lg-6">
-  <div class="card">
-      <div class="card-body">
-          <h4 class="card-title">Striped rows</h4>
-          <p class="card-title-desc">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>    
-          
-          <div class="table-responsive">
-              <table class="table table-striped mb-0">
-
-                  <thead>
-                      <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                      </tr>
-                      <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                      </tr>
-                      <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-
-      </div>
-  </div>
-</div> --}}
+</div>
