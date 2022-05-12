@@ -17,7 +17,8 @@ class ProductCreate extends Component
   public 
     $xususiyat_name,
     $xususiyat_value,
-    $xususiyat_photo
+    $xususiyat_photo,
+    $xususiyat
     ;
 
   public 
@@ -26,6 +27,7 @@ class ProductCreate extends Component
     $option_id = [],
     $product_option_price = [],
     $product_option_photos = [];
+
 
   public function add($i){
     $this->i = $i + 1;
@@ -47,7 +49,7 @@ class ProductCreate extends Component
   public function resetVal(){
     $this->xususiyat_name = null;
     $this->xususiyat_value = null;
-    // $this->xususiyat_photo = null;
+    $this->xususiyat_photo = null;
   }
 
   public function addXususiyat(){
@@ -55,21 +57,29 @@ class ProductCreate extends Component
     $option = new Option;
     $option->name = $this->xususiyat_name;
     $option->value = $this->xususiyat_value;
+    if($this->xususiyat_photo != null){
+      $this->validate([
+        'xususiyat_photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+      
+      $option->photo = $this->xususiyat_photo->store('OptionImages', 'public');
+    }
+
     $option->save();
     $this->resetVal();
-
-    if($this->xususiyat_photo != null){
-      dd($this->xususiyat_photo);
-    }
   }
 
 
   public function render(){
+    $xususiyatlar = Option::all();
     $categories = Category::all();
     $options = Option::all();
     return view('products.create', [
       'categories' => $categories,
       'options' => $options,
+      'xususiyatlar' => $xususiyatlar,
     ]);
   }
+
+
 }

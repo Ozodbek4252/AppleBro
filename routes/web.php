@@ -9,6 +9,8 @@ use App\Http\Livewire\Product;
 use Illuminate\Support\Facades\Route;
 
 
+use App\Models\ProductOption;
+use App\Models\Option;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,7 +47,18 @@ Route::middleware([
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/test/{id}', function($id){
+    $product_options = ProductOption::where('product_id', $id)->get();
 
+    $optionArr = [];
+    foreach($product_options as $product_option){
+        $option = Option::find($product_option->option_id);
+        $option["price"] = $product_option->price;
+        $optionArr[$option->name][] = $option;
+    }
+
+    return $optionArr;
+});
 
 
 

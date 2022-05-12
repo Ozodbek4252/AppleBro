@@ -65,6 +65,18 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Xususiyatlari</h4>
+
+              <div class="mb-3">
+                <label class="form-label">Kategoriyani tanlang</label>
+                <select wire:model="xususiyat" name="category" class="form-control select2">
+                  <option value="{{null}}">Select</option>
+                  @foreach($xususiyatlar as $xususiyat)  
+                    <option  value="{{$xususiyat->id}}">@if($xususiyat) {{$xususiyat->name}} - {{$xususiyat->value}} @endif </option>
+                  @endforeach
+                </select>
+                @error('category') <span class="error">{{$message}}</span> @enderror
+              </div>
+
               <div class="col-md-12">
                 <div class="mb-3">
                   <label class="form-label" for="xususiyat_name">Name</label>
@@ -74,14 +86,14 @@
 
               <div class="col-md-12">
                 <div class="mb-3">
-                  <label class="form-label" for="xususiyat_name">Name</label>
+                  <label class="form-label" for="xususiyat_name">Value</label>
                   <input type="text" wire:model="xususiyat_value" class="form-control" placeholder="Value">
                 </div>
               </div>
 
               <div class="col-md-12">
                 <div class="mb-3">
-                  <label class="form-label" for="xususiyat_name">Name</label>
+                  <label class="form-label" for="xususiyat_name">Photo</label>
                   <input type="file" wire:model="xususiyat_photo" class="form-control">
                 </div>
               </div>
@@ -89,7 +101,7 @@
               
               <div class="col-md-12">
                 <div class="mb-3">
-                  <button type="button" wire:click="addXususiyat()" class="btn btn-success">Add</button>
+                  <button type="button" wire:click="addXususiyat" class="btn btn-success">Add</button>
                 </div>
               </div>
             </div>
