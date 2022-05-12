@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Livewire\Category;
 use App\Http\Livewire\ProductCreate;
 use App\Http\Livewire\Product;
-use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\SingleProduct;
 
 
 use App\Models\ProductOption;
@@ -37,6 +37,13 @@ Route::middleware([
     Route::get('/product', Product::class)->name('admin.products');
     Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/single-product/{id}', SingleProduct::class)->name('front.single-product');
+
+
+    // Route::resources([
+    //     'categories' => 'CategoryController',
+    //     // 'products' => ProductController::class,
+    // ]);
 });
 
 

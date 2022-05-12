@@ -4,7 +4,7 @@
             <div class="footer-logo">
                 <div class="footer__logo">
                     <a href="index.html">
-                        <img src="img/logo-footer.svg" alt="Apple Bro">
+                        <img src="/img/logo-footer.svg" alt="Apple Bro">
                     </a>
                 </div>
                 <div class="footer__copy">
@@ -111,9 +111,9 @@
                     </a>
                 </div>
                 <div class="footer-info__pay">
-                    <img src="img/uzcard.png" alt="pay">
-                    <img src="img/MasterCard.png" alt="pay">
-                    <img src="img/visa.png" alt="pay">
+                    <img src="/img/uzcard.png" alt="pay">
+                    <img src="/img/MasterCard.png" alt="pay">
+                    <img src="/img/visa.png" alt="pay">
                 </div>
             </div>
         </div>
@@ -124,7 +124,7 @@
                 Интернет-магазины AppleBro.uz. Все права защищены.
             </div>
             <a href="#" class="footer__nova" target="_blank">
-                <img src="img/novas.svg" alt="NovaS">
+                <img src="/img/novas.svg" alt="NovaS">
             </a>
         </div>
     </div>

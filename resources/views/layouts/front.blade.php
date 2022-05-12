@@ -5,6 +5,10 @@
 
 </head>
 <body>
+
+  @include('components.front_basket')
+  @include('components.front_favourite')
+  @include('components.front_mobile-menu')
   @include('components.front_header')
   
 
