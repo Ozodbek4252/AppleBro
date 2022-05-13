@@ -33,7 +33,7 @@ class ProductController extends Controller
     
     if($request->hasFile('product_photo') || $request->hasFile('product_photos')){
       $request->file('product_photo')->move($product_image_path, $photo_name .  '.' . $request->file('product_photo')->getClientOriginalExtension());
-      $product->main_photo_path = '/public/images/productImages/' . $product_image_folder;
+      $product->main_photo_path = '/images/productImages/' . $product_image_folder;
       $product->main_photo = $photo_name .  '.' . $request->file('product_photo')->getClientOriginalExtension();
       $product->save();
       if($request->hasFile('product_photos')){
@@ -45,7 +45,7 @@ class ProductController extends Controller
           $productPhoto->product_id = $product->id;
           $productPhoto->product_option_id = null;
           $productPhoto->photo = $product_photo_name;
-          $productPhoto->photo_path = '/public/images/productImages/' . $product_image_folder;
+          $productPhoto->photo_path = '/images/productImages/' . $product_image_folder;
           $productPhoto->save();
         }
       }
@@ -73,7 +73,7 @@ class ProductController extends Controller
               $product_option_photo_name = $photo_name . '-option_'. $num . '.' . $request->product_option_photos[$id][$num]->getClientOriginalExtension();
               $request->product_option_photos[$id][$num]->move($product_image_path, $product_option_photo_name);
               $productOptionPhoto->photo = $product_option_photo_name;
-              $productOptionPhoto->photo_path = '/public/images/productImages/' . $product_image_folder;
+              $productOptionPhoto->photo_path = '/images/productImages/' . $product_image_folder;
               $productOptionPhoto->save();
               $num++;
             }
