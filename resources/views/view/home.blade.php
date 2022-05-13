@@ -152,14 +152,14 @@
 			</h2>
 			<div class="new-content">
 			
-				@foreach ($categories as $category )
+				@foreach ($newest_products as $newest_product )
 					<div class="new-item">
 						<div class="new-item__wrap">
 							<div class="new-item__tag">
 								NEW
 							</div>
 							<div class="new-item__img">
-								<img src="/img/new4.png" alt="Product">
+								<img src="{{$newest_product->main_photo_path}}/{{$newest_product->main_photo}}" alt="Product">
 							</div>
 							<div class="new-item__btns">
 								<span class="new-item__basket">
@@ -178,12 +178,12 @@
 							</div>
 						</div>
 						<div class="new-item__name">
-							iPhone 13 Pro Max
+							{{$newest_product->name}}
 						</div>
 						<div class="new-item__price">
-							11.800.000 Сум
+							${{$newest_product->price}} USD
 						</div>
-						<a href="#" class="new-item__link"></a>
+						<a href="{{ Route('front.single-product', $newest_product->id) }}" class="new-item__link"></a>
 					</div>
 				@endforeach
 			</div>
