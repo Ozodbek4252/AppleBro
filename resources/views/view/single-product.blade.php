@@ -1,8 +1,4 @@
-@extends('layouts.front')
 
-@section('content')
-
-	<!-- PRODUCT -->
 	<section class="product">
 		<div class="container">
 			<div class="products-carousel">
@@ -103,7 +99,7 @@
 			<div class="breadcrumbs">
 				<a href="{{ Route('home') }}">Home</a>
 				<a href="#">Mac</a>
-				<a href="{{ Route('front.single-product', $data_id) }}" class="current">Mac Book Air</a>
+				<a href="{{ Route('front.single-product', $data_id) }}" class="current">{{ $product->name }}</a>
 			</div>
 	
 	
@@ -130,82 +126,30 @@
 					<div class="product-info__desc">
 						{{$CPU}}/{{$RAM}}/{{$ROM}} GB Silver 2019
 					</div>
-
-					{{-- @foreach($optionArr as $key=>$value)
-							<div class="product-info__ram">
-								<div class="product-info__title">
-									{{$key}}
-								</div>
-								<div class="product-info__choose">
-										@foreach($optionArr[$key] as $option)
-											<label for="product-ram16">
-												<input wire:model="RAM" type="radio" name="product-ram" id="product-ram16">
-												<span>{{$option->value}}</span>
-											</label>
-										@endforeach
-								</div>
-							</div>
-					@endforeach --}}
-
+	
+	
+					
 					@foreach($optionArr as $key=>$value)
-							<div class="product-info__color">
-								<div class="product-info__title">
-									{{$key}}
-								</div>
-								<div class="product-info__choose">
-										@foreach($optionArr[$key] as $option)
-											<label for="product-color1.{{$option->id}}" wire:change="$emit('changed')">
-												<input wire:change="$emit('changed')" wire:model="opt.{{$option->id}}" value="{{$option->value}}" type="radio" name="product-color[{{$option->name}}]" id="product-color1.{{$option->id}}">
-												<span>{{$option->value}}</span>
-												{{-- <div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div> --}}
-											</label>
-										@endforeach
-								</div>
+						<div class="product-info__color">
+							<div class="product-info__title">
+								{{$key}}
 							</div>
+							<div class="product-info__choose">
+									@foreach($optionArr[$key] as $option)
+										<label for="product-color1-{{$option['id']}}">
+											<input wire:change="changed" wire:model="opt.{{$option['name']}}" value="{{$option['id']}}" type="radio" name="product-color[{{$option['name']}}]" id="product-color1-{{$option['id']}}">
+											<span>{{$option['value']}}</span>
+											@if($option['name'] == 'Color')
+												<div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
+											@endif
+										</label>
+									@endforeach
+							</div>
+						</div>
 					@endforeach
 
-					{{-- @foreach($optionArr as $key=>$value)
-						@if($key=='CPU')
-							<div class="product-info__cpu">
-								<div class="product-info__title">
-									Процессор
-								</div>
-								<div class="product-info__choose">
-									@if($optionArr['CPU'] != null)
-										@foreach($optionArr['CPU'] as $option)
-											<label for="product-cpu7" style="margin-bottom: .4rem;">
-												<input wire:model="CPU" type="radio" name="product-cpu" id="product-cpu7">
-												<span>{{$option->value}}</span>
-											</label>
-										@endforeach
-									@endif
-								</div>
-							</div>
-						@endif
-					@endforeach --}}
-
-					{{-- @foreach($optionArr as $key=>$value)
-						@if($key=='ROM')
-							<div class="product-info__storage">
-								<div class="product-info__title">
-									Емкость
-								</div>
-								<div class="product-info__choose">
-									@if($optionArr['ROM'] != null)
-										@foreach($optionArr['ROM'] as $option)
-											<label for="product-storage1">
-												<input wire:model="ROM" type="radio" value="{{$option->value}}" name="product-storage" id="product-storage1">
-												<span>{{$option->value}}</span>
-											</label> --}}
-											{{-- margin-bottom yo'q, justify-content: space-between bolib qolgan --}}
-										{{-- @endforeach
-									@endif
-								</div>
-							</div>
-						@endif --}}
-					{{-- @endforeach --}}
-					<div class="product-info__price">
-						25 694 000 сум
+					<div wire:click="last()" class="product-info__price">
+						${{$price}} USD
 					</div>
 					<div class="product-info__btns">
 						<a href="#" class="btn">
@@ -411,18 +355,3 @@
 			</div>
 		</div>
 	</section>
-
-@endsection
-	
-	<script>
-		window.livewire.on('changed', () => {
-			console.log('assssssssssss')
-			//     let inputField = document.getElementById('image')
-			//     let file = inputField.files[0]
-			//     let reader = new FileReader();
-    //     reader.onloadend = ()=>{
-			//         window.livewire.emit('fileUpload', reader.result)
-			//     }
-			//     reader.readAsDataURL(file);
-			})
-		</script>

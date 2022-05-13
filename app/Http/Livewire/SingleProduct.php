@@ -16,35 +16,40 @@ class SingleProduct extends Component
         $ROM,
         $CPU,
         $color,
-        $price,
+        $price = 0,
         $optionArr = [],
-        $opt = []
+        $opt = [],
+        $productOptionData = []
         ;
         
-
-    protected $listeners = [
-        'changed'
-    ];
 
     public function mount($id){
         $this->data_id = $id;
         $this->product = Product::find($id);
-
-
+        $this->price = $this->product->price;
 
         $product_options = ProductOption::where('product_id', $id)->get();
-    
         foreach($product_options as $product_option){
             $option = Option::find($product_option->option_id);
             $option["price"] = $product_option->price;
             $this->optionArr[$option->name][] = $option;
         }
-        // dd($this->optionArr);
-        // return $this->optionArr;
     }
 
     public function changed(){
+        $this->price = $this->product->price;
+        foreach($this->opt as $key => $value){
+            $this->productOptionData[$key] = ProductOption::where('option_id', $value)->where('product_id', $this->data_id)->first();
+            foreach($this->productOptionData as $key => $value){
+                $this->price += $value['price'];
+            }
+        }
+    }
+
+    public function last(){
+        dd($this->productOptionData);
         dd($this->opt);
+        // dd($this->price);
     }
 
 
@@ -52,7 +57,6 @@ class SingleProduct extends Component
 
     public function render()
     {
-        // dd('render');
         return view('view.single-product')->layout('layouts.front');
     }
 }

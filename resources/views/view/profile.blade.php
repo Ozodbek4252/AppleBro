@@ -1,11 +1,6 @@
-
-@extends('layouts.front')
-
-@section('content')
-
-	<!-- PROFILE -->
-	
+<div>
 	<section class="profile">
+
 		<div class="container">
 			<div class="profile-side">
 				<div class="profile__btn">
@@ -103,5 +98,4 @@
 		</div>
 	</div>
 
-
-	@endsection
+</div>
