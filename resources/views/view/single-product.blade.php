@@ -3,7 +3,6 @@
 @section('content')
 
 	<!-- PRODUCT -->
-
 	<section class="product">
 		<div class="container">
 			<div class="products-carousel">
@@ -102,129 +101,109 @@
 	
 	
 			<div class="breadcrumbs">
-				<a href="#">Home</a>
+				<a href="{{ Route('home') }}">Home</a>
 				<a href="#">Mac</a>
-				<a href="#" class="current">Mac Book Air</a>
+				<a href="{{ Route('front.single-product', $data_id) }}" class="current">Mac Book Air</a>
 			</div>
 	
 	
 			<div class="product-main">
 				<div class="product-gallery">
 					<div class="product-gallery__img">
-						<img src="/img/product.png" alt="img">
+						<img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="img">
 					</div>
 					<div class="product-gallery__thumbs">
 						<div class="current">
-							<img src="/img/product.png"> 
+							<img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="img">
 						</div>
-						<div>
-							<img src="/img/apple2.png" alt="img"> 
-						</div>
-						<div>
-							<img src="/img/apple3.png" alt="img"> 
-						</div>
-						<div>
-							<img src="/img/apple4.png" alt="img"> 
-						</div>				
+						@foreach(\App\Models\ProductPhoto::where('product_id', $product->id)->get() as $photo)
+							<div>
+								<img src="{{$photo->photo_path}}/{{$photo->photo}}" alt="img">
+							</div>
+						@endforeach
 					</div>
 				</div>
 				<div class="product-info">
 					<div class="product-info__name">
-						MacBook Pro 16-inch
+						{{$product->name}}
 					</div>
 					<div class="product-info__desc">
-						i7/16/512GB Silver 2019
+						{{$CPU}}/{{$RAM}}/{{$ROM}} GB Silver 2019
 					</div>
-					<div class="product-info__ram">
-						<div class="product-info__title">
-							ОЗУ
-						</div>
-						<div class="product-info__choose">
-							<label for="product-ram16">
-								<input type="radio" name="product-ram" id="product-ram16">
-								<span>16 Gb</span>
-							</label>
-							<label for="product-ram32">
-								<input type="radio" name="product-ram" id="product-ram32">
-								<span>32 Gb</span>
-							</label>
-							<label for="product-ram8">
-								<input type="radio" name="product-ram" id="product-ram8">
-								<span>8 Gb</span>
-							</label>
-						</div>
-					</div>
-					<div class="product-info__color">
-						<div class="product-info__title">
-							Цвета
-						</div>
-						<div class="product-info__choose">
-							<label for="product-color1">
-								<input type="radio" name="product-color" id="product-color1">
-								<span>Gold</span>
-								<div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
-							</label>
-							<label for="product-color2">
-								<input type="radio" name="product-color" id="product-color2">
-								<span>Gold</span>
-								<div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
-							</label>
-							<label for="product-color3">
-								<input type="radio" name="product-color" id="product-color3">
-								<span>Black</span>
-								<div class="color" style="background: #242424"></div>
-							</label>
-							<label for="product-color4">
-								<input type="radio" name="product-color" id="product-color4">
-								<span>Black</span>
-								<div class="color" style="background: #242424"></div>
-							</label>
-							<label for="product-color5">
-								<input type="radio" name="product-color" id="product-color5">
-								<span>Red</span>
-								<div class="color" style="background: #FF4646;"></div>
-							</label>
-							<label for="product-color6">
-								<input type="radio" name="product-color" id="product-color6">
-								<span>Red</span>
-								<div class="color" style="background: #FF4646;"></div>
-							</label>
-						</div>
-					</div>
-					<div class="product-info__cpu">
-						<div class="product-info__title">
-							Процессор
-						</div>
-						<div class="product-info__choose">
-							<label for="product-cpu7">
-								<input type="radio" name="product-cpu" id="product-cpu7">
-								<span>Intel Core i7</span>
-							</label>
-							<label for="product-cpu9">
-								<input type="radio" name="product-cpu" id="product-cpu9">
-								<span>Intel Core i9</span>
-							</label>
-						</div>
-					</div>
-					<div class="product-info__storage">
-						<div class="product-info__title">
-							Емкость
-						</div>
-						<div class="product-info__choose">
-							<label for="product-storage1">
-								<input type="radio" name="product-storage" id="product-storage1">
-								<span>128 Gb</span>
-							</label>
-							<label for="product-storage2">
-								<input type="radio" name="product-storage" id="product-storage2">
-								<span>256 Gb</span>
-							</label>
-							<label for="product-storage3">
-								<input type="radio" name="product-storage" id="product-storage3">
-								<span>512 Gb</span>
-							</label>
-						</div>
-					</div>
+
+					{{-- @foreach($optionArr as $key=>$value)
+							<div class="product-info__ram">
+								<div class="product-info__title">
+									{{$key}}
+								</div>
+								<div class="product-info__choose">
+										@foreach($optionArr[$key] as $option)
+											<label for="product-ram16">
+												<input wire:model="RAM" type="radio" name="product-ram" id="product-ram16">
+												<span>{{$option->value}}</span>
+											</label>
+										@endforeach
+								</div>
+							</div>
+					@endforeach --}}
+
+					@foreach($optionArr as $key=>$value)
+							<div class="product-info__color">
+								<div class="product-info__title">
+									{{$key}}
+								</div>
+								<div class="product-info__choose">
+										@foreach($optionArr[$key] as $option)
+											<label for="product-color1.{{$option->id}}" wire:change="$emit('changed')">
+												<input wire:change="$emit('changed')" wire:model="opt.{{$option->id}}" value="{{$option->value}}" type="radio" name="product-color[{{$option->name}}]" id="product-color1.{{$option->id}}">
+												<span>{{$option->value}}</span>
+												{{-- <div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div> --}}
+											</label>
+										@endforeach
+								</div>
+							</div>
+					@endforeach
+
+					{{-- @foreach($optionArr as $key=>$value)
+						@if($key=='CPU')
+							<div class="product-info__cpu">
+								<div class="product-info__title">
+									Процессор
+								</div>
+								<div class="product-info__choose">
+									@if($optionArr['CPU'] != null)
+										@foreach($optionArr['CPU'] as $option)
+											<label for="product-cpu7" style="margin-bottom: .4rem;">
+												<input wire:model="CPU" type="radio" name="product-cpu" id="product-cpu7">
+												<span>{{$option->value}}</span>
+											</label>
+										@endforeach
+									@endif
+								</div>
+							</div>
+						@endif
+					@endforeach --}}
+
+					{{-- @foreach($optionArr as $key=>$value)
+						@if($key=='ROM')
+							<div class="product-info__storage">
+								<div class="product-info__title">
+									Емкость
+								</div>
+								<div class="product-info__choose">
+									@if($optionArr['ROM'] != null)
+										@foreach($optionArr['ROM'] as $option)
+											<label for="product-storage1">
+												<input wire:model="ROM" type="radio" value="{{$option->value}}" name="product-storage" id="product-storage1">
+												<span>{{$option->value}}</span>
+											</label> --}}
+											{{-- margin-bottom yo'q, justify-content: space-between bolib qolgan --}}
+										{{-- @endforeach
+									@endif
+								</div>
+							</div>
+						@endif --}}
+					{{-- @endforeach --}}
 					<div class="product-info__price">
 						25 694 000 сум
 					</div>
@@ -433,4 +412,17 @@
 		</div>
 	</section>
 
-	@endsection
+@endsection
+	
+	<script>
+		window.livewire.on('changed', () => {
+			console.log('assssssssssss')
+			//     let inputField = document.getElementById('image')
+			//     let file = inputField.files[0]
+			//     let reader = new FileReader();
+    //     reader.onloadend = ()=>{
+			//         window.livewire.emit('fileUpload', reader.result)
+			//     }
+			//     reader.readAsDataURL(file);
+			})
+		</script>
