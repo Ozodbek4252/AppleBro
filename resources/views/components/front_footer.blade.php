@@ -3,7 +3,7 @@
         <div class="container">
             <div class="footer-logo">
                 <div class="footer__logo">
-                    <a href="index.html">
+                    <a href="{{ Route('home') }}">
                         <img src="/img/logo-footer.svg" alt="Apple Bro">
                     </a>
                 </div>

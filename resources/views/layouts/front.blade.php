@@ -3,7 +3,7 @@
 <head>
   <base href="/public">
   @include('components.front_links')
-
+  @include('components.front_scripts')
 </head>
 <body>
 
@@ -15,8 +15,10 @@
 
   @yield('content')
 
-  @include('components.front_footer')
-  @include('components.front_scripts')
+  @if(\Request::route()->getName() != 'front.profile')
+    @include('components.front_footer')
+  @endif
+  
 </body>
 </html>
 

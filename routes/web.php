@@ -4,9 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Livewire\Category;
+use App\Http\Livewire\Favorite;
 use App\Http\Livewire\ProductCreate;
 use App\Http\Livewire\Product;
+use App\Http\Livewire\Profile;
 use App\Http\Livewire\SingleProduct;
+use App\Http\Livewire\History;
+use App\Http\Livewire\Basket;
 
 
 use App\Models\ProductOption;
@@ -38,7 +42,10 @@ Route::middleware([
     Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('products.store');
     Route::get('/single-product/{id}', SingleProduct::class)->name('front.single-product');
-
+    Route::get('/favorite', Favorite::class)->name('front.favorite');
+    Route::get('/profile', Profile::class)->name('front.profile');
+    Route::get('/history', History::class)->name('front.history');
+    Route::get('/basket', Basket::class)->name('front.basket');
 
     // Route::resources([
     //     'categories' => 'CategoryController',
@@ -64,3 +71,4 @@ Route::get('/test/{id}', function($id){
 
 
 
+ 

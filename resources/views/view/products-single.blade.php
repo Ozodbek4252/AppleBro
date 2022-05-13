@@ -1,13 +1,11 @@
 @extends('layouts.front')
 
 @section('content')
-
 	<section class="product">
 		<div class="container">
 			<div class="products-carousel">
 
 				<!-- ЕСЛИ МНОГО ТОВАРОВ ТО СТРЕЛКИ -->
-	
 				<div class="products-carousel__arrows">
 					<span class="arrow-left">
 						<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,9 +98,9 @@
 	
 	
 			<div class="breadcrumbs">
-				<a href="#">Home</a>
+				<a href="{{ Route('home') }}">Home</a>
 				<a href="#">Mac</a>
-				<a href="#" class="current">Mac Book Air</a>
+				<a href="{{}}" class="current">Mac Book Air</a>
 			</div>
 	
 	

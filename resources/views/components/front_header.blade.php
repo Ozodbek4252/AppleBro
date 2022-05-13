@@ -45,6 +45,7 @@
             </div>
         </div>
     </div>
+
     <div class="header-bot">
         <div class="container">
             <ul class="header-menu">
@@ -52,7 +53,7 @@
                     <input type="text" placeholder="Поиск">		
                 </div>
                 <li class="header__logo">
-                    <a href="index.html">
+                    <a href="{{ Route('home') }}">
                         <img src="/img/logo.svg" alt="Apple Bro">
                     </a>
                 </li>
@@ -79,7 +80,7 @@
                     <img src="/img/basket.svg" alt="ico">
                     <span>2</span>
                 </a>
-                <a href="#">
+                <a href="{{ Route('front.favorite') }}">
                     <img src="/img/heart.svg" alt="ico">
                     <span>2</span>
                 </a>
@@ -89,12 +90,12 @@
                 <div class="header-profile__dropdown">
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="{{ Route('front.profile') }}">
                                 Профиль
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ Route('front.history') }}">
                                 Мои заказы
                             </a>
                         </li>
