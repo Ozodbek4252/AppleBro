@@ -56,18 +56,20 @@
                                 <td class="px-6 py-2 text-sm whitespace-no-wrap">{{ $product->price }}</td>
                                 <td class="px-6 py-2 text-sm whitespace-no-wrap">
                                   @if($optionArr)
-                                    @foreach($optionArr as $option_name => $option_value)
-                                      @if($option_name == "CPU") 
-                                        {{$option_name}} - @for($i=0; $i<count($option_value); $i++) {{$option_value[$i]->value}} @if(count($option_value)-1 != $i)/@endif @endfor
-                                        <br/>
-                                      @elseif($option_name == "RAM")
-                                        {{$option_name}} - @for($i=0; $i<count($option_value); $i++) {{$option_value[$i]->value}} GB @if(count($option_value)-1 != $i)/@endif @endfor
-                                        <br/>
-                                      @elseif($option_name == "ROM")
-                                        {{$option_name}} - @for($i=0; $i<count($option_value); $i++) {{$$option_value[$i]->value}} GB @if(count($option_value) == $i)/@endif @endfor
-                                        <br/>
-                                      @endif
-                                    @endforeach
+                                    {{-- @foreach($optionArr as $option_name => $option_value) --}}
+
+                                      @foreach($optionArr as $key=>$value)
+                                        {{$key}}:
+                                          @foreach($optionArr[$key] as $option)
+                                            <label for="product-color1-{{$option['id']}}">
+                                              <span>{{$option['value']}}</span> @if(!$loop->last) / @endif
+                                              @if($option['name'] == 'Color')
+                                                <div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
+                                              @endif
+                                            </label>
+                                          @endforeach
+                                          <br>
+                                      @endforeach
                                   @endif
                                 </td>
                                 <td class="px-6 py-2 text-sm" style="width: 130px;">
