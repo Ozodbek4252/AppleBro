@@ -20,7 +20,6 @@ class Product extends Component
     public function delete(){
         ProductModel::find($this->modelId)->delete();
         $this->modalConfirmDeleteVisible = false;
-        // $this->resetPage();
     }
 
     public function deleteShowModal($id){

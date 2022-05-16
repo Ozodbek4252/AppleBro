@@ -3,7 +3,6 @@
 @section('content')
 
 
-	
 	<section class="main">
 		<div class="main-carousel owl-carousel">
 			<div class="main-carousel__item">

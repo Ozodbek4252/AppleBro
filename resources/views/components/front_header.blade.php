@@ -3,36 +3,42 @@
         <div class="container">
             <div class="header__location">
                 <img src="/img/location.svg" alt="ico">
-                <span>Ташкент</span>
+                <span>{{__("home.tashkent")}}</span>
             </div>
             <ul class="header-top__menu">
                 <li>
                     <a href="#">
-                        О нас
+                        {{__('home.О нас')}}
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        Магазины
+                        {{__('home.Магазины')}}
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        Рассрочка
+                        {{__('home.Рассрочка')}}
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        Оплата и доставка
+                        {{__('home.Оплата и доставка')}}
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        Контакты
+                        {{__('home.Контакты')}}
                     </a>
                 </li>
             </ul>
             <div class="header__lang">
+                <a href="/languages/ru" >RU</a>
+                <a href="/languages/uz" >UZ</a>
+                <a href="/languages/en" >EN</a>
+            </div>
+            
+            {{-- <div class="header__lang">
                 <a href="#">
                     O’z
                 </a>
@@ -42,7 +48,7 @@
                 <a href="#" class="current">
                     Ру
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -91,17 +97,17 @@
                     <ul>
                         <li>
                             <a href="{{ Route('front.profile') }}">
-                                Профиль
+                                {{__('home.Профиль')}}
                             </a>
                         </li>
                         <li>
                             <a href="{{ Route('front.history') }}">
-                                Мои заказы
+                                {{__('home.Мои заказы')}}
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                Выход
+                                {{__('home.Выход')}}
                             </a>
                         </li>
                     </ul>

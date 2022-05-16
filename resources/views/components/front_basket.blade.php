@@ -58,7 +58,7 @@
   </div>
   <div class="basket-total">
     <a href="{{ Route('front.basket') }}" class="btn">
-      Оформить заказ
+      {{__('home.Оформить заказ')}}
     </a>
     <div class="basket-total__price">
       <span>Итого:</span>
