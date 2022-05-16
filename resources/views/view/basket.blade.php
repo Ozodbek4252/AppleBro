@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 
 
+=======
+@extends('layouts.front')
+
+@section('content')
+>>>>>>> 64a122dc2a50485733d4c7cf594854ea7f65bc0b
 
 	<section class="buy">
 		<div class="container">
@@ -11,7 +17,7 @@
 							1
 						</div>
 						<div class="buy-head__name">
-							Моя корзина
+							{{__('home.Мои заказы')}}
 						</div>
 					</div>
 					<div class="buy-head__step">
@@ -19,7 +25,7 @@
 							2
 						</div>
 						<div class="buy-head__name">
-							Оформление заказа
+							{{__('home.Оформление заказа')}}
 						</div>
 					</div>
 					<div class="buy-head__step">
@@ -27,7 +33,7 @@
 							3
 						</div>
 						<div class="buy-head__name">
-							Способ оплаты
+							{{__('home.Способ оплаты')}}
 						</div>
 					</div>
 					<div class="buy-head__line"></div>
@@ -38,7 +44,7 @@
 
 			<div class="buy-basket">
 				<h2 class="buy__title">
-					Моя корзина
+					{{__('home.Моя корзина')}}
 				</h2>
 				<div class="buy-basket__content">
 					<div class="buy-basket__item">
@@ -48,7 +54,7 @@
 							</div>
 							<div class="buy-basket__text">
 								<div class="buy-basket__name">
-									Беспроводные наушники APPLE AirPods Pro с поддержкой MagSafe
+									{{__('home.Беспроводные наушники APPLE AirPods Pro с поддержкой MagSafe')}}
 								</div>
 								<div class="buy-basket__desc">
 									i7/16/512GB Silver 2019
@@ -57,7 +63,7 @@
 						</div>
 						<div class="buy-basket__wrap">
 							<div class="buy-basket__count">
-								<span>Количество:</span>
+								<span>{{__('home.Количество')}}:</span>
 								<div class="buy-basket__count-btns">
 									<span class="minus">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +82,7 @@
 								</div>
 							</div>
 							<div class="buy-basket__price">
-								<span>Цена:</span>
+								<span>{{__('home.Цена')}}:</span>
 								<div>168 767 500 сум</div>
 							</div>
 						</div>
@@ -97,7 +103,7 @@
 							</div>
 							<div class="buy-basket__text">
 								<div class="buy-basket__name">
-									Беспроводные наушники APPLE AirPods Pro с поддержкой MagSafe
+									{{__('home.Беспроводные наушники APPLE AirPods Pro с поддержкой MagSafe')}}
 								</div>
 								<div class="buy-basket__desc">
 									i7/16/512GB Silver 2019
@@ -106,7 +112,7 @@
 						</div>
 						<div class="buy-basket__wrap">
 							<div class="buy-basket__count">
-								<span>Количество:</span>
+								<span>{{__('home.Количество')}}:</span>
 								<div class="buy-basket__count-btns">
 									<span class="minus">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -125,7 +131,7 @@
 								</div>
 							</div>
 							<div class="buy-basket__price">
-								<span>Цена:</span>
+								<span>{{__('home.Цена')}}:</span>
 								<div>168 767 500 сум</div>
 							</div>
 						</div>
@@ -146,7 +152,7 @@
 							</div>
 							<div class="buy-basket__text">
 								<div class="buy-basket__name">
-									Беспроводные наушники APPLE AirPods Pro с поддержкой MagSafe
+									{{__('home.Беспроводные наушники APPLE AirPods Pro с поддержкой MagSafe')}}
 								</div>
 								<div class="buy-basket__desc">
 									i7/16/512GB Silver 2019
@@ -155,7 +161,7 @@
 						</div>
 						<div class="buy-basket__wrap">
 							<div class="buy-basket__count">
-								<span>Количество:</span>
+								<span>{{__('home.Количество')}}:</span>
 								<div class="buy-basket__count-btns">
 									<span class="minus">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -174,7 +180,7 @@
 								</div>
 							</div>
 							<div class="buy-basket__price">
-								<span>Цена:</span>
+								<span>{{__('home.Цена')}}:</span>
 								<div>168 767 500 сум</div>
 							</div>
 						</div>
@@ -195,7 +201,7 @@
 							</div>
 							<div class="buy-basket__text">
 								<div class="buy-basket__name">
-									Беспроводные наушники APPLE AirPods Pro с поддержкой MagSafe
+									{{__('home.Беспроводные наушники APPLE AirPods Pro с поддержкой MagSafe')}}
 								</div>
 								<div class="buy-basket__desc">
 									i7/16/512GB Silver 2019
@@ -204,7 +210,7 @@
 						</div>
 						<div class="buy-basket__wrap">
 							<div class="buy-basket__count">
-								<span>Количество:</span>
+								<span>{{__('home.Количество')}}:</span>
 								<div class="buy-basket__count-btns">
 									<span class="minus">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -223,7 +229,7 @@
 								</div>
 							</div>
 							<div class="buy-basket__price">
-								<span>Цена:</span>
+								<span>{{__('home.Цена')}}:</span>
 								<div>168 767 500 сум</div>
 							</div>
 						</div>
@@ -241,7 +247,7 @@
 				<div class="buy-basket__total">
 					<div class="buy-basket__total-wrap">
 						<div class="buy-basket__title">
-							Продукты(17)
+							{{__('home.Продукты')}}(17)
 						</div>
 						<div class="buy-carousel">
 							<div class="buy-carousel__arrows">
@@ -335,12 +341,12 @@
 					</div>
 					<div class="buy-basket__total-wrap">
 						<div class="buy-basket__title">
-							Ваш заказ
+							{{__('home.Ваш заказ')}}
 						</div>
 						<ul class="buy-price">
 							<li>
 								<div class="buy-price__name">
-									Продукты(2)
+									{{__('home.Продукты')}}(2)
 								</div>
 								<div class="buy-price__value">
 									31 533 500 сум
@@ -348,7 +354,7 @@
 							</li>
 							<li>
 								<div class="buy-price__name">
-									Скидка
+									{{__('home.Скидка')}}
 								</div>
 								<div class="buy-price__value">
 									0 сум
@@ -356,7 +362,7 @@
 							</li>
 						</ul>
 						<div class="buy-total">
-							Всего
+							{{__('home.Всего')}}
 
 							<span>31 533 500 сум</span>
 						</div>
@@ -364,7 +370,7 @@
 				</div>
 				<div class="buy-basket__btn">
 					<a href="#" class="buy-info__btn buy-info__btn-basket btn">
-						Оплатить заказ 
+						{{__('home.Оплатить заказ')}} 
 					</a>
 				</div>
 			</div>
@@ -373,25 +379,25 @@
 
 			<div class="buy-order">
 				<h2 class="buy__title">
-					Оформления заказа
+					{{__('home.Оформления заказа')}}
 				</h2>
 				<div class="buy-wrap">
 					<div class="buy-main">
 						<div class="buy-order__info">
 							<div class="buy-order__title">
-								Покупатель
+								{{__('home.Покупатель')}}
 							</div>
 							<div class="buy-order__form">
 								<div class="buy-order__input">
-									<span>Имя</span>
+									<span>{{__('home.Имя')}}</span>
 									<input type="text" required>
 								</div>
 								<div class="buy-order__input">
-									<span>Фамилия</span>
+									<span>{{__('home.Фамилия')}}</span>
 									<input type="text" required>
 								</div>
 								<div class="buy-order__input">
-									<span>Телефон</span>
+									<span>{{__('home.Телефон')}}</span>
 									<input type="text" required class="form__tel">
 								</div>
 							</div>
@@ -399,19 +405,19 @@
 						<div class="buy-order__wrap">
 							<div class="buy-order__type">
 								<div class="buy-order__title">
-									Доставка
+									{{__('home.Доставка')}}
 								</div>
 								<label for="order1">
 									<input type="radio" name="order" id="order1">
 									<div>
-										Самовывоз
-										<span>— бесплатно</span>
+										{{__('home.Самовывоз')}}
+										<span>— {{__('home.бесплатно')}}</span>
 									</div>
 								</label>
 								<label for="order2">
 									<input type="radio" name="order" id="order2">
 									<div>
-										Доставка курьером
+										{{__('home.Доставка курьером')}}
 										<span>от 350 000 uzs</span>
 									</div>
 								</label>

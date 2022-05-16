@@ -12,11 +12,17 @@ use App\Http\Livewire\Product;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\History;
 use App\Http\Livewire\Basket;
+<<<<<<< HEAD
 use App\Http\Livewire\Admin\EditProduct;
 
 
+=======
+use App\Models\Category as ModelsCategory;
+>>>>>>> 64a122dc2a50485733d4c7cf594854ea7f65bc0b
 use App\Models\ProductOption;
 use App\Models\Option;
+use App\Models\Product as ModelsProduct;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +33,13 @@ use App\Models\Option;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/languages/{lang}', function ($lang) {
+    if (in_array($lang, ['en', 'ru', 'uz'])) {
+        session()->put('locale', $lang);
+    }
+    return redirect()->back();
+});
 
 
 
@@ -59,7 +72,20 @@ Route::middleware([
 });
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', function(){
+    if (session()->get('locale') == '') {
+        session()->put('locale', 'ru');
+        app()->setLocale('ru');
+    } else {
+        app()->setLocale(session()->get('locale'));
+    }
+    $lang = session()->get('locale');
+    $newest_products = \App\Models\Product::orderBy('updated_at', 'desc')->take(4)->get();
+    $categories = \App\Models\Category::all();
+    return view('view.home', ['lang'=> $lang, 'newest_products'=>$newest_products, 'categories'=>$categories]);
+})->name('home');
+
+
 
 Route::get('/test/{id}', function($id){
     $product_options = ProductOption::where('product_id', $id)->get();

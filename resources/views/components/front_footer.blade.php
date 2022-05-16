@@ -8,65 +8,65 @@
                     </a>
                 </div>
                 <div class="footer__copy">
-                    Интернет-магазины AppleBro.uz. <br>
-                    Все права защищены.
+                    {{__('home.Интернет-магазины')}} AppleBro.uz. <br>
+                    {{__('home.Все права защищены')}}.
                 </div>
             </div>
             <div class="footer-menu">
                 <div class="footer-menu__title">
-                    КОМПАНИЯ
+                    {{__('home.КОМПАНИЯ')}}
                 </div>
                 <ul class="footer-menu__list">
                     <li>
                         <a href="#">
-                            О компании
+                            {{__('home.О компании')}}
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Новости и акции
+                            {{__('home.Новости и акции')}}
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Контакты
+                            {{__('home.Контакты')}}
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Trade-in
+                            {{__('home.Trade-in')}}
                         </a>
                     </li>
                 </ul>
             </div>
             <div class="footer-menu">
                 <div class="footer-menu__title">
-                    ИНФОРМАЦИЯ
+                    {{__('home.ИНФОРМАЦИЯ')}}
                 </div>
                 <ul class="footer-menu__list">
                     <li>
                         <a href="#">
-                            Как заказать
+                            {{__('home.Как заказать')}}
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Доставка и оплата
+                            {{__('home.Доставка и оплата')}}
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Возврат и гарантии
+                            {{__('home.Возврат и гарантии')}}
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Покупка в кредит без переплаты
+                            {{__('home.Покупка в кредит без переплаты')}}
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Политика конфиденциальности
+                            {{__('home.Политика конфиденциальности')}}
                         </a>
                     </li>
                 </ul>
@@ -107,7 +107,7 @@
                 </ul>
                 <div class="footer-info__feedback">
                     <a href="#" class="btn">
-                        Вам перезвонить?
+                        {{__('home.Вам перезвонить?')}}
                     </a>
                 </div>
                 <div class="footer-info__pay">
