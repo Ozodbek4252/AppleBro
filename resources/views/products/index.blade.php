@@ -73,7 +73,9 @@
                                   @endif
                                 </td>
                                 <td class="px-6 py-2 text-sm" style="width: 130px;">
-                                  <button wire:click="updateShowModal({{ $product->id }})" type="button" class="btn btn-warning waves-effect waves-light"><i class="uil-edit"></i></button>
+                                  <form action="{{ Route("admin.product.edit", $product->id) }}" style="display: inline;">
+                                    <button type="submit" class="btn btn-warning waves-effect waves-light"><i class="uil-edit"></i></button>
+                                  </form>
                                   <button wire:click="deleteShowModal({{ $product->id }})" type="button" class="btn btn-danger waves-effect waves-light"><i class="uil-trash"></i></button>
                                 </td>
                               @endif

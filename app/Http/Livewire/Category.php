@@ -146,7 +146,6 @@ class Category extends Component
         return view('admin.category', [
             'categories' => $this->read(),
             'options' => $options,
-
         ]);
     }
 }

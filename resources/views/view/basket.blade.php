@@ -1,6 +1,4 @@
-@extends('layouts.front')
 
-@section('content')
 
 	<section class="buy">
 		<div class="container">
@@ -743,7 +741,3 @@
 		</div>
 	</section>
 
-
-	<!-- FOOTER -->
-
-@endsection
