@@ -82,8 +82,6 @@ class ProductController extends Controller
       }
     }
 
-
-
     $categories = Category::all();
     $options = Option::all();
     return redirect()->route('admin.products')->with('categories', $categories)->with('options', $options);
@@ -94,5 +92,9 @@ class ProductController extends Controller
   }
 
   public function show(){}
+
+  public function update(Request $request, $id){
+    dd($request->all());
+  }
 
 }

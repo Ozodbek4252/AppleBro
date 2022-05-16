@@ -1,7 +1,3 @@
-@extends('layouts.front')
-
-@section('content')
-
 
 
 
@@ -746,7 +742,3 @@
 		</div>
 	</section>
 
-
-	<!-- FOOTER -->
-
-@endsection

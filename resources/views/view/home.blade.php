@@ -136,7 +136,7 @@
 							<img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="popular">
 							{{-- <img src="/img/popular6.png" alt="popular"> --}}
 						</div>
-						<a href="#" class="popular-item__link"></a>
+						<a href="{{ Route('front.all-products', $category->id) }}" class="popular-item__link"></a>
 					</div>
 				@endforeach
 				</div>

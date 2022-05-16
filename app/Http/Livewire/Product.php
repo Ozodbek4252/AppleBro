@@ -20,7 +20,6 @@ class Product extends Component
     public function delete(){
         ProductModel::find($this->modelId)->delete();
         $this->modalConfirmDeleteVisible = false;
-        // $this->resetPage();
     }
 
     public function deleteShowModal($id){
@@ -28,12 +27,11 @@ class Product extends Component
         $this->modalConfirmDeleteVisible = true;
     }
 
-
-
-
-
-
-
+    public function routeToEdit($id){
+        return view('products.edit', [
+            'product' => ProductModel::find($id)
+        ]);
+    }
 
     public $category_id;
 
