@@ -211,7 +211,7 @@
       </li>
       <li class="mobile-menu__item">
         <span>
-          Аксессуары
+          {{__('home.Аксессуары')}}
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>	
@@ -219,29 +219,29 @@
         <ul class="mobile-menu__submenu">
           <li>
             <a href="#">
-              Аксессуары
+              {{__('home.Аксессуары')}}
             </a>
           </li>
           <li>
             <a href="#">
-              Аксессуары X
+              {{__('home.Аксессуары')}} X
             </a>
           </li>
           <li>
             <a href="#">
-              Аксессуары X
+              {{__('home.Аксессуары')}} X
             </a>
           </li>
           <li>
             <a href="#">
-              Аксессуары X
+              {{__('home.Аксессуары')}} X
             </a>
           </li>
         </ul>
       </li>
       <li class="mobile-menu__item">
         <span>
-          Другие 
+          {{__('home.Другие')}} 
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>	
@@ -249,22 +249,22 @@
         <ul class="mobile-menu__submenu">
           <li>
             <a href="#">
-              Другие
+              {{__('home.Другие')}}
             </a>
           </li>
           <li>
             <a href="#">
-              Другие X
+              {{__('home.Другие')}} X
             </a>
           </li>
           <li>
             <a href="#">
-              Другие X
+              {{__('home.Другие')}} X
             </a>
           </li>
           <li>
             <a href="#">
-              Другие X
+              {{__('home.Другие')}} X
             </a>
           </li>
         </ul>
@@ -273,33 +273,27 @@
     <ul class="mobile-menu__profile">
       <li>
         <a href="#">
-          <span>Профиль</span>
+          <span>{{__('home.Профиль')}}</span>
           <img src="/img/caret-right.svg" alt="ico">
         </a>
       </li>
       <li>
         <a href="#">
-          <span>Мои заказы</span>
+          <span>{{__('home.Мои заказы')}}</span>
           <img src="/img/caret-right.svg" alt="ico">
         </a>
       </li>
       <li>
         <a href="#">
-          <span>Выход</span>
+          <span>{{__('home.Выход')}}</span>
           <img src="/img/caret-right.svg" alt="ico">
         </a>
       </li>
     </ul>
-    <div class="mobile-menu__lang">
-      <a href="#">
-        O’z
-      </a>
-      <a href="#">
-        Eng
-      </a>
-      <a href="#" class="current">
-        Ру
-      </a>
-    </div>
+    <div class="header__lang">
+      <a href="/languages/ru" >RU</a>
+      <a href="/languages/uz" >UZ</a>
+      <a href="/languages/en" >EN</a>
+  </div>
   </div>
 </div>

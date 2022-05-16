@@ -9,7 +9,7 @@
 					iPhone 13 Pro Max" (M1 Max, 10 CPU/32 GPU 202...
 				</div>
 				<div class="favourite__btn btn">
-					Добавлен в избранное
+					{{__('home.Добавлен в избранное')}}
 				</div>
 			</div>
 
