@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Facade;
-
+use App\Providers\LangServiceProvider;
 
 return [
 
@@ -185,6 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
+        LangServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -196,7 +197,6 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         
-        App\Providers\LangServiceProvider::class,
         
         
         Intervention\Image\ImageServiceProvider::class,

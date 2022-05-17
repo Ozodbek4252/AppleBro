@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class LanguageProvider extends ServiceProvider
+class LangServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -25,12 +25,8 @@ class LanguageProvider extends ServiceProvider
     {
         view()->composer('*', function ($view)
         {
-            if (session()->get('locale') == '') {
-                session()->put('locale', 'ru');
-                app()->setLocale('ru');
-            } else {
-                app()->setLocale(session()->get('locale'));
-            }
+            if(session()->get('locale') == ''){session()->put('locale', 'uz');app()->setLocale('uz');}
+            else{app()->setLocale(session()->get('locale'));}
             $lang = session()->get('locale');
             $n = 'name_'.$lang;
             $d = 'description_'.$lang;
@@ -41,7 +37,7 @@ class LanguageProvider extends ServiceProvider
             $pl = 'place_'.$lang;
             $t = 'type_'.$lang;
             $mn = 'mininame_'.$lang;
-            $view->with(['n'=>$n, 'd'=>$d, 'ld'=>$ld, 'l'=>$l, 'r'=>$r, 'p'=>$p, 'pl'=>$pl, 't'=>$t, 'mn'=>$mn, 'lang' => $lang]);
+            $view->with(['n'=>$n, 'd'=>$d, 'ld'=>$ld, 'l'=>$l, 'r'=>$r, 'p'=>$p, 'pl'=>$pl, 't'=>$t, 'mn'=>$mn]);
         });
     }
 }
