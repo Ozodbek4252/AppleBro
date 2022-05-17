@@ -1,6 +1,7 @@
 <div class="row">
     <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
     <div class="col-xl-12">
         <div class="card">
           <div class="card-body">
@@ -8,6 +9,7 @@
               <div class="row">
                 <div class="col-lg-2">
                   <div class="mb-3">
+
                     <label class="form-label">Kategoriyani tanlang</label>
                     <select name="category" class="form-control select2">
                       <option>Select</option>
@@ -40,7 +42,7 @@
                   <div class="col-md-6" style="display: flex;">
                       <button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-toggle="modal" data-bs-target="#productMainPhotoDeleteModal" aria-label="Close" style="position: absolute; right: 100px;"></button>
                       <img class="img-thumbnail" alt="200x200" width="200" src="{{$product->main_photo_path}}/{{$product->main_photo}}" data-holder-rendered="true">
-                    </div>
+                  </div>
 
                       <div>
                         <div>
@@ -108,7 +110,7 @@
                     @endforeach
                   </select>
                 </div>
-  
+
                 <div class="col-md-12">
                   <div class="mb-3">
                     <label class="form-label" for="xususiyat_name">Name</label>
@@ -184,49 +186,50 @@
                       </div>
                     </div>
 
-                    @foreach($productOptions as $productOption)
-                    @dd($productOption)
+                    @foreach($productOptions as $key => $productOption)
                       <div class="add-input mb-0 {{ $key }}">
                         <div class="row">
-                            <div class="col-md-1">
-                                <button class="btn btn-danger btn-sm"
-                                        wire:click.prevent="remove({{$key}})"><i
-                                        class="fa fa-minus"></i></button>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <select class="form-control form-control-sm"
-                                      wire:model="option_id.{{ $key }}"
-                                      name="option_id[{{ $key }}]">
-                                  <option value="null">Select Option</option>
-                                  @foreach($options as $option)
-                                    <option value="{{ $option->id }}">{{ $option->name }} ({{$option->value}})</option>
-                                  @endforeach
-                                </select>
-                              </div>
+                          <div class="col-md-1">
+                            <button class="btn btn-danger btn-sm"
+                                    wire:click.prevent="remove({{$key}})"><i
+                                    class="fa fa-minus"></i></button>
                           </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <input type="text"
-                                          class="form-control form-control-sm"
-                                          placeholder="price"
-                                          wire:model="product_option_price.{{ $key }}"
-                                          name="product_option_price[{{ $key }}]">
-                                    @error('product_option_price.'.$value) <span
-                                        class="text-danger error">{{ $message }}</span>@enderror
-                                </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <select class="form-control form-control-sm"
+                                    wire:model="option_id.{{ $key }}"
+                                    name="option_id[{{ $key }}]">
+                                <option value="null">Select Option</option>
+                                @foreach($options as $option)
+                                  <option value="{{ $option->id }}" >{{ $option->name }} ({{$option->value}})</option>
+                                @endforeach
+                              </select>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="file"
-                                          multiple
-                                          class="form-control form-control-sm"
-                                          wire:model="product_option_photos.{{ $key }}"
-                                          name="product_option_photos[{{ $key }}][]">
-                                    @error('product_option_photos.'.$value) <span
-                                        class="text-danger error">{{ $message }}</span>@enderror
-                                </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <input type="text"
+                                    class="form-control form-control-sm"
+                                    placeholder="price"
+                                    wire:model="product_option_price.{{ $key }}"
+                                    name="product_option_price[{{ $key }}]">
                             </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input type="file"
+                                    multiple
+                                    class="form-control form-control-sm"
+                                    wire:model="product_option_photos.{{ $key }}"
+                                    name="product_option_photos[{{ $key }}][]">
+                                    @if(\App\Models\Option::find($productOption->option_id)->name == 'Color')
+                                      <div class="col-md-6 mt-2" style="display: flex;">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-toggle="modal" data-bs-target="#productMainPhotoDeleteModal" aria-label="Close" style="position: absolute; right: 100px;"></button>
+                                        <img class="img-thumbnail" alt="200x200" width="200" src="{{$product_option_photos_path[$key]}}/{{ $product_option_photos[$key] }}" data-holder-rendered="true">
+                                      </div>
+                                    @endif
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <hr><br>
@@ -290,7 +293,7 @@
           
           
         </div>
-        <button class="btn btn-primary" type="submit" style="width: 200px;">Submit form</button>
+        <button class="btn btn-primary" type="submit" style="width: 200px;">Saqlash</button>
       </form>
   
 

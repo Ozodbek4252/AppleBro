@@ -54,8 +54,8 @@ Route::middleware([
     Route::get('/product', Product::class)->name('admin.products');
     Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
     Route::get('/product/edit/{id}', EditProduct::class)->name('admin.product.edit');
-    Route::post('/product/{id}', [ProductController::class, "update"])->name('admin.products.update');
-    Route::post('/product/store', [ProductController::class, 'store'])->name('products.store');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('admin.products.store');
+    Route::put('/product/{id}', [ProductController::class, "update"])->name('admin.products.update');
     Route::get('/single-product/{id}', [SingleProductController::class, 'show'])->name('front.single-product');
     Route::get('/favorite', Favorite::class)->name('front.favorite');
     Route::get('/profile', Profile::class)->name('front.profile');

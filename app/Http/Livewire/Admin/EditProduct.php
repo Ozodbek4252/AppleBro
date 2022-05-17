@@ -7,10 +7,12 @@ use Livewire\Component;
 use \App\Models\Category;
 use App\Models\Option;
 use App\Models\ProductOption;
+use App\Models\ProductPhoto;
 use Illuminate\Support\Facades\File;
-
+use Livewire\WithFileUploads;
 class EditProduct extends Component
 {
+  use WithFileUploads;
   public 
       $product,
       $selectedCategory,
@@ -23,22 +25,34 @@ class EditProduct extends Component
       $xususiyat_photo,
       $xususiyatSelected = 'Select',
       $i = 1,
+      $keys = 1,
       $inputs = [],
+      $old_inputs = [],
       $option_id = [],
       $product_option_price = [],
-      $product_option_photos = [];
+      $product_option_photos = [],
+      $product_option_photos_path = [];
   
   public function mount($id){
     $this->product = Product::find($id);
     $this->productName = $this->product->name;
     $this->productPrice = $this->product->price;
     $this->selectedCategory = $this->product->category_id;
+
+    $selectedOptions = ProductOption::where('product_id', $id)->get()->toArray();
+      for ($m = 0; $m < count($selectedOptions); $m++){
+          $this->i = $m;
+          array_push($this->old_inputs, $m);
+          $this->option_id[$m] = $selectedOptions[$m]['option_id'];
+          $this->product_option_price[$m] = $selectedOptions[$m]['price'];
+          $this->product_option_photos[$m] = count(ProductPhoto::where('product_option_id', $selectedOptions[$m]['id'])->get()) ? ProductPhoto::where('product_option_id', $selectedOptions[$m]['id'])->get()->toArray()[0]['photo'] : 0;
+          $this->product_option_photos_path[$m] = count(ProductPhoto::where('product_option_id', $selectedOptions[$m]['id'])->get()) ? ProductPhoto::where('product_option_id', $selectedOptions[$m]['id'])->get()->toArray()[0]['photo_path'] : 0;
+      }
   }
 
   public function add($i){
     $this->i = $i + 1;
     $this->inputs[(int)$this->i] = $this->i;
-    dd($this->inputs);
   }
   
   public function remove($i){

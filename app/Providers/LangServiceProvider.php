@@ -26,7 +26,7 @@ class LangServiceProvider extends ServiceProvider
         view()->composer('*', function ($view)
         {
             if(session()->get('locale') == ''){session()->put('locale', 'uz');app()->setLocale('uz');}
-            else{app()->setLocale(session()->get('locale'));}
+            else{ app()->setLocale(session()->get('locale')); }
             $lang = session()->get('locale');
             $n = 'name_'.$lang;
             $d = 'description_'.$lang;
