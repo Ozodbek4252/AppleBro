@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 
-
-=======
-@extends('layouts.front')
-
-@section('content')
->>>>>>> 64a122dc2a50485733d4c7cf594854ea7f65bc0b
 
 	<section class="buy">
 		<div class="container">

@@ -12,16 +12,14 @@ use App\Http\Livewire\Product;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\History;
 use App\Http\Livewire\Basket;
-<<<<<<< HEAD
 use App\Http\Livewire\Admin\EditProduct;
 
 
-=======
-use App\Models\Category as ModelsCategory;
->>>>>>> 64a122dc2a50485733d4c7cf594854ea7f65bc0b
-use App\Models\ProductOption;
-use App\Models\Option;
-use App\Models\Product as ModelsProduct;
+// use App\Models\Category as ModelsCategory;
+// use App\Models\Category as ModelsCategory;
+// use App\Models\ProductOption;
+// use App\Models\Option;
+// use App\Models\Product as ModelsProduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,18 +85,18 @@ Route::get('/', function(){
 
 
 
-Route::get('/test/{id}', function($id){
-    $product_options = ProductOption::where('product_id', $id)->get();
+// Route::get('/test/{id}', function($id){
+//     $product_options = ProductOption::where('product_id', $id)->get();
 
-    $optionArr = [];
-    foreach($product_options as $product_option){
-        $option = Option::find($product_option->option_id);
-        $option["price"] = $product_option->price;
-        $optionArr[$option->name][] = $option;
-    }
+//     $optionArr = [];
+//     foreach($product_options as $product_option){
+//         $option = Option::find($product_option->option_id);
+//         $option["price"] = $product_option->price;
+//         $optionArr[$option->name][] = $option;
+//     }
 
-    return $optionArr;
-});
+//     return $optionArr;
+// });
 
 
 
