@@ -27,12 +27,11 @@ class Product extends Component
         $this->modalConfirmDeleteVisible = true;
     }
 
-
-
-
-
-
-
+    public function routeToEdit($id){
+        return view('products.edit', [
+            'product' => ProductModel::find($id)
+        ]);
+    }
 
     public $category_id;
 

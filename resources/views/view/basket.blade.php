@@ -741,5 +741,8 @@
 		</div>
 	</section>
 
+<<<<<<< HEAD
 
 	<!-- FOOTER -->
+=======
+>>>>>>> 96890b1a4b32ccd007cad4445b5c569acbb148cb

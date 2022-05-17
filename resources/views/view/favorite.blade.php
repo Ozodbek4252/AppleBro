@@ -1,6 +1,4 @@
-@extends('layouts.front')
 
-@section('content')
 
 	<section class="fav">
 		<div class="container">
@@ -127,5 +125,3 @@
 			</div>
 		</div>
 	</section>
-
-@endsection

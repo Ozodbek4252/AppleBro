@@ -1,4 +1,7 @@
 
+@extends('layouts.front')
+
+@section('content')
 	<section class="product">
 		<div class="container">
 			<div class="products-carousel">
@@ -96,6 +99,7 @@
 			</div>
 	
 	
+<<<<<<< HEAD
 			<div class="breadcrumbs">
 				<a href="{{ Route('home') }}">Home</a>
 				<a href="#">Mac</a>
@@ -222,6 +226,9 @@
 					</div>
 				</div>
 			</div>
+=======
+			@livewire('single-product', [$id])
+>>>>>>> 96890b1a4b32ccd007cad4445b5c569acbb148cb
 		</div>
 	</section>
 
@@ -355,3 +362,5 @@
 			</div>
 		</div>
 	</section>
+
+@endsection

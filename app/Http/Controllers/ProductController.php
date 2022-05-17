@@ -10,15 +10,12 @@ use App\Models\Product;
 use App\Models\ProductOption;
 use App\Models\ProductPhoto;
 use Intervention\Image\Facades\Image;
-use ImageOptimizer;
 
 class ProductController extends Controller
 {
   public function index(){}
   
-  public function create(){
-    
-  }
+  public function create(){}
 
   public function store(Request $request){
     $product = new Product;
@@ -26,16 +23,22 @@ class ProductController extends Controller
     $product->price = $request->price;
     $product->category_id = $request->category;
     
-    $product_image_folder = date('Y-m-d') .'_'. str_replace(' ', '-', strtolower($request->name));
-    $product_image_path = base_path() . '/public/images/productImages/' . $product_image_folder;
+    $product_image_folder_name = date('Y-m-d') .'_'. str_replace(' ', '-', strtolower($request->name));
+    $product_image_path = '/public/images/productImages/' . $product_image_folder_name;
     $photo_name = Str::random(10);
     
-    
+
     if($request->hasFile('product_photo') || $request->hasFile('product_photos')){
-      $request->file('product_photo')->move($product_image_path, $photo_name .  '.' . $request->file('product_photo')->getClientOriginalExtension());
-      $product->main_photo_path = '/images/productImages/' . $product_image_folder;
-      $product->main_photo = $photo_name .  '.' . $request->file('product_photo')->getClientOriginalExtension();
+      
+      $height = Image::make($request->file('product_photo'))->height();
+      $width = Image::make($request->file('product_photo'))->width();
+      $image = Image::make($request->file('product_photo'))->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name . $photo_name . '.webp'));
+      $product->main_photo = $photo_name . '.webp';
+      
+      $product->main_photo = $photo_name . '.webp';
+      $product->main_photo_path = $product_image_path.'/'.$product_image_folder_name;
       $product->save();
+
       if($request->hasFile('product_photos')){
         $num = 1;
         foreach($request->file('product_photos') as $product_photo){
@@ -45,12 +48,11 @@ class ProductController extends Controller
           $productPhoto->product_id = $product->id;
           $productPhoto->product_option_id = null;
           $productPhoto->photo = $product_photo_name;
-          $productPhoto->photo_path = '/images/productImages/' . $product_image_folder;
+          $productPhoto->photo_path = '/images/productImages/' . $product_image_folder_name;
           $productPhoto->save();
         }
       }
     };
-    
     
     if($request->option_id){
       
@@ -82,8 +84,6 @@ class ProductController extends Controller
       }
     }
 
-
-
     $categories = Category::all();
     $options = Option::all();
     return redirect()->route('admin.products')->with('categories', $categories)->with('options', $options);
@@ -94,5 +94,49 @@ class ProductController extends Controller
   }
 
   public function show(){}
+
+  public function update(Request $request, $id){
+
+    $product = Product::find($id);
+    $product->name = $request->name;
+    $product->price = $request->price;
+    $product->category_id = $request->category;
+
+    $product_image_folder_name = date('Y-m-d') .'_'. str_replace(' ', '-', strtolower($request->name));
+    $product_image_path = 'images/productImages/' . $product_image_folder_name;
+    $photo_name = Str::random(10);
+
+    if($request->hasFile('product_photo') || $request->hasFile('product_photos')){
+      $height = Image::make($request->file('product_photo'))->height();
+      $width = Image::make($request->file('product_photo'))->width();
+      $image = Image::make($request->file('product_photo'))->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name . $photo_name . '.webp'));
+      $product->main_photo = $photo_name . '.webp';
+      $product->main_photo_path = $product_image_path.'/'.$product_image_folder_name;
+      $product->save();
+
+      if($request->hasFile('product_photos')){
+        $num = 1;
+        foreach($request->file('product_photos') as $product_photo){
+          $productPhoto = new ProductPhoto;
+          $product_photo_name = $photo_name . '_'. $num++;
+          
+          $height = Image::make($product_photo)->height();
+          $width = Image::make($product_photo)->width();
+          $image = Image::make($product_photo)->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name . $product_photo_name . '.webp'));
+          
+          $productPhoto->product_id = $product->id;
+          $productPhoto->product_option_id = null;
+          $productPhoto->photo = $product_photo_name.'.webp';
+          $productPhoto->photo_path = $product_image_path.'/'.$product_image_folder_name;
+          $productPhoto->save();
+        }
+      }
+
+    };
+
+    $categories = Category::all();
+    $options = Option::all();
+    return redirect()->route('admin.products')->with('categories', $categories)->with('options', $options);
+  }
 
 }

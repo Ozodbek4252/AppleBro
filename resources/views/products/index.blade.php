@@ -29,6 +29,7 @@
                               <th>Name</th>
                               <th>Price</th>
                               <th>Details</th>
+                              <th>Images</th>
                               <th style="width: 130px;">Actions</th>
                           </tr>
                       </thead>
@@ -65,15 +66,22 @@
                                               <span>{{$option['value']}}</span> @if(!$loop->last) / @endif
                                               @if($option['name'] == 'Color')
                                                 <div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
+                                                @endif
+                                              </label>
+                                              @endforeach
+                                              <br>
+                                              @endforeach
                                               @endif
-                                            </label>
-                                          @endforeach
-                                          <br>
-                                      @endforeach
-                                  @endif
+                                </td>
+                                <td class="px-6 py-2 text-sm whitespace-no-wrap">
+                                  <div class="col-md-6 mt-2" style="display: flex; justify-content: center; align-items: center; border: 1px solid #e5e7eb; border-radius: 5px;">
+                                    <img class="img-thumbnail" alt="200x200" style="object-fit: contain; object-position: center; width: 150px; height: 150px;" width="200" src="{{$product->main_photo_path}}/{{ $product->main_photo }}" data-holder-rendered="true">
+                                  </div>
                                 </td>
                                 <td class="px-6 py-2 text-sm" style="width: 130px;">
-                                  <button wire:click="updateShowModal({{ $product->id }})" type="button" class="btn btn-warning waves-effect waves-light"><i class="uil-edit"></i></button>
+                                  <form action="{{ Route("admin.product.edit", $product->id) }}" style="display: inline;">
+                                    <button type="submit" class="btn btn-warning waves-effect waves-light"><i class="uil-edit"></i></button>
+                                  </form>
                                   <button wire:click="deleteShowModal({{ $product->id }})" type="button" class="btn btn-danger waves-effect waves-light"><i class="uil-trash"></i></button>
                                 </td>
                               @endif
