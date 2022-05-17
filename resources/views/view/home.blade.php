@@ -12,10 +12,10 @@
 							MacBook Pro 16-inch
 						</h2>
 						<div class="main-carousel__text">
-							Cамый мощный MacBook Pro в истории Cамый мощный MacBook Pro в истории.  Cамый мощный MacBook Pro в истории..
+							Cамый мощный MacBook Pro в истории Cамый мощный MacBook Pro в истории.  Cамый мощный MacBook Pro в истории'..
 						</div>
 						<a href="#" class="main-carousel__btn btn">
-							Купить
+							{{__('home.Купить')}}
 						</a>
 					</div>
 				</div>
@@ -36,7 +36,7 @@
 							Cамый мощный MacBook Pro в истории Cамый мощный MacBook Pro в истории.  Cамый мощный MacBook Pro в истории..
 						</div>
 						<a href="#" class="main-carousel__btn btn">
-							Купить
+							{{__('home.Купить')}}
 						</a>
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 							Cамый мощный MacBook Pro в истории Cамый мощный MacBook Pro в истории.  Cамый мощный MacBook Pro в истории..
 						</div>
 						<a href="#" class="main-carousel__btn btn">
-							Купить
+							{{__('home.Купить')}}
 						</a>
 					</div>
 				</div>
@@ -82,7 +82,7 @@
 							Cамый мощный MacBook Pro в истории Cамый мощный MacBook Pro в истории.  Cамый мощный MacBook Pro в истории..
 						</div>
 						<a href="#" class="main-carousel__btn btn">
-							Купить
+							{{__('home.Купить')}}
 						</a>
 					</div>
 				</div>
@@ -116,7 +116,7 @@
 	<section class="popular">
 		<div class="container">
 			<h2 class="popular__title big-title">
-				Популярные категории
+				{{__('home.Популярные категории')}}
 			</h2>
 			<div class="popular-content">
 				@foreach ($categories as $category)
@@ -147,7 +147,7 @@
 	<section class="new">
 		<div class="container">
 			<h2 class="new__title medium-title">
-				Новое поступление
+				{{__('home.Новое поступление')}}
 			</h2>
 			<div class="new-content">
 			
@@ -155,7 +155,7 @@
 					<div class="new-item">
 						<div class="new-item__wrap">
 							<div class="new-item__tag">
-								NEW
+								{{__('home.NEW')}}
 							</div>
 							<div class="new-item__img">
 								<img src="{{$newest_product->main_photo_path}}/{{$newest_product->main_photo}}" alt="Product">
@@ -194,7 +194,7 @@
 	<section class="brands">
 		<div class="container">
 			<h2 class="brands__title medium-title">
-				Бренды
+				{{__('home.Бренды')}}
 			</h2>
 			<div class="brands-content">
 				<a href="#" class="brands-item">
@@ -359,7 +359,7 @@
 				</div>
 				<div class="brands-product__item">
 					<div class="brands-product__name">
-						Others
+						{{__('home.Others')}}
 					</div>
 					<div class="brands-product__other">
 						72+ 
@@ -439,7 +439,7 @@
 	<section class="services">
 		<div class="container">
 			<h2 class="services__title medium-title">
-				Популярные услуги
+				{{__('home.Популярные услуги')}}
 			</h2>
 			<div class="services-content">
 				<div class="services-item">
@@ -448,10 +448,10 @@
 					</div>
 					<div class="services-item__wrap">
 						<div class="services-item__title">
-							Trade-in
+							{{__('home.Trade-in')}}
 						</div>
 						<div class="services-item__text">
-							Возврат и обмен в течении 14 дней, согласно Закону UZB о защите прав потребителей
+							{{__('home.Возврат и обмен в течении 14 дней, согласно Закону UZB о защите прав потребителей')}}
 						</div>
 					</div>
 				</div>
@@ -461,10 +461,10 @@
 					</div>
 					<div class="services-item__wrap">
 						<div class="services-item__title">
-							Гарантия
+							{{__('home.Гарантия')}}
 						</div>
 						<div class="services-item__text">
-							Мы предоставляем гарантию от трех месяцев от магазина, а также можем расширить её до трех лет
+							{{__('home.Мы предоставляем гарантию от трех месяцев от магазина, а также можем расширить её до трех лет')}}
 						</div>
 					</div>
 				</div>
@@ -474,10 +474,10 @@
 					</div>
 					<div class="services-item__wrap">
 						<div class="services-item__title">
-							Гибкая оплата
+							{{__('home.Гибкая оплата')}}
 						</div>
 						<div class="services-item__text">
-							Оплачивайте так, как Вам удобно: Наличкой в магазине, терминалом, переводом на карту
+							{{__('home.Оплачивайте так, как Вам удобно: Наличкой в магазине, терминалом, переводом на карту')}}
 						</div>
 					</div>
 				</div>
@@ -487,10 +487,10 @@
 					</div>
 					<div class="services-item__wrap">
 						<div class="services-item__title">
-							Быстрая доставка
+							{{__('home.Быстрая доставка')}}
 						</div>
 						<div class="services-item__text">
-							Мы доставляем заказы в кратчайшие сроки по всей территории Узбекистана
+							{{__('home.Мы доставляем заказы в кратчайшие сроки по всей территории Узбекистана')}}
 						</div>
 					</div>
 				</div>

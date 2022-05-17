@@ -1,6 +1,4 @@
-@extends('layouts.front')
 
-@section('content')
 
 	<section class="buy">
 		<div class="container">
@@ -419,18 +417,18 @@
 								<label for="order3">
 									<input type="radio" name="order" id="order3">
 									<div>
-										Экспресс-доставка
+										{{__('home.Экспресс-доставка')}}
 										<span>от 350 000 uzs</span>
 									</div>
 								</label>
 							</div>
 							<div class="buy-order__map">
 								<div class="buy-order__title">
-									Фирменный магазин
+									{{__('home.Фирменный магазин')}}
 								</div>
 								<div class="buy-order__text">
-									<p>Невский пр-т, 38</p>
-									<p>Открыто с 10:00 до 20:00</p>
+									<p>{{__('home.Невский пр-т')}}, 38</p>
+									<p>{{__('home.Открыто')}} с 10:00 до 20:00</p>
 								</div>
 								<div class="map">
 									<div id="map"></div>
@@ -441,7 +439,7 @@
 					<div class="buy-info">
 						<div class="buy-info__wrap">
 							<div class="buy-info__title">
-								Ваш заказ
+								{{__('home.Ваш заказ')}}
 							</div>
 							<div class="buy-carousel">
 								<div class="buy-carousel__arrows">
@@ -535,7 +533,7 @@
 							<ul class="buy-price">
 								<li>
 									<div class="buy-price__name">
-										Продукты(2)
+										{{__('home.Продукты')}}(2)
 									</div>
 									<div class="buy-price__value">
 										31 533 500 сум
@@ -543,7 +541,7 @@
 								</li>
 								<li>
 									<div class="buy-price__name">
-										Скидка
+										{{__('home.Скидка')}}
 									</div>
 									<div class="buy-price__value">
 										0 сум
@@ -551,7 +549,7 @@
 								</li>
 								<li>
 									<div class="buy-price__name">
-										Доставка
+										{{__('home.Доставка')}}
 									</div>
 									<div class="buy-price__value">
 										0 сум
@@ -559,13 +557,13 @@
 								</li>
 							</ul>
 							<div class="buy-total">
-								Всего
+								{{__('home.Всего')}}
 	
 								<span>31 533 500 сум</span>
 							</div>
 						</div>
 						<a href="#" class="buy-info__btn buy-info__btn-order btn">
-							Оформление заказа
+							{{__('home.Оформление заказа')}}
 						</a>
 					</div>
 				</div>
@@ -576,7 +574,7 @@
 
 			<div class="buy-pay">
 				<h2 class="buy__title">
-					Способ оплаты
+					{{__('home.Способ оплаты')}}
 				</h2>
 				<div class="buy-wrap">
 					<div class="buy-main">
@@ -602,7 +600,7 @@
 							<label for="card4">
 								<input type="radio" name="card" id="card4">
 								<div>
-									<span>Наличными</span>
+									<span>{{__('home.Наличными')}}</span>
 								</div>
 							</label>
 						</div>
@@ -610,7 +608,7 @@
 					<div class="buy-info">
 						<div class="buy-info__wrap">
 							<div class="buy-info__title">
-								Ваш заказ
+								{{__('home.Ваш заказ')}}
 							</div>
 							<div class="buy-carousel">
 								<div class="buy-carousel__arrows">
@@ -704,7 +702,7 @@
 							<ul class="buy-price">
 								<li>
 									<div class="buy-price__name">
-										Продукты(2)
+										{{__('home.Продукты')}}(2)
 									</div>
 									<div class="buy-price__value">
 										31 533 500 сум
@@ -712,7 +710,7 @@
 								</li>
 								<li>
 									<div class="buy-price__name">
-										Скидка
+										{{__('home.Скидка')}}
 									</div>
 									<div class="buy-price__value">
 										0 сум
@@ -720,7 +718,7 @@
 								</li>
 								<li>
 									<div class="buy-price__name">
-										Доставка
+										{{__('home.Доставка')}}
 									</div>
 									<div class="buy-price__value">
 										0 сум
@@ -728,13 +726,13 @@
 								</li>
 							</ul>
 							<div class="buy-total">
-								Всего
+								{{__('home.Всего')}}
 	
 								<span>31 533 500 сум</span>
 							</div>
 						</div>
 						<a href="#" class="buy-info__btn buy-info__btn-pay btn">
-							Оплатить заказ 
+							{{__('home.Оплатить заказ')}} 
 						</a>
 					</div>
 				</div>
@@ -745,5 +743,3 @@
 
 
 	<!-- FOOTER -->
-
-@endsection

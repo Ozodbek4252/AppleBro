@@ -121,7 +121,7 @@
     <div class="footer-bot">
         <div class="container">
             <div class="footer-bot__text">
-                Интернет-магазины AppleBro.uz. Все права защищены.
+                {{__('home.Интернет-магазины')}} AppleBro.uz. {{__('home.Все права защищены')}}.
             </div>
             <a href="#" class="footer__nova" target="_blank">
                 <img src="/img/novas.svg" alt="NovaS">

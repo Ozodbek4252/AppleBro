@@ -153,10 +153,10 @@
 					</div>
 					<div class="product-info__btns">
 						<a href="#" class="btn">
-							Добавить в корзину
+							{{__('home.Добавить в корзину')}}
 						</a>
 						<a href="#" class="btn btn-white">
-							Купить в рассрочку
+							{{__('home.Купить в рассрочку')}}
 						</a>
 					</div>
 				</div>
@@ -166,13 +166,13 @@
 				<div class="product-tabs">
 					<ul class="product-tabs__head">
 						<li>
-							Описание
+							{{_-('home.Описание')}}
 						</li>
 						<li>
-							Характеристики
+							{{__('home.Характеристики')}}
 						</li>
 						<li>
-							Юридическая информация
+							{{__('home.Юридическая информация')}}
 						</li>
 					</ul>
 					<div class="product-tabs__wrap">

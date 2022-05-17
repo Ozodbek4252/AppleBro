@@ -304,9 +304,9 @@
 	<section class="similar-products">
 		<div class="container">
 			<h2 class="similar-products__title medium-title">
-				Похожие продукты
+				{{__('home.Похожие продукты')}}
 
-				<a href="#">Все</a>
+				<a href="#">{{_-('home.Все')}}</a>
 			</h2>
 			<div class="similar-products__wrap">
 				<div class="products-item">
