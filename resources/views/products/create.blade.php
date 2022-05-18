@@ -111,7 +111,7 @@
                         <div class="col-md-1">
                             <div class="add-input">
                                 <div class="spinner-border text-info m-1" wire:loading
-                                     wire:target="add({{$i}})" role="status">
+                                    wire:target="add({{$i}})" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>
                                 <button class="btn text-white btn-info btn-sm"

@@ -39,37 +39,6 @@ Route::get('/languages/{lang}', function ($lang) {
     return redirect()->back();
 });
 
-
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
-
-    Route::get('/category', Category::class)->name('admin.category');
-    Route::get('/product', Product::class)->name('admin.products');
-    Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
-    Route::get('/product/edit/{id}', EditProduct::class)->name('admin.product.edit');
-    Route::post('/product/store', [ProductController::class, 'store'])->name('admin.products.store');
-    Route::put('/product/{id}', [ProductController::class, "update"])->name('admin.products.update');
-    Route::get('/single-product/{id}', [SingleProductController::class, 'show'])->name('front.single-product');
-    Route::get('/favorite', Favorite::class)->name('front.favorite');
-    Route::get('/profile', Profile::class)->name('front.profile');
-    Route::get('/history', History::class)->name('front.history');
-    Route::get('/basket', Basket::class)->name('front.basket');
-    Route::get('/products/{id?}', AllProducts::class)->name('front.all-products');
-
-    // Route::resources([
-    //     'categories' => 'CategoryController',
-    //     // 'products' => ProductController::class,
-    // ]);
-});
-
-
 Route::get('/', function(){
     if (session()->get('locale') == '') {
         session()->put('locale', 'ru');
@@ -82,6 +51,47 @@ Route::get('/', function(){
     $categories = \App\Models\Category::all();
     return view('view.home', ['lang'=> $lang, 'newest_products'=>$newest_products, 'categories'=>$categories]);
 })->name('home');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::get('/category', Category::class)->name('admin.category');
+    Route::get('/product', Product::class)->name('admin.products');
+    Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
+    Route::get('/product/edit/{id}', EditProduct::class)->name('admin.product.edit');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('admin.products.store');
+    Route::put('/product/{id}', [ProductController::class, "update"])->name('admin.products.update');
+    Route::get('/single-product/{id}', [SingleProductController::class, 'show'])->name('front.single-product');
+    Route::get('/favourite', Favorite::class)->name('front.favorite');
+    Route::get('/profile', Profile::class)->name('front.profile');
+    Route::get('/history', History::class)->name('front.history');
+    Route::get('/basket', Basket::class)->name('front.basket');
+    Route::get('/products/{id?}', AllProducts::class)->name('front.all-products');
+
+    // Route::resources([
+    //     'categories' => 'CategoryController',
+    //     // 'products' => ProductController::class,
+    // ]);
+});
+
+Route::get('favourites/{id}/check', function ($id){
+    dd(session()->get('favourites'));
+    if (count(session()->get('favourites')) > 0){
+        return response()->json(array_key_exists($id, session()->get('favourites')));
+    }else{
+        return response()->json(false);
+    }
+});
+
+
+
 
 
 

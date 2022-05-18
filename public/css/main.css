@@ -850,11 +850,11 @@ section {
 .new-item__btns span:hover.new-item__fav svg path {
   fill: #fff;
 }
-.new-item__btns span.new-item__fav.active {
+/* .new-item__btns span.new-item__fav.active {
   background: #FF1E1E;
   -webkit-box-shadow: 0px 0px 0.5rem rgba(255, 30, 30, 0.5);
           box-shadow: 0px 0px 0.5rem rgba(255, 30, 30, 0.5);
-}
+} */
 .new-item__btns span.new-item__fav.active svg path {
   fill: #fff;
 }

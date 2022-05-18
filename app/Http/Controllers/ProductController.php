@@ -24,17 +24,18 @@ class ProductController extends Controller
     $product->category_id = $request->category;
     
     $product_image_folder_name = date('Y-m-d') .'_'. str_replace(' ', '-', strtolower($request->name));
-    $product_image_path = '/public/images/productImages/' . $product_image_folder_name;
+    $product_image_path = 'images/productImages/' . $product_image_folder_name;
     $photo_name = Str::random(10);
     
-
     if($request->hasFile('product_photo') || $request->hasFile('product_photos')){
-      
+      if (!file_exists($product_image_path)) {
+        mkdir($product_image_path, 0700);
+      }
       $height = Image::make($request->file('product_photo'))->height();
       $width = Image::make($request->file('product_photo'))->width();
-      $image = Image::make($request->file('product_photo'))->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name . $photo_name . '.webp'));
-      $product->main_photo = $photo_name . '.webp';
-      
+      $image = Image::make($request->file('product_photo'))->encode('webp', 90)
+                  ->resize($width, $height)
+                  ->save(public_path('images/productImages/' . $product_image_folder_name.'/'. $photo_name . '.webp'));
       $product->main_photo = $photo_name . '.webp';
       $product->main_photo_path = $product_image_path.'/'.$product_image_folder_name;
       $product->save();
@@ -43,12 +44,17 @@ class ProductController extends Controller
         $num = 1;
         foreach($request->file('product_photos') as $product_photo){
           $productPhoto = new ProductPhoto;
-          $product_photo_name = $photo_name . '_'. $num++ . '.' . $product_photo->getClientOriginalExtension();
-          $product_photo->move($product_image_path, $product_photo_name);
+          $height = Image::make($product_photo)->height();
+          $width = Image::make($product_photo)->width();
+          $image = Image::make($product_photo)->encode('webp', 90)
+          ->resize($width, $height)
+          ->save(public_path('images/productImages/' . $product_image_folder_name.'/'.$photo_name.'_'.$num.'.webp'));
+          $product->main_photo = $photo_name . '.webp';
+
           $productPhoto->product_id = $product->id;
           $productPhoto->product_option_id = null;
-          $productPhoto->photo = $product_photo_name;
-          $productPhoto->photo_path = '/images/productImages/' . $product_image_folder_name;
+          $productPhoto->photo = $photo_name.'_'.$num++;
+          $productPhoto->photo_path = $product_image_path.'/'.$product_image_folder_name;
           $productPhoto->save();
         }
       }
@@ -70,12 +76,13 @@ class ProductController extends Controller
               $productOptionPhoto = new ProductPhoto;
               $productOptionPhoto->product_id = null;
               $productOptionPhoto->product_option_id = $productOption->id;
+              dd($request->product_option_photos);
               
               // storing images in public/images/productOptionImages/
               $product_option_photo_name = $photo_name . '-option_'. $num . '.' . $request->product_option_photos[$id][$num]->getClientOriginalExtension();
               $request->product_option_photos[$id][$num]->move($product_image_path, $product_option_photo_name);
               $productOptionPhoto->photo = $product_option_photo_name;
-              $productOptionPhoto->photo_path = '/images/productImages/' . $product_image_folder;
+              $productOptionPhoto->photo_path = '/images/productImages/' . $product_image_folder_name;
               $productOptionPhoto->save();
               $num++;
             }
@@ -109,7 +116,7 @@ class ProductController extends Controller
     if($request->hasFile('product_photo') || $request->hasFile('product_photos')){
       $height = Image::make($request->file('product_photo'))->height();
       $width = Image::make($request->file('product_photo'))->width();
-      $image = Image::make($request->file('product_photo'))->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name . $photo_name . '.webp'));
+      $image = Image::make($request->file('product_photo'))->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name.'/'.$photo_name . '.webp'));
       $product->main_photo = $photo_name . '.webp';
       $product->main_photo_path = $product_image_path.'/'.$product_image_folder_name;
       $product->save();
@@ -122,7 +129,7 @@ class ProductController extends Controller
           
           $height = Image::make($product_photo)->height();
           $width = Image::make($product_photo)->width();
-          $image = Image::make($product_photo)->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name . $product_photo_name . '.webp'));
+          $image = Image::make($product_photo)->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name.'/'.$product_photo_name . '.webp'));
           
           $productPhoto->product_id = $product->id;
           $productPhoto->product_option_id = null;

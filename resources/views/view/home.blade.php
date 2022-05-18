@@ -1,7 +1,15 @@
+
+<style>
+	.favourite-active{
+			background: #FF1E1E !important;
+  -webkit-box-shadow: 0px 0px 0.5rem rgba(255, 30, 30, 0.5) !important;
+          box-shadow: 0px 0px 0.5rem rgba(255, 30, 30, 0.5) !important;
+	}
+</style>
+
 @extends('layouts.front')
 
 @section('content')
-
 
 	<section class="main">
 		<div class="main-carousel owl-carousel">
@@ -133,7 +141,6 @@
 						</div>
 						<div class="popular-item__img">
 							<img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="popular">
-							{{-- <img src="/img/popular6.png" alt="popular"> --}}
 						</div>
 						<a href="{{ Route('front.all-products', $category->id) }}" class="popular-item__link"></a>
 					</div>
@@ -169,7 +176,7 @@
 										<path d="M8.85593 19.25C8.64893 19.25 8.48093 19.418 8.48293 19.625C8.48193 19.832 8.64993 20 8.85693 20C9.06393 20 9.23193 19.832 9.23193 19.625C9.23193 19.418 9.06393 19.25 8.85593 19.25" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 									</svg>
 								</span>
-								<span class="new-item__fav">
+								<span class="new-item__fav product-item__fav_{{ $newest_product->id }}" onclick="favourite('{{ $newest_product->id }}', '{{ $newest_product->main_photo_path }}', '{{ $newest_product->main_photo }}', '{{ $newest_product->name }}')">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1671 5.26144C13.1502 4.35261 14.4229 3.81953 15.7602 3.75644L16.0284 3.75012C17.5527 3.75012 19.0132 4.36188 20.0979 5.46437L20.2807 5.66182C22.3094 7.95844 22.2302 11.4408 20.0823 13.648L14.6899 19.1234C13.9804 19.8442 13.0112 20.2501 11.9998 20.2501C10.9884 20.2501 10.0193 19.8442 9.30992 19.1235L3.91412 13.6447C1.69503 11.3643 1.69503 7.73159 3.93137 5.43403L4.13608 5.23724C5.18336 4.28122 6.55111 3.75012 7.97113 3.75012C9.48356 3.75012 10.9332 4.35239 12.0001 5.42281L12.1671 5.26144ZM19.0131 6.50027C18.2258 5.70039 17.1504 5.24994 16.028 5.24994C14.9057 5.24994 13.8303 5.70038 13.0428 6.5004L12.5338 7.01732C12.24 7.31564 11.7588 7.31563 11.465 7.01731L10.9557 6.50019C10.1684 5.70035 9.09306 5.24994 7.97074 5.24994C6.92518 5.24994 5.91806 5.641 5.16161 6.33118L4.98875 6.49711C3.33631 8.19521 3.33631 10.9003 4.98561 12.5952L10.3784 18.0709C10.806 18.5053 11.3899 18.7499 11.9994 18.7499C12.6089 18.7499 13.1929 18.5053 13.6206 18.0708L19.0101 12.5985C20.607 10.9574 20.666 8.364 19.1683 6.66813L19.0131 6.50027Z" fill="#7B7B7B"/>
 									</svg>
@@ -190,7 +197,6 @@
 	</section>
 
 	<!-- BRANDS -->
-	
 	<section class="brands">
 		<div class="container">
 			<h2 class="brands__title medium-title">
@@ -497,5 +503,77 @@
 			</div>
 		</div>
 	</section>
+
+	<script>
+    function favourite(id, path, photo, name) {
+        let response = $.ajax({ type: "GET",
+            url: '/favourites/'+id+'/check',
+            async: false
+        }).responseText;
+
+        console.log(response);
+        
+        if(response == 'true'){
+            console.log('remove');
+            $('.favourite img').attr('src', path+'/'+photo);
+            $('.favourite__name').html(name);
+            $('.favourite__btn').html("Sevimlilardan o\'chirildi");
+            $('.product-item__fav_'+id).removeClass('favourite-active');
+    
+            $.ajax({
+                type: "get",
+                url: "/favourites/"+id+"/edit",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function () {
+                },
+            });
+    
+            // $('.product-item__fav').click(() => {
+            //     $('.added').addClass('added-show')
+        
+            //     setTimeout(() => {
+            //         if($('.added').hasClass('added-show')) {
+            //             $('.added').removeClass('added-show')
+            //         }
+            //     }, 1000)
+            // });
+    
+            // $('.added__close').click(() => {
+            //     $('.added').removeClass('added-show')
+            // })
+        }else {
+					console.log(id, path+'/'+photo, name);
+            console.log('add');
+            $('.favourite img').attr('src', path+'/'+photo);
+            $('.favourite__name').html(name);
+            $('.favourite__btn').html("Sevimlilarga qo’shildi <a href=\"/favourite\">Ko’rish</a>");
+            $('.product-item__fav_'+id).addClass('favourite-active');
+    
+            $.ajax({
+                type: "get",
+                url: "/favourites/"+id,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function () {
+                },
+            });
+    
+            // $('.product-item__fav').click(() => {
+            //     $('.added').addClass('added-show')
+        
+            //     setTimeout(() => {
+            //         if($('.added').hasClass('added-show')) {
+            //             $('.added').removeClass('added-show')
+            //         }
+            //     }, 1000)
+            // });
+    
+            // $('.added__close').click(() => {
+            //     $('.added').removeClass('added-show')
+            // })
+        }
+    }
+	</script>
 
 	@endsection

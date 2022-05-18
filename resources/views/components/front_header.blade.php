@@ -91,27 +91,66 @@
                     <span>2</span>
                 </a>
                 <a href="#" class="header-profile">
-                    <img src="/img/user.svg" alt="ico">
+                    @if(Auth::check())
+                        <img src="/img/user.svg" alt="ico">
+                    @else
+
+
+
+                    {{-- @auth
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        @endif
+                    @endauth --}}
+
+
+
+                        <a href="{{ route('login') }}">
+                            Log In
+                        </a>
+                        <a href="{{ Route('register') }}">
+                            Sign Up
+                        </a>
+                    @endif
                 </a>
-                <div class="header-profile__dropdown">
-                    <ul>
-                        <li>
-                            <a href="{{ Route('front.profile') }}">
-                                {{__('home.Профиль')}}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ Route('front.history') }}">
-                                {{__('home.Мои заказы')}}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                {{__('home.Выход')}}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                @if(Auth::check())
+                    <div class="header-profile__dropdown">
+                        <ul>
+                            <li>
+                                @if(Auth::user()->usertype == 1)
+                                    <a href="{{ Route('dashboard') }}">
+                                        Dashboard
+                                    </a>
+                                @else
+                                    <a href="{{ Route('front.profile') }}">
+                                        {{__('home.Профиль')}}
+                                    </a>
+                                @endif
+                            </li>
+                            <li>
+                                <a href="{{ Route('front.history') }}">
+                                    {{__('home.Мои заказы')}}
+                                </a>
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}" style="margin: 0">
+                                    @csrf
+
+                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                        this.closest('form').submit();"
+                                        style="margin: 0">
+                                        {{ __('Log Out') }}
+                                    </x-jet-dropdown-link>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
 
 
             </div>
