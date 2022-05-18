@@ -75,10 +75,10 @@
 		</div>
 		<div class="basket-total">
 			<a href="#" class="btn">
-				Оформить заказ
+				{{__('home.Оформить заказ')}}
 			</a>
 			<div class="basket-total__price">
-				<span>Итого:</span>
+				<span>{{__('home.Итого')}}:</span>
 				34 679 000 Сум
 			</div>
 		</div>
@@ -96,7 +96,7 @@
 					iPhone 13 Pro Max" (M1 Max, 10 CPU/32 GPU 202...
 				</div>
 				<div class="favourite__btn btn">
-					Добавлен в избранное
+					{{__('home.Добавлен в избранное')}}
 				</div>
 			</div>
 
@@ -325,7 +325,7 @@
 				</li>
 				<li class="mobile-menu__item">
 					<span>
-						Аксессуары
+						{{__('home.Аксессуары')}}
 						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>	
@@ -333,29 +333,29 @@
 					<ul class="mobile-menu__submenu">
 						<li>
 							<a href="#">
-								Аксессуары
+								{{__('home.Аксессуары')}}
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Аксессуары X
+								{{__('home.Аксессуары')}} X
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Аксессуары X
+								{{__('home.Аксессуары')}} X
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Аксессуары X
+								{{__('home.Аксессуары')}} X
 							</a>
 						</li>
 					</ul>
 				</li>
 				<li class="mobile-menu__item">
 					<span>
-						Другие 
+						{{__('home.Другие')}} 
 						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>	
@@ -363,22 +363,22 @@
 					<ul class="mobile-menu__submenu">
 						<li>
 							<a href="#">
-								Другие
+								{{__('home.Другие')}}
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Другие X
+								{{__('home.Другие')}} X
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Другие X
+								{{__('home.Другие')}} X
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Другие X
+								{{__('home.Другие')}} X
 							</a>
 						</li>
 					</ul>
@@ -387,34 +387,28 @@
 			<ul class="mobile-menu__profile">
 				<li>
 					<a href="#">
-						<span>Профиль</span>
+						<span>{{__('home.Профиль')}}</span>
 						<img src="img/caret-right.svg" alt="ico">
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<span>Мои заказы</span>
+						<span>{{__('home.Мои заказы')}}</span>
 						<img src="img/caret-right.svg" alt="ico">
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<span>Выход</span>
+						<span>{{__('home.Выход')}}</span>
 						<img src="img/caret-right.svg" alt="ico">
 					</a>
 				</li>
 			</ul>
-			<div class="mobile-menu__lang">
-				<a href="#">
-					O’z
-				</a>
-				<a href="#">
-					Eng
-				</a>
-				<a href="#" class="current">
-					Ру
-				</a>
-			</div>
+			<div class="header__lang">
+                <a href="/languages/ru" >RU</a>
+                <a href="/languages/uz" >UZ</a>
+                <a href="/languages/en" >EN</a>
+            </div>
 		</div>
 	</div>
 
@@ -425,45 +419,39 @@
 			<div class="container">
 				<div class="header__location">
 					<img src="img/location.svg" alt="ico">
-					<span>Ташкент</span>
+					<span>{{__('home.tashkent')}}</span>
 				</div>
 				<ul class="header-top__menu">
 					<li>
 						<a href="#">
-							О нас
+							{{__('home.О нас')}}
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							Магазины
+							{{__('home.Магазины')}}
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							Рассрочка
+							{{__('home.Рассрочка')}}
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							Оплата и доставка
+							{{__('home.Оплата и доставка')}}
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							Контакты
+							{{__('home.Контакты')}}
 						</a>
 					</li>
 				</ul>
 				<div class="header__lang">
-					<a href="#">
-						O’z
-					</a>
-					<a href="#">
-						Eng
-					</a>
-					<a href="#" class="current">
-						Ру
-					</a>
+					<a href="/languages/ru" >RU</a>
+					<a href="/languages/uz" >UZ</a>
+					<a href="/languages/en" >EN</a>
 				</div>
 			</div>
 		</div>
@@ -639,51 +627,51 @@
 						</ul>
 					</li>
 					<li class="header-menu__item">
-						<span>Аксессуары <img src="img/arrow-down.svg" alt="ico"></span>
+						<span>{{__('home.Аксессуары')}} <img src="img/arrow-down.svg" alt="ico"></span>
 						<ul class="header-submenu">
 							<li>
 								<a href="#">
-									Аксессуары
+									{{__('home.Аксессуары')}}
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									Аксессуары X
+									{{__('home.Аксессуары')}} X
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									Аксессуары X
+									{{__('home.Аксессуары')}} X
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									Аксессуары X
+									{{__('home.Аксессуары')}} X
 								</a>
 							</li>
 						</ul>
 					</li>
 					<li class="header-menu__item">
-						<span>Другие <img src="img/arrow-down.svg" alt="ico"></span>
+						<span>{{__('home.Другие')}} <img src="img/arrow-down.svg" alt="ico"></span>
 						<ul class="header-submenu">
 							<li>
 								<a href="#">
-									Другие
+									{{__('home.Другие')}}
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									Другие X
+									{{__('home.Другие')}} X
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									Другие X
+									{{__('home.Другие')}} X
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									Другие X
+									{{__('home.Другие')}} X
 								</a>
 							</li>
 						</ul>
@@ -708,17 +696,17 @@
 						<ul>
 							<li>
 								<a href="#">
-									Профиль
+									{{__('home.Профиль')}}
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									Мои заказы
+									{{__('home.Мои заказы')}}
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									Выход
+									{{__('home.Выход')}}
 								</a>
 							</li>
 						</ul>
@@ -739,22 +727,22 @@
 	<div class="login login-registr">
 		<div class="login-content">
 			<div class="login__title">
-				Войти
+				{{__('home.Войти')}}
 			</div>
 			<div class="login__input">
-				<span>Телефон</span>
+				<span>{{__('home.Войти')}}</span>
 				<input type="tel" class="form__tel" required>
 			</div>
 			<button class="login__btn btn">
-				Войти
+				{{__('home.Войти')}}
 			</button>
 			<div class="login__wrap">
 				<label for="remember">
 					<input type="checkbox" id="remember">
-					<span>Запомнить</span>
+					<span>{{__('home.Запомнить')}}</span>
 				</label>
 				<a href="#">
-					Регистрация
+					{{__('home.Регистрация')}}
 				</a>
 			</div>
 		</div>

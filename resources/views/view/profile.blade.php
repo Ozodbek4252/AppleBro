@@ -4,15 +4,15 @@
 		<div class="container">
 			<div class="profile-side">
 				<div class="profile__btn">
-					👋 Привет, Hayrulloh
+					👋 {{__('home.Привет')}}, Hayrulloh
 				</div>
 				<a href="{{ Route('front.history') }}" class="profile__btn">
-					🚚 История заказов
+					🚚 {{__('home.История заказов')}}
 				</a>
 			</div>
 			<div class="profile-main">
 				<div class="profile__title">
-					Профиль
+					{{__('home.Профиль')}}
 				</div>
 				<div class="profile-photo">
 					<div class="profile-photo__img">
@@ -29,7 +29,7 @@
 				</div>
 				<div class="profile-item">
 					<div class="profile-item__name">
-						Имя
+						{{__('home.Имя')}}
 					</div>
 					<div class="profile-item__value">
 						Hayrulloh
@@ -37,7 +37,7 @@
 				</div>
 				<div class="profile-item">
 					<div class="profile-item__name">
-						Фамилия
+						{{__('home.Фамилия')}}
 					</div>
 					<div class="profile-item__value">
 						Mamasidiqov
@@ -45,7 +45,7 @@
 				</div>
 				<div class="profile-item">
 					<div class="profile-item__name">
-						Номер телефона
+						{{__('home.Номер телефона')}}
 					</div>
 					<div class="profile-item__value">
 						+998911529721
@@ -53,15 +53,15 @@
 				</div>
 				<div class="profile-item">
 					<div class="profile-item__name">
-						Адрес доставки
+						{{__('home.Адрес доставки')}}
 					</div>
 					<div class="profile-item__value">
 						----
 					</div>
 				</div>
 				<div class="profile-btns">
-					<a href="#" class="btn">Выход</a>
-					<a href="#" class="btn profile-edit">Редактировать</a>
+					<a href="#" class="btn">{{__('home.Выход')}}</a>
+					<a href="#" class="btn profile-edit">{{__('home.Редактировать')}}</a>
 				</div>
 			</div>
 		</div>
@@ -73,27 +73,27 @@
 	<div class="profile-popup">
 		<div class="profile-popup__content">
 			<div class="login__title">
-				Профиль
+				{{__('home.Профиль')}}
 			</div>
 			<div class="login__input">
-				<span>Имя</span>
+				<span>{{__('home.Имя')}}</span>
 				<input type="text" required>
 			</div>
 			<div class="login__input">
-				<span>Фамилия</span>
+				<span>{{__('home.Фамилия')}}</span>
 				<input type="text" required>
 			</div>
 			<div class="login__input">
-				<span>Телефон</span>
+				<span>{{__('home.Телефон')}}</span>
 				<input type="tel" class="form__tel" required>
 			</div>
 			<div class="login__input">
-				<span>Адрес</span>
+				<span>{{__('home.Адрес')}}</span>
 				<input type="text" required>
 			</div>
 			<div class="profile-popup__btns">
-				<a href="#" class="btn reset">Сбросить</a>
-				<a href="#" class="btn save">Сохранить</a>
+				<a href="#" class="btn reset">{{__('home.Сбросить')}}</a>
+				<a href="#" class="btn save">{{__('home.Сохранить')}}</a>
 			</div>
 		</div>
 	</div>

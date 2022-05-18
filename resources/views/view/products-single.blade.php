@@ -1,4 +1,3 @@
-
 @extends('layouts.front')
 
 @section('content')
@@ -7,7 +6,6 @@
 			<div class="products-carousel">
 
 				<!-- ЕСЛИ МНОГО ТОВАРОВ ТО СТРЕЛКИ -->
-	
 				<div class="products-carousel__arrows">
 					<span class="arrow-left">
 						<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +22,7 @@
 				<div class="products-carousel__items owl-carousel">
 					<div class="products-carousel__item">
 						<div class="products-carousel__img">
-							<img src="/img/apple1.png" alt="product">
+							<img src="img/apple1.png" alt="product">
 						</div>
 						<div class="products-carousel__name">
 							MacBook Air
@@ -33,7 +31,7 @@
 					</div>
 					<div class="products-carousel__item">
 						<div class="products-carousel__img">
-							<img src="/img/apple1.png" alt="product">
+							<img src="img/apple1.png" alt="product">
 						</div>
 						<div class="products-carousel__name">
 							MacBook Air
@@ -42,7 +40,7 @@
 					</div>
 					<div class="products-carousel__item">
 						<div class="products-carousel__img">
-							<img src="/img/apple1.png" alt="product">
+							<img src="img/apple1.png" alt="product">
 						</div>
 						<div class="products-carousel__name">
 							MacBook Air
@@ -51,7 +49,7 @@
 					</div>
 					<div class="products-carousel__item">
 						<div class="products-carousel__img">
-							<img src="/img/apple1.png" alt="product">
+							<img src="img/apple1.png" alt="product">
 						</div>
 						<div class="products-carousel__name">
 							MacBook Air
@@ -60,7 +58,7 @@
 					</div>
 					<div class="products-carousel__item">
 						<div class="products-carousel__img">
-							<img src="/img/apple1.png" alt="product">
+							<img src="img/apple1.png" alt="product">
 						</div>
 						<div class="products-carousel__name">
 							MacBook Air
@@ -69,7 +67,7 @@
 					</div>
 					<div class="products-carousel__item">
 						<div class="products-carousel__img">
-							<img src="/img/apple1.png" alt="product">
+							<img src="img/apple1.png" alt="product">
 						</div>
 						<div class="products-carousel__name">
 							MacBook Air
@@ -78,7 +76,7 @@
 					</div>
 					<div class="products-carousel__item">
 						<div class="products-carousel__img">
-							<img src="/img/apple1.png" alt="product">
+							<img src="img/apple1.png" alt="product">
 						</div>
 						<div class="products-carousel__name">
 							MacBook Air
@@ -87,7 +85,7 @@
 					</div>
 					<div class="products-carousel__item">
 						<div class="products-carousel__img">
-							<img src="/img/apple1.png" alt="product">
+							<img src="img/apple1.png" alt="product">
 						</div>
 						<div class="products-carousel__name">
 							MacBook Air
@@ -99,68 +97,139 @@
 			</div>
 	
 	
-<<<<<<< HEAD
 			<div class="breadcrumbs">
 				<a href="{{ Route('home') }}">Home</a>
 				<a href="#">Mac</a>
-				<a href="{{ Route('front.single-product', $data_id) }}" class="current">{{ $product->name }}</a>
+				<a href="{{}}" class="current">Mac Book Air</a>
 			</div>
 	
 	
 			<div class="product-main">
 				<div class="product-gallery">
 					<div class="product-gallery__img">
-						<img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="img">
+						<img src="img/product.png" alt="img">
 					</div>
 					<div class="product-gallery__thumbs">
 						<div class="current">
-							<img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="img">
+							<img src="img/product.png"> 
 						</div>
-						@foreach(\App\Models\ProductPhoto::where('product_id', $product->id)->get() as $photo)
-							<div>
-								<img src="{{$photo->photo_path}}/{{$photo->photo}}" alt="img">
-							</div>
-						@endforeach
+						<div>
+							<img src="img/apple2.png" alt="img"> 
+						</div>
+						<div>
+							<img src="img/apple3.png" alt="img"> 
+						</div>
+						<div>
+							<img src="img/apple4.png" alt="img"> 
+						</div>				
 					</div>
 				</div>
 				<div class="product-info">
 					<div class="product-info__name">
-						{{$product->name}}
+						MacBook Pro 16-inch
 					</div>
 					<div class="product-info__desc">
-						{{$CPU}}/{{$RAM}}/{{$ROM}} GB Silver 2019
+						i7/16/512GB Silver 2019
 					</div>
-	
-	
-					
-					@foreach($optionArr as $key=>$value)
-						<div class="product-info__color">
-							<div class="product-info__title">
-								{{$key}}
-							</div>
-							<div class="product-info__choose">
-									@foreach($optionArr[$key] as $option)
-										<label for="product-color1-{{$option['id']}}">
-											<input wire:change="changed" wire:model="opt.{{$option['name']}}" value="{{$option['id']}}" type="radio" name="product-color[{{$option['name']}}]" id="product-color1-{{$option['id']}}">
-											<span>{{$option['value']}}</span>
-											@if($option['name'] == 'Color')
-												<div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
-											@endif
-										</label>
-									@endforeach
-							</div>
+					<div class="product-info__ram">
+						<div class="product-info__title">
+							ОЗУ
 						</div>
-					@endforeach
-
-					<div wire:click="last()" class="product-info__price">
-						${{$price}} USD
+						<div class="product-info__choose">
+							<label for="product-ram16">
+								<input type="radio" name="product-ram" id="product-ram16">
+								<span>16 Gb</span>
+							</label>
+							<label for="product-ram32">
+								<input type="radio" name="product-ram" id="product-ram32">
+								<span>32 Gb</span>
+							</label>
+							<label for="product-ram8">
+								<input type="radio" name="product-ram" id="product-ram8">
+								<span>8 Gb</span>
+							</label>
+						</div>
+					</div>
+					<div class="product-info__color">
+						<div class="product-info__title">
+							Цвета
+						</div>
+						<div class="product-info__choose">
+							<label for="product-color1">
+								<input type="radio" name="product-color" id="product-color1">
+								<span>Gold</span>
+								<div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
+							</label>
+							<label for="product-color2">
+								<input type="radio" name="product-color" id="product-color2">
+								<span>Gold</span>
+								<div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
+							</label>
+							<label for="product-color3">
+								<input type="radio" name="product-color" id="product-color3">
+								<span>Black</span>
+								<div class="color" style="background: #242424"></div>
+							</label>
+							<label for="product-color4">
+								<input type="radio" name="product-color" id="product-color4">
+								<span>Black</span>
+								<div class="color" style="background: #242424"></div>
+							</label>
+							<label for="product-color5">
+								<input type="radio" name="product-color" id="product-color5">
+								<span>Red</span>
+								<div class="color" style="background: #FF4646;"></div>
+							</label>
+							<label for="product-color6">
+								<input type="radio" name="product-color" id="product-color6">
+								<span>Red</span>
+								<div class="color" style="background: #FF4646;"></div>
+							</label>
+						</div>
+					</div>
+					<div class="product-info__cpu">
+						<div class="product-info__title">
+							Процессор
+						</div>
+						<div class="product-info__choose">
+							<label for="product-cpu7">
+								<input type="radio" name="product-cpu" id="product-cpu7">
+								<span>Intel Core i7</span>
+							</label>
+							<label for="product-cpu9">
+								<input type="radio" name="product-cpu" id="product-cpu9">
+								<span>Intel Core i9</span>
+							</label>
+						</div>
+					</div>
+					<div class="product-info__storage">
+						<div class="product-info__title">
+							Емкость
+						</div>
+						<div class="product-info__choose">
+							<label for="product-storage1">
+								<input type="radio" name="product-storage" id="product-storage1">
+								<span>128 Gb</span>
+							</label>
+							<label for="product-storage2">
+								<input type="radio" name="product-storage" id="product-storage2">
+								<span>256 Gb</span>
+							</label>
+							<label for="product-storage3">
+								<input type="radio" name="product-storage" id="product-storage3">
+								<span>512 Gb</span>
+							</label>
+						</div>
+					</div>
+					<div class="product-info__price">
+						25 694 000 сум
 					</div>
 					<div class="product-info__btns">
 						<a href="#" class="btn">
-							{{__('home.Добавить в корзину')}}
+							Добавить в корзину
 						</a>
 						<a href="#" class="btn btn-white">
-							{{__('home.Купить в рассрочку')}}
+							Купить в рассрочку
 						</a>
 					</div>
 				</div>
@@ -170,13 +239,13 @@
 				<div class="product-tabs">
 					<ul class="product-tabs__head">
 						<li>
-							{{_-('home.Описание')}}
+							Описание
 						</li>
 						<li>
-							{{__('home.Характеристики')}}
+							Характеристики
 						</li>
 						<li>
-							{{__('home.Юридическая информация')}}
+							Юридическая информация
 						</li>
 					</ul>
 					<div class="product-tabs__wrap">
@@ -226,9 +295,6 @@
 					</div>
 				</div>
 			</div>
-=======
-			@livewire('single-product', [$id])
->>>>>>> 96890b1a4b32ccd007cad4445b5c569acbb148cb
 		</div>
 	</section>
 
@@ -238,15 +304,15 @@
 	<section class="similar-products">
 		<div class="container">
 			<h2 class="similar-products__title medium-title">
-				Похожие продукты
+				{{__('home.Похожие продукты')}}
 
-				<a href="#">Все</a>
+				<a href="#">{{_-('home.Все')}}</a>
 			</h2>
 			<div class="similar-products__wrap">
 				<div class="products-item">
 					<div class="products-item__wrap">
 						<div class="products-item__img">
-							<img src="/img/apple2.png" alt="Product">
+							<img src="img/apple2.png" alt="Product">
 						</div>
 						<div class="products-item__btns">
 							<span class="products-item__basket">
@@ -275,7 +341,7 @@
 				<div class="products-item">
 					<div class="products-item__wrap">
 						<div class="products-item__img">
-							<img src="/img/apple2.png" alt="Product">
+							<img src="img/apple2.png" alt="Product">
 						</div>
 						<div class="products-item__btns">
 							<span class="products-item__basket">
@@ -304,7 +370,7 @@
 				<div class="products-item">
 					<div class="products-item__wrap">
 						<div class="products-item__img">
-							<img src="/img/apple2.png" alt="Product">
+							<img src="img/apple2.png" alt="Product">
 						</div>
 						<div class="products-item__btns">
 							<span class="products-item__basket">
@@ -333,7 +399,7 @@
 				<div class="products-item">
 					<div class="products-item__wrap">
 						<div class="products-item__img">
-							<img src="/img/apple2.png" alt="Product">
+							<img src="img/apple2.png" alt="Product">
 						</div>
 						<div class="products-item__btns">
 							<span class="products-item__basket">
@@ -362,5 +428,4 @@
 			</div>
 		</div>
 	</section>
-
 @endsection

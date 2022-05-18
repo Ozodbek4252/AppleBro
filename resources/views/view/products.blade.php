@@ -107,14 +107,14 @@
 			<div class="products-main">
 
 				<div class="products-filter__open">
-					Фильтр <img src="img/filter.svg" alt="ico">
+					{{__('home.Фильтр')}} <img src="img/filter.svg" alt="ico">
 				</div>
 
 				<!-- ФИЛЬТР -->
 
 				<div class="products-filter">
 					<div class="products-filter__close">
-						<span>Фильтр</span>
+						<span>{{__('home.Фильтр')}}</span>
 						<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M25 7L7 25" stroke="#191919" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 							<path d="M25 25L7 7" stroke="#191919" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -122,7 +122,7 @@
 					</div>
 					<div class="products-filter__item">
 						<div class="products-filter__title">
-							Новая цена
+							{{__('home.Новая цена')}}
 						</div>
 						<div class="products-filter__price">
 							<input type="text" placeholder="150000"> 
@@ -136,7 +136,7 @@
 					<div class="products-filter__item">
 						<div class="products-filter__title">
 							<span>
-								Объем накопителя
+								{{__('home.Объем накопителя')}}
 							</span>
 							<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M2 11L8 5L14 11" stroke="black"/>
@@ -375,10 +375,10 @@
 					</div>
 					<div class="products-filter__btns">
 						<a href="#" class="btn products-filter__show">
-							Показать
+							{{_-('home.Показать')}}
 						</a>
 						<a href="#" class="btn products-filter__reset">
-							Сбросить 
+							{{__('home.Сбросить')}} 
 						</a>
 					</div>
 				</div>

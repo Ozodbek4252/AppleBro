@@ -3,7 +3,7 @@
 	<section class="fav">
 		<div class="container">
 			<h2 class="fav__title">
-				Избранное <span>4</span>
+				{{__('home.Избранное')}} <span>4</span>
 			</h2>
 			<div class="similar-products__wrap">
 				<div class="products-item">

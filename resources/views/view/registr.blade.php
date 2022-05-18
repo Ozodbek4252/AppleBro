@@ -18,73 +18,72 @@
 	<div class="basket">
 		<div class="basket-item">
 			<div class="basket-item__img">
-				<img src="img/apple1.png" alt="product">
-			</div>
+				<img src="/img/apple1.png" alt="product">
+			</div>	
 			<div class="basket-item__wrap">
 				<div class="basket-item__name">
-					iPhone 13 Pro Max" (M1 Max, 10 CPU/32 GPU 202...
+				iPhone 13 Pro Max" (M1 Max, 10 CPU/32 GPU 202...
 				</div>
 				<div class="basket-item__price">
-					11 700 000 Cум
+				11 700 000 Cум
 				</div>
 			</div>
 			<div class="basket-item__delete">
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M18.75 5.25L5.25 18.75" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-					<path d="M18.75 18.75L5.25 5.25" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M18.75 5.25L5.25 18.75" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M18.75 18.75L5.25 5.25" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>									
 			</div>
-		</div>
-		<div class="basket-item">
+			</div>
+			<div class="basket-item">
 			<div class="basket-item__img">
-				<img src="img/apple1.png" alt="product">
+				<img src="/img/apple1.png" alt="product">
 			</div>
 			<div class="basket-item__wrap">
 				<div class="basket-item__name">
-					iPhone 13 Pro Max" (M1 Max, 10 CPU/32 GPU 202...
+				iPhone 13 Pro Max" (M1 Max, 10 CPU/32 GPU 202...
 				</div>
 				<div class="basket-item__price">
-					11 700 000 Cум
+				11 700 000 Cум
 				</div>
 			</div>
 			<div class="basket-item__delete">
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M18.75 5.25L5.25 18.75" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-					<path d="M18.75 18.75L5.25 5.25" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M18.75 5.25L5.25 18.75" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M18.75 18.75L5.25 5.25" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>									
 			</div>
-		</div>
-		<div class="basket-item">
+			</div>
+			<div class="basket-item">
 			<div class="basket-item__img">
-				<img src="img/apple1.png" alt="product">
+				<img src="/img/apple1.png" alt="product">
 			</div>
 			<div class="basket-item__wrap">
 				<div class="basket-item__name">
-					iPhone 13 Pro Max" (M1 Max, 10 CPU/32 asasd asdas das asdas ds.
+				iPhone 13 Pro Max" (M1 Max, 10 CPU/32 asasd asdas das asdas ds.
 				</div>
 				<div class="basket-item__price">
-					11 70 Cум
+				11 70 Cум
 				</div>
 			</div>
 			<div class="basket-item__delete">
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M18.75 5.25L5.25 18.75" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-					<path d="M18.75 18.75L5.25 5.25" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M18.75 5.25L5.25 18.75" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M18.75 18.75L5.25 5.25" stroke="#CCCCCC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>									
 			</div>
-		</div>
-		<div class="basket-total">
-			<a href="#" class="btn">
-				Оформить заказ
+			</div>
+			<div class="basket-total">
+			<a href="{{ Route('front.basket') }}" class="btn">
+				{{__('home.Оформить заказ')}}
 			</a>
 			<div class="basket-total__price">
 				<span>Итого:</span>
 				34 679 000 Сум
 			</div>
+			</div>
 		</div>
-	</div>
-
-	<!-- FAVOURITE-->
+		
 
 	<div class="favourite">
 		<div class="container">
@@ -325,7 +324,7 @@
 				</li>
 				<li class="mobile-menu__item">
 					<span>
-						Аксессуары
+						{{__('home.Аксессуары')}}
 						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>	
@@ -333,29 +332,29 @@
 					<ul class="mobile-menu__submenu">
 						<li>
 							<a href="#">
-								Аксессуары
+								{{__('home.Аксессуары')}}
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Аксессуары X
+								{{__'home.Аксессуары'}} X
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Аксессуары X
+								{{__('home.Аксессуары')}} X
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Аксессуары X
+								{{__('home.Аксессуары')}} X
 							</a>
 						</li>
 					</ul>
 				</li>
 				<li class="mobile-menu__item">
 					<span>
-						Другие 
+						{{__('home.Другие')}} 
 						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>	
@@ -363,22 +362,22 @@
 					<ul class="mobile-menu__submenu">
 						<li>
 							<a href="#">
-								Другие
+								{{__('home.Другие')}}
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Другие X
+								{{__('home.Другие')}} X
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Другие X
+								{{__('home.Другие')}} X
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								Другие X
+								{{__('home.Другие')}} X
 							</a>
 						</li>
 					</ul>
@@ -387,34 +386,28 @@
 			<ul class="mobile-menu__profile">
 				<li>
 					<a href="#">
-						<span>Профиль</span>
+						<span>{{__('home.Профиль')}}</span>
 						<img src="img/caret-right.svg" alt="ico">
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<span>Мои заказы</span>
+						<span>{{__('home.Мои заказы')}}</span>
 						<img src="img/caret-right.svg" alt="ico">
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<span>Выход</span>
+						<span>{{__('home.Выход')}}</span>
 						<img src="img/caret-right.svg" alt="ico">
 					</a>
 				</li>
 			</ul>
-			<div class="mobile-menu__lang">
-				<a href="#">
-					O’z
-				</a>
-				<a href="#">
-					Eng
-				</a>
-				<a href="#" class="current">
-					Ру
-				</a>
-			</div>
+			<div class="header__lang">
+                <a href="/languages/ru" >RU</a>
+                <a href="/languages/uz" >UZ</a>
+                <a href="/languages/en" >EN</a>
+            </div>
 		</div>
 	</div>
 
@@ -424,37 +417,43 @@
 		<div class="header-top">
 			<div class="container">
 				<div class="header__location">
-					<img src="img/location.svg" alt="ico">
-					<span>Ташкент</span>
+					<img src="/img/location.svg" alt="ico">
+					<span>{{__("home.tashkent")}}</span>
 				</div>
 				<ul class="header-top__menu">
 					<li>
 						<a href="#">
-							О нас
+							{{__('home.О нас')}}
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							Магазины
+							{{__('home.Магазины')}}
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							Рассрочка
+							{{__('home.Рассрочка')}}
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							Оплата и доставка
+							{{__('home.Оплата и доставка')}}
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							Контакты
+							{{__('home.Контакты')}}
 						</a>
 					</li>
 				</ul>
 				<div class="header__lang">
+					<a href="/languages/ru" >RU</a>
+					<a href="/languages/uz" >UZ</a>
+					<a href="/languages/en" >EN</a>
+				</div>
+				
+				{{-- <div class="header__lang">
 					<a href="#">
 						O’z
 					</a>
@@ -464,9 +463,10 @@
 					<a href="#" class="current">
 						Ру
 					</a>
-				</div>
+				</div> --}}
 			</div>
 		</div>
+	
 		<div class="header-bot">
 			<div class="container">
 				<ul class="header-menu">
@@ -474,260 +474,64 @@
 						<input type="text" placeholder="Поиск">		
 					</div>
 					<li class="header__logo">
-						<a href="index.html">
-							<img src="img/logo.svg" alt="Apple Bro">
+						<a href="{{ Route('home') }}">
+							<img src="/img/logo.svg" alt="Apple Bro">
 						</a>
 					</li>
+					@foreach(\App\Models\Category::all() as $category)
 					<li class="header-menu__item">
-						<span>iPhone <img src="img/arrow-down.svg" alt="ico"></span>
+						<span>{{$category->name}} <img src="/img/arrow-down.svg" alt="ico"></span>
 						<ul class="header-submenu">
-							<li>
-								<a href="#">
-									iPhone
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPhone X
-								</a>
-							</li>
+							@foreach(\App\Models\Product::where('category_id', $category->id)->get() as $product)
+								<li>
+									<a href="{{ route('front.single-product', $product->id) }}">
+										{{$product->name}}
+									</a>
+								</li>
+							@endforeach
 						</ul>
 					</li>
-					<li class="header-menu__item">
-						<span>Mac <img src="img/arrow-down.svg" alt="ico"></span>
-						<ul class="header-submenu">
-							<li>
-								<a href="#">
-									Mac
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Mac X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Mac X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Mac X
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="header-menu__item">
-						<span>iPad <img src="img/arrow-down.svg" alt="ico"></span>
-						<ul class="header-submenu">
-							<li>
-								<a href="#">
-									iPad
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPad X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPad X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									iPad X
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="header-menu__item">
-						<span>Apple Watch <img src="img/arrow-down.svg" alt="ico"></span>
-						<ul class="header-submenu">
-							<li>
-								<a href="#">
-									Apple Watch
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Apple Watch X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Apple Watch X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Apple Watch X
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="header-menu__item">
-						<span>AirPods <img src="img/arrow-down.svg" alt="ico"></span>
-						<ul class="header-submenu">
-							<li>
-								<a href="#">
-									AirPods
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									AirPods X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									AirPods X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									AirPods X
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="header-menu__item">
-						<span>Аксессуары <img src="img/arrow-down.svg" alt="ico"></span>
-						<ul class="header-submenu">
-							<li>
-								<a href="#">
-									Аксессуары
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Аксессуары X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Аксессуары X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Аксессуары X
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="header-menu__item">
-						<span>Другие <img src="img/arrow-down.svg" alt="ico"></span>
-						<ul class="header-submenu">
-							<li>
-								<a href="#">
-									Другие
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Другие X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Другие X
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Другие X
-								</a>
-							</li>
-						</ul>
-					</li>
+					@endforeach
 				</ul>
 				<div class="header__icons">
 					<a href="#" class="header-search">
-						<img src="img/search.svg" alt="ico">
+						<img src="/img/search.svg" alt="ico">
 					</a>
 					<a href="#" class="basket-open">
-						<img src="img/basket.svg" alt="ico">
+						<img src="/img/basket.svg" alt="ico">
 						<span>2</span>
 					</a>
-					<a href="#">
-						<img src="img/heart.svg" alt="ico">
+					<a href="{{ Route('front.favorite') }}">
+						<img src="/img/heart.svg" alt="ico">
 						<span>2</span>
 					</a>
 					<a href="#" class="header-profile">
-						<img src="img/user.svg" alt="ico">
+						<img src="/img/user.svg" alt="ico">
 					</a>
 					<div class="header-profile__dropdown">
 						<ul>
 							<li>
-								<a href="#">
-									Профиль
+								<a href="{{ Route('front.profile') }}">
+									{{__('home.Профиль')}}
+								</a>
+							</li>
+							<li>
+								<a href="{{ Route('front.history') }}">
+									{{__('home.Мои заказы')}}
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									Мои заказы
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Выход
+									{{__('home.Выход')}}
 								</a>
 							</li>
 						</ul>
 					</div>
-
-
+	
+	
 				</div>
 				<div class="header-mobile">
-					<img src="img/menu.svg" alt="ico">
+					<img src="/img/menu.svg" alt="ico">
 				</div>
 			</div>
 		</div>
@@ -739,34 +543,34 @@
 	<div class="login login-registr">
 		<div class="login-content">
 			<div class="login__title">
-				Регистрация
+				{{__('home.Регистрация')}}
 			</div>
 			<div class="login__input">
-				<span>Имя</span>
+				<span>{{__('home.Имя')}}</span>
 				<input type="text" required>
 			</div>
 			<div class="login__input">
-				<span>Фамилия</span>
+				<span>{{__('home.Фамилия')}}</span>
 				<input type="text" required>
 			</div>
 			<div class="login__input">
-				<span>Телефон</span>
+				<span>{{__('home.Телефон')}}</span>
 				<input type="tel" class="form__tel" required>
 			</div>
 			<div class="login__input">
-				<span>Введите код</span>
+				<span>{{__('home.Введите код')}}</span>
 				<input type="text" required>
 			</div>
 			<button class="login__btn btn disabled">
-				Зарегистрироваться
+				{{__('home.Зарегистрироваться')}}
 			</button>
 			<div class="login__wrap">
 				<label for="remember">
 					<input type="checkbox" id="remember">
-					<span>Запомнить</span>
+					<span>{{__('home.Запомнить')}}</span>
 				</label>
 				<a href="#">
-					Войти
+					{{__('home.Войти')}}
 				</a>
 			</div>
 		</div>

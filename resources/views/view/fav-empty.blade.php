@@ -6,15 +6,15 @@
 	<section class="fav">
 		<div class="container">
 			<h2 class="fav__title">
-				Избранное <span>0</span>
+				{{__('home.Избранное')}} <span>0</span>
 			</h2>
 			<div class="fav__empty">
-				У вас пока нет товаров в списке желаний
+				{{__('home.У вас пока нет товаров в списке желаний')}}
 			</div>
 			<h2 class="similar-products__title medium-title">
-				Похожие продукты
+				{{__('home.Похожие продукты')}}
 
-				<a href="#">Все</a>
+				<a href="#">{{__('home.Все')}}</a>
 			</h2>
 			<div class="similar-products__wrap">
 				<div class="products-item">
