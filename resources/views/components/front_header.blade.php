@@ -86,7 +86,7 @@
                     <img src="/img/basket.svg" alt="ico">
                     <span>2</span>
                 </a>
-                <a href="{{ Route('front.favorite') }}">
+                <a href="{{ Route('front.wishlist') }}">
                     <img src="/img/heart.svg" alt="ico">
                     <span>2</span>
                 </a>

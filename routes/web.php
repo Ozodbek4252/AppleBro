@@ -1,19 +1,21 @@
 <?php
 
 use App\Http\Controllers\Front\SingleProductController;
+use App\Http\Controllers\Front\WishlistConrtoller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Livewire\AllProducts;
 use App\Http\Livewire\Category;
 use App\Http\Livewire\Favorite;
+use App\Http\Livewire\Wishlist;
 use App\Http\Livewire\ProductCreate;
 use App\Http\Livewire\Product;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\History;
 use App\Http\Livewire\Basket;
 use App\Http\Livewire\Admin\EditProduct;
-
+use Illuminate\Support\Facades\Auth;
 
 // use App\Models\Category as ModelsCategory;
 // use App\Models\Category as ModelsCategory;
@@ -57,11 +59,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
-
     Route::get('/category', Category::class)->name('admin.category');
     Route::get('/product', Product::class)->name('admin.products');
     Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
@@ -69,21 +69,21 @@ Route::middleware([
     Route::post('/product/store', [ProductController::class, 'store'])->name('admin.products.store');
     Route::put('/product/{id}', [ProductController::class, "update"])->name('admin.products.update');
     Route::get('/single-product/{id}', [SingleProductController::class, 'show'])->name('front.single-product');
-    Route::get('/favourite', Favorite::class)->name('front.favorite');
+    Route::get('/wishlist', Wishlist::class)->name('front.wishlist');
+    Route::get('/wishlist/{id}', [WishlistController::class, 'show']);
     Route::get('/profile', Profile::class)->name('front.profile');
     Route::get('/history', History::class)->name('front.history');
     Route::get('/basket', Basket::class)->name('front.basket');
     Route::get('/products/{id?}', AllProducts::class)->name('front.all-products');
-
-    // Route::resources([
-    //     'categories' => 'CategoryController',
-    //     // 'products' => ProductController::class,
-    // ]);
+    
 });
 
-Route::get('favourites/{id}/check', function ($id){
-    dd(session()->get('favourites'));
-    if (count(session()->get('favourites')) > 0){
+// Route::post('add_to_wishlist', [WishlistConrtoller::class, 'add'])->name('add_to_wishlist');
+// Route::post('add_to_wishlist', [WishlistConrtoller::class, 'add'])->name('add_to_wishlist');
+
+Route::get('wishlist/{id}/check', function ($id){
+    $product = \App\Models\Product::find($id);
+    if(\App\Models\Wishlist::where('product_id', $id)->where('user_id', Auth::user()->id)->count()>0){
         return response()->json(array_key_exists($id, session()->get('favourites')));
     }else{
         return response()->json(false);

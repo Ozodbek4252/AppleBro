@@ -9,4 +9,5 @@
 <link rel="stylesheet" href="/css/animate.css">
 <link rel="stylesheet" href="/css/ion.rangeSlider.min.css">
 <link rel="stylesheet" href="/css/main.css">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @livewireStyles

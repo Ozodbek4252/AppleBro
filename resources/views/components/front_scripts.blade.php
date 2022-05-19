@@ -7,3 +7,34 @@
 <script src="js/wow.min.js"></script>
 <script src="js/main.js"></script>
 @livewireScripts
+
+<script>
+  $(document).ready(function (){
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('.addToWishlist').click(function (e){
+      
+      e.preventDefault();
+      var product_id = e['currentTarget']['id'];
+
+      $.ajax({
+        type: 'POST',
+        url: 'add_to_wishlist',
+        data: {
+          'product_id': product_id,
+        },
+        success: function(response){
+            swal(response.status);
+        }
+      })
+    
+    })
+
+  })
+
+</script>
