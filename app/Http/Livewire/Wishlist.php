@@ -10,13 +10,29 @@ use Livewire\Component;
 
 class Wishlist extends Component
 {
-    public function test(){
-        $this->render();
-    }
+    // public function addToWishlist($id){
+    //     if(Auth::check()){
+    //         if(Product::find($id)){
+    //             if(ModelsWishlist::where('product_id', $id)->where('user_id', Auth::user()->id)->first()){
+    //                 $wishlist = ModelsWishlist::where('product_id', $id)->where('user_id', Auth::user()->id)->first();
+    //                 $wishlist->delete();
+    //                 $this->added = false;
+    //                 return response()->json(['success'=>'Product Removed from Wishlist']);
+    //             }
+    //             $wishlist = new ModelsWishlist;
+    //             $wishlist->user_id = Auth::id();
+    //             $wishlist->product_id = $id;
+    //             $wishlist->save();
+    //         }
+    //     }
+    // }
     
-    public function render()
-    {
-        $wishlists = ModelsWishlist::where('user_id', auth()->id())->get();
-        return view('view.wishlist', ['wishlists'=>$wishlists])->layout('layouts.front');
+    public function render(){
+        
+        // dd('wishlist');
+        $wishlists = ModelsWishlist::where('user_id', auth()->id());
+        return view('view.wishlist', [
+            'wishlists'=>$wishlists,
+            ])->layout('layouts.front');
     }
 }

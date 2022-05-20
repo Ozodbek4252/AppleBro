@@ -1,12 +1,3 @@
-
-<style>
-	.favourite-active{
-			background: #FF1E1E !important;
-  -webkit-box-shadow: 0px 0px 0.5rem rgba(255, 30, 30, 0.5) !important;
-          box-shadow: 0px 0px 0.5rem rgba(255, 30, 30, 0.5) !important;
-	}
-</style>
-
 @extends('layouts.front')
 
 @section('content')
@@ -119,6 +110,10 @@
 		</div>
 	</section>
 
+
+
+
+
 	<!-- POPULAR -->
 	
 	<section class="popular">
@@ -174,13 +169,11 @@
 										<path fill-rule="evenodd" clip-rule="evenodd" d="M7.73075 14.835L5.96875 6.625H18.6267C19.2638 6.625 19.7377 7.212 19.6047 7.835L18.1027 14.835C18.0037 15.296 17.5968 15.625 17.1248 15.625H8.70775C8.23675 15.625 7.82975 15.296 7.73075 14.835Z" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 										<path d="M17.4648 19.25C17.2578 19.25 17.0898 19.418 17.0918 19.625C17.0918 19.832 17.2598 20 17.4668 20C17.6738 20 17.8418 19.832 17.8418 19.625C17.8408 19.418 17.6728 19.25 17.4648 19.25" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 										<path d="M8.85593 19.25C8.64893 19.25 8.48093 19.418 8.48293 19.625C8.48193 19.832 8.64993 20 8.85693 20C9.06393 20 9.23193 19.832 9.23193 19.625C9.23193 19.418 9.06393 19.25 8.85593 19.25" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									</svg>
+									</svg>                                    
 								</span>
-								<span class=" product-item__fav_{{ $newest_product->id }}" onclick="favourite('{{ $newest_product->id }}', '{{ $newest_product->main_photo_path }}', '{{ $newest_product->main_photo }}', '{{ $newest_product->name }}')">
-									{{-- <span class="new-item__fav product-item__fav_{{ $newest_product->id }}" > --}}
-									{{-- </span> --}}
+									
 									@livewire('add-to-wishlist', ['id' => $newest_product->id])
-								</span>
+								
 							</div>
 						</div>
 						<div class="new-item__name">
@@ -195,6 +188,9 @@
 			</div>
 		</div>
 	</section>
+
+
+
 
 	<!-- BRANDS -->
 	<section class="brands">
@@ -504,68 +500,6 @@
 		</div>
 	</section>
 
-	<script>
-    function favourite(id, path, photo, name) {
-        let response = $.ajax({ type: "GET",
-            url: '/favourites/'+id+'/check',
-            async: false
-        }).responseText;
-        
-        if(response == 'true'){
-            console.log('remove');
-            $('.favourite img').attr('src', path+'/'+photo);
-            $('.favourite__name').html(name);
-            $('.favourite__btn').html("Sevimlilardan o\'chirildi");
-            $('.product-item__fav_'+id).removeClass('favourite-active');
-    
-            $.ajax({
-                type: "get",
-                url: "/wishlist/"+id+"/edit",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function () {
-                },
-            });
-    
-            // $('.product-item__fav').click(() => {
-            //     $('.added').addClass('added-show')
-            //     setTimeout(() => {
-            //         if($('.added').hasClass('added-show')) {
-            //             $('.added').removeClass('added-show')
-            //         }
-            //     }, 1000)
-            // });
-            // $('.added__close').click(() => {
-            //     $('.added').removeClass('added-show')
-            // })
-        }else {
-            console.log('add');
-            $('.favourite img').attr('src', path+'/'+photo);
-            $('.favourite__name').html(name);
-            $('.favourite__btn').html("Sevimlilarga qo’shildi &nbsp; <a href=\"/favourite\">Ko’rish</a>");
-    
-            $.ajax({
-                type: "get",
-                url: "/wishlist/"+id,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function () {
-                },
-            });
-    
-            // $('.product-item__fav').click(() => {
-            //     $('.added').addClass('added-show')
-            //     setTimeout(() => {
-            //         if($('.added').hasClass('added-show')) {
-            //             $('.added').removeClass('added-show')
-            //         }
-            //     }, 1000)
-            // });
-            // $('.added__close').click(() => {
-            //     $('.added').removeClass('added-show')
-            // })
-        }
-    }
-	</script>
 
-	@endsection
+
+@endsection

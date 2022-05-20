@@ -15,6 +15,7 @@ use App\Http\Livewire\Profile;
 use App\Http\Livewire\History;
 use App\Http\Livewire\Basket;
 use App\Http\Livewire\Admin\EditProduct;
+use App\Http\Livewire\Home;
 use Illuminate\Support\Facades\Auth;
 
 // use App\Models\Category as ModelsCategory;
@@ -40,7 +41,7 @@ Route::get('/languages/{lang}', function ($lang) {
     }
     return redirect()->back();
 });
-
+// Route::get('/', Home::class)->name('home');
 Route::get('/', function(){
     if (session()->get('locale') == '') {
         session()->put('locale', 'ru');
@@ -79,12 +80,10 @@ Route::middleware([
 });
 
 // Route::post('add_to_wishlist', [WishlistConrtoller::class, 'add'])->name('add_to_wishlist');
-// Route::post('add_to_wishlist', [WishlistConrtoller::class, 'add'])->name('add_to_wishlist');
 
-Route::get('wishlist/{id}/check', function ($id){
-    $product = \App\Models\Product::find($id);
+Route::get('favourites/{id}/check', function ($id){
     if(\App\Models\Wishlist::where('product_id', $id)->where('user_id', Auth::user()->id)->count()>0){
-        return response()->json(array_key_exists($id, session()->get('favourites')));
+        return response()->json(true);
     }else{
         return response()->json(false);
     }

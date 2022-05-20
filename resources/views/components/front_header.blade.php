@@ -88,27 +88,16 @@
                 </a>
                 <a href="{{ Route('front.wishlist') }}">
                     <img src="/img/heart.svg" alt="ico">
-                    <span>2</span>
+                    <span>
+                        @if(Auth::check())
+                            {{ count(\App\Models\Wishlist::where('user_id', Auth::id())->get()) }}
+                        @endif
+                    </span>
                 </a>
                 <a href="#" class="header-profile">
                     @if(Auth::check())
                         <img src="/img/user.svg" alt="ico">
                     @else
-
-
-
-                    {{-- @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth --}}
-
-
-
                         <a href="{{ route('login') }}">
                             Log In
                         </a>

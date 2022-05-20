@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
@@ -17,30 +18,40 @@ class AddToWishlist extends Component
         $this->product = Product::find($id);
     }
 
-    public function add($id){
+    public function addToWishlist($id){
         if(Auth::check()){
-            $product_id = $id;
-            if(Product::find($product_id)){
-                if(Wishlist::where('product_id', $product_id)->where('user_id', Auth::user()->id)->first()){
-                    $wishlist = Wishlist::where('product_id', $product_id)->where('user_id', Auth::user()->id)->first();
+            if(Product::find($id)){
+                if(Wishlist::where('product_id', $id)->where('user_id', Auth::user()->id)->first()){
+                    $wishlist = Wishlist::where('product_id', $id)->where('user_id', Auth::user()->id)->first();
                     $wishlist->delete();
+                    $this->added = false;
                     return response()->json(['success'=>'Product Removed from Wishlist']);
                 }
-                $wishlist = new \App\Models\Wishlist;
+                $wishlist = new Wishlist;
                 $wishlist->user_id = Auth::id();
-                $wishlist->product_id = $product_id;
+                $wishlist->product_id = $id;
                 $wishlist->save();
-                return response()->json(['success'=>'Product Added to Wishlist']);
-            }else{
-                return response()->json(['success'=>'Product not found']);
             }
-        }else{
-            return response()->json(['status'=>'Login to Continue']);
         }
-        return view('view.wishlist');
     }
     
     public function render(){
-        return view('livewire.add-to-wishlist');
+        if (session()->get('locale') == '') {
+            session()->put('locale', 'ru');
+            app()->setLocale('ru');
+        } else {
+            app()->setLocale(session()->get('locale'));
+        }
+        $lang = session()->get('locale');
+        $newest_products = \App\Models\Product::orderBy('updated_at', 'desc')->take(4)->get();
+        $categories = \App\Models\Category::all();
+        
+        $newest_products = Product::orderBy('updated_at', 'desc')->take(4)->get();
+        $categories = Category::all();
+        return view('livewire.add-to-wishlist', [
+            'lang'=> $lang,
+            'categories' => $categories,
+            'newest_products' => $newest_products,
+        ])->layout('layouts.front');
     }
 }

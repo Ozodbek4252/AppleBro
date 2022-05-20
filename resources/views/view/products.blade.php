@@ -1,12 +1,9 @@
-
-
 	<section class="products">
 		<div class="container">
 
 			<div class="products-carousel">
 
 				<!-- ЕСЛИ МНОГО ТОВАРОВ ТО СТРЕЛКИ -->
-
 				<div class="products-carousel__arrows">
 					<span class="arrow-left">
 						<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +108,6 @@
 				</div>
 
 				<!-- ФИЛЬТР -->
-
 				<div class="products-filter">
 					<div class="products-filter__close">
 						<span>{{__('home.Фильтр')}}</span>
@@ -294,7 +290,6 @@
 					</div>
 
 					<!-- products-filter__item-closed ЗАКРЫТЫЕ ВНАЧАЛЕ -->
-
 					<div class="products-filter__item products-filter__item-closed">
 						<div class="products-filter__title">
 							<span>
@@ -375,7 +370,7 @@
 					</div>
 					<div class="products-filter__btns">
 						<a href="#" class="btn products-filter__show">
-							{{_-('home.Показать')}}
+							{{__('home.Показать')}}
 						</a>
 						<a href="#" class="btn products-filter__reset">
 							{{__('home.Сбросить')}} 
@@ -385,7 +380,6 @@
 
 				<div class="products-wrap">
 					<div class="products-list">
-
 						@foreach($products as $product)
 							<div class="products-item">
 								<?php 
@@ -398,8 +392,8 @@
 									}
 									?>
 
-<div class="products-item__wrap">
-	<div class="products-item__img">
+								<div class="products-item__wrap">
+											<div class="products-item__img">
 												<img src="img/new1.png" alt="Product">
 											</div>
 											<div class="products-item__btns">
@@ -417,10 +411,10 @@
 													</svg>
 												</span>
 											</div>
-										</div>
-										
-										<!-- У КАЖДОГО ТОВАРА ДОЛЖНЫ БЫТЬ УНИКАЛЬНЫЕ АЙДИ У ЦВЕТОВ-->
-										<div class="products-item__colors">
+								</div>
+								
+								<!-- У КАЖДОГО ТОВАРА ДОЛЖНЫ БЫТЬ УНИКАЛЬНЫЕ АЙДИ У ЦВЕТОВ-->
+								<div class="products-item__colors">
 											<label for="product1-color1">
 												<input type="radio" name="product1-color" id="product1-color1">
 												<span style="background: #FCC7A0;"></span>
@@ -433,26 +427,26 @@
 												<input type="radio" name="product1-color" id="product1-color3">
 												<span style="background: #FFFFFF;"></span>
 											</label>
-										</div>
+								</div>
 
-										<div class="products-item__name">
-											{{$product->name}}
-											( @foreach($optionArr as $key=>$value)
-													{{$key}}
-											    @foreach($optionArr[$key] as $option)
-														{{ $option['value'] }}@if(!$loop->last)/@endif
-													@endforeach @if(!$loop->last), &nbsp;@endif
-												@endforeach
-											)
-										</div>
-										<div class="products-item__price">
-											from ${{$product->price}} USD
-										</div>
-										<a href="#" class="products-item__link"></a>
+								<div class="products-item__name">
+									{{$product->name}}
+									( @foreach($optionArr as $key=>$value)
+											{{$key}}
+									    @foreach($optionArr[$key] as $option)
+												{{ $option['value'] }}@if(!$loop->last)/@endif
+											@endforeach @if(!$loop->last), &nbsp;@endif
+										@endforeach
+									)
+								</div>
+								<div class="products-item__price">
+									from ${{$product->price}} USD
+								</div>
+								<a href="#" class="products-item__link"></a>
 							</div>
 						@endforeach
-
 					</div>
+
 					<ul class="products-pagination">
 						<li>
 							<a href="#" class="current">
