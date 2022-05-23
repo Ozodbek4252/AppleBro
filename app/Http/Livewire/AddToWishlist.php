@@ -14,6 +14,7 @@ class AddToWishlist extends Component
     public $product, $product_id;
 
     public function mount($id){
+        // dd('mount');
         $this->product_id = $id;
         $this->product = Product::find($id);
     }
@@ -32,6 +33,8 @@ class AddToWishlist extends Component
                 $wishlist->product_id = $id;
                 $wishlist->save();
             }
+        }else{
+            return redirect()->route('login');
         }
     }
     

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\Front\SingleProductController;
 use App\Http\Controllers\Front\WishlistConrtoller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Livewire\AddToCart;
 use App\Http\Livewire\AllProducts;
 use App\Http\Livewire\Category;
 use App\Http\Livewire\Favorite;
@@ -41,7 +43,7 @@ Route::get('/languages/{lang}', function ($lang) {
     }
     return redirect()->back();
 });
-// Route::get('/', Home::class)->name('home');
+
 Route::get('/', function(){
     if (session()->get('locale') == '') {
         session()->put('locale', 'ru');
@@ -74,12 +76,24 @@ Route::middleware([
     Route::get('/wishlist/{id}', [WishlistController::class, 'show']);
     Route::get('/profile', Profile::class)->name('front.profile');
     Route::get('/history', History::class)->name('front.history');
-    Route::get('/basket', Basket::class)->name('front.basket');
+    Route::get('/cart', Basket::class)->name('front.cart');
     Route::get('/products/{id?}', AllProducts::class)->name('front.all-products');
     
 });
 
+Route::get('/cart/add/{id}', AddToCart::class);
+// Route::get('/cart/add/{id}', [AddToCartController::class, 'addToCart']);
 // Route::post('add_to_wishlist', [WishlistConrtoller::class, 'add'])->name('add_to_wishlist');
+
+Route::get('wishlist_count', function(){
+    $wishlist = \App\Models\Wishlist::where('user_id', Auth::id())->get();
+    return $wishlist->count();
+});
+
+Route::get('cart_count', function(){
+    $cart = session()->get('cart') ?? [];
+    return count($cart);
+});
 
 Route::get('favourites/{id}/check', function ($id){
     if(\App\Models\Wishlist::where('product_id', $id)->where('user_id', Auth::user()->id)->count()>0){

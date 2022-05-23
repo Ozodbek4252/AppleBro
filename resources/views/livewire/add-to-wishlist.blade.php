@@ -4,7 +4,7 @@
 		?>
   <span 
 		class="new-item__fav product-item__fav_{{ $product->id }}" onclick="favourite('{{ $product->id }}', '{{ $product->main_photo_path }}', '{{ $product->main_photo }}', '{{ $product->name }}')"
-		wire:click="addToWishlist({{$product->id}})"
+		wire:click="addToWishlist({{$product->id}})" 
 		@auth
 			@if($wishlist)
 			style='background-color: #FF1E1E;'
@@ -26,6 +26,8 @@
 
 <script>
 	function favourite(id, path, photo, name) {
+    $('#wishlist_count').load('/wishlist_count');
+		
 		$('.product-item__fav_' + id).css('background-color', '#FF1E1E') ;
 		let response = $.ajax({ type: "GET",
 				url: '/favourites/'+id+'/check',
@@ -42,5 +44,9 @@
 				$('.favourite__name').html(name);
 				$('.favourite__btn').html("Sevimlilarga qo’shildi &nbsp; <a href=\"/wishlist\">Ko’rish</a>");
 		}
+
+		
+		$('#cart_count').load('/cart_count');
+		$('#wishlist_count').load('/wishlist_count');
 	}
 </script>

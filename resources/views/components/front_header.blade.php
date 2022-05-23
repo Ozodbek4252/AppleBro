@@ -37,18 +37,6 @@
                 <a href="/languages/uz" >UZ</a>
                 <a href="/languages/en" >EN</a>
             </div>
-            
-            {{-- <div class="header__lang">
-                <a href="#">
-                    O’z
-                </a>
-                <a href="#">
-                    Eng
-                </a>
-                <a href="#" class="current">
-                    Ру
-                </a>
-            </div> --}}
         </div>
     </div>
 
@@ -84,15 +72,15 @@
                 </a>
                 <a href="#" class="basket-open">
                     <img src="/img/basket.svg" alt="ico">
-                    <span>2</span>
+                    <span id="cart_count">{{ session()->get('cart') ? count(session()->get('cart')) : 0 }}</span>
                 </a>
                 <a href="{{ Route('front.wishlist') }}">
                     <img src="/img/heart.svg" alt="ico">
-                    <span>
-                        @if(Auth::check())
-                            {{ count(\App\Models\Wishlist::where('user_id', Auth::id())->get()) }}
-                        @endif
-                    </span>
+                    @if(Auth::check())
+                        <span id="wishlist_count">
+                            {{ \App\Models\Wishlist::where('user_id', Auth::id())->get()->count();}}
+                        </span>
+                    @endif
                 </a>
                 <a href="#" class="header-profile">
                     @if(Auth::check())

@@ -1,4 +1,5 @@
 <div class="basket">
+
   <div class="basket-item">
     <div class="basket-item__img">
       <img src="/img/apple1.png" alt="product">
@@ -18,6 +19,7 @@
       </svg>									
     </div>
   </div>
+
   <div class="basket-item">
     <div class="basket-item__img">
       <img src="/img/apple1.png" alt="product">
@@ -37,6 +39,7 @@
       </svg>									
     </div>
   </div>
+
   <div class="basket-item">
     <div class="basket-item__img">
       <img src="/img/apple1.png" alt="product">
@@ -56,13 +59,7 @@
       </svg>									
     </div>
   </div>
-  <div class="basket-total">
-    <a href="{{ Route('front.basket') }}" class="btn">
-      {{__('home.Оформить заказ')}}
-    </a>
-    <div class="basket-total__price">
-      <span>Итого:</span>
-      34 679 000 Сум
-    </div>
-  </div>
+
+  {{-- @livewire('cart-modal') --}}
+
 </div>
