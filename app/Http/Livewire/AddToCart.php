@@ -17,6 +17,12 @@ class AddToCart extends Component
     public function addToCart($id){
         $product = \App\Models\Product::find($id);
         $cart = session()->get('cart');
+        $product_options = \App\Models\ProductOption::where('product_id', $id)->get();
+		foreach($product_options as $product_option){
+			$option = \App\Models\Option::find($product_option->option_id);
+			$option["price"] = $product_option->price;
+			$optionArr[$option->name][] = $option;
+		}
         if(!$cart){
             $cart = [
                 $id => [
@@ -24,11 +30,12 @@ class AddToCart extends Component
                     "price" => $product->price,
                     "photo" => $product->main_photo,
                     "photo_path" => $product->main_photo_path,
-                ]
-            ];
-            session()->put('cart', $cart);
-        }else{
-            if(isset($cart[$id])){
+                    'options' => $optionArr
+                    ]
+                ];
+                session()->put('cart', $cart);
+            }else{
+                if(isset($cart[$id])){
                 unset($cart[$id]);
             }else{
                 $cart[$id] = [
@@ -36,12 +43,19 @@ class AddToCart extends Component
                     "price" => $product->price,
                     "photo" => $product->main_photo,
                     "photo_path" => $product->main_photo_path,
+                    'options' => $optionArr
                 ];
             }
             session()->put('cart', $cart);
         }
     }
 
+    protected $listeners = ['refreshLivewire'];
+
+    public function refreshLivewire($product_id = null) 
+    {
+        $this->render();
+    }
     public function render(){
         return view('livewire.add-to-cart');
     }

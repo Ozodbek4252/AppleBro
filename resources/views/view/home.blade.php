@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 	<section class="main">
 		<div class="main-carousel owl-carousel">
 			<div class="main-carousel__item">
@@ -112,8 +113,6 @@
 
 
 
-
-
 	<!-- POPULAR -->
 	
 	<section class="popular">
@@ -131,7 +130,6 @@
 								$product = \App\Models\Product::where('category_id', $category->id)->orderBy('price', 'asc',)->first();
 								?>
 						<div class="popular-item__price">
-							{{-- от 11.800.000 Сум --}}
 							от {{$product->price}} USD
 						</div>
 						<div class="popular-item__img">
@@ -140,11 +138,13 @@
 						<a href="{{ Route('front.all-products', $category->id) }}" class="popular-item__link"></a>
 					</div>
 				@endforeach
-				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-	<!-- NEW -->
+	
+		<!-- NEW -->
+	
 	
 	<section class="new">
 		<div class="container">
@@ -152,7 +152,7 @@
 				{{__('home.Новое поступление')}}
 			</h2>
 			<div class="new-content">
-			
+
 				@foreach ($newest_products as $newest_product )
 					<div class="new-item">
 						<div class="new-item__wrap">
@@ -162,19 +162,39 @@
 							<div class="new-item__img">
 								<img src="{{$newest_product->main_photo_path}}/{{$newest_product->main_photo}}" alt="Product">
 							</div>
-							<div class="new-item__btns">
-								{{-- <div onclick="addToCart()"> --}}
-									@livewire('add-to-cart', ['id' => $newest_product->id])
-								{{-- </div> --}}
+							<div class="new-item__btns" onclick="refreshLivewire()">
+								@livewire('add-to-cart', ['id' => $newest_product->id])
 								@livewire('add-to-wishlist', ['id' => $newest_product->id])
 							</div>
 						</div>
 						<div class="new-item__name">
 							{{$newest_product->name}}
 						</div>
-						<div class="new-item__price">
-							${{$newest_product->price}} USD
+						
+						<div class="new-item__price" style="margin-bottom: 5px;">
+							@php
+								$product_options = \App\Models\ProductOption::where('product_id', $newest_product->id)->get();
+								$optionArr = [];
+								foreach($product_options as $product_option){
+										$option = \App\Models\Option::find($product_option->option_id);
+										$option["price"] = $product_option->price;
+										$optionArr[$option->name][] = $option;
+								}
+								$total_price = 0;
+							@endphp
+							@foreach($optionArr as $key=>$value)
+								{{$value[0]->value}} @if(!$loop->last)/ @endif
+								@php
+								  $options_price = \App\Models\ProductOption::where([['product_id', $newest_product->id], ['option_id', $value[0]->id]])->first()?->price;
+									$total_price += $options_price;
+								@endphp
+							@endforeach
 						</div>
+
+						<div class="new-item__price">
+							${{$newest_product->price + $total_price}} USD
+						</div>
+
 						<a href="{{ Route('front.single-product', $newest_product->id) }}" class="new-item__link"></a>
 					</div>
 				@endforeach

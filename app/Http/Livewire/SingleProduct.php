@@ -38,18 +38,13 @@ class SingleProduct extends Component
 
     public function changed(){
         $this->price = $this->product->price;
-        foreach($this->opt as $key => $value){
-            $this->productOptionData[$key] = ProductOption::where('option_id', $value)->where('product_id', $this->data_id)->first();
-            foreach($this->productOptionData as $key => $value){
-                $this->price += $value['price'];
+        foreach($this->opt as $name=>$id){
+            $this->productOptionData[$name] = ProductOption::where('option_id', $id)->where('product_id', $this->data_id)->first();
+            $this->RAM = $id;
+            foreach($this->productOptionData as $name=>$id){
+                $this->price += $id['price'];
             }
         }
-    }
-
-    public function last(){
-        dd($this->productOptionData);
-        dd($this->opt);
-        // dd($this->price);
     }
 
 

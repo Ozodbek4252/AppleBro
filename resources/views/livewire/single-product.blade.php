@@ -41,6 +41,9 @@
                             @foreach($optionArr[$key] as $option)
                                 <label for="product-color1-{{$option['id']}}">
                                     <input wire:change="changed" wire:model="opt.{{$option['name']}}" value="{{$option['id']}}" type="radio" name="product-color[{{$option['name']}}]" id="product-color1-{{$option['id']}}">
+                                    <input type="radio" @if($option['id'] == $RAM) checked @endif>
+                                    {{$option['id']}} ? {{$RAM}}
+                                    {{-- <input type="radio" @if($loop->first) checked @endif> --}}
                                     <span>{{$option['value']}}</span>
                                     @if($option['name'] == 'Color')
                                         <div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
@@ -51,7 +54,7 @@
                 </div>
             @endforeach
 
-            <div wire:click="last()" class="product-info__price">
+            <div class="product-info__price">
                 ${{$price}} USD
             </div>
             <div class="product-info__btns">

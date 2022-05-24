@@ -38,6 +38,12 @@ class AddToWishlist extends Component
         }
     }
     
+    protected $listeners = ['refreshLivewire'];
+
+    public function refreshLivewire($product_id = null) 
+    {
+        $this->render();
+    }
     public function render(){
         if (session()->get('locale') == '') {
             session()->put('locale', 'ru');

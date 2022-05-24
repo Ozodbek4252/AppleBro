@@ -7,3 +7,8 @@
 <script src="js/wow.min.js"></script>
 <script src="js/main.js"></script>
 @livewireScripts
+<script>
+  function refreshLivewire(){
+    Livewire.emit('refreshLivewire')
+  }
+</script>

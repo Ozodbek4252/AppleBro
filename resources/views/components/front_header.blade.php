@@ -70,9 +70,11 @@
                 <a href="#" class="header-search">
                     <img src="/img/search.svg" alt="ico">
                 </a>
-                <a href="#" class="basket-open">
+                <a href="" class="basket-open">
                     <img src="/img/basket.svg" alt="ico">
-                    <span id="cart_count">{{ session()->get('cart') ? count(session()->get('cart')) : 0 }}</span>
+                    @if(Auth::check())
+                        <span id="cart_count">{{ session()->get('cart') ? count(session()->get('cart')) : 0 }}</span>
+                    @endif
                 </a>
                 <a href="{{ Route('front.wishlist') }}">
                     <img src="/img/heart.svg" alt="ico">
@@ -82,21 +84,12 @@
                         </span>
                     @endif
                 </a>
-                <a href="#" class="header-profile">
-                    @if(Auth::check())
-                        <img src="/img/user.svg" alt="ico">
-                    @else
-                        <a href="{{ route('login') }}">
-                            Log In
-                        </a>
-                        <a href="{{ Route('register') }}">
-                            Sign Up
-                        </a>
-                    @endif
+                <a href="" class="header-profile">
+                    <img src="/img/user.svg" alt="ico">
                 </a>
-                @if(Auth::check())
-                    <div class="header-profile__dropdown">
-                        <ul>
+                <div class="header-profile__dropdown">
+                    <ul>
+                        @if(Auth::check())
                             <li>
                                 @if(Auth::user()->usertype == 1)
                                     <a href="{{ Route('dashboard') }}">
@@ -116,7 +109,6 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}" style="margin: 0">
                                     @csrf
-
                                     <x-jet-dropdown-link href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                         this.closest('form').submit();"
@@ -125,11 +117,20 @@
                                     </x-jet-dropdown-link>
                                 </form>
                             </li>
-                        </ul>
-                    </div>
-                @endif
-
-
+                        @else 
+                            <li>
+                                <a href="{{ route('login') }}">
+                                    Log In
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ Route('register') }}">
+                                    Sign Up
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
             </div>
             <div class="header-mobile">
                 <img src="/img/menu.svg" alt="ico">
