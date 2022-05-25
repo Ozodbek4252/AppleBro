@@ -198,6 +198,7 @@
 						<a href="{{ Route('front.single-product', $newest_product->id) }}" class="new-item__link"></a>
 					</div>
 				@endforeach
+
 			</div>
 		</div>
 	</section>
@@ -226,7 +227,6 @@
 	</section>
 
 	<!-- MAJOR -->
-
 	<section class="major">
 		<div class="container">
 			<div class="major-wrap">
@@ -245,7 +245,6 @@
 	</section>
 	
 	<!-- BRANDS-PRODUCT -->
-
 	<section class="brands-product">
 		<div class="container">
 			<h2 class="brands-product__title medium-title">
@@ -311,7 +310,6 @@
 	</section>
 
 	<!-- BRANDS-PRODUCT -->
-
 	<section class="brands-product">
 		<div class="container">
 			<h2 class="brands-product__title medium-title">
@@ -387,7 +385,6 @@
 	</section>
 
 	<!-- BRANDS-PRODUCT -->
-
 	<section class="brands-product">
 		<div class="container">
 			<h2 class="brands-product__title medium-title">
@@ -435,7 +432,6 @@
 	</section>
 
 	<!-- BANNERS -->
-
 	<section class="banners">
 		<div class="container">
 			<div class="banners-content">
@@ -450,7 +446,6 @@
 	</section>
 
 	<!-- SERVICES -->
-
 	<section class="services">
 		<div class="container">
 			<h2 class="services__title medium-title">

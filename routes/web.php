@@ -110,19 +110,18 @@ Route::get('favourites/{id}/check', function ($id){
 
 
 
-Route::get('/test/{id}', function($id){
-    $product_options = ProductOption::where('product_id', $id)->get();
+// Route::get('/test/{id}', function($id){
+//     $product_options = ProductOption::where('product_id', $id)->get();
 
-    $optionArr = [];
-    foreach($product_options as $product_option){
-        $option = Option::find($product_option->option_id);
-        $option["price"] = $product_option->price;
-        $optionArr[$option->name][] = $option;
-    }
+//     $optionArr = [];
+//     foreach($product_options as $product_option){
+//         $option = Option::find($product_option->option_id);
+//         $option["price"] = $product_option->price;
+//         $optionArr[$option->name][] = $option;
+//     }
 
-    return $optionArr;
-});
+//     return $optionArr;
+// });
 
 
 
- 

@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AddToCart extends Component
 {
-    public $product, $product_id;
+    public $product, $product_id, $price = 0;
 
     public function mount($id){
         $this->product_id = $id;
@@ -15,6 +15,7 @@ class AddToCart extends Component
     }
 
     public function addToCart($id){
+        $this->price = 0;
         $product = \App\Models\Product::find($id);
         $cart = session()->get('cart');
         $product_options = \App\Models\ProductOption::where('product_id', $id)->get();
@@ -23,11 +24,15 @@ class AddToCart extends Component
 			$option["price"] = $product_option->price;
 			$optionArr[$option->name][] = $option;
 		}
+        foreach($optionArr as $name=>$value){
+            $this->price += (int)$optionArr[$name][0]['price'];
+        }
+
         if(!$cart){
             $cart = [
                 $id => [
                     "name" => $product->name,
-                    "price" => $product->price,
+                    "price" =>  $product->price + $this->price,
                     "photo" => $product->main_photo,
                     "photo_path" => $product->main_photo_path,
                     'options' => $optionArr
@@ -40,7 +45,7 @@ class AddToCart extends Component
             }else{
                 $cart[$id] = [
                     "name" => $product->name,
-                    "price" => $product->price,
+                    "price" => $product->price + $this->price,
                     "photo" => $product->main_photo,
                     "photo_path" => $product->main_photo_path,
                     'options' => $optionArr
@@ -52,10 +57,10 @@ class AddToCart extends Component
 
     protected $listeners = ['refreshLivewire'];
 
-    public function refreshLivewire($product_id = null) 
-    {
+    public function refreshLivewire($product_id = null){
         $this->render();
     }
+    
     public function render(){
         return view('livewire.add-to-cart');
     }

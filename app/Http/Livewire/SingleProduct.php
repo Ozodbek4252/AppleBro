@@ -18,8 +18,10 @@ class SingleProduct extends Component
         $color,
         $price = 0,
         $optionArr = [],
-        $opt = [],
-        $productOptionData = []
+        // $opt = [],
+        $productOptionData,
+        $selectedOption = [],
+        $initialAddedPrice = 0
         ;
         
 
@@ -34,24 +36,73 @@ class SingleProduct extends Component
             $option["price"] = $product_option->price;
             $this->optionArr[$option->name][] = $option;
         }
+
+        $this->price = $this->product->price;
+        foreach($this->optionArr as $key=>$value){
+            $this->selectedOption[$key] = $this->optionArr[$key][0]['id'];
+            $this->initialAddedPrice += $this->optionArr[$key][0]['price'];
+        }
+        $this->price += $this->initialAddedPrice; 
+        $this->RAM = $this->optionArr['RAM'][0]['value'];
+        $this->ROM = $this->optionArr['ROM'][0]['value'];
+        $this->CPU = $this->optionArr['CPU'][0]['value'];
+        $this->color = $this->optionArr['Color'][0]['value'];
     }
 
-    public function changed(){
-        $this->price = $this->product->price;
-        foreach($this->opt as $name=>$id){
-            $this->productOptionData[$name] = ProductOption::where('option_id', $id)->where('product_id', $this->data_id)->first();
-            $this->RAM = $id;
-            foreach($this->productOptionData as $name=>$id){
-                $this->price += $id['price'];
+    public function changed($key, $value){
+        $this->productOptionData = ProductOption::where('option_id', $value)->where('product_id', $this->data_id)->first();
+        if(!in_array($value, $this->selectedOption)){
+            $minus = ProductOption::where('option_id', $this->selectedOption[$key])->where('product_id', $this->data_id)->first();
+            unset($this->selectedOption[$key]);
+            $this->selectedOption[$key] = $value;
+            $this->price += $this->productOptionData->price;
+            $this->price -= $minus->price;
+
+            // $this->RAM = $minus;
+            // $this->ROM = $value;
+            // $this->CPU = $value;
+            // $this->color = $value;
+        };
+    }
+
+    public function addToCart(){
+        $cart = session()->get('cart');
+        if(!$cart){
+            $cart = [
+                $this->data_id => [
+                    "name" => $this->product->name,
+                    "price" => $this->price,
+                    "photo" => $this->product->main_photo,
+                    "photo_path" => $this->product->main_photo_path,
+                    'options' => $this->selectedOption
+                    ]
+                ];
+                session()->put('cart', $cart);
+        }else{
+            if(isset($cart[$this->data_id])){
+                unset($cart[$this->data_id]);
+                $cart[$this->data_id] = [
+                    "name" => $this->product->name,
+                    "price" => $this->price,
+                    "photo" => $this->product->main_photo,
+                    "photo_path" => $this->product->main_photo_path,
+                    'options' => $this->selectedOption
+                ];
             }
+            session()->put('cart', $cart);
         }
     }
 
+    protected $listeners = ['refreshLivewire'];
+
+    public function refreshLivewire($product_id = null){
+        $this->render();
+    }
 
 
 
-    public function render()
-    {
+
+    public function render(){
         return view('livewire.single-product')->layout('layouts.front');
     }
 }

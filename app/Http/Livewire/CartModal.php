@@ -10,8 +10,7 @@ class CartModal extends Component
 
     protected $listeners = ['refreshLivewire'];
 
-    public function refreshLivewire($product_id = null) 
-    {
+    public function refreshLivewire($product_id = null){
         $this->render();
     }
     public function delete($id){
@@ -21,15 +20,17 @@ class CartModal extends Component
         }
     }
     public function render(){
-        $this->total_price = 0;
-        $this->products = session()->get('cart');
-        foreach($this->products as $id=>$product){
-            $this->total_price += $product['price'];
-        }
-
-
-        return view('livewire.cart-modal', [
-            'products' => $this->products
-        ]);
+    
+      $this->total_price = 0;
+      $this->products = session()->get('cart');
+      if(!empty($this->products)){
+          foreach($this->products as $id=>$product){
+              $this->total_price += $product['price'];
+          }
+      }
+      
+      return view('livewire.cart-modal', [
+          'products' => $this->products
+      ]);
     }
 }

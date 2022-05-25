@@ -27,7 +27,7 @@
                 {{$product->name}}
             </div>
             <div class="product-info__desc">
-                {{$CPU}}/{{$RAM}}/{{$ROM}} GB Silver 2019
+                {{$CPU}}/{{$RAM}}/{{$ROM}} {{$color}} 2019
             </div>
 
 
@@ -40,10 +40,9 @@
                     <div class="product-info__choose">
                             @foreach($optionArr[$key] as $option)
                                 <label for="product-color1-{{$option['id']}}">
-                                    <input wire:change="changed" wire:model="opt.{{$option['name']}}" value="{{$option['id']}}" type="radio" name="product-color[{{$option['name']}}]" id="product-color1-{{$option['id']}}">
-                                    <input type="radio" @if($option['id'] == $RAM) checked @endif>
-                                    {{$option['id']}} ? {{$RAM}}
-                                    {{-- <input type="radio" @if($loop->first) checked @endif> --}}
+                                    <input wire:change="changed('{{$key}}', '{{ $option['id'] }}')" checked wire:model="opt.{{$option['name']}}" value="{{$option['id']}}" type="radio" name="option[{{$option['name']}}]" 
+                                    id="product-color1-{{$option['id']}}">
+                                    <input type="radio" @if(in_array($option['id'], $selectedOption)) checked @endif>
                                     <span>{{$option['value']}}</span>
                                     @if($option['name'] == 'Color')
                                         <div class="color" style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
@@ -58,10 +57,10 @@
                 ${{$price}} USD
             </div>
             <div class="product-info__btns">
-                <a href="#" class="btn">
+                <a wire:click="addToCart" onclick="refreshLivewire()" class="btn" style="cursor: pointer;">
                     Добавить в корзину
                 </a>
-                <a href="#" class="btn btn-white">
+                <a href="#" class="btn btn-white" style="cursor: pointer;">
                     Купить в рассрочку
                 </a>
             </div>
