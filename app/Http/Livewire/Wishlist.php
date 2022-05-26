@@ -29,7 +29,6 @@ class Wishlist extends Component
     
     public function render(){
         
-        // dd('wishlist');
         $wishlists = ModelsWishlist::where('user_id', auth()->id());
         return view('view.wishlist', [
             'wishlists'=>$wishlists,

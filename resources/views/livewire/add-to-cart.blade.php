@@ -1,6 +1,6 @@
 <div>
     <span class="new-item__basket" 
-        {{-- onclick="addToCart('{{$product->id}}')"  --}}
+        onclick="addToCart('{{$product->id}}')"
         wire:click="addToCart('{{$product->id}}')" 
         @if(isset(session()->get('cart')[$product->id])) style="background-color: #0967c5" @endif
         >

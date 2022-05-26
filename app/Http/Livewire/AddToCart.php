@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AddToCart extends Component
 {
-    public $product, $product_id, $price = 0;
+    public $product, $product_id, $price = 0, $selectedOption = [];
 
     public function mount($id){
         $this->product_id = $id;
@@ -27,6 +27,9 @@ class AddToCart extends Component
         foreach($optionArr as $name=>$value){
             $this->price += (int)$optionArr[$name][0]['price'];
         }
+        foreach($optionArr as $key=>$value){
+            $this->selectedOption[$key] = $optionArr[$key][0]['id'];
+        }
 
         if(!$cart){
             $cart = [
@@ -35,10 +38,11 @@ class AddToCart extends Component
                     "price" =>  $product->price + $this->price,
                     "photo" => $product->main_photo,
                     "photo_path" => $product->main_photo_path,
-                    'options' => $optionArr
+                    'options' => $this->selectedOption,
+                    'quantity' => 1
                     ]
                 ];
-                session()->put('cart', $cart);
+            session()->put('cart', $cart);
             }else{
                 if(isset($cart[$id])){
                 unset($cart[$id]);
@@ -48,7 +52,8 @@ class AddToCart extends Component
                     "price" => $product->price + $this->price,
                     "photo" => $product->main_photo,
                     "photo_path" => $product->main_photo_path,
-                    'options' => $optionArr
+                    'options' => $this->selectedOption,
+                    'quantity' => 1
                 ];
             }
             session()->put('cart', $cart);

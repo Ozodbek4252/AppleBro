@@ -18,7 +18,7 @@ class SingleProduct extends Component
         $color,
         $price = 0,
         $optionArr = [],
-        // $opt = [],
+        $opt = [],
         $productOptionData,
         $selectedOption = [],
         $initialAddedPrice = 0
@@ -74,19 +74,30 @@ class SingleProduct extends Component
                     "price" => $this->price,
                     "photo" => $this->product->main_photo,
                     "photo_path" => $this->product->main_photo_path,
-                    'options' => $this->selectedOption
+                    'options' => $this->selectedOption,
+                    'quantity' => 1
                     ]
                 ];
                 session()->put('cart', $cart);
-        }else{
-            if(isset($cart[$this->data_id])){
+            }else{
+                if(isset($cart[$this->data_id])){
                 unset($cart[$this->data_id]);
                 $cart[$this->data_id] = [
                     "name" => $this->product->name,
                     "price" => $this->price,
                     "photo" => $this->product->main_photo,
                     "photo_path" => $this->product->main_photo_path,
-                    'options' => $this->selectedOption
+                    'options' => $this->selectedOption,
+                    'quantity' => 1
+                ];
+            }else{
+                $cart[$this->data_id] = [
+                    "name" => $this->product->name,
+                    "price" => $this->price,
+                    "photo" => $this->product->main_photo,
+                    "photo_path" => $this->product->main_photo_path,
+                    'options' => $this->selectedOption,
+                    'quantity' => 1
                 ];
             }
             session()->put('cart', $cart);

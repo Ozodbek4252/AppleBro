@@ -14,7 +14,6 @@ class AddToWishlist extends Component
     public $product, $product_id;
 
     public function mount($id){
-        // dd('mount');
         $this->product_id = $id;
         $this->product = Product::find($id);
     }
