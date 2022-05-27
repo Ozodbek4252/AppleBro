@@ -30,7 +30,7 @@
             <div class="col-md-2">
                 <div class="mb-3">
                     <label class="form-label" for="price">Price</label>
-                    <input name="price" type="text" class="form-control" id="price" placeholder="Price" value="">
+                    <input name="price" type="number" class="form-control" id="price" placeholder="Price" value="">
                     {{-- @error('price') <span class="error">{{$message}}</span> @enderror --}}
                 </div>
             </div>
@@ -54,6 +54,7 @@
     </div> <!-- end col -->
 
     <div class="row">
+      {{-- Add Options --}}
       <div class="col-xl-3">
         <div class="card">
           <div class="card-body">
@@ -66,7 +67,6 @@
                   <option  value="{{$xususiyat->id}}">@if($xususiyat) {{$xususiyat->name}} - {{$xususiyat->value}} @endif </option>
                 @endforeach
               </select>
-              {{-- @error('category') <span class="error">{{$message}}</span> @enderror --}}
             </div>
             <div class="col-md-12">
               <div class="mb-3">
@@ -99,6 +99,8 @@
           </div>
         </div>
       </div>
+      {{-- End of Add Options --}}
+
       <div class="col-xl-9">
           <div class="card">
             <div class="card-body">
@@ -114,7 +116,7 @@
                                     wire:target="add({{$i}})" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>
-                                <button class="btn text-white btn-info btn-sm"
+                                <button type="button" class="btn text-white btn-info btn-sm"
                                         wire:loading.attr="disabled"
                                         wire:click.prevent="add({{$i}})"><i
                                         class="fa fa-plus"></i></button>
@@ -185,8 +187,6 @@
                     </div>
                     <hr><br>
                   @endforeach
-
-
 
 
                 </div>

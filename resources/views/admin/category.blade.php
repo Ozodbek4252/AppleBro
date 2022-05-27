@@ -1,11 +1,16 @@
-<div>
+<div x-data="{ isOpen: false, deleteModal: false }">
   <div class="row">
     <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
                 <div class="button-items mb-3">
-                  <button wire:click="createShowModal" type="button" class="btn btn-success waves-effect waves-light">Add Category</button>
+                  <button 
+                    @click="isOpen = true"
+                    {{-- wire:click="createShowModal"  --}}
+                    type="button" 
+                    class="btn btn-success waves-effect waves-light">Add Category</button>
                 </div>
+                
                 <h4 class="card-title">Categories List</h4>
                 
                 <div class="table-responsive">
@@ -28,77 +33,81 @@
                                       <td class="px-6 py-2 text-sm whitespace-no-wrap">{{ $item->name }}</td>
                                       <td class="px-6 py-2 text-sm" style="width: 130px;">
                                         <button wire:click="updateShowModal({{ $item->id }})" type="button" class="btn btn-warning waves-effect waves-light"><i class="uil-edit"></i></button>
-                                        <button wire:click="deleteShowModal({{ $item->id }})" type="button" class="btn btn-danger waves-effect waves-light"><i class="uil-trash"></i></button>
+                                        <button @click="$wire.deleteShowModal( {{$item->id}} ), deleteModal = true" type="button" class="btn btn-danger waves-effect waves-light"><i class="uil-trash"></i></button>
                                       </td>
                                   </tr>
                               @endforeach
                           @else
-                                  <tr>
-                                      <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">No Results Found</td>
-                                  </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">No Results Found</td>
+                            </tr>
                           @endif
                       </tbody>
                       {{ $categories->links() }}
                     </table>
                 </div>
 
+                
+
             </div>
+           
         </div>
     </div>
     
   </div>
 
-  {{-- The Delete Modal --}}
-  <x-jet-dialog-modal wire:model="modalConfirmDeleteVisible">
-    <x-slot name="title">
-        {{ __('Delete Category') }}
-    </x-slot>
-
-    <x-slot name="content">
-        {{ __('Are you sure you want to delete this category? Once this category is deleted, all of its resources and data will be permanently deleted.') }}
-    </x-slot>
-
-    <x-slot name="footer">
-        <button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled" type="button" class="btn btn-primary waves-effect waves-light mr-2">
-          {{ __('Cancel') }}
-        </button>
-
-        <button wire:click="delete" wire:loading.attr="disabled" type="button" class="btn btn-danger waves-effect waves-light">
-          {{ __('Delete') }}
-        </button>
-
-    </x-slot>
-  </x-jet-dialog-modal>
-
-
-{{-- The Create Modal --}}
-  <x-jet-dialog-modal wire:model="modalFormVisible" >
-    <x-slot name="title">
-          {{ __('Category name.') }}
-    </x-slot>
-    <x-slot name="content">
-      <div class="mt-4">
-        <x-jet-label for="name" value="{{ __('Name') }}" />
-        <x-jet-input id="name" class="block mt-1 w-full" type="text" wire:model.debounce.500ms="name" />
-        @error('name') <span class="error">{{$message}}</span> @enderror
+  {{-- Craete Modal --}}
+  <div  
+    x-show="isOpen"
+    class=" mx-auto absolute top-0 left-0 bottom-0 w-full h-full flex items-center overflow-y-auto" 
+    style="z-index: 999999;">
+    <div 
+      class="bg-white mx-auto rounded p-4 mt-2 overflow-y-auto shadow-2xl " 
+      style="box-shadow: 0 25px 160px 20px rgb(0 0 0 / 0.25); min-width: 600px;">
+      <div class="rounded px-8 pt-8">
+        <h1 class="font-bold text-2xl mb-8">Modal Title</h1>
+        <div class="modal-body flex">
+          <div class="col-lg-4 mr-3">
+              <select wire:model="category" name="category" class="form-control select2">
+                <option value="{{null}}">Select</option>
+                @foreach($select_categories as $category)  
+                  <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+              </select>
+          </div>
+          {{-- <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" > --}}
+          <input type="text" wire:model="name" placeholder="Category Name" class="w-full form-control" style="">
+        </div>
+        <div class="mt-4" style="display: flex; justify-content: space-between">
+          <button @click="isOpen = false" class="text-white px-4 py-3 text-base rounded" style="background-color: rgb(239 68 68);">Close Modal</button>
+          <button @click="$wire.cat(), isOpen = false" class="text-white px-4 py-3 text-base rounded" style="background-color: rgb(59 130 246);">Save Modal</button>
+        </div>
       </div>
-    </x-slot>
+    </div>
+  </div>
 
-    <x-slot name="footer">
-      <button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled" type="button" class="btn btn-primary waves-effect waves-light mr-2">
-        {{ __('Cancel') }}
-      </button>
+  {{-- Delete Modal --}}
+  <div  
+    x-show="deleteModal"
+    class=" mx-auto absolute top-0 left-0 bottom-0 w-full h-full flex items-center overflow-y-auto" 
+    style="z-index: 999999;">
+    <div 
+      class="bg-white mx-auto rounded p-4 mt-2 overflow-y-auto shadow-2xl " 
+      style="box-shadow: 0 25px 160px 20px rgb(0 0 0 / 0.25); min-width: 600px;">
+      <div class="rounded px-8 pt-8">
+        <h1 class="font-bold text-2xl mb-8">Modal Title</h1>
+        <div class="modal-body flex">
+          <div class="col-lg-4 mr-3">
+            Do you want to delete this category?
+          </div>
+        </div>
+        <div class="mt-4" style="display: flex; justify-content: space-between">
+          <button @click="deleteModal = false" class="text-white px-4 py-3 text-base rounded" style="background-color: rgb(59 130 246);">Cencel</button>
+          <button @click="$wire.deleteCat(), deleteModal = false" class="text-white px-4 py-3 text-base rounded" style="background-color: rgb(239 68 68);">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      @if($modelId)
-        <button wire:click="update()" wire:loading.attr="disabled" type="button" class="btn btn-success waves-effect waves-light">
-          {{ __('Update') }}
-        </button>
-      @else
-        <button wire:click="create()" wire:loading.attr="disabled" type="button" class="btn btn-success waves-effect waves-light">
-          {{ __('Create') }}
-        </button>
-      @endif
-
-    </x-slot>
-  </x-jet-dialog-modal>
 </div>
+

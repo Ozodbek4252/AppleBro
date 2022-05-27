@@ -17,6 +17,7 @@ class Category extends Component
         $modalFormVisible = false, 
         $modalConfirmDeleteVisible = false, 
         $name, 
+        $category,
         $modelId;
 
     public function rules(){
@@ -25,17 +26,26 @@ class Category extends Component
         ];
     }
 
+    public function cat(){
+        $this->validate();
+        $category = new CategoryModel();
+        $category->name = $this->name;
+        $category->cat_id = $this->category;
+        $category->save();
+        $this->resetVars();
+    }
+
     /**
      * The create function.
      *
      * @return void
      */
-    public function create(){
-        $this->validate();
-        CategoryModel::create($this->modelData());
-        $this->modalFormVisible = false;
-        $this->resetVars();
-    }
+    // public function create(){
+    //     $this->validate();
+    //     CategoryModel::create($this->modelData());
+    //     $this->modalFormVisible = false;
+    //     $this->resetVars();
+    // }
 
     /**
      * The read function.
@@ -47,87 +57,15 @@ class Category extends Component
         return $categories;
     }
 
-    /**
-     * the update function.
-     *
-     * @return void
-     */
-    public function update(){
-        $this->validate();
-        CategoryModel::find($this->modelId)->update($this->modelData());
-        $this->modalFormVisible = false;
-    }
-
-    /**
-     * The delete function.
-     *
-     * @return void
-     */
-    public function delete(){
-        CategoryModel::find($this->modelId)->delete();
-        $this->modalConfirmDeleteVisible = false;
-        $this->resetPage();
-    }
-
-    /**
-     * Shows the form modal
-     * of the create function.
-     *
-     * @return void
-     */
-    public function createShowModal(){
-        $this->resetValidation();
+    public function deleteCat(){
+        $categoryModel = CategoryModel::find($this->modelId);
+        $categoryModel->delete();
         $this->resetVars();
-        $this->modalFormVisible = true;
     }
 
-    /**
-     * Shows the form modal
-     * in update mode.
-     *
-     * @param  mixed $id
-     * @return void
-     */
-    public function updateShowModal($id){
-        $this->resetValidation();
-        $this->resetVars();
-        $this->modelId = $id;
-        $this->modalFormVisible = true;
-        $this->loadModal();
-    }
-
-    /**
-     * Shows the delete confirmation modal.
-     *
-     * @param  mixed $id
-     * @return void
-     */
     public function deleteShowModal($id){
         $this->modelId = $id;
         $this->modalConfirmDeleteVisible = true;
-    }
-
-    /**
-     * Loads the modal data
-     * of this component.
-     *
-     * @return void
-     */
-    public function loadModal(){
-        $data = CategoryModel::find($this->modelId);
-        $this->name = $data->name;
-    }
-
-    /**
-     * The data for the model mapped 
-     * in this component.
-     *
-     * @return void
-     */
-    public function modelData(){
-        return [
-            'name' => $this->name,
-        ];
     }
 
     /**
@@ -137,14 +75,16 @@ class Category extends Component
      * @return void
      */
     public function resetVars(){ 
-        $this->name = $this->modelId = null;
+        $this->name = $this->modelId = $this->category = null;
     }
 
     public function render()
     {
         $options = new Option;
+        $select_categories = CategoryModel::where('cat_id', null)->get();
         return view('admin.category', [
             'categories' => $this->read(),
+            'select_categories' => $select_categories,
             'options' => $options,
         ]);
     }
