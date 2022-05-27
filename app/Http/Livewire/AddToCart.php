@@ -58,6 +58,7 @@ class AddToCart extends Component
             }
             session()->put('cart', $cart);
         }
+        $this->emit('refreshCart');
     }
 
     protected $listeners = ['refreshLivewire'];

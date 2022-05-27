@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddToCartController;
+use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\SingleProductController;
 use App\Http\Controllers\Front\WishlistConrtoller;
 use Illuminate\Support\Facades\Route;
@@ -80,6 +81,7 @@ Route::middleware([
     Route::get('/history', History::class)->name('front.history');
     Route::get('/cart', Basket::class)->name('front.cart');
     Route::get('/products/{id?}', AllProducts::class)->name('front.all-products');
+    Route::post('/cart/order', [CartController::class, 'cartOrder'])->name('basket-order-info');
     
 });
 

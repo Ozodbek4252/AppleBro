@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('user_id')->default(0);
             $table->string('last_name');
             $table->string('phone');
+            $table->string('total_price');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

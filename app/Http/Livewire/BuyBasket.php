@@ -5,8 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 
-use function PHPUnit\Framework\isEmpty;
-
 class BuyBasket extends Component
 {
     public $total_price, $quantity, $products;
@@ -16,8 +14,10 @@ class BuyBasket extends Component
         $this->quantity = [];
         $products = session()->get('cart');
         $cart = session()->get('cart');
-        foreach($products as $id=>$product){
-            $this->quantity[$id] = $cart[$id]['quantity'];
+        if($products){
+            foreach($products as $id=>$product){
+                $this->quantity[$id] = $cart[$id]['quantity'];
+            }
         }
     }
 
@@ -27,6 +27,7 @@ class BuyBasket extends Component
             $cart = session()->get('cart');
             $cart[$id]['quantity'] -= 1;
             session()->put('cart', $cart);
+            $this->emit('basketPrice');
         }
     }
 
@@ -36,6 +37,7 @@ class BuyBasket extends Component
             $cart = session()->get('cart');
             $cart[$id]['quantity'] += 1;
             session()->put('cart', $cart);
+            $this->emit('basketPrice');
         }
     }
     
@@ -43,19 +45,22 @@ class BuyBasket extends Component
         $cart = session()->get('cart');
         if(isset($cart[$id])){
             session()->forget('cart.'.$id);
+            $this->emit('basketPrice');
         }
     }
 
     
-    protected $listeners = ['refreshLivewire'];
+    protected $listeners = ['refreshLivewire', 'refreshCart' => 'render'];
 
-    public function refreshLivewire($product_id = null) 
-    {
+    public function refreshLivewire($product_id = null){
         $this->render();
     }
 
     public function render(){
+        $recomendProducts = Product::orderBy('updated_at', 'desc')->take(4)->get();
         $this->products = session()->get('cart');
-        return view('livewire.buy-basket');
+        return view('livewire.buy-basket', [
+            'recomendProducts' => $recomendProducts,
+        ]);
     }
 }
