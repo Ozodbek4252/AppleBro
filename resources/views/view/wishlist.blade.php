@@ -1,18 +1,12 @@
-
-
-	<section class="fav">
-		{{-- {{\App\Models\Product::where('id', $wishlistGet[0]->product_id)->first()}} --}}
-		<div class="container">
-			<h2 class="fav__title">
-				{{__('home.Избранное')}} <span>{{count($wishlists->get())}}</span>
-			</h2>
+<section class="fav">
+	<div class="container">
+		<h2 class="fav__title">
+			{{__('home.Избранное')}} <span>{{count($wishlists->get())}}</span>
+		</h2>
+		@if(count($wishlists->get()) > 0)
 			<div class="similar-products__wrap">
-				@if(count($wishlists->get()) > 0)
-				{{-- {{$wishlists->get()}} --}}
 				@foreach($wishlists->get() as $wishlist)
-				{{-- {{$wishlist}} --}}
 						<div class="products-item">
-							
 							<div class="products-item__wrap">
 								<div class="products-item__img">
 									@php
@@ -83,13 +77,57 @@
 							</div>
 							<a href="#" class="products-item__link"></a>
 						</div>
-					@endforeach
-				@else
-					<h4>Thare are no products in your Wishlist.</h4>
-				@endif
-
+				@endforeach
 			</div>
-		</div>
-	</section>
+		@else
+			<div class="fav__empty">
+				У вас пока нет товаров в списке желаний
+			</div>
+			<h2 class="similar-products__title medium-title">
+				Похожие продукты
+				<a href="#">Все</a>
+			</h2>
+
+			<div class="similar-products__wrap">
+				@foreach($recommended_products as $recommended_product)
+						<div class="products-item">
+							<div class="products-item__wrap">
+								<div class="products-item__img">
+									<img src="{{$recommended_product->main_photo_path}}/{{$recommended_product->main_photo}}" alt="Product">
+								</div>
+								<div class="products-item__btns" onclick="refreshLivewire()">
+									@livewire('add-to-cart', ['id' => $recommended_product->id])
+									@livewire('add-to-wishlist', ['id' => $recommended_product->id])
+								</div>
+							</div>
+							<div class="products-item__name">
+								@php
+									$product_options = \App\Models\ProductOption::where('product_id', $recommended_product->id)->get();
+									$optionArr = [];
+									foreach($product_options as $product_option){
+											$option = \App\Models\Option::find($product_option->option_id);
+											$option["price"] = $product_option->price;
+											$optionArr[$option->name][] = $option;
+									}
+									$total_price = 0;
+								@endphp
+								@foreach($optionArr as $key=>$value)
+									{{$value[0]->value}} @if(!$loop->last)/ @endif
+									@php
+										$options_price = \App\Models\ProductOption::where([['product_id', $recommended_product->id], ['option_id', $value[0]->id]])->first()?->price;
+										$total_price += $options_price;
+									@endphp
+								@endforeach
+							</div>
+							<div class="products-item__price">
+								${{$recommended_product->price + $total_price}} USD
+							</div>
+							<a href="{{ Route('front.single-product', $recommended_product->id) }}" class="products-item__link"></a>
+						</div>
+				@endforeach
+			</div>
+		@endif
+	</div>
+</section>
 
 	
