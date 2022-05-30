@@ -21,7 +21,11 @@ class ProductCreate extends Component
     $option_id = [],
     $product_option_price = [],
     $product_option_photos = [];
-
+    
+  protected $rules = [
+    'xususiyat_name' => 'required|max:20',
+    'xususiyat_value' => 'required',
+  ];
   public function add($i){
     $this->i = $i + 1;
     $this->inputs[(int)$this->i] = $this->i;
@@ -33,11 +37,6 @@ class ProductCreate extends Component
     unset($this->product_option_price[$i]);
     unset($this->product_option_photos[$i]);
   }
-
-  protected $rules = [
-    'xususiyat_name' => 'required|max:20',
-    'xususiyat_value' => 'required',
-  ];
   
   public function resetVal(){
     $this->xususiyat_name = null;
@@ -46,7 +45,6 @@ class ProductCreate extends Component
     $this->xususiyatSelected = 'Select';
   }
   
-
   public function changeOption(){
     if($this->xususiyatSelected != 'Select'){
       $this->xususiyat_name = Option::find($this->xususiyatSelected)->name;
@@ -74,7 +72,6 @@ class ProductCreate extends Component
       $option->name = $this->xususiyat_name;
       $option->value = $this->xususiyat_value;
     }
-
     
     if($this->xususiyat_photo != null){
       $this->validate([

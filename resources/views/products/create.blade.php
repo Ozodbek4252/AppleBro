@@ -17,21 +17,18 @@
                     <option value="{{$category->id}}">{{$category->name}}</option>
                   @endforeach
                 </select>
-                {{-- @error('category') <span class="error">{{$message}}</span> @enderror --}}
               </div>
             </div>
             <div class="col-md-2">
                 <div class="mb-3">
                     <label class="form-label" for="name">Name</label>
                     <input name="name" type="text" class="form-control" id="name" placeholder="Product Name" value="">
-                    {{-- @error('name') <span class="error">{{$message}}</span> @enderror --}}
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="mb-3">
                     <label class="form-label" for="price">Price</label>
                     <input name="price" type="number" class="form-control" id="price" placeholder="Price" value="">
-                    {{-- @error('price') <span class="error">{{$message}}</span> @enderror --}}
                 </div>
             </div>
             <div class="col-md-2">
@@ -48,7 +45,6 @@
             </div>
           </div>
 
-          </div>
         </div>
       </div> <!-- end col -->
     </div> <!-- end col -->
@@ -116,10 +112,9 @@
                                     wire:target="add({{$i}})" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>
-                                <button type="button" class="btn text-white btn-info btn-sm"
-                                        wire:loading.attr="disabled"
-                                        wire:click.prevent="add({{$i}})"><i
-                                        class="fa fa-plus"></i></button>
+                                <div class="btn text-white btn-info btn-sm" wire:click="add({{$i}})">
+                                    <i class="fa fa-plus"></i>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-2">
