@@ -114,7 +114,6 @@
 
 
 	<!-- POPULAR -->
-	
 	<section class="popular">
 		<div class="container">
 			<h2 class="popular__title big-title">
@@ -128,13 +127,19 @@
 						</div>
 							<?php 
 								$product = \App\Models\Product::where('category_id', $category->id)->orderBy('price', 'asc',)->first();
-								?>
+							?>
+							@if($product)
+							{{-- @dd($product->main_photo) --}}
 						<div class="popular-item__price">
-							от {{$product->price}} USD
+							{{-- @dd($product)
+							{{$product->price}} --}}
+							
+							{{-- от {{$product->price}} USD --}}
 						</div>
 						<div class="popular-item__img">
 							<img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="popular">
 						</div>
+						@endif
 						<a href="{{ Route('front.all-products', $category->id) }}" class="popular-item__link"></a>
 					</div>
 				@endforeach
@@ -144,8 +149,6 @@
 
 	
 		<!-- NEW -->
-	
-	
 	<section class="new">
 		<div class="container">
 			<h2 class="new__title medium-title">

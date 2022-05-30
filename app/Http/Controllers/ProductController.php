@@ -29,7 +29,7 @@ class ProductController extends Controller
     
     if($request->hasFile('product_photo') || $request->hasFile('product_photos')){
       if (!file_exists($product_image_path)) {
-        mkdir($product_image_path, 0700);
+        mkdir($product_image_path, 0700, true);
       }
       $height = Image::make($request->file('product_photo'))->height();
       $width = Image::make($request->file('product_photo'))->width();
@@ -76,7 +76,7 @@ class ProductController extends Controller
               $productOptionPhoto = new ProductPhoto;
               $productOptionPhoto->product_id = null;
               $productOptionPhoto->product_option_id = $productOption->id;
-              dd($request->product_option_photos);
+              
               
               // storing images in public/images/productOptionImages/
               $product_option_photo_name = $photo_name . '-option_'. $num . '.' . $request->product_option_photos[$id][$num]->getClientOriginalExtension();
