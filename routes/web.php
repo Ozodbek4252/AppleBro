@@ -51,6 +51,7 @@ Route::get('/', function(){
     if (session()->get('locale') == '') {
         session()->put('locale', 'ru');
         app()->setLocale('ru');
+        
     } else {
         app()->setLocale(session()->get('locale'));
     }

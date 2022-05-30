@@ -32,6 +32,7 @@ class AddToWishlist extends Component
                 $wishlist->product_id = $id;
                 $wishlist->save();
             }
+            $this->emit('refreshWishlist');
         }else{
             return redirect()->route('login');
         }
