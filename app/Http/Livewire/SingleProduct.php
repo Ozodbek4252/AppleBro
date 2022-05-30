@@ -31,22 +31,22 @@ class SingleProduct extends Component
         $this->price = $this->product->price;
 
         $product_options = ProductOption::where('product_id', $id)->get();
-        foreach($product_options as $product_option){
-            $option = Option::find($product_option->option_id);
-            $option["price"] = $product_option->price;
-            $this->optionArr[$option->name][] = $option;
-        }
+        if(count($product_options)>0){
+            foreach($product_options as $product_option){
+                $option = Option::find($product_option->option_id);
+                $option["price"] = $product_option->price;
+                $this->optionArr[$option->name][] = $option;
+            }
+            
+            $this->price = $this->product->price;
+            foreach($this->optionArr as $key=>$value){
+                $this->selectedOption[$key] = $this->optionArr[$key][0]['id'];
+                $this->initialAddedPrice += $this->optionArr[$key][0]['price'];
+                $this->$key = $this->optionArr[$key][0]['value'];
+            }
 
-        $this->price = $this->product->price;
-        foreach($this->optionArr as $key=>$value){
-            $this->selectedOption[$key] = $this->optionArr[$key][0]['id'];
-            $this->initialAddedPrice += $this->optionArr[$key][0]['price'];
+            $this->price += $this->initialAddedPrice; 
         }
-        $this->price += $this->initialAddedPrice; 
-        $this->RAM = $this->optionArr['RAM'][0]['value'];
-        $this->ROM = $this->optionArr['ROM'][0]['value'];
-        $this->CPU = $this->optionArr['CPU'][0]['value'];
-        $this->color = $this->optionArr['Color'][0]['value'];
     }
 
     public function changed($key, $value){

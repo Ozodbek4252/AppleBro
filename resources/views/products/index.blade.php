@@ -3,6 +3,17 @@
   <div class="col-lg">
       <div class="card">
         <div class="card-body">
+          <div style="margin-bottom: 1rem;">
+            @if(session()->has('product'))
+                <div style="padding: .75rem; background: #9ae6b4; color: #276749; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);" class="alert alert-success">
+                    {{session('product')}}
+                </div>
+            @elseif(session()->has('deleteMessage'))
+                <div style="padding: .75rem; background: #feb2b2; color: #9b2c2c; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);" class="alert alert-success">
+                    {{session('deleteMessage')}}
+                </div>
+            @endif
+          </div>
           <div class="button-items mb-3">
             <form action="{{ route('admin.products.create') }}" method="get">
               <button type="submit" class="btn btn-success waves-effect waves-light">Add Product</button>

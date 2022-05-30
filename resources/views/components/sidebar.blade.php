@@ -41,7 +41,7 @@
               <li class="menu-title">Menu</li>
 
               <li>
-                  <a href="{{ route('admin.category') }}" class=" waves-effect">
+                  <a href="{{ route('admin.category') }}" class="waves-effect">
                     <i class="uil-apps"></i>
                     	{{-- <span class="badge rounded-pill bg-primary float-end">01</span> --}}
                       <span>Category</span>
@@ -49,9 +49,24 @@
               </li>
 
               <li>
-                  <a href="{{ route('admin.products') }}" class=" waves-effect">
+                  <a href="{{ route('admin.products') }}" class="waves-effect">
                     <i class="uil-apple-alt"></i>
                       <span>Products</span>
+                  </a>
+              </li>
+
+              <li>
+                  <a href="{{ route('admin.users') }}" class="waves-effect">
+                    <i class="uil-users-alt"></i>
+                      <span>Users</span>
+                  </a>
+              </li>
+
+              <li>
+                  <a href="{{ route('admin.orders') }}" class="waves-effect">
+                    <i class=" uil-comment-dots"></i>
+                    	<span class="badge rounded-pill bg-primary float-end">01</span>
+                      <span>Orders</span>
                   </a>
               </li>
 
@@ -60,7 +75,7 @@
 
 
               <li>
-                  <a href="chat.html" class=" waves-effect">
+                  <a href="chat.html" class="waves-effect">
                       <i class="uil-comments-alt"></i>
                       <span class="badge rounded-pill bg-warning float-end">New</span>
                       <span>Chat</span>

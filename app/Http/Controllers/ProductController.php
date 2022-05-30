@@ -37,7 +37,7 @@ class ProductController extends Controller
                   ->resize($width, $height)
                   ->save(public_path('images/productImages/' . $product_image_folder_name.'/'. $photo_name . '.webp'));
       $product->main_photo = $photo_name . '.webp';
-      $product->main_photo_path = $product_image_path.'/'.$product_image_folder_name;
+      $product->main_photo_path = $product_image_path;
       $product->save();
 
       if($request->hasFile('product_photos')){
@@ -54,7 +54,7 @@ class ProductController extends Controller
           $productPhoto->product_id = $product->id;
           $productPhoto->product_option_id = null;
           $productPhoto->photo = $photo_name.'_'.$num++;
-          $productPhoto->photo_path = $product_image_path.'/'.$product_image_folder_name;
+          $productPhoto->photo_path = $product_image_path;
           $productPhoto->save();
         }
       }
@@ -93,11 +93,13 @@ class ProductController extends Controller
 
     $categories = Category::all();
     $options = Option::all();
+    session()->flash('product','Product added successfully.');
     return redirect()->route('admin.products')->with('categories', $categories)->with('options', $options);
     return view('products.index', [
       'categories' => $categories,
       'options' => $options,
     ]);
+    
   }
 
   public function show(){}
@@ -116,9 +118,9 @@ class ProductController extends Controller
     if($request->hasFile('product_photo') || $request->hasFile('product_photos')){
       $height = Image::make($request->file('product_photo'))->height();
       $width = Image::make($request->file('product_photo'))->width();
-      $image = Image::make($request->file('product_photo'))->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name.'/'.$photo_name . '.webp'));
+      $image = Image::make($request->file('product_photo'))->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$photo_name . '.webp'));
       $product->main_photo = $photo_name . '.webp';
-      $product->main_photo_path = $product_image_path.'/'.$product_image_folder_name;
+      $product->main_photo_path = $product_image_path;
       $product->save();
 
       if($request->hasFile('product_photos')){
@@ -129,12 +131,12 @@ class ProductController extends Controller
           
           $height = Image::make($product_photo)->height();
           $width = Image::make($product_photo)->width();
-          $image = Image::make($product_photo)->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_image_folder_name.'/'.$product_photo_name . '.webp'));
+          $image = Image::make($product_photo)->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$product_photo_name . '.webp'));
           
           $productPhoto->product_id = $product->id;
           $productPhoto->product_option_id = null;
           $productPhoto->photo = $product_photo_name.'.webp';
-          $productPhoto->photo_path = $product_image_path.'/'.$product_image_folder_name;
+          $productPhoto->photo_path = $product_image_path;
           $productPhoto->save();
         }
       }

@@ -6,7 +6,9 @@ use App\Http\Controllers\Front\SingleProductController;
 use App\Http\Controllers\Front\WishlistConrtoller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UsersController;
 use App\Http\Livewire\AddToCart;
 use App\Http\Livewire\AllProducts;
 use App\Http\Livewire\Category;
@@ -51,7 +53,7 @@ Route::get('/', function(){
     if (session()->get('locale') == '') {
         session()->put('locale', 'ru');
         app()->setLocale('ru');
-        
+
     } else {
         app()->setLocale(session()->get('locale'));
     }
@@ -69,6 +71,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+    Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
+    Route::get('/orders', [OrdersController::class, 'index'])->name('admin.orders');
     Route::get('/category', Category::class)->name('admin.category');
     Route::get('/product', Product::class)->name('admin.products');
     Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
