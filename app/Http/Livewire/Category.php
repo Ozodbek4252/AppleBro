@@ -30,7 +30,7 @@ class Category extends Component
         $this->validate();
         $category = new CategoryModel();
         $category->name = $this->name;
-        $category->cat_id = $this->category;
+        $category->category_id = $this->category;
         $category->save();
         $this->resetVars();
     }
@@ -81,7 +81,7 @@ class Category extends Component
     public function render()
     {
         $options = new Option;
-        $select_categories = CategoryModel::where('cat_id', null)->get();
+        $select_categories = CategoryModel::where('category_id', null)->get();
         return view('admin.category', [
             'categories' => $this->read(),
             'select_categories' => $select_categories,
