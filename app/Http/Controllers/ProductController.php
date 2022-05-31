@@ -78,6 +78,7 @@ class ProductController extends Controller
                 $productOptionPhoto->product_id = null;
                 $productOptionPhoto->product_option_id = $productOption->id;
               
+<<<<<<< HEAD
                 // storing images in public/images/productOptionImages/
                 $height = Image::make($product_option_photo)->height();
                 $width = Image::make($product_option_photo)->width();
@@ -89,6 +90,16 @@ class ProductController extends Controller
                 $productOptionPhoto->save();
                 $num++;
               }
+=======
+              
+              // storing images in public/images/productOptionImages/
+              $product_option_photo_name = $photo_name . '-option_'. $num . '.' . $request->product_option_photos[$id][$num]->getClientOriginalExtension();
+              $request->product_option_photos[$id][$num]->move($product_image_path, $product_option_photo_name);
+              $productOptionPhoto->photo = $product_option_photo_name;
+              $productOptionPhoto->photo_path = 'images/productImages/' . $product_image_folder_name;
+              $productOptionPhoto->save();
+              $num++;
+>>>>>>> e1b545fe94243414256baa1636e73ea95ae4244c
             }
           }
         }
