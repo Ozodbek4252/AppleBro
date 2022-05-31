@@ -20,6 +20,7 @@ use App\Http\Livewire\Profile;
 use App\Http\Livewire\History;
 use App\Http\Livewire\Basket;
 use App\Http\Livewire\Admin\EditProduct;
+use App\Http\Livewire\Admin\SingleProduct;
 use App\Http\Livewire\Home;
 use App\Models\Option;
 use App\Models\ProductOption;
@@ -75,6 +76,7 @@ Route::middleware([
     Route::get('/orders', [OrdersController::class, 'index'])->name('admin.orders');
     Route::get('/category', Category::class)->name('admin.category');
     Route::get('/product', Product::class)->name('admin.products');
+    Route::get('/product/single-product/{id}', SingleProduct::class)->name('admin.single-product');
     Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
     Route::get('/product/edit/{id}', EditProduct::class)->name('admin.product.edit');
     Route::post('/product/store', [ProductController::class, 'store'])->name('admin.products.store');

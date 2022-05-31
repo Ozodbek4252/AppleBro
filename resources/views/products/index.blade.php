@@ -85,10 +85,8 @@
                       ?>
                       @if ($product->category_id == $category_id)
                         <td style="width: 60px;">{{ $num++ }}</td>
-                        <td class="px-6 py-2 text-sm whitespace-no-wrap">{{ $product->name }}
-                        </td>
-                        <td class="px-6 py-2 text-sm whitespace-no-wrap">{{ $product->price }}
-                        </td>
+                        <td class="px-6 py-2 text-sm whitespace-no-wrap"><a href="{{route('admin.single-product', $product->id)}}">{{ $product->name }}</a></td>
+                        <td class="px-6 py-2 text-sm whitespace-no-wrap">{{ $product->price }}</td>
                         <td class="px-6 py-2 text-sm whitespace-no-wrap">
                           @if ($optionArr)
                             @foreach ($optionArr as $key => $value)
@@ -150,7 +148,7 @@
                                   <div class="col-md-9">
                                     <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
                                       <button type="button" data-bs-dismiss="modal" aria-label="Close"
-                                        class="btn btn-success btn-sm" wire:click="cencel">
+                                        class="btn btn-success btn-sm">
                                         Cencel
                                       </button>
                                       <button type="button" data-bs-dismiss="modal" aria-label="Close"

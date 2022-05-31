@@ -31,13 +31,12 @@ class Product extends Component
         $deleteProductOptions = ProductOption::where('product_id', $id)->get();
         foreach($deleteProductOptions as $deleteProductOption){
             $productPhotos = ProductPhoto::where('product_option_id', $deleteProductOption->id)->get();
-            $productPhotos->delete();
             foreach($productPhotos as $productPhoto){
                 unlink($productPhoto->photo_path.'/'.$productPhoto->photo);
+                $productPhoto->delete();
             }
 
             $deleteProductOption->delete();
-            unlink($deleteProductOption->photo_path.'/'.$deleteProductOption->photo);
         }
     }
 
