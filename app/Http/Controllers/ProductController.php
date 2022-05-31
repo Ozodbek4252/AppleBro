@@ -82,7 +82,7 @@ class ProductController extends Controller
               $product_option_photo_name = $photo_name . '-option_'. $num . '.' . $request->product_option_photos[$id][$num]->getClientOriginalExtension();
               $request->product_option_photos[$id][$num]->move($product_image_path, $product_option_photo_name);
               $productOptionPhoto->photo = $product_option_photo_name;
-              $productOptionPhoto->photo_path = '/images/productImages/' . $product_image_folder_name;
+              $productOptionPhoto->photo_path = 'images/productImages/' . $product_image_folder_name;
               $productOptionPhoto->save();
               $num++;
             }
