@@ -53,7 +53,7 @@ class ProductController extends Controller
 
           $productPhoto->product_id = $product->id;
           $productPhoto->product_option_id = null;
-          $productPhoto->photo = $photo_name.'_'.$num++;
+          $productPhoto->photo = $photo_name.'_'.$num++.'.webp';
           $productPhoto->photo_path = $product_image_path;
           $productPhoto->save();
         }
