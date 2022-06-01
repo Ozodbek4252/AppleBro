@@ -70,16 +70,18 @@
               ?>
               <tbody class="bg-white divide-y divide-gray-200">
                 @if ($products)
-                  @foreach ($products as $product)
-                    <tr>
-                      <?php
+                @foreach ($products as $product)
+                <tr>
+                  <?php
                       $product_options = \App\Models\ProductOption::where('product_id', $product->id)->get();
                       $optionArr = [];
+                      // $option_name = '';
                       if ($product_options) {
-                          foreach ($product_options as $product_option) {
-                              $option = \App\Models\Option::find($product_option->option_id);
+                        foreach ($product_options as $product_option) {
+                          $option = \App\Models\Option::find($product_option->option_id);
                               $option['price'] = $product_option->price;
-                              $optionArr[$option->name][] = $option;
+                              $option_name = $option->name;
+                              $optionArr[$option_name][] = $option;
                           }
                       }
                       ?>
@@ -94,7 +96,7 @@
                               @foreach ($optionArr[$key] as $option)
                                 <label for="product-color1-{{ $option['id'] }}">
                                   <span>{{ $option['value'] }}</span>
-                                  @if (!$loop->last)
+                                  @if(!$loop->last)
                                     /
                                   @endif
                                   @if ($option['name'] == 'Color')

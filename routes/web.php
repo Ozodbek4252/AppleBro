@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\AddToCartController;
+use App\Http\Controllers\Front\AddToCartController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\SingleProductController;
 use App\Http\Controllers\Front\WishlistConrtoller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Admin\OrdersController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Livewire\AddToCart;
 use App\Http\Livewire\AllProducts;
 use App\Http\Livewire\Category;
