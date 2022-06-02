@@ -136,12 +136,6 @@ class ProductController extends Controller
         $product->main_photo_path = $product_image_path;
         $product->save();
       }
-      $height = Image::make($request->file('product_photo'))->height();
-      $width = Image::make($request->file('product_photo'))->width();
-      $image = Image::make($request->file('product_photo'))->encode('webp', 90)->resize($width, $height)->save(public_path($product->main_photo_path.'/'.$photo_name.'.webp'));
-      $product->main_photo = $photo_name.'.webp';
-      $product->main_photo_path = $product_image_path;
-      $product->save();
     }
 
     if($request->hasFile('product_photos')){
