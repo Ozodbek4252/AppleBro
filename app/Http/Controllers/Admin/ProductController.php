@@ -157,7 +157,6 @@ class ProductController extends Controller
     }
     $product->save();
 
-    // dd($request->all());
     if($request->option_id){
       foreach($request->option_id as $id=>$option_value){
         if($request->selectedProductOption){
@@ -185,7 +184,7 @@ class ProductController extends Controller
         }
         
         if($request->product_option_photos != null){
-          $num = 0;
+          
           if($request->selectedProductOption){
             if(ProductPhoto::where('product_option_id', $request->selectedProductOption[0])->first()){
               $product_image_path = ProductPhoto::where('product_option_id', $request->selectedProductOption[0])->first()->photo_path;
@@ -198,6 +197,8 @@ class ProductController extends Controller
           
           // dd($id);
           foreach($request->product_option_photos as $keys_id=>$value){
+            $num = 0;
+            $photo_name = Str::random(10);
             if($id == $keys_id){
               foreach($value as $keys=>$product_option_photo){
                 $productOptionPhoto = new ProductPhoto;
