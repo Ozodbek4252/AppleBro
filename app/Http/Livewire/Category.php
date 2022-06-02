@@ -55,7 +55,7 @@ class Category extends Component
      * @return void
      */
     public function read(){
-        $categories = CategoryModel::orderBy('id', 'desc')->paginate(10);
+        $categories = CategoryModel::orderBy('id', 'desc')->get();
         return $categories;
     }
 

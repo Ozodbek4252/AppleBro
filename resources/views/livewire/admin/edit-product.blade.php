@@ -74,6 +74,7 @@
                     <img class="rounded me-2" alt="200x200" width="200"
                       src="/{{ $productPhotos->photo_path }}/{{ $productPhotos->photo }}"
                       data-holder-rendered="true">
+
                   </div>
 
                   {{-- Modal Beginning --}}
@@ -253,6 +254,7 @@
                               </option>
                             @endforeach
                           </select>
+
                         </div>
                       </div>
                       <div class="col-md-2">
