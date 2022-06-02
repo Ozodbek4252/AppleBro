@@ -70,25 +70,25 @@
               ?>
               <tbody class="bg-white divide-y divide-gray-200">
                 @if ($products)
-                  @foreach ($products as $product)
-                    <tr>
-                      <?php
+                @foreach ($products as $product)
+                <tr>
+                  <?php
                       $product_options = \App\Models\ProductOption::where('product_id', $product->id)->get();
                       $optionArr = [];
+                      // $option_name = '';
                       if ($product_options) {
-                          foreach ($product_options as $product_option) {
-                              $option = \App\Models\Option::find($product_option->option_id);
+                        foreach ($product_options as $product_option) {
+                          $option = \App\Models\Option::find($product_option->option_id);
                               $option['price'] = $product_option->price;
-                              $optionArr[$option->name][] = $option;
+                              $option_name = $option->name;
+                              $optionArr[$option_name][] = $option;
                           }
                       }
                       ?>
                       @if ($product->category_id == $category_id)
                         <td style="width: 60px;">{{ $num++ }}</td>
-                        <td class="px-6 py-2 text-sm whitespace-no-wrap">{{ $product->name }}
-                        </td>
-                        <td class="px-6 py-2 text-sm whitespace-no-wrap">{{ $product->price }}
-                        </td>
+                        <td class="px-6 py-2 text-sm whitespace-no-wrap"><a href="{{route('admin.single-product', $product->id)}}">{{ $product->name }}</a></td>
+                        <td class="px-6 py-2 text-sm whitespace-no-wrap">{{ $product->price }}</td>
                         <td class="px-6 py-2 text-sm whitespace-no-wrap">
                           @if ($optionArr)
                             @foreach ($optionArr as $key => $value)
@@ -96,7 +96,7 @@
                               @foreach ($optionArr[$key] as $option)
                                 <label for="product-color1-{{ $option['id'] }}">
                                   <span>{{ $option['value'] }}</span>
-                                  @if (!$loop->last)
+                                  @if(!$loop->last)
                                     /
                                   @endif
                                   @if ($option['name'] == 'Color')
@@ -150,7 +150,7 @@
                                   <div class="col-md-9">
                                     <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
                                       <button type="button" data-bs-dismiss="modal" aria-label="Close"
-                                        class="btn btn-success btn-sm" wire:click="cencel">
+                                        class="btn btn-success btn-sm">
                                         Cencel
                                       </button>
                                       <button type="button" data-bs-dismiss="modal" aria-label="Close"

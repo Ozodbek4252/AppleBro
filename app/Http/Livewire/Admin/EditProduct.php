@@ -29,6 +29,7 @@ class EditProduct extends Component
       $inputs = [],
       $old_inputs = [],
       $option_id = [],
+      $selectedProductOption = [],
       $product_option_price = [],
       $product_option_photos = [],
       $product_option_photos_path = [];
@@ -44,6 +45,7 @@ class EditProduct extends Component
           $this->i = $m;
           array_push($this->old_inputs, $m);
           $this->option_id[$m] = $selectedOptions[$m]['option_id'];
+          $this->selectedProductOption[$m] = $selectedOptions[$m]['id'];
           $this->product_option_price[$m] = $selectedOptions[$m]['price'];
           $this->product_option_photos[$m] = count(ProductPhoto::where('product_option_id', $selectedOptions[$m]['id'])->get()) ? ProductPhoto::where('product_option_id', $selectedOptions[$m]['id'])->get()->toArray()[0]['photo'] : 0;
           $this->product_option_photos_path[$m] = count(ProductPhoto::where('product_option_id', $selectedOptions[$m]['id'])->get()) ? ProductPhoto::where('product_option_id', $selectedOptions[$m]['id'])->get()->toArray()[0]['photo_path'] : 0;
@@ -58,24 +60,37 @@ class EditProduct extends Component
   public function remove($i){
     unset($this->inputs[$i]);
     unset($this->option_id[$i]);
+    unset($this->selectedProductOption[$i]);
     unset($this->product_option_price[$i]);
     unset($this->product_option_photos[$i]);
   }
 
+  public function removeOption($id, $i){
+    $option = ProductOption::find($id);
+    $option->delete();
+    $this->mount($option->product_id);
+    session()->flash('option','Option deleted successfully.');
+  }
 
-  public function render()
-  {
+  public function deleteImage($id){
+    ProductPhoto::find($id)->delete();
+    session()->flash('image','Image deleted successfully.');
+  }
+
+  public function deleteOptionImage($id){
+    ProductPhoto::find($id)->delete();
+    session()->flash('optionImage','Image deleted successfully.');
+  }
+
+  public function render(){
     $categories = Category::all();
     $options = Option::all();
     $xususiyatlar = Option::all();
-
     $productOptions = ProductOption::where('product_id', $this->product->id)->get();
-    
     return view('livewire.admin.edit-product', [
       'categories' => $categories,
       'options' => $options,
       'xususiyatlar' => $xususiyatlar,
-
       'productOptions' => $productOptions,
     ]);
   }

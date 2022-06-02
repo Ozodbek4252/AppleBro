@@ -18,7 +18,9 @@ class Category extends Component
         $modalConfirmDeleteVisible = false, 
         $name, 
         $category,
-        $modelId;
+        $modelId,
+        $deleteModal = false,
+        $isOpen = false;
 
     public function rules(){
         return [
@@ -58,9 +60,7 @@ class Category extends Component
     }
 
     public function deleteCat(){
-        $categoryModel = CategoryModel::find($this->modelId);
-        $categoryModel->delete();
-        $this->resetVars();
+        CategoryModel::where('id', $this->modelId)->delete();
     }
 
     public function deleteShowModal($id){
