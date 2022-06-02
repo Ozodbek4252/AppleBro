@@ -115,7 +115,7 @@
                             style="display: flex; justify-content: center; align-items: center; border: 1px solid #e5e7eb; border-radius: 5px;">
                             <img class="img-thumbnail" alt="200x200"
                               style="object-fit: contain; object-position: center; width: 150px; height: 150px;"
-                              width="200" src="{{ $product->main_photo_path }}/{{ $product->main_photo }}"
+                              width="200" src="/{{ $product->main_photo_path }}/{{ $product->main_photo }}"
                               data-holder-rendered="true">
                           </div>
                         </td>
