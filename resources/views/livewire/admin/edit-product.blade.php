@@ -41,7 +41,7 @@
                   </div>
                   <div class="col-md-6" style="display: flex;">
                       <button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-toggle="modal" data-bs-target="#productMainPhotoDeleteModal" aria-label="Close" style="position: absolute; right: 100px;"></button>
-                      <img class="img-thumbnail" alt="200x200" width="200" src="{{$product->main_photo_path}}/{{$product->main_photo}}" data-holder-rendered="true">
+                      <img class="img-thumbnail" alt="200x200" width="200" src="/{{$product->main_photo_path}}/{{$product->main_photo}}" data-holder-rendered="true">
                   </div>
 
                       <div>
@@ -225,7 +225,7 @@
                                     @if(\App\Models\Option::find($productOption->option_id)->name == 'Color')
                                       <div class="col-md-6 mt-2" style="display: flex;">
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-toggle="modal" data-bs-target="#productMainPhotoDeleteModal" aria-label="Close" style="position: absolute; right: 100px;"></button>
-                                        <img class="img-thumbnail" alt="200x200" width="200" src="{{$product_option_photos_path[$key]}}/{{ $product_option_photos[$key] }}" data-holder-rendered="true">
+                                        <img class="img-thumbnail" alt="200x200" width="200" src="/{{$product_option_photos_path[$key]}}/{{ $product_option_photos[$key] }}" data-holder-rendered="true">
                                       </div>
                                     @endif
                             </div>

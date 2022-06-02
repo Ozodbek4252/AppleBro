@@ -43,7 +43,6 @@
                             </tr>
                           @endif
                       </tbody>
-                      {{ $categories->links() }}
                     </table>
                 </div>
 
