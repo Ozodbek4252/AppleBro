@@ -14,5 +14,4 @@ class OrderOption extends Model
     {
     	return $this->belongsTo(OrderProduct::class);
     }
-
 }

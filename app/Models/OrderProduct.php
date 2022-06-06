@@ -13,12 +13,12 @@ class OrderProduct extends Model
 
     public function order()
     {
-    	return $this->belongsTo(Order::class);
+        return $this->belongsTo(Order::class, 'order_id');
     }
     
     public function order_options()
     {
-        return $this->hasMany(OrderOption::class);
+        return $this->hasMany(OrderOption::class, 'order_product_id');
     }
 
 }

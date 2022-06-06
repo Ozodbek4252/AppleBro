@@ -9,15 +9,15 @@
     <div class="product-main">
         <div class="product-gallery">
             <div class="product-gallery__img">
-                <img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="img">
+                <img src="/{{$product->main_photo_path}}/{{$product->main_photo}}" alt="img">
             </div>
             <div class="product-gallery__thumbs">
                 <div class="current">
-                    <img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="img">
+                    <img src="/{{$product->main_photo_path}}/{{$product->main_photo}}" alt="img">
                 </div>
                 @foreach(\App\Models\ProductPhoto::where('product_id', $product->id)->get() as $photo)
                     <div>
-                        <img src="{{$photo->photo_path}}/{{$photo->photo}}" alt="img">
+                        <img src="/{{$photo->photo_path}}/{{$photo->photo}}" alt="img">
                     </div>
                 @endforeach
             </div>

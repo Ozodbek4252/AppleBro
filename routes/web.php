@@ -50,19 +50,7 @@ Route::get('/languages/{lang}', function ($lang) {
     return redirect()->back();
 });
 
-Route::get('/', function(){
-    if (session()->get('locale') == '') {
-        session()->put('locale', 'ru');
-        app()->setLocale('ru');
-
-    } else {
-        app()->setLocale(session()->get('locale'));
-    }
-    $lang = session()->get('locale');
-    $newest_products = \App\Models\Product::orderBy('updated_at', 'desc')->take(4)->get();
-    $categories = \App\Models\Category::all();
-    return view('view.home', ['lang'=> $lang, 'newest_products'=>$newest_products, 'categories'=>$categories]);
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -116,6 +104,10 @@ Route::get('favourites/{id}/check', function ($id){
 
 
 
+// Route::get('/test/{id}', function($id){
+//     $product = \App\Models\Product::find($id)->get();
+//     dd($product[0]->product_options[0]->option);
+// });
 
 
 

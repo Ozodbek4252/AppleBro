@@ -52,6 +52,7 @@
                     </a>
                 </li>
                 @foreach(\App\Models\Category::all() as $category)
+                @if($category->category_id == !null && count(\App\Models\Product::where('category_id', $category->id)->get())>0)
                 <li class="header-menu__item">
                     <span>{{$category->name}} <img src="/img/arrow-down.svg" alt="ico"></span>
                     <ul class="header-submenu">
@@ -64,6 +65,7 @@
                         @endforeach
                     </ul>
                 </li>
+                @endif
                 @endforeach
             </ul>
             <div class="header__icons">
@@ -72,17 +74,12 @@
                 </a>
                 <a href="" class="basket-open">
                     <img src="/img/basket.svg" alt="ico">
-                    @if(Auth::check())
-                        <span id="cart_count">{{ session()->get('cart') ? count(session()->get('cart')) : 0 }}</span>
-                    @endif
+                    @livewire('cart-counter')
+                    
                 </a>
                 <a href="{{ Route('front.wishlist') }}">
                     <img src="/img/heart.svg" alt="ico">
-                    @if(Auth::check())
-                        <span id="wishlist_count">
-                            {{ \App\Models\Wishlist::where('user_id', Auth::id())->get()->count();}}
-                        </span>
-                    @endif
+                    @livewire('wishlist-counter')
                 </a>
                 <a href="" class="header-profile">
                     <img src="/img/user.svg" alt="ico">
