@@ -22,14 +22,6 @@
   @include('components.front_scripts')
   @yield('scripts')
   @stack('modals')
-
-
-  <script>
-    function addToCart() {
-      $('#cart_count').html('asdasdasdasdasd');
-      $('#cart_count').load('/cart_count');
-    }
-  </script>
   
 </body>
 </html>

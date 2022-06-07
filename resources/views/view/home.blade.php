@@ -214,13 +214,13 @@
         {{ __('home.Бренды') }}
       </h2>
       <div class="brands-content">
-        <a href="#" class="brands-item">
+        <a href="{{ Route('front.all-products', 18) }}" class="brands-item">
           <img src="/img/brand1.png" alt="Brand">
         </a>
-        <a href="#" class="brands-item">
+        <a href="{{ Route('front.all-products', 19) }}" class="brands-item">
           <img src="/img/brand2.png" alt="Brand">
         </a>
-        <a href="#" class="brands-item">
+        <a href="{{ Route('front.all-products', 20) }}" class="brands-item">
           <img src="/img/brand3.png" alt="Brand">
         </a>
       </div>
@@ -291,13 +291,14 @@
             <div class="brands-product__name">
               {{$brand_category->name}}
               @php 
-                $product = \App\Models\Product::where('category_id', $brand_category->id)->first();
+                $product = \App\Models\Product::where('category_id', $brand_category->id);
               @endphp
-              @dd($product->main_photo_path, $product->main_photo)
+              {{-- @dd($product->main_photo_path, $product->main_photo) --}}
             </div>
             <div class="brands-product__img">
-              <img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="Samsung">
+              <img src="{{$product->first()->main_photo_path}}/{{$product->first()->main_photo}}" alt="Samsung">
             </div>
+            {{-- @dd($product->get()) --}}
             <a href="#" class="brands-product__link"></a>
           </div>
         @endforeach

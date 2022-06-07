@@ -9,6 +9,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Front\AllProductsController;
 use App\Http\Livewire\AddToCart;
 use App\Http\Livewire\AllProducts;
 use App\Http\Livewire\Category;
@@ -75,7 +76,7 @@ Route::middleware([
     Route::get('/profile', Profile::class)->name('front.profile');
     Route::get('/history', History::class)->name('front.history');
     Route::get('/cart', Basket::class)->name('front.cart');
-    Route::get('/products/{id?}', AllProducts::class)->name('front.all-products');
+    Route::get('/products/{id?}', [AllProductsController::class, 'index'])->name('front.all-products');
     Route::post('/cart/order', [CartController::class, 'cartOrder'])->name('basket-order-info');
     
 });

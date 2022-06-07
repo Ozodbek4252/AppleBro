@@ -86,7 +86,7 @@
             
             <div class="col-md-12">
               <div class="mb-3">
-                <button type="button" wire:click="addXususiyat" class="btn btn-success mr-3">Add</button>
+                <button type="button" wire:click="addXususiyat" class="btn btn-success mr-3">{{$option_btn}}</button>
                 @if($xususiyatSelected != 'Select')
                   <button type="button" wire:click="deleteOption()" class="btn btn-danger">Delete</button>
                 @endif

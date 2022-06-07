@@ -6,6 +6,7 @@ use App\Models\Option;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\ProductOption;
+use App\Models\ProductPhoto;
 
 class SingleProduct extends Component
 {
@@ -21,7 +22,9 @@ class SingleProduct extends Component
         $opt = [],
         $productOptionData,
         $selectedOption = [],
-        $initialAddedPrice = 0
+        $initialAddedPrice = 0,
+        $change_color,
+        $change_color_images = []
         ;
         
 
@@ -50,6 +53,12 @@ class SingleProduct extends Component
     }
 
     public function changed($key, $value){
+        if($key == 'Color'){
+            $this->change_color_images = [];
+            $this->change_color = $value;
+            $this->change_color_images = ProductPhoto::where('product_option_id', ProductOption::where('option_id', $value)->where('product_id', $this->data_id)->first()->id)->get();
+        };
+
         $this->productOptionData = ProductOption::where('option_id', $value)->where('product_id', $this->data_id)->first();
         if(!in_array($value, $this->selectedOption)){
             $minus = ProductOption::where('option_id', $this->selectedOption[$key])->where('product_id', $this->data_id)->first();
