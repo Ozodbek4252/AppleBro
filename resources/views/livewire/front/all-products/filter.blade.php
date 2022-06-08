@@ -14,7 +14,7 @@
             <div class="products-filter__price">
                 <input type="text" placeholder="150000"> 
                 <span>—</span>
-                <input type="text" placeholder="150000">
+                <input type="text" wire:model="minPrice" placeholder="15000">
             </div>
             <div class="products-filter__range">
                 <input type="text" id="price" name="rangeName" />
