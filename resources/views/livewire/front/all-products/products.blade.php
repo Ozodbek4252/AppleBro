@@ -1,8 +1,9 @@
 <div>
+  {{count($filteredProducts)}}
   <div class="products-wrap">
     <div class="products-list">
       @if (!$category_id)
-        @foreach ($products as $product)
+        @foreach ($filteredProducts as $product)
           <div class="products-item">
             <?php
             $optionArr = [];
@@ -74,64 +75,63 @@
           </div>
         @endforeach
       @else
-        @foreach ($products as $key=>$product)
-          @foreach($product as $product)
-            <div class="products-item">
-              <?php
-              $optionArr = [];
-              $product_options = \App\Models\ProductOption::where('product_id', $product->id)->get();
-              foreach ($product_options as $product_option) {
-                  $option = \App\Models\Option::find($product_option->option_id);
-                  $option['price'] = $product_option->price;
-                  $optionArr[$option->name][] = $option;
-              }
-              ?>
+      {{-- @dd($filteredProducts) --}}
+        @foreach ($filteredProducts as $key => $product)
+          <div class="products-item">
+            <?php
+            $optionArr = [];
+            $product_options = \App\Models\ProductOption::where('product_id', $product['id'])->get();
+            foreach ($product_options as $product_option) {
+                $option = \App\Models\Option::find($product_option->option_id);
+                $option['price'] = $product_option->price;
+                $optionArr[$option->name][] = $option;
+            }
+            ?>
 
-              <div class="products-item__wrap">
-                <div class="products-item__img">
-                  <img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="Product">
-                </div>
-                <div class="products-item__btns">
-                  @livewire('add-to-cart', ['id' => $product->id])
-                  @livewire('add-to-wishlist', ['id' => $product->id])
-                </div>
+            <div class="products-item__wrap">
+              <div class="products-item__img">
+                <img src="{{ $product['main_photo_path'] }}/{{ $product['main_photo'] }}" alt="Product">
               </div>
-
-              <!-- У КАЖДОГО ТОВАРА ДОЛЖНЫ БЫТЬ УНИКАЛЬНЫЕ АЙДИ У ЦВЕТОВ-->
-              <div class="products-item__colors">
-                <label for="product1-color1">
-                  <input type="radio" name="product1-color" id="product1-color1">
-                  <span style="background: #FCC7A0;"></span>
-                </label>
-                <label for="product1-color2">
-                  <input type="radio" name="product1-color" id="product1-color2">
-                  <span style="background: #455A83;"></span>
-                </label>
-                <label for="product1-color3">
-                  <input type="radio" name="product1-color" id="product1-color3">
-                  <span style="background: #FFFFFF;"></span>
-                </label>
+              <div class="products-item__btns">
+                {{-- @livewire('add-to-cart', ['id' => $product['id']], key($product['id']))
+                @livewire('add-to-wishlist', ['id' => $product['id']], key($product['id'])) --}}
               </div>
-
-              <div class="products-item__name">
-                {{ $product->name }}
-                (@foreach ($optionArr as $key => $value)
-                  {{ $key }}
-                  @foreach ($optionArr[$key] as $option)
-                    {{ $option['value'] }}@if (!$loop->last)
-                      /
-                    @endif
-                    @endforeach @if (!$loop->last)
-                      , &nbsp;
-                    @endif
-                  @endforeach)
-              </div>
-              <div class="products-item__price">
-                from ${{ $product->price }} USD
-              </div>
-              <a href="{{ Route('front.single-product', $product->id) }}" class="products-item__link"></a>
             </div>
-          @endforeach
+
+            <!-- У КАЖДОГО ТОВАРА ДОЛЖНЫ БЫТЬ УНИКАЛЬНЫЕ АЙДИ У ЦВЕТОВ-->
+            <div class="products-item__colors">
+              <label for="product1-color1">
+                <input type="radio" name="product1-color" id="product1-color1">
+                <span style="background: #FCC7A0;"></span>
+              </label>
+              <label for="product1-color2">
+                <input type="radio" name="product1-color" id="product1-color2">
+                <span style="background: #455A83;"></span>
+              </label>
+              <label for="product1-color3">
+                <input type="radio" name="product1-color" id="product1-color3">
+                <span style="background: #FFFFFF;"></span>
+              </label>
+            </div>
+
+            <div class="products-item__name">
+              {{ $product['name'] }}
+              (@foreach ($optionArr as $key => $value)
+                {{ $key }}
+                @foreach ($optionArr[$key] as $option)
+                  {{ $option['value'] }}@if (!$loop->last)
+                    /
+                  @endif
+                  @endforeach @if (!$loop->last)
+                    , &nbsp;
+                  @endif
+                @endforeach)
+            </div>
+            <div class="products-item__price">
+              from ${{ $product['price'] }} USD
+            </div>
+            <a href="{{ Route('front.single-product', $product['id']) }}" class="products-item__link"></a>
+          </div>
         @endforeach
       @endif
     </div>

@@ -1,7 +1,7 @@
 <div>
     <span class="new-item__basket" 
         onclick="addToCart('{{$product->id}}')"
-        wire:click="addToCart('{{$product->id}}')" 
+        wire:click="addToCart({{$product->id}})" 
         @if(isset(session()->get('cart')[$product->id])) style="background-color: #0967c5" @endif
         >
         <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
