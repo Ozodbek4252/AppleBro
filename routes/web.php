@@ -63,6 +63,7 @@ Route::middleware([
     })->name('dashboard');
     Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
     Route::get('/orders', [OrdersController::class, 'index'])->name('admin.orders');
+    Route::get('/orders/{id}', [OrdersController::class, 'singleOrder'])->name('admin.orders.single-order');
     Route::get('/category', Category::class)->name('admin.category');
     Route::get('/product', Product::class)->name('admin.products');
     Route::get('/product/single-product/{id}', SingleProduct::class)->name('admin.single-product');
@@ -78,6 +79,7 @@ Route::middleware([
     Route::get('/cart', Basket::class)->name('front.cart');
     Route::get('/products/{id?}', [AllProductsController::class, 'index'])->name('front.all-products');
     Route::post('/cart/order', [CartController::class, 'cartOrder'])->name('basket-order-info');
+    Route::get('/orders/user/{id}', [OrdersController::class, 'userOrder'])->name('user.orders');
     
 });
 

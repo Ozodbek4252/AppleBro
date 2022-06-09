@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Option;
 use App\Models\Order;
 use App\Models\OrderOption;
 use App\Models\OrderProduct;
@@ -45,9 +46,9 @@ class CartController extends Controller
                     $order_option = new OrderOption();
                     $order_option->order_product_id = $order_product->id;
                     $order_option->option = $name;
-                    $order_option->value = $value;
-                    // $order_option->photo = $value;
-                    // $order_option->photo_path = $value;
+                    $order_option->value = Option::find($value)->value;
+                    $order_option->photo = $cart_product['photo'];
+                    $order_option->photo_path = $cart_product['photo_path'];
                     $order_option->save();
                 }
             }

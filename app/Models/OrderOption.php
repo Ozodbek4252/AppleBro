@@ -10,8 +10,8 @@ class OrderOption extends Model
 {
     use HasFactory;
 
-    public function order()
+    public function order_product()
     {
-    	return $this->belongsTo(OrderProduct::class);
+        return $this->belongsTo(OrderProduct::class, 'order_product_id');
     }
 }
