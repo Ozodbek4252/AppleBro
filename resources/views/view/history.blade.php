@@ -1,6 +1,6 @@
-@extends('layouts.front')
+{{-- @extends('layouts.front')
 
-@section('content')
+@section('content') --}}
 
 
 	<!-- HISTORY -->
@@ -118,4 +118,4 @@
 		</div>
 	</section>
 	
-@endsection
+{{-- @endsection --}}

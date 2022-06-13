@@ -11,6 +11,7 @@ use App\Models\ProductPhoto;
 class SingleProduct extends Component
 {
     public 
+        $lang,
         $data_id, 
         $product, 
         $RAM,
@@ -123,6 +124,7 @@ class SingleProduct extends Component
 
 
     public function render(){
+        $this->lang = session()->get('locale');
         return view('livewire.single-product')->layout('layouts.front');
     }
 }
