@@ -8,7 +8,7 @@ return [
     "Контакты" => "Contacts",
     "Профиль" => "Profile",
     "Мои заказы" => "My orders",
-    "Выход" => "Output",
+    "Выход" => "Log Out",
     "Интернет-магазины" => "Online shopping",
     "Все права защищены" => "All rights reserved",
     "КОМПАНИЯ" => "COMPANY",
