@@ -60,6 +60,7 @@
           <div class="product-info__title">
             {{ $key }}
           </div>
+          
           <div class="product-info__choose">
             @foreach ($optionArr[$key] as $option)
               <label for="product-color1-{{ $option['id'] }}">

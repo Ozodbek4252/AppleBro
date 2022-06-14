@@ -110,7 +110,7 @@
                                     onclick="event.preventDefault();
                                         this.closest('form').submit();"
                                         style="margin: 0">
-                                        {{ __('Log Out') }}
+                                        {{ __('home.Выход') }}
                                     </x-jet-dropdown-link>
                                 </form>
                             </li>
