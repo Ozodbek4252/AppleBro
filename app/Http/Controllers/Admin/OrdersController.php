@@ -17,8 +17,8 @@ class OrdersController extends Controller
         return view('admin.orders.user_orders', ['orders' => $orders]);
     }
 
-    public function singleOrder($id){
-        $order = \App\Models\Order::find($id);
+    public function singleOrder($order){
+        $order = \App\Models\Order::find($order);
         return view('admin.orders.single_order', ['order' => $order]);
     }
 

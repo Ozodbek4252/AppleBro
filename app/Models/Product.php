@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\ProductPhoto;
 use App\Models\ProductOption;
+use App\Models\Banner;
 
 class Product extends Model
 {
@@ -17,6 +18,11 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    
+    public function banner()
+    {
+        return $this->hasOne(Banner::class);
     }
 
     public function product_photos()

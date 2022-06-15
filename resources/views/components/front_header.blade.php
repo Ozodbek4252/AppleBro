@@ -58,7 +58,7 @@
                     <ul class="header-submenu">
                         @foreach(\App\Models\Product::where('category_id', $category->id)->get() as $product)
                             <li>
-                                <a href="{{ route('front.single-product', $product->id) }}">
+                                <a href="{{ route('front.single-product', $product->slug) }}">
                                     {{$product->name}}
                                 </a>
                             </li>
