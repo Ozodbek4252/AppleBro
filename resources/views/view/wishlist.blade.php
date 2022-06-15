@@ -81,11 +81,11 @@
 			</div>
 		@else
 			<div class="fav__empty">
-				У вас пока нет товаров в списке желаний
+				{{__('home.У вас пока нет товаров в списке желаний')}}
 			</div>
 			<h2 class="similar-products__title medium-title">
-				Похожие продукты
-				<a href="#">Все</a>
+				{{__('home.Похожие продукты')}}
+				<a href="#">{{__('home.Все')}}</a>
 			</h2>
 
 			<div class="similar-products__wrap">

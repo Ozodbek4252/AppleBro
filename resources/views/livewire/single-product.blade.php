@@ -60,6 +60,7 @@
           <div class="product-info__title">
             {{ $key }}
           </div>
+          
           <div class="product-info__choose">
             @foreach ($optionArr[$key] as $option)
               <label for="product-color1-{{ $option['id'] }}">
@@ -84,10 +85,10 @@
       </div>
       <div class="product-info__btns">
         <a wire:click="addToCart" onclick="refreshLivewire()" class="btn" style="cursor: pointer;">
-          Добавить в корзину
+          {{__('home.Добавить в корзину')}}
         </a>
         <a href="#" class="btn btn-white" style="cursor: pointer;">
-          Купить в рассрочку
+          {{__('home.Купить в рассрочку')}}
         </a>
       </div>
     </div>
@@ -97,13 +98,13 @@
     <div class="product-tabs">
       <ul class="product-tabs__head">
         <li>
-          Описание
+          {{__('home.Описание')}}
         </li>
         <li>
-          Характеристики
+          {{__('home.Характеристики')}}
         </li>
         <li>
-          Юридическая информация
+          {{__('home.Юридическая информация')}}
         </li>
       </ul>
       <div class="product-tabs__wrap">
@@ -112,15 +113,15 @@
           осталось щеке подпоясал?
         </div>
         <div class="product-tab">
-          Процессор: M1 Pro<br>
-          ОЗУ: 16 ГБ<br>
-          Встроенный память: 512 ГБ/1 ТБ<br>
-          16‑ядерная сисема: Neural Engine<br>
-          Дисплей: Liquid Retina XDR 14,2 дюймов<br>
-          Три порта: Thunderbolt 4, порт HDMI, слот для карт SDXC, разъём питания MagSafe 3<br>
-          Клавиатура: Magic Keyboard с Touch ID<br>
-          Трекпад: Force Touch<br>
-          Адаптер питания: USB‑C мощностью 140 Вт/: <br>
+          {{__('home.Процессор')}}: M1 Pro<br>
+          {{__('home.ОЗУ')}}: 16 ГБ<br>
+          {{__('home.Встроенный память')}}: 512 ГБ/1 ТБ<br>
+          16‑{{__('home.ядерная система')}}: Neural Engine<br>
+          {{__('home.Дисплей')}}: Liquid Retina XDR 14,2 дюймов<br>
+          {{__('home.Три порта')}}: Thunderbolt 4, порт HDMI, слот для карт SDXC, разъём питания MagSafe 3<br>
+          {{__('home.Клавиатура')}}: Magic Keyboard с Touch ID<br>
+          {{__('home.Трекпад')}}: Force Touch<br>
+         {{__('home. Адаптер питания')}}: USB‑C мощностью 140 Вт/: <br>
         </div>
         <div class="product-tab">
           Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Имени, города?
@@ -131,27 +132,26 @@
     <div class="product-advantages">
       <div class="product-advantages__item">
         <div class="product-advantages__title">
-          Условия доставки
+          {{__('home.Условия доставки')}}
         </div>
         <div class="product-advantages__text">
-          Доставляем максимально быстро. По всей UZB. Бесплатно от 10 000 $
+          {{__('home.Доставляем максимально быстро.')}} {{__('home.По всей')}} UZB. {{__('home.Бесплатно от')}} 10 000 $
         </div>
       </div>
       <div class="product-advantages__item">
         <div class="product-advantages__title">
-          Возврат товаров
+          {{__('home.Возврат товаров')}}
         </div>
         <div class="product-advantages__text">
-          Вернуть просто. Из любой точки России. Без лишней бюрократии.
+          {{__('home.Вернуть просто. Из любой точки России. Без лишней бюрократии.')}}
         </div>
       </div>
       <div class="product-advantages__item">
         <div class="product-advantages__title">
-          Способ оплаты
+          {{__('home.Способ оплаты')}}
         </div>
         <div class="product-advantages__text">
-          Безопасная оплата через защищенный протокол HTTPS. Принимаем карты МИР, VISA, Master Card всех банков в
-          штатном режиме.
+          {{__('home.Безопасная оплата через защищенный протокол HTTPS Принимаем карты МИР  VISA  Master Card всех банков в штатном режиме')}}
         </div>
       </div>
     </div>

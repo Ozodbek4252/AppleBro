@@ -78,7 +78,7 @@
 				{{__('home.Оформить заказ')}}
 			</a>
 			<div class="basket-total__price">
-				<span>Итого:</span>
+				<span>{{__('home.Итого')}}:</span>
 				34 679 000 Сум
 			</div>
 			</div>
@@ -95,7 +95,7 @@
 					iPhone 13 Pro Max" (M1 Max, 10 CPU/32 GPU 202...
 				</div>
 				<div class="favourite__btn btn">
-					Добавлен в избранное
+					{{__('home.Добавлен в избранное')}}
 				</div>
 			</div>
 
