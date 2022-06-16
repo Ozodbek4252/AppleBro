@@ -75,6 +75,7 @@ Route::middleware([
     Route::put('/product/{id}', [ProductController::class, "update"])->name('admin.products.update');
     Route::get('/banners', [BannerController::class, "index"])->name('admin.banners');
     Route::post('/banners/store', [BannerController::class, "store"])->name('admin.banner.slider');
+    Route::post('/banners/store_mid', [BannerController::class, "store_mid"])->name('admin.banner.middle');
     
     // Front Routes
     Route::get('/wishlist', Wishlist::class)->name('front.wishlist');

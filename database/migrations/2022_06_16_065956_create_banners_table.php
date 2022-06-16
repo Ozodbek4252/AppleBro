@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
+    /* Run the migrations.
      *
      * @return void
      */
@@ -15,16 +14,21 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('desction')->nullable();
+            $table->string('type')->nullable();
+            $table->string('media_type')->nullable();
+            $table->string('name_uz')->nullable();
+            $table->string('name_ru')->nullable();
+            $table->string('name_en')->nullable();
+            $table->string('description_uz')->nullable();
+            $table->string('description_ru')->nullable();
+            $table->string('description_en')->nullable();
             $table->string('image');
             $table->string('product_id')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
+    /* Reverse the migrations.
      *
      * @return void
      */

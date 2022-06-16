@@ -5,8 +5,29 @@
 
     {{-- Slider Beginning --}}
     <div class="row">
+
+
+      {{-- Flash Message for Adding Product Beginning --}}
+      <div style="margin-bottom: 1rem;">
+        @if (session()->has('success-slider'))
+          <div
+            style="padding: .75rem; background: #9ae6b4; color: #276749; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);"
+            class="alert alert-success">
+            {{ session('success-slider') }}
+          </div>
+        {{-- @elseif(session()->has('deleteMessage'))
+          <div
+            style="padding: .75rem; background: #feb2b2; color: #9b2c2c; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);"
+            class="alert alert-success">
+            {{ session('deleteMessage') }}
+          </div> --}}
+        @endif
+      </div>
+      {{-- Flash Message for Adding Product End --}}
+
+
       <div class="col-xl-12">
-        <form action="{{Route('admin.banner.slider')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ Route('admin.banner.slider') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="card" style="display: flex; justify-content: space-between; flex-direction: row;">
             <div class="col-xl-6">
@@ -22,7 +43,7 @@
                 </div>
 
                 <div class="mb-3 col-lg-2">
-                  <input type="file" name="slider" class="form-control-file" id="resume">
+                  <input type="file" name="image" class="form-control-file" id="resume">
                 </div>
 
                 <button style="submit" class="btn btn-success waves-effect waves-light">Add</button>
@@ -70,10 +91,10 @@
                       <div class="mb-3">
                         <label class="form-label">Single Product</label>
                         <select name="product" class="form-control select2">
-                          <option>Select</option>
-                            @foreach($products as $product)
-                              <option value="{{$product->id}}">{{$product->name}}</option>
-                            @endforeach
+                          <option value="{{ null }}">Select</option>
+                          @foreach ($products as $product)
+                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
@@ -133,60 +154,132 @@
 
 
     {{-- Middle Big Banner Beginning --}}
+    <div class="col-xl">
+
+
+      {{-- Flash Message for Adding Product Beginning --}}
+      <div style="margin-bottom: 1rem;">
+        @if (session()->has('success-mid'))
+          <div
+            style="padding: .75rem; background: #9ae6b4; color: #276749; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);"
+            class="alert alert-success">
+            {{ session('success-mid') }}
+          </div>
+        {{-- @elseif(session()->has('deleteMessage'))
+          <div
+            style="padding: .75rem; background: #feb2b2; color: #9b2c2c; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);"
+            class="alert alert-success">
+            {{ session('deleteMessage') }}
+          </div> --}}
+        @endif
+      </div>
+      {{-- Flash Message for Adding Product End --}}
+
+
+      <form action="{{ Route('admin.banner.middle') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="card" style="display: flex; flex-direction: row;">
+
+          <div class="col-xl-6">
+            <div class="card-body">
+              <h4 class="card-title">Middle Banner</h4>
+              <p class="card-title-desc">Images in Bootstrap are made responsive
+                with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
+                  100%;</code>
+                and <code class="highlighter-rouge">height: auto;</code> are applied to
+                the image so that it scales with the parent element.</p>
+
+              <div class="mb-3">
+                <img src="assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
+              </div>
+              <div class="mb-3" style="display: flex; justify-content: space-between;">
+                <input type="file" name="middle_image" class="form-control-file">
+                <button style="submit" class="btn btn-success waves-effect waves-light">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-6">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Product</label>
+                    <select name="product" class="form-control select2">
+                      <option value="{{ null }}">Select</option>
+                      @foreach ($products as $product)
+                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="mb-3 mt-3 mt-lg-0">
+                    <label class="form-label">Name Uz</label>
+                    <input name="name_uz" type="text" class="form-control" id="formrow-email-input">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label" for="formrow-email-input">Name Ru</label>
+                    <input name="name_ru" type="text" class="form-control" id="formrow-email-input">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label" for="formrow-password-input">Name En</label>
+                    <input name="name_en" type="text" class="form-control" id="formrow-password-input">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+  {{-- Middle Big Banner End --}}
+
+
+
+  {{-- Bottom Small Banners Beginning --}}
+  <div class="col-xl-6 card" style="display: flex; justify-content: space-between; flex-direction: row;">
     <div class="col-xl-6">
-      <div class="card">
-        <div class="card-body">
 
-          <h4 class="card-title">Responsive images</h4>
-          <p class="card-title-desc">Images in Bootstrap are made responsive
-            with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
-              100%;</code>
-            and <code class="highlighter-rouge">height: auto;</code> are applied to
-            the image so that it scales with the parent element.</p>
+      <div class="card-body">
+        <h4 class="card-title">Responsive images</h4>
+        <p class="card-title-desc">Images in Bootstrap are made responsive
+          with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
+            100%;</code>
+          and <code class="highlighter-rouge">height: auto;</code> are applied to
+          the image so that it scales with the parent element.</p>
 
-          <div class="">
-            <img src="assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
-          </div>
+        <div class="">
+          <img src="assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
         </div>
       </div>
     </div>
-    {{-- Middle Big Banner End --}}
+    <div class="col-xl-6">
+      <div class="card-body">
+        <h4 class="card-title">Responsive images</h4>
+        <p class="card-title-desc">Images in Bootstrap are made responsive
+          with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
+            100%;</code>
+          and <code class="highlighter-rouge">height: auto;</code> are applied to
+          the image so that it scales with the parent element.</p>
 
-
-
-    {{-- Bottom Small Banners Beginning --}}
-    <div class="col-xl-6 card" style="display: flex; justify-content: space-between; flex-direction: row;">
-      <div class="col-xl-6">
-
-        <div class="card-body">
-          <h4 class="card-title">Responsive images</h4>
-          <p class="card-title-desc">Images in Bootstrap are made responsive
-            with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
-              100%;</code>
-            and <code class="highlighter-rouge">height: auto;</code> are applied to
-            the image so that it scales with the parent element.</p>
-
-          <div class="">
-            <img src="assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-6">
-        <div class="card-body">
-          <h4 class="card-title">Responsive images</h4>
-          <p class="card-title-desc">Images in Bootstrap are made responsive
-            with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
-              100%;</code>
-            and <code class="highlighter-rouge">height: auto;</code> are applied to
-            the image so that it scales with the parent element.</p>
-
-          <div class="">
-            <img src="assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
-          </div>
+        <div class="">
+          <img src="assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
         </div>
       </div>
     </div>
-    {{-- Bottom Small Banners End --}}
+  </div>
+  {{-- Bottom Small Banners End --}}
 
   </div>
 @endsection
