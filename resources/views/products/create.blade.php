@@ -43,6 +43,49 @@
                     <input type="file" name="product_photos[]" class="form-control" multiple id="photos" placeholder="Last name" value="">
                 </div>
             </div>
+
+            
+            <div class="card-body row">
+                <form method="post" action="" enctype="multipart/form-data">
+                    @csrf
+                    {{-- <div class="form-group col-md-3">
+                      <label class="form-label" for="photos">Photos</label>
+                      <input type="file" name="product_photos[]" class="form-control" multiple id="photos" placeholder="Last name" value="">
+                    </div> --}}
+                    <div class="form-group col-md-4" style="width: 27.7rem">
+                        <label for="">Характеристики_uz</label>
+                        <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
+                    </div>
+                
+                    <div class="form-group col-md-4" style="width: 27.7rem">
+                        <label for="">Характеристики_ru</label>
+                        <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
+                    </div>
+                
+                  <div class="form-group col-md-4" style="width: 27.7rem">
+                      <label for="">Характеристики_en</label>
+                      <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
+                  </div>
+                </form>
+            </div>
+                  
+            <div class="col-xl-12">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Bootstrap</h4>
+                  <div class="row">
+                    <div class="col-lg-2">
+                      <div class="mb-3">
+                        <label class="form-label" for="photos">Photos</label>
+                        <textarea type="text" name="product_photos[]" class="form-control" multiple id="photos" placeholder="Last name" value=""></textarea
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
           </div>
 
         </div>
