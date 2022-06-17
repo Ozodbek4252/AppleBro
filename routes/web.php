@@ -73,9 +73,12 @@ Route::middleware([
     Route::get('/product/edit/{id}', EditProduct::class)->name('admin.product.edit');
     Route::post('/product/store', [ProductController::class, 'store'])->name('admin.products.store');
     Route::put('/product/{id}', [ProductController::class, "update"])->name('admin.products.update');
-    Route::get('/banners', [BannerController::class, "index"])->name('admin.banners');
+    Route::get('/banners', [BannerController::class, "index"])->name('admin.banners.index');
+    Route::get('/banners/create', [BannerController::class, "create"])->name('admin.banners.create');
     Route::post('/banners/store', [BannerController::class, "store"])->name('admin.banner.slider');
-    Route::post('/banners/store_mid', [BannerController::class, "store_mid"])->name('admin.banner.middle');
+    Route::post('/banners/store_mid/store', [BannerController::class, "store_mid"])->name('admin.banner.middle');
+    Route::post('/banners/small_1/store', [BannerController::class, "small_1"])->name('admin.banner.small_1');
+    Route::post('/banners/small_2/store', [BannerController::class, "small_2"])->name('admin.banner.small_2');
     
     // Front Routes
     Route::get('/wishlist', Wishlist::class)->name('front.wishlist');

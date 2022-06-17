@@ -71,11 +71,15 @@
         </li>
 
         <li>
-          <a href="{{ route('admin.banners') }}" class="waves-effect">
-            <i class="uil-grid"></i>
-            <span>Banners</span>
+          <a href="javascript: void(0);" class="has-arrow waves-effect">
+              <i class="uil-grid"></i>
+              <span>Banners</span>
           </a>
-        </li>
+          <ul class="sub-menu" aria-expanded="false">
+              <li><a href="{{ route('admin.banners.index') }}">List</a></li>
+              <li><a href="{{ route('admin.banners.create') }}">Create</a></li>
+          </ul>
+      </li>
 
 
       </ul>
