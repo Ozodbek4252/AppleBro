@@ -39,11 +39,17 @@ class ProductController extends Controller
                   ->save(public_path($product_image_path.'/'.$photo_name.'.webp'));
       $product->main_photo = $photo_name . '.webp';
       $product->main_photo_path = $product_image_path;
+      $product->characteristic_uz = $request->characteristic_uz;
+      $product->characteristic_ru = $request->characteristic_ru;
+      $product->characteristic_en = $request->characteristic_en;
+      $product->description_uz = $request->description_uz;
+      $product->description_ru = $request->description_ru;
+      $product->description_en = $request->description_en;
       $product->save();
 
       if($request->hasFile('product_photos')){
         $num = 1;
-        foreach($request->file('product_photos') as $product_photo){
+        foreach($request->file('product_photos') as $product_photo){                                                                            
           $productPhoto = new ProductPhoto;
           $height = Image::make($product_photo)->height();
           $width = Image::make($product_photo)->width();
@@ -115,6 +121,13 @@ class ProductController extends Controller
     $product_image_folder_name = date('Y-m-d').'_'. str_replace(' ', '-', strtolower($request->name));
     $product_image_path = 'images/productImages/'.$product_image_folder_name;
     $photo_name = Str::random(10);
+
+      $product->characteristic_uz = $request->characteristic_uz;
+        $product->characteristic_ru = $request->characteristic_ru;
+        $product->characteristic_en = $request->characteristic_en;
+        $product->description_uz = $request->description_uz;
+        $product->description_ru = $request->description_ru;
+        $product->description_en = $request->description_en;
     
     if($request->hasFile('product_photo')){
       if (file_exists($product->main_photo_path)) {
@@ -131,7 +144,7 @@ class ProductController extends Controller
         $width = Image::make($request->file('product_photo'))->width();
         $image = Image::make($request->file('product_photo'))->encode('webp', 90)->resize($width, $height)->save(public_path($product_image_path.'/'.$photo_name.'.webp'));
         $product->main_photo = $photo_name.'.webp';
-        $product->main_photo_path = $product_image_path;
+        $product->main_photo_path = $product_image_path;      
         $product->save();
       }
     }

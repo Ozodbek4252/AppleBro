@@ -2,7 +2,6 @@
 <div class="row">
   <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-
     <div class="col-xl-12">
       <div class="card">
         <div class="card-body">
@@ -44,50 +43,46 @@
                 </div>
             </div>
 
-            
             <div class="card-body row">
-                <form method="post" action="" enctype="multipart/form-data">
-                    @csrf
-                    {{-- <div class="form-group col-md-3">
-                      <label class="form-label" for="photos">Photos</label>
-                      <input type="file" name="product_photos[]" class="form-control" multiple id="photos" placeholder="Last name" value="">
-                    </div> --}}
-                    <div class="form-group col-md-4" style="width: 27.7rem">
-                        <label for="">Характеристики_uz</label>
-                        <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
-                    </div>
-                
-                    <div class="form-group col-md-4" style="width: 27.7rem">
-                        <label for="">Характеристики_ru</label>
-                        <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
-                    </div>
-                
-                  <div class="form-group col-md-4" style="width: 27.7rem">
-                      <label for="">Характеристики_en</label>
-                      <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
-                  </div>
-                </form>
+                <div class="form-group col-md-4" style="width: 27.7rem">
+                    <label for="">Характеристики_uz</label>
+                    <textarea class="ckeditor form-control" name="characteristic_uz"></textarea>
+                </div>
+            
+                <div class="form-group col-md-4" style="width: 27.7rem">
+                    <label for="">Характеристики_ру</label>
+                    <textarea class="ckeditor form-control" name="characteristic_ru"></textarea>
+                </div>
+            
+              <div class="form-group col-md-4" style="width: 27.7rem">
+                  <label for="">Характеристики_ен</label>
+                  <textarea class="ckeditor form-control" name="characteristic_en"></textarea>
+              </div>
             </div>
-                  
-            <div class="col-xl-12">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Bootstrap</h4>
-                  <div class="row">
-                    <div class="col-lg-2">
-                      <div class="mb-3">
-                        <label class="form-label" for="photos">Photos</label>
-                        <textarea type="text" name="product_photos[]" class="form-control" multiple id="photos" placeholder="Last name" value=""></textarea
-                      </div>
-                    </div>
-                  </div>
+            <h4 class="card-title">Описание</h4>
+            <div class="row">
+              <div class="col-lg-2">
+                <div class="mb-3">
+                  <label class="form-label" for="description_uz">oписание_уз</label>
+                  <textarea type="text" name="description_uz" class="form-control" multiple id="description_uz" placeholder="....." value=""></textarea>
+                </div>
+              </div>
+              
+              <div class="col-lg-2">
+                <div class="mb-3">
+                  <label class="form-label" for="description_ru">oписание_ру</label>
+                  <textarea type="text" name="description_ru" class="form-control" multiple id="description_ru" placeholder="....." value=""></textarea>
+                </div>
+              </div>
+              
+              <div class="col-lg-2">
+                <div class="mb-3">
+                  <label class="form-label" for="description_en">oписание_ен</label>
+                  <textarea type="text" name="description_en" class="form-control" multiple id="description_en" placeholder="....." value=""></textarea>
                 </div>
               </div>
             </div>
-
-
           </div>
-
         </div>
       </div> <!-- end col -->
     </div> <!-- end col -->

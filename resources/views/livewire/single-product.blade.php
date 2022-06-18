@@ -108,25 +108,21 @@
         </li>
       </ul>
       <div class="product-tabs__wrap">
+        
+            
+      
+            
         <div class="product-tab">
-          Далеко-далеко за, словесными горами в стране гласных и согласных живут рыбные тексты. Рот обеспечивает
-          осталось щеке подпоясал?
+          {{ $product['description_'.$lang] }}
         </div>
         <div class="product-tab">
-          {{__('home.Процессор')}}: M1 Pro<br>
-          {{__('home.ОЗУ')}}: 16 ГБ<br>
-          {{__('home.Встроенный память')}}: 512 ГБ/1 ТБ<br>
-          16‑{{__('home.ядерная система')}}: Neural Engine<br>
-          {{__('home.Дисплей')}}: Liquid Retina XDR 14,2 дюймов<br>
-          {{__('home.Три порта')}}: Thunderbolt 4, порт HDMI, слот для карт SDXC, разъём питания MagSafe 3<br>
-          {{__('home.Клавиатура')}}: Magic Keyboard с Touch ID<br>
-          {{__('home.Трекпад')}}: Force Touch<br>
-         {{__('home. Адаптер питания')}}: USB‑C мощностью 140 Вт/: <br>
+         {!! $product['characteristic_'.$lang] !!}
         </div>
         <div class="product-tab">
           Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Имени, города?
           Возвращайся океана языком всеми вершину подзаголовок оксмокс по всей. Рукопись букв необходимыми своих своего.
         </div>
+       
       </div>
     </div>
     <div class="product-advantages">
