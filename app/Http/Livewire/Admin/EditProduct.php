@@ -32,6 +32,7 @@ class EditProduct extends Component
       $selectedProductOption = [],
       $product_option_price = [],
       $product_option_photos = [],
+      
       $product_option_photos_path = [];
   
   public function mount($id){
