@@ -42,46 +42,35 @@
                     <input type="file" name="product_photos[]" class="form-control" multiple id="photos" placeholder="Last name" value="">
                 </div>
             </div>
-
             <div class="card-body row">
                 <div class="form-group col-md-4" style="width: 27.7rem">
-                    <label for="">Характеристики_uz</label>
+                    <label for="">Ko'rsatkich Uz</label>
                     <textarea class="ckeditor form-control" name="characteristic_uz"></textarea>
                 </div>
-            
                 <div class="form-group col-md-4" style="width: 27.7rem">
-                    <label for="">Характеристики_ру</label>
+                    <label for="">Характеристики Py</label>
                     <textarea class="ckeditor form-control" name="characteristic_ru"></textarea>
                 </div>
-            
               <div class="form-group col-md-4" style="width: 27.7rem">
-                  <label for="">Характеристики_ен</label>
+                  <label for="">Characteristics En</label>
                   <textarea class="ckeditor form-control" name="characteristic_en"></textarea>
               </div>
             </div>
-            <h4 class="card-title">Описание</h4>
-            <div class="row">
-              <div class="col-lg-2">
-                <div class="mb-3">
-                  <label class="form-label" for="description_uz">oписание_уз</label>
+            <div class="card-body row">
+              <h4 class="card-title">Описание</h4>
+              <div class="form-group col-md-4" style="width: 27.7rem">
+                  <label for="description_uz">malumot uz</label>
                   <textarea type="text" name="description_uz" class="form-control" multiple id="description_uz" placeholder="....." value=""></textarea>
-                </div>
               </div>
-              
-              <div class="col-lg-2">
-                <div class="mb-3">
-                  <label class="form-label" for="description_ru">oписание_ру</label>
+              <div class="form-group col-md-4" style="width: 27.7rem">
+                  <label for="description_ru">oписание py</label>
                   <textarea type="text" name="description_ru" class="form-control" multiple id="description_ru" placeholder="....." value=""></textarea>
-                </div>
               </div>
-              
-              <div class="col-lg-2">
-                <div class="mb-3">
-                  <label class="form-label" for="description_en">oписание_ен</label>
-                  <textarea type="text" name="description_en" class="form-control" multiple id="description_en" placeholder="....." value=""></textarea>
-                </div>
-              </div>
+            <div class="form-group col-md-4" style="width: 27.7rem">
+                <label for="description_en">description en</label>
+                <textarea type="text" name="description_en" class="form-control" multiple id="description_en" placeholder="....." value=""></textarea>
             </div>
+          </div>
           </div>
         </div>
       </div> <!-- end col -->

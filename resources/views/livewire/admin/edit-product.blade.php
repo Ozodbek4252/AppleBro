@@ -14,12 +14,10 @@
               </div>
             @endif
           </div>
-        
           <h4 class="card-title">Bootstrap Validation - Normal</h4>
           <div class="row">
             <div class="col-lg-2">
               <div class="mb-3">
-
                 <label class="form-label">Kategoriyani tanlang</label>
                 <select name="category" class="form-control select2">
                   <option>Select</option>
@@ -30,7 +28,6 @@
                 </select>
               </div>
             </div>
-
             <div class="col-md-2">
               <div class="mb-3">
                 <label class="form-label" for="name">Name</label>
@@ -38,7 +35,6 @@
                   value="{{ $productName }}">
               </div>
             </div>
-
             <div class="col-md-2">
               <div class="mb-3">
                 <label class="form-label" for="price">Price</label>
@@ -46,7 +42,6 @@
                   value="{{ $productPrice }}">
               </div>
             </div>
-
             <div class="col-md-2">
               <div class="mb-3">
                 <label class="form-label" for="photo">Photo</label>
@@ -56,10 +51,7 @@
                 <img class="img-thumbnail" alt="200x200" width="200"
                   src="/{{ $product->main_photo_path }}/{{ $product->main_photo }}" data-holder-rendered="true">
               </div>
-
-
             </div>
-
             <div class="col-md-2">
               <div class="mb-3">
                 <label class="form-label" for="photos">Photos</label>
@@ -75,9 +67,7 @@
                     <img class="rounded me-2" alt="200x200" width="200"
                       src="/{{ $productPhotos->photo_path }}/{{ $productPhotos->photo }}"
                       data-holder-rendered="true">
-
                   </div>
-                  {{-- Modal Beginning --}}
                   <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog"
                     aria-labelledby="Mark_{{ $productPhotos->id }}" id="Mark_{{ $productPhotos->id }}"
                     aria-hidden="false">
@@ -116,60 +106,54 @@
                 @endforeach
               </div>
             </div>
-
-            <div class="card-body row">
-              {{-- @foreach (\App\Models\Product::where('category_id', $category->id)->get() as $characteristic) --}}
+            {{-- <div class="card-body row">
               <div class="form-group col-md-4" style="width: 27.7rem">
                   <label for="">Характеристики_uz</label>
                   <textarea class="ckeditor form-control" name="characteristic_uz">{{ $product->characteristic_uz }}</textarea>
               </div>
-          
               <div class="form-group col-md-4" style="width: 27.7rem">
                   <label for="">Характеристики_ру</label>
                   <textarea class="ckeditor form-control" name="characteristic_ru">{{ $product->characteristic_ru }}</textarea>
               </div>
-          
+              <div class="form-group col-md-4" style="width: 27.7rem">
+                  <label for="">Характеристики_ен</label>
+                  <textarea class="ckeditor form-control" name="characteristic_en">{{ $product->characteristic_en }}</textarea>
+              </div>
+            </div> --}}
+
+            <div class="card-body row">
+              <div class="form-group col-md-4" style="width: 27.7rem">
+                  <label for="">Ko'rsatkich Uz</label>
+                  <textarea class="ckeditor form-control" name="characteristic_uz">{{ $product->characteristic_uz }}</textarea>
+              </div>
+              <div class="form-group col-md-4" style="width: 27.7rem">
+                  <label for="">Характеристики Py</label>
+                  <textarea class="ckeditor form-control" name="characteristic_ru">{{ $product->characteristic_ru }}</textarea>
+              </div>
             <div class="form-group col-md-4" style="width: 27.7rem">
-                <label for="">Характеристики_ен</label>
+                <label for="">Characteristics En</label>
                 <textarea class="ckeditor form-control" name="characteristic_en">{{ $product->characteristic_en }}</textarea>
             </div>
           </div>
 
-          <h4 class="card-title">Описание</h4>
-            <div class="row">
-              <div class="col-lg-2">
-                <div class="mb-3">
-                  <label class="form-label" for="description_uz">oписание_уз</label>
-                  <textarea type="text" name="description_uz" class="form-control" multiple id="description_uz" placeholder="....." >{{$product->description_uz}}</textarea>
-                </div>
+            <div class="card-body row">
+              <h4 class="card-title">Описание</h4>
+              <div class="form-group col-md-4" style="width: 27.7rem">
+                  <label for="description_uz">malumot uz</label>
+                  <textarea type="text" name="description_uz" class="form-control" multiple id="description_uz" placeholder="....." value="">{{$product->description_uz}}</textarea>
               </div>
-              
-              <div class="col-lg-2">
-                <div class="mb-3">
-                  <label class="form-label" for="description_ru">oписание_ру</label>
-                  <textarea type="text" name="description_ru" class="form-control" multiple id="description_ru" placeholder="....." >{{$product->description_ru}}</textarea>
-                </div>
+              <div class="form-group col-md-4" style="width: 27.7rem">
+                  <label for="description_ru">oписание py</label>
+                  <textarea type="text" name="description_ru" class="form-control" multiple id="description_ru" placeholder="....." value="">{{$product->description_ru}}</textarea>
               </div>
-              
-              <div class="col-lg-2">
-                <div class="mb-3">
-                  <label class="form-label" for="description_en">oписание_ен</label>
-                  <textarea type="text" name="description_en" class="form-control" multiple id="description_en" placeholder=".....">{{$product->description_en}}</textarea>
-                </div>
-              </div>
+            <div class="form-group col-md-4" style="width: 27.7rem">
+                <label for="description_en">description en</label>
+                <textarea type="text" name="description_en" class="form-control" multiple id="description_en" placeholder="....." value="">{{$product->description_en}}</textarea>
             </div>
-
-          </div>
-          {{-- @endforeach --}}
-
-
         </div>
       </div>
     </div>
-
-
     <div class="row">
-
       <div class="col-xl-3">
         <div class="card">
           <div class="card-body">
