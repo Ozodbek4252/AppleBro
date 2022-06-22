@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\Front\AddToCartController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\SingleProductController;
