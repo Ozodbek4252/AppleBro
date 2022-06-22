@@ -6,12 +6,11 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
 class AddToWishlist extends Component
 {
-    public $product, $product_id;
+    public $product, $product_id, $wishlist;
 
     public function mount($id){
         $this->product_id = $id;
@@ -40,11 +39,18 @@ class AddToWishlist extends Component
     
     protected $listeners = ['refreshLivewire'];
 
-    public function refreshLivewire($product_id = null) 
-    {
+    public function refreshLivewire($product_id = null){
         $this->render();
     }
+
     public function render(){
+        $wishlist = collect(Wishlist::where('user_id', Auth::id())->get('product_id'))->toArray();
+        $wishlist_sorted = [];
+        foreach($wishlist as $key=>$value){
+            $wishlist_sorted[] = $value['product_id'];
+        }
+        $this->wishlist = $wishlist_sorted;
+
         if (session()->get('locale') == '') {
             session()->put('locale', 'ru');
             app()->setLocale('ru');

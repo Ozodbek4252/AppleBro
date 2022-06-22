@@ -1,4 +1,10 @@
 <?php
+<<<<<<< HEAD
+=======
+
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\DashboardController;
+>>>>>>> ae245b934ad9bad9bc93392a83d7a6f5f876ad14
 use App\Http\Controllers\Front\AddToCartController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\SingleProductController;
@@ -57,9 +63,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    
+    // Admin Routes
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
     Route::get('/orders', [OrdersController::class, 'index'])->name('admin.orders');
     Route::get('/orders/{id}', [OrdersController::class, 'singleOrder'])->name('admin.orders.single-order');
@@ -70,17 +76,24 @@ Route::middleware([
     Route::get('/product/edit/{id}', EditProduct::class)->name('admin.product.edit');
     Route::post('/product/store', [ProductController::class, 'store'])->name('admin.products.store');
     Route::put('/product/{id}', [ProductController::class, "update"])->name('admin.products.update');
-    Route::get('/single-product/{id}', [SingleProductController::class, 'show'])->name('front.single-product');
+    Route::get('/banners', [BannerController::class, "index"])->name('admin.banners.index');
+    Route::get('/banners/create', [BannerController::class, "create"])->name('admin.banners.create');
+    Route::post('/banners/store', [BannerController::class, "store"])->name('admin.banner.slider');
+    Route::post('/banners/store_mid/store', [BannerController::class, "store_mid"])->name('admin.banner.middle');
+    Route::post('/banners/small_1/store', [BannerController::class, "small_1"])->name('admin.banner.small_1');
+    Route::post('/banners/small_2/store', [BannerController::class, "small_2"])->name('admin.banner.small_2');
+    
+    // Front Routes
     Route::get('/wishlist', Wishlist::class)->name('front.wishlist');
     Route::get('/wishlist/{id}', [WishlistController::class, 'show']);
     Route::get('/profile', Profile::class)->name('front.profile');
     Route::get('/history', History::class)->name('front.history');
     Route::get('/cart', Basket::class)->name('front.cart');
-    Route::get('/products/{id?}', [AllProductsController::class, 'index'])->name('front.all-products');
     Route::post('/cart/order', [CartController::class, 'cartOrder'])->name('basket-order-info');
     Route::get('/orders/user/{id}', [OrdersController::class, 'userOrder'])->name('user.orders');
-    
 });
+Route::get('/products/{id?}', [AllProductsController::class, 'index'])->name('front.all-products');
+Route::get('/single-product/{slug}', [SingleProductController::class, 'show'])->name('front.single-product');
 
 Route::get('/cart/add/{id}', AddToCart::class);
 // Route::get('/cart/add/{id}', [AddToCartController::class, 'addToCart']);
@@ -92,6 +105,7 @@ Route::get('wishlist_count', function(){
 });
 
 Route::get('cart_count', function(){
+    
     $cart = session()->get('cart') ?? [];
     return count($cart);
 });
@@ -102,6 +116,8 @@ Route::get('favourites/{id}/check', function ($id){
     }else{
         return response()->json(false);
     }
+
+
 });
 
 
@@ -125,6 +141,3 @@ Route::get('favourites/{id}/check', function ($id){
 
 //     return $optionArr;
 // });
-
-
-

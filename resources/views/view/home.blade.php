@@ -3,6 +3,27 @@
 @section('content')
   <section class="main">
     <div class="main-carousel owl-carousel">
+      <div class="main-carousel__item main-carousel__item-video">
+        <div class="container">
+          <div class="main-carousel__content">
+            <h2 class="main-carousel__title big-title">
+              MacBook Pro 16-inch
+            </h2>
+            <div class="main-carousel__text">
+              Cамый мощный MacBook Pro в истории Cамый мощный MacBook Pro в истории. Cамый мощный MacBook Pro в истории..
+            </div>
+            <a href="#" class="main-carousel__btn btn">
+              {{ __('home.Купить') }}
+            </a>
+          </div>
+        </div>
+        <div class="main-carousel__video">
+          <video preload="auto" muted="muted" autoplay loop playisinline webkit-playisinline>
+            <source src="/video/video.mp4" type="video/mp4">
+            Ваш браузер не поддерживает HTML5 видео.
+          </video>
+        </div>
+      </div>
       <div class="main-carousel__item">
         <div class="container">
           <div class="main-carousel__content">
@@ -48,27 +69,7 @@
 
       <!-- ЕСЛИ ВИДЕО ЕСТЬ ТО КЛАСС main-carousel__item-video -->
 
-      <div class="main-carousel__item main-carousel__item-video">
-        <div class="container">
-          <div class="main-carousel__content">
-            <h2 class="main-carousel__title big-title">
-              MacBook Pro 16-inch
-            </h2>
-            <div class="main-carousel__text">
-              Cамый мощный MacBook Pro в истории Cамый мощный MacBook Pro в истории. Cамый мощный MacBook Pro в истории..
-            </div>
-            <a href="#" class="main-carousel__btn btn">
-              {{ __('home.Купить') }}
-            </a>
-          </div>
-        </div>
-        <div class="main-carousel__video">
-          <video preload="auto" muted="muted" autoplay loop playisinline webkit-playisinline>
-            <source src="/video/video.mp4" type="video/mp4">
-            Ваш браузер не поддерживает HTML5 видео.
-          </video>
-        </div>
-      </div>
+      
 
       <div class="main-carousel__item">
         <div class="container">
@@ -169,10 +170,10 @@
               </div>
             </div>
             <div class="new-item__name">
-              {{ $newest_product->name }}
+              {{-- {{ $newest_product->name }} --}}
             </div>
 
-            <div class="new-item__price" style="margin-bottom: 5px;">
+            <div class="new-item__price" style="margin-bottom: 5px; ">
 
               @php
                 $arr = [];
@@ -196,7 +197,7 @@
               <strong>${{$newest_product->price+$details_price}} USD</strong>
             </div>
 
-            <a href="{{ Route('front.single-product', $newest_product->id) }}" class="new-item__link"></a>
+            <a href="{{ Route('front.single-product', $newest_product->slug) }}" class="new-item__link"></a>
           </div>
         @endforeach
 

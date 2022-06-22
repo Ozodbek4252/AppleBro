@@ -52,7 +52,7 @@ class Product extends Component
 
     public function render(){
         $products = ProductModel::all();
-        $categories = Category::all();
+        $categories = Category::where('category_id', '!=', null)->get();
         $options = Option::all();
         return view('products.index', [
             'categories' => $categories,

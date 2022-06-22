@@ -20,93 +20,45 @@
       {{-- <input type="range" min="1000" max="10000" step="50" value="50" wire:model="" /> --}}
 
     </div>
-    <div class="products-filter__item">
-      <div class="products-filter__title">
-        <span>
-          {{ __('home.Объем накопителя') }}
-        </span>
-        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 11L8 5L14 11" stroke="black" />
-        </svg>
+    @foreach ($options as $option)
+      <div class="products-filter__item">
+        <div class="products-filter__title">
+          <span>
+            {{ $option[0]['name'] }}
+          </span>
+          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 11L8 5L14 11" stroke="black" />
+          </svg>
+        </div>
+        @if($option[0]['name'] == 'Color')
+        <ul class="products-filter__color">
+          @foreach (collect($option)->unique()->toArray() as $value)
+            <li>
+              <label for="{{ $value['value'] }}">
+                <input wire:model="{{ $value['name'] }}" value="{{ $value['value'] }}" type="checkbox" id="{{ $value['value'] }}">
+                <img class="color" src="{{$value['photo_path']}}/{{$value['photo']}}" alt="">
+                <span>{{$value['value']}}</span>
+              </label>
+            </li>
+          @endforeach
+        </ul>
+        @else
+          <ul class="products-filter__list">
+            {{-- @foreach($CPU as $CP)
+              {{$CP}}
+            @endforeach --}}
+            @foreach (collect($option)->unique()->toArray() as $value)
+              <li>
+                <label for="{{ $value['value'] }}">
+                  <input wire:model="{{ $value['name'] }}" value="{{ $value['value'] }}" type="checkbox" id="{{ $value['value'] }}">
+                  <span>{{ $value['value'] }}</span>
+                </label>
+              </li>
+            @endforeach
+          </ul>
+        @endif
       </div>
-      @foreach($RAM as $ram)
-      {{$ram}}
-      @endforeach
-      <ul class="products-filter__list">
-        <li>
-          <label for="storage1">
-            <input wire:model="RAM" value="4" type="checkbox" id="storage1">
-            <span>4 GB</span>
-          </label>
-        </li>
-        <li>
-          <label for="storage2">
-            <input wire:model="RAM" value="6" type="checkbox" id="storage2">
-            <span>6 GB</span>
-          </label>
-        </li>
-        <li>
-          <label for="storage3">
-            <input wire:model="RAM" value="8" type="checkbox" id="storage3">
-            <span>8 GB</span>
-          </label>
-        </li>
-        <li>
-          <label for="storage4">
-            <input wire:model="RAM" value="16" type="checkbox" id="storage4">
-            <span>16 GB</span>
-          </label>
-        </li>
-        <li>
-          <label for="storage5">
-            <input wire:model="RAM" value="32" type="checkbox" id="storage5">
-            <span>32+ GB</span>
-          </label>
-        </li>
-      </ul>
-    </div>
-    <div class="products-filter__item">
-      <div class="products-filter__title">
-        <span>
-          Объем оперативной памяти
-        </span>
-        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 11L8 5L14 11" stroke="black" />
-        </svg>
-      </div>
-      <ul class="products-filter__list">
-        <li>
-          <label for="ram1">
-            <input type="checkbox" id="ram1">
-            <span>128 GB</span>
-          </label>
-        </li>
-        <li>
-          <label for="ram2">
-            <input type="checkbox" id="ram2">
-            <span>256 GB</span>
-          </label>
-        </li>
-        <li>
-          <label for="ram3">
-            <input type="checkbox" id="ram3">
-            <span>512 GB</span>
-          </label>
-        </li>
-        <li>
-          <label for="ram4">
-            <input type="checkbox" id="ram4">
-            <span>1 TB</span>
-          </label>
-        </li>
-        <li>
-          <label for="ram5">
-            <input type="checkbox" id="ram5">
-            <span>2+ ГБ</span>
-          </label>
-        </li>
-      </ul>
-    </div>
+    @endforeach
     <div class="products-filter__item">
       <div class="products-filter__title">
         <span>
@@ -149,40 +101,7 @@
         </li>
       </ul>
     </div>
-    <div class="products-filter__item">
-      <div class="products-filter__title">
-        <span>
-          Цвет
-        </span>
-        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 11L8 5L14 11" stroke="black" />
-        </svg>
-      </div>
-      <ul class="products-filter__color">
-        <li>
-          <label for="color1">
-            <input type="checkbox" id="color1">
-            <div class="color"
-              style="background: linear-gradient(229.47deg, #FFCB46 -17.16%, #C58E00 103.37%);"></div>
-            <span>Gold</span>
-          </label>
-        </li>
-        <li>
-          <label for="color2">
-            <input type="checkbox" id="color2">
-            <div class="color" style="background: #242424"></div>
-            <span>Black</span>
-          </label>
-        </li>
-        <li>
-          <label for="color3">
-            <input type="checkbox" id="color3">
-            <div class="color" style="background: #FF4646;"></div>
-            <span>Red</span>
-          </label>
-        </li>
-      </ul>
-    </div>
+    
 
     <!-- products-filter__item-closed ЗАКРЫТЫЕ ВНАЧАЛЕ -->
     <div class="products-filter__item products-filter__item-closed">
@@ -264,7 +183,7 @@
       </ul>
     </div>
     <div class="products-filter__btns">
-      <a href="#" class="btn products-filter__show">
+      <a wire:click="filter" class="btn products-filter__show">
         {{ __('home.Показать') }}
       </a>
       <a href="#" class="btn products-filter__reset">
@@ -275,3 +194,5 @@
 </div>
 
 
+
+@livewire('front.all-products.products', ['filteredProduct' => $filteredProducts])

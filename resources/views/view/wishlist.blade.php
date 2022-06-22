@@ -5,7 +5,7 @@
 		</h2>
 		@if(count($wishlists->get()) > 0)
 			<div class="similar-products__wrap">
-				@foreach($wishlists->get() as $wishlist)
+				@foreach($wishlists->get() as $key=>$wishlist)
 						<div class="products-item">
 							<div class="products-item__wrap">
 								<div class="products-item__img">
@@ -75,7 +75,7 @@
 							<div class="products-item__price">
 								${{$product->price}} USD
 							</div>
-							<a href="#" class="products-item__link"></a>
+							<a href="{{ Route('front.single-product', $product->id) }}" class="products-item__link"></a>
 						</div>
 				@endforeach
 			</div>

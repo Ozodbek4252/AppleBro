@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
     public function index(){
-        $orders = \App\Models\Order::all();
+        $orders = \App\Models\Order::orderBy('updated_at', 'desc')->get();
         return view('admin.orders.index', ['orders' => $orders]);
     }
 
     public function userOrder($id){
-        $orders = \App\Models\Order::where('user_id', '=', $id)->get();
+        $orders = \App\Models\Order::where('user_id', '=', $id)->orderBy('updated_at', 'desc')->get();
         return view('admin.orders.user_orders', ['orders' => $orders]);
     }
 
-    public function singleOrder($id){
-        $order = \App\Models\Order::find($id);
+    public function singleOrder($order){
+        $order = \App\Models\Order::find($order);
         return view('admin.orders.single_order', ['order' => $order]);
     }
 
