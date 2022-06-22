@@ -9,13 +9,12 @@
             $option["price"] = $product_option->price;
             $optionArr[$option->name][] = $option;
         }
-        
+        $photo = \App\Models\ProductPhoto::where('product_option_id', \App\Models\ProductOption::where('option_id', $product['options']['Color'])->where('product_id', $id)->first()->id)->first();
       @endphp
-      
 
       <div class="basket-item">
         <div class="basket-item__img">
-          <img src="{{$product['photo_path']}}/{{$product['photo']}}" alt="product">
+          <img src="{{$photo->photo_path}}/{{$photo->photo}}" alt="product">
         </div>
         <div class="basket-item__wrap">
           <div class="basket-item__name">

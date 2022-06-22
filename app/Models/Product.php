@@ -32,6 +32,6 @@ class Product extends Model
 
     public function product_options()
     {
-        return $this->hasMany(ProductOption::class);
+        return $this->belongsToMany(Option::class, 'product_options', 'product_id', 'option_id');
     }
 }

@@ -116,8 +116,6 @@
         @livewire('front.all-products.filter', ['category_id' => $category_id])
 
 
-        @livewire('front.all-products.products', ['category_id' => $category_id])
-
       </div>
 
     </div>

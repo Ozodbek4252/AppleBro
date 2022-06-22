@@ -33,6 +33,8 @@ class CartController extends Controller
 
             // Order Product
             foreach($cart as $id => $cart_product){
+                $a = \App\Models\ProductOption::where('product_id', $id)->where('option_id', $cart_product['options']['Color'])->first()->id;
+                $photo = \App\Models\ProductPhoto::where('product_option_id', $a)->first();
 
                 $order_product = new OrderProduct();
                 $order_product->order_id = $order->id;
@@ -47,8 +49,8 @@ class CartController extends Controller
                     $order_option->order_product_id = $order_product->id;
                     $order_option->option = $name;
                     $order_option->value = Option::find($value)->value;
-                    $order_option->photo = $cart_product['photo'];
-                    $order_option->photo_path = $cart_product['photo_path'];
+                    $order_option->photo = $photo->photo;
+                    $order_option->photo_path = $photo->photo_path;
                     $order_option->save();
                 }
             }

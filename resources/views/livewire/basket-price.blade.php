@@ -25,7 +25,10 @@
           @foreach ($products as $id => $product)
             <div class="buy-carousel__item">
               <div class="buy-carousel__img">
-                <img src="{{ $product['photo_path'] }}/{{ $product['photo'] }}" alt="product">
+                @php
+                  $photo = \App\Models\ProductPhoto::where('product_option_id', \App\Models\ProductOption::where('option_id', $product['options']['Color'])->where('product_id', $id)->first()->id)->first();
+                @endphp
+                <img src="{{ $photo->photo_path }}/{{ $photo->photo }}" alt="product">
               </div>
               <div class="buy-carousel__name">
                 MacBook Air MacBook Air MacBook Air

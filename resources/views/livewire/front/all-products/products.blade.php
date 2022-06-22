@@ -1,5 +1,6 @@
 <div>
-  {{count($filteredProducts)}}
+  {{-- {{dd($filteredProducts)}} --}}
+  {{-- {{count($filteredProducts)}} --}}
   <div class="products-wrap">
     <div class="products-list">
       @if (!$category_id)
@@ -14,10 +15,11 @@
                 $optionArr[$option->name][] = $option;
             }
             ?>
+            
 
             <div class="products-item__wrap">
               <div class="products-item__img">
-                <img src="img/new1.png" alt="Product">
+                <img src="{{ $product['main_photo_path'] }}/{{ $product['main_photo'] }}" alt="Product">
               </div>
               <div class="products-item__btns">
                 <span class="products-item__basket">
@@ -38,26 +40,26 @@
                 @livewire('add-to-wishlist', ['id' => $product->id])
               </div>
             </div>
+            
+            {{-- @dd($product->product_options) --}}
 
             <!-- У КАЖДОГО ТОВАРА ДОЛЖНЫ БЫТЬ УНИКАЛЬНЫЕ АЙДИ У ЦВЕТОВ-->
             <div class="products-item__colors">
-              <label for="product1-color1">
-                <input type="radio" name="product1-color" id="product1-color1">
-                <span style="background: #FCC7A0;"></span>
-              </label>
-              <label for="product1-color2">
-                <input type="radio" name="product1-color" id="product1-color2">
-                <span style="background: #455A83;"></span>
-              </label>
-              <label for="product1-color3">
-                <input type="radio" name="product1-color" id="product1-color3">
-                <span style="background: #FFFFFF;"></span>
-              </label>
+              @foreach($product->product_options as $product_color)
+                @if($product_color->name == 'Color')
+                <label for="{{$product->id}}.{{$product_color->value}}">
+                  <input type="radio" name="{{$product->id}}" id="{{$product->id}}.{{$product_color->value}}">
+                  <span>
+                    <img src="/{{$product_color->photo_path}}/{{$product_color->photo}}" style="width: 40px; border-radius: 50%; margin-right: 16px;" alt="color">
+                  </span>
+                </label>
+                @endif
+              @endforeach
             </div>
 
             <div class="products-item__name">
               {{ $product->name }}
-              (@foreach ($optionArr as $key => $value)
+              {{-- (@foreach ($optionArr as $key => $value)
                 {{ $key }}
                 @foreach ($optionArr[$key] as $option)
                   {{ $option['value'] }}@if (!$loop->last)
@@ -66,7 +68,7 @@
                   @endforeach @if (!$loop->last)
                     , &nbsp;
                   @endif
-                @endforeach)
+                @endforeach) --}}
             </div>
             <div class="products-item__price">
               from ${{ $product->price }} USD
@@ -87,6 +89,7 @@
                 $optionArr[$option->name][] = $option;
             }
             ?>
+
 
             <div class="products-item__wrap">
               <div class="products-item__img">
@@ -116,7 +119,7 @@
 
             <div class="products-item__name">
               {{ $product['name'] }}
-              (@foreach ($optionArr as $key => $value)
+              {{-- (@foreach ($optionArr as $key => $value)
                 {{ $key }}
                 @foreach ($optionArr[$key] as $option)
                   {{ $option['value'] }}@if (!$loop->last)
@@ -125,7 +128,7 @@
                   @endforeach @if (!$loop->last)
                     , &nbsp;
                   @endif
-                @endforeach)
+                @endforeach) --}}
             </div>
             <div class="products-item__price">
               from ${{ $product['price'] }} USD
