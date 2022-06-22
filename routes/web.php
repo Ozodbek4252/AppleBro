@@ -1,7 +1,10 @@
 <?php
+<<<<<<< HEAD
+=======
 
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\DashboardController;
+>>>>>>> ae245b934ad9bad9bc93392a83d7a6f5f876ad14
 use App\Http\Controllers\Front\AddToCartController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\SingleProductController;
