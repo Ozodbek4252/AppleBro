@@ -106,21 +106,6 @@
                 @endforeach
               </div>
             </div>
-            {{-- <div class="card-body row">
-              <div class="form-group col-md-4" style="width: 27.7rem">
-                  <label for="">Характеристики_uz</label>
-                  <textarea class="ckeditor form-control" name="characteristic_uz">{{ $product->characteristic_uz }}</textarea>
-              </div>
-              <div class="form-group col-md-4" style="width: 27.7rem">
-                  <label for="">Характеристики_ру</label>
-                  <textarea class="ckeditor form-control" name="characteristic_ru">{{ $product->characteristic_ru }}</textarea>
-              </div>
-              <div class="form-group col-md-4" style="width: 27.7rem">
-                  <label for="">Характеристики_ен</label>
-                  <textarea class="ckeditor form-control" name="characteristic_en">{{ $product->characteristic_en }}</textarea>
-              </div>
-            </div> --}}
-
             <div class="card-body row">
               <div class="form-group col-md-4" style="width: 27.7rem">
                   <label for="">Ko'rsatkich Uz</label>
@@ -135,21 +120,21 @@
                 <textarea class="ckeditor form-control" name="characteristic_en">{{ $product->characteristic_en }}</textarea>
             </div>
           </div>
-
-            <div class="card-body row">
-              <h4 class="card-title">Описание</h4>
-              <div class="form-group col-md-4" style="width: 27.7rem">
-                  <label for="description_uz">malumot uz</label>
-                  <textarea type="text" name="description_uz" class="form-control" multiple id="description_uz" placeholder="....." value="">{{$product->description_uz}}</textarea>
-              </div>
-              <div class="form-group col-md-4" style="width: 27.7rem">
-                  <label for="description_ru">oписание py</label>
-                  <textarea type="text" name="description_ru" class="form-control" multiple id="description_ru" placeholder="....." value="">{{$product->description_ru}}</textarea>
-              </div>
+          <div class="card-body row">
+            <h4 class="card-title">Описание</h4>
+            <div class="form-group col-md-4" style="width: 27.7rem">
+                <label for="description_uz">malumot uz</label>
+                <textarea type="text" name="description_uz" class="form-control" multiple id="description_uz" placeholder="....." value="">{{$product->description_uz}}</textarea>
+            </div>
+            <div class="form-group col-md-4" style="width: 27.7rem">
+                <label for="description_ru">oписание py</label>
+                <textarea type="text" name="description_ru" class="form-control" multiple id="description_ru" placeholder="....." value="">{{$product->description_ru}}</textarea>
+            </div>
             <div class="form-group col-md-4" style="width: 27.7rem">
                 <label for="description_en">description en</label>
                 <textarea type="text" name="description_en" class="form-control" multiple id="description_en" placeholder="....." value="">{{$product->description_en}}</textarea>
             </div>
+          </div>
         </div>
       </div>
     </div>
@@ -172,29 +157,24 @@
                 @endforeach
               </select>
             </div>
-
             <div class="col-md-12">
               <div class="mb-3">
                 <label class="form-label" for="xususiyat_name">Name</label>
                 <input type="text" wire:model="xususiyat_name" class="form-control" placeholder="Name">
               </div>
             </div>
-
             <div class="col-md-12">
               <div class="mb-3">
                 <label class="form-label" for="xususiyat_name">Value</label>
                 <input type="text" wire:model="xususiyat_value" class="form-control" placeholder="Value">
               </div>
             </div>
-
             <div class="col-md-12">
               <div class="mb-3">
                 <label class="form-label" for="xususiyat_name">Photo</label>
                 <input type="file" wire:model="xususiyat_photo" class="form-control">
               </div>
             </div>
-
-
             <div class="col-md-12">
               <div class="mb-3">
                 <button type="button" wire:click="addXususiyat" class="btn btn-success mr-3">Add</button>
@@ -206,8 +186,6 @@
           </div>
         </div>
       </div>
-
-
       <div class="col-xl-9">
         <div class="card">
           <div class="card-body">
@@ -229,7 +207,6 @@
             </div>
             <div class="col-md-12">
               <div class="mb-3" style="display: flex; flex-direction: column;">
-
                 <div class="add-input mb-2">
                   <div class="row">
                     <div class="col-md-1">
@@ -259,7 +236,6 @@
                     </div>
                   </div>
                 </div>
-
                 @foreach ($productOptions as $key => $productOption)
                   <div class="add-input mb-0 {{ $key }}">
                     <div class="row">
@@ -280,7 +256,6 @@
                               </option>
                             @endforeach
                           </select>
-
                         </div>
                       </div>
                       <div class="col-md-2">
@@ -312,7 +287,6 @@
                                     src="/{{ $productOptionPhoto->photo_path }}/{{ $productOptionPhoto->photo }}"
                                     data-holder-rendered="true">
                                 </div>
-
                                 {{-- Modal Beginning --}}
                                 <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog"
                                   aria-labelledby="Mark_{{ $productOptionPhoto->id }}"
@@ -361,7 +335,6 @@
                   </div>
                   <hr><br>
                 @endforeach
-
                 @foreach ($inputs as $key => $value)
                   <div class="add-input mb-0 {{ $key }}">
                     <div class="row">
@@ -405,17 +378,12 @@
                   </div>
                   <hr><br>
                 @endforeach
-
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-
     </div>
     <button class="btn btn-primary" type="submit" style="width: 200px;">Saqlash</button>
   </form>
-
 </div>

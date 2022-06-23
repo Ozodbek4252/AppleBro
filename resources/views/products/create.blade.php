@@ -75,7 +75,6 @@
         </div>
       </div> <!-- end col -->
     </div> <!-- end col -->
-
     <div class="row">
       {{-- Add Options --}}
       <div class="col-xl-3">
@@ -109,8 +108,6 @@
                 <input type="file" wire:model="xususiyat_photo" class="form-control">
               </div>
             </div>
-            
-            
             <div class="col-md-12">
               <div class="mb-3">
                 <button type="button" wire:click="addXususiyat" class="btn btn-success mr-3">{{$option_btn}}</button>
@@ -123,7 +120,6 @@
         </div>
       </div>
       {{-- End of Add Options --}}
-
       <div class="col-xl-9">
           <div class="card">
             <div class="card-body">
@@ -161,14 +157,14 @@
                         </div>
                     </div>
                   </div>
-
                   @foreach($inputs as $key => $value)
                     <div class="add-input mb-0 {{ $key }}">
                         <div class="row">
                             <div class="col-md-1">
                                 <button class="btn btn-danger btn-sm"
-                                        wire:click.prevent="remove({{$key}})"><i
-                                        class="fa fa-minus"></i></button>
+                                  wire:click.prevent="remove({{$key}})"><i
+                                  class="fa fa-minus"></i>
+                                </button>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
@@ -185,42 +181,38 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <input type="text"
-                                          class="form-control form-control-sm"
-                                          placeholder="price"
-                                          wire:model="product_option_price.{{ $key }}"
-                                          name="product_option_price[{{ $key }}]">
+                                      class="form-control form-control-sm"
+                                      placeholder="price"
+                                      wire:model="product_option_price.{{ $key }}"
+                                      name="product_option_price[{{ $key }}]">
                                     @error('product_option_price.'.$value) <span
-                                        class="text-danger error">{{ $message }}</span>@enderror
+                                      class="text-danger error">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <input type="file"
-                                          multiple
-                                          class="form-control form-control-sm"
-                                          wire:model="product_option_photos.{{ $key }}"
-                                          name="product_option_photos[{{ $key }}][]">
+                                      multiple
+                                      class="form-control form-control-sm"
+                                      wire:model="product_option_photos.{{ $key }}"
+                                      name="product_option_photos[{{ $key }}][]">
                                     @error('product_option_photos.'.$value) <span
-                                        class="text-danger error">{{ $message }}</span>@enderror
+                                      class="text-danger error">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <hr><br>
                   @endforeach
-
-
                 </div>
               </div>
             </div>
           </div>
       </div>
-      
     </div>
     <button class="btn btn-primary" type="submit" style="width: 200px;">Submit form</button>
   </form>
-
-
 </div>
 
