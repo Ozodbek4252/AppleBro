@@ -1,33 +1,37 @@
 <?php
-
-use App\Http\Controllers\Admin\BannerController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Front\AddToCartController;
-use App\Http\Controllers\Front\CartController;
-use App\Http\Controllers\Front\SingleProductController;
-use App\Http\Controllers\Front\WishlistConrtoller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\Admin\OrdersController;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\OrdersController;
+use App\Http\Controllers\Admin\BannerController;
+
+use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\SingleProductController;
 use App\Http\Controllers\Front\AllProductsController;
-use App\Http\Livewire\AddToCart;
-use App\Http\Livewire\AllProducts;
-use App\Http\Livewire\Category;
-use App\Http\Livewire\Favorite;
-use App\Http\Livewire\Wishlist;
-use App\Http\Livewire\ProductCreate;
+use App\Http\Controllers\Front\CartController;
+use App\Http\Controllers\Front\AddToCartController;
+use App\Http\Controllers\Front\WishlistConrtoller;
+
+
+use App\Http\Livewire\Admin\SingleProduct;
+use App\Http\Livewire\Admin\EditProduct;
 use App\Http\Livewire\Product;
+use App\Http\Livewire\ProductCreate;
+use App\Http\Livewire\AddToCart;
+use App\Http\Livewire\Category;
+use App\Http\Livewire\Wishlist;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\History;
 use App\Http\Livewire\Basket;
-use App\Http\Livewire\Admin\EditProduct;
-use App\Http\Livewire\Admin\SingleProduct;
+use App\Http\Livewire\Favorite;
+use App\Http\Livewire\AllProducts;
 use App\Http\Livewire\Home;
+
 use App\Models\Option;
 use App\Models\ProductOption;
-use Illuminate\Support\Facades\Auth;
 
 // use App\Models\Category as ModelsCategory;
 // use App\Models\Category as ModelsCategory;
@@ -60,26 +64,31 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    
     // Admin Routes
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
-    Route::get('/orders', [OrdersController::class, 'index'])->name('admin.orders');
-    Route::get('/orders/{id}', [OrdersController::class, 'singleOrder'])->name('admin.orders.single-order');
-    Route::get('/category', Category::class)->name('admin.category');
-    Route::get('/product', Product::class)->name('admin.products');
-    Route::get('/product/single-product/{id}', SingleProduct::class)->name('admin.single-product');
-    Route::get('/product/create', ProductCreate::class)->name('admin.products.create');
-    Route::get('/product/edit/{id}', EditProduct::class)->name('admin.product.edit');
-    Route::post('/product/store', [ProductController::class, 'store'])->name('admin.products.store');
-    Route::put('/product/{id}', [ProductController::class, "update"])->name('admin.products.update');
-    Route::get('/banners', [BannerController::class, "index"])->name('admin.banners.index');
-    Route::get('/banners/create', [BannerController::class, "create"])->name('admin.banners.create');
-    Route::post('/banners/store', [BannerController::class, "store"])->name('admin.banner.slider');
-    Route::post('/banners/store_mid/store', [BannerController::class, "store_mid"])->name('admin.banner.middle');
-    Route::post('/banners/small_1/store', [BannerController::class, "small_1"])->name('admin.banner.small_1');
-    Route::post('/banners/small_2/store', [BannerController::class, "small_2"])->name('admin.banner.small_2');
-    
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::name('admin.')->group(function (){
+            Route::get('/users', [UsersController::class, 'index'])->name('users');
+            Route::get('/orders', [OrdersController::class, 'index'])->name('orders');
+            Route::get('/orders/{id}', [OrdersController::class, 'singleOrder'])->name('orders.single-order');
+            Route::get('/category', Category::class)->name('category');
+            Route::get('/product', Product::class)->name('products');
+            Route::get('/product/single-product/{id}', SingleProduct::class)->name('single-product');
+            Route::get('/product/create', ProductCreate::class)->name('products.create');
+            Route::get('/product/edit/{id}', EditProduct::class)->name('product.edit');
+            Route::post('/product/store', [ProductController::class, 'store'])->name('products.store');
+            Route::put('/product/{id}', [ProductController::class, "update"])->name('products.update');
+            Route::controller(BannerController::class)->group(function () {
+                Route::get('/banners', "index")->name('banners.index');
+                Route::get('/banners/create', "create")->name('banners.create');
+                Route::post('/banners/store', "store")->name('banner.slider');
+                Route::post('/banners/store_mid/store', "store_mid")->name('banner.middle');
+                Route::post('/banners/small_1/store', "small_1")->name('banner.small_1');
+                Route::post('/banners/small_2/store', "small_2")->name('banner.small_2');
+            });
+        });
+    });
+
     // Front Routes
     Route::get('/wishlist', Wishlist::class)->name('front.wishlist');
     Route::get('/wishlist/{id}', [WishlistController::class, 'show']);
@@ -138,3 +147,9 @@ Route::get('favourites/{id}/check', function ($id){
 
 //     return $optionArr;
 // });
+
+
+
+
+
+
