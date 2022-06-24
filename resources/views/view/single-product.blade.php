@@ -169,13 +169,13 @@
 						@endphp
 						<li>{{$item->name}}</li>
 						@foreach($item->product_options as $product_option)
-							@php
-								if(!array_key_exists($product_option->option->name, $arr)){
-									$arr[$product_option->option->name][] = $product_option->option->value;
-									$details_price += $product_option->price;
-								}
-							@endphp
-						@endforeach
+                @php
+                  if(!array_key_exists($product_option->name, $arr)){
+                    $arr[$product_option->name][] = $product_option->value;
+                    $details_price += \App\Models\ProductOption::where('product_id', $product_option->pivot->product_id)->where('option_id', $product_option->pivot->option_id)->first()->price;
+                  }
+                  @endphp
+              @endforeach
 						@foreach($arr as $key => $value)
 							{{$value[0]}} @if(!$loop->last) / @endif
 						@endforeach

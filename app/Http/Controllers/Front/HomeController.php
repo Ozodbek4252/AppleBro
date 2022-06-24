@@ -29,14 +29,13 @@ class HomeController extends Controller
         //         }
         //     }
         // }
-        // $categories = Category::all();
+        $categories = Category::where('category_id', '!=', null)->get();
         $apple = Category::where('category_id', 18)->get();
         $samsung = Category::where('category_id', 19)->get();
         $xiaomi = Category::where('category_id', 20)->get();
-        // $categories = Category::where('parent_id', $apple->id)->get();
         return view('view.home', [
             'lang' => $lang,
-            // 'categories' => $categories,
+            'categories' => $categories,
             'newest_products' => $newest_products,
             'apple' => $apple,
             'samsung' => $samsung,

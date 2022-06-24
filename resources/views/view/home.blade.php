@@ -115,7 +115,7 @@
 
 
   <!-- POPULAR -->
-  {{-- <section class="popular">
+  <section class="popular">
     <div class="container">
       <h2 class="popular__title big-title">
         {{ __('home.Популярные категории') }}
@@ -127,9 +127,9 @@
               {{ $category->name }}
             </div>
             <?php
-            // $product = \App\Models\Product::where('category_id', $category->id)
-            //     ->orderBy('price', 'asc')
-            //     ->first();
+            $product = \App\Models\Product::where('category_id', $category->id)
+                ->orderBy('price', 'asc')
+                ->first();
             ?>
             @if ($product)
               <div class="popular-item__price">
@@ -144,7 +144,7 @@
         @endforeach
       </div>
     </div>
-  </section> --}}
+  </section>
 
 
   <!-- NEW -->
@@ -170,7 +170,7 @@
               </div>
             </div>
             <div class="new-item__name">
-              {{-- {{ $newest_product->name }} --}}
+              
             </div>
 
             <div class="new-item__price" style="margin-bottom: 5px; ">
@@ -182,11 +182,11 @@
               <li>{{$newest_product->name}}</li>
               @foreach($newest_product->product_options as $product_option)
                 @php
-                  if(!array_key_exists($product_option->option->name, $arr)){
-                    $arr[$product_option->option->name][] = $product_option->option->value;
-                    $details_price += $product_option->price;
+                  if(!array_key_exists($product_option->name, $arr)){
+                    $arr[$product_option->name][] = $product_option->value;
+                    $details_price += \App\Models\ProductOption::where('product_id', $product_option->pivot->product_id)->where('option_id', $product_option->pivot->option_id)->first()->price;
                   }
-                @endphp
+                  @endphp
               @endforeach
               @foreach($arr as $key => $value)
                 {{$value[0]}} @if(!$loop->last) / @endif
