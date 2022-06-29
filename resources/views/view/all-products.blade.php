@@ -145,9 +145,11 @@
                   </div>
                 @endforeach
               @else
-                @foreach ($products as $key => $product)
-                  <div class="products-item">
-                    @php
+              
+              @foreach ($products as $key => $product)
+              {{-- @dd($product) --}}
+              <div class="products-item">
+                @php
                       $arr = [];
                       $color = [];
                       $details_price = 0;
@@ -178,7 +180,7 @@
                     <div class="products-item__colors">
                       @foreach ($color as $color_each)
                         <label for="{{ $product->id }}.{{ $color_each->id }}">
-                          <input type="radio" name="{{ $product->id }}" id="{{ $product->id }}.{{ $color_each->id }}">
+                          {{-- <input type="radio" name="{{ $product->id }}" id="{{ $product->id }}.{{ $color_each->id }}"> --}}
                           <span>
                             <img src="{{ $color_each->photo_path }}/{{ $color_each->photo }}" alt="img" style="width: 40px; border-radius: 50%;">
                           </span>
@@ -201,7 +203,8 @@
               @endif
             </div>
 
-            <ul class="products-pagination">
+            {{ $products->links() }}
+            {{-- <ul class="products-pagination">
               <li>
                 <a href="#" class="current">
                   1
@@ -222,7 +225,7 @@
                   4
                 </a>
               </li>
-            </ul>
+            </ul> --}}
           </div>
         </div>
 

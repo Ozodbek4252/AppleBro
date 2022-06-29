@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Helpers\PaginationHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -28,6 +29,13 @@ class AllProductsController extends Controller
     }else{
       $products = $main_category->products;
     }
+
+    $showPerPage = 2;
+
+    $products = PaginationHelper::paginate($products, $showPerPage);
+
+    // dd($products->links());
+
     return view('view.all-products', [
       'main_category' => $main_category,
       'category_id' => (int)$id,
