@@ -37,6 +37,8 @@ class Filter extends Component
         
         foreach(collect($this->filteredProductsOptions)->toArray() as $productOptions){
             foreach($productOptions as $key => $productOption){
+                $options[$productOption['id']]['id'] = $productOption['id'];
+                $options[$productOption['id']]['name'] = $productOption['name'];
                 $options[$productOption['id']]['name'] = $productOption['name'];
                 $options[$productOption['id']]['value'] = $productOption['value'];
                 $options[$productOption['id']]['photo'] = $productOption['photo'];
@@ -46,35 +48,21 @@ class Filter extends Component
         }
         $options = collect($options)->sortBy('sort');
         $this->options = $options->groupBy('name')->toArray();
-        foreach($this->options as $k => $p){
-            $this->parametrs[$k] = [];
-        }
 
         (new LivewireProduct)->mount($this->filteredProducts);
-        
-        // $this->maxPrice = collect($this->filteredProducts)->max('price');
-        // $this->minPrice = collect($this->filteredProducts)->min('price');
     }
-    // public function changed(){
-    //     $this->filteredProducts = [];
-    //     foreach($this->categories as $category){
-    //         foreach($category->products->where('price', '>=', $this->minPrice)->where('price', '<=', $this->maxPrice) as $product){
-    //             $this->filteredProducts[] = $product;
-    //         }
-    //     }
-    //     $this->emit('changed', $this->filteredProducts);
-    // }
-    
-    // public function filter(){
-    //     $this->emit('changed', $this->filteredProducts);
-    // }
 
-    public function parametr($key, $value){
-        $this->parametrs[$key][] = $value;
-        dd($this->parametrs);
+    public function parametrsClicked(){
+        return $this->parametrs;
     }
+    
     public function render()
+    
     {
+        $collection = collect($this->filteredProductsOptions)->collapse()->toArray();
+        dd($this->parametrs);
+        // dd(collect($collection)->diff($this->parametrs));
+        // dd(collect($this->filteredProductsOptions)->collapse()->toArray());
         return view('livewire.front.all-products.filter');
     }
 }

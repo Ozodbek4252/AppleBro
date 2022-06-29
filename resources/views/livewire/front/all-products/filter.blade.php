@@ -20,6 +20,9 @@
       {{-- <input type="range" min="1000" max="10000" step="50" value="50" wire:model="" /> --}}
 
     </div>
+    <?php
+      print_r($parametrs);
+    ?>
     @foreach ($options as $option)
       <div class="products-filter__item">
         <div class="products-filter__title">
@@ -35,7 +38,7 @@
           @foreach (collect($option)->unique()->toArray() as $value)
             <li>
               <label for="{{ $value['value'] }}">
-                <input wire:model="{{ $value['name'] }}" value="{{ $value['value'] }}" type="checkbox" id="{{ $value['value'] }}">
+                <input wire:click="parametrsClicked" wire:model="parametrs" value="{{ $value['id'] }}" type="checkbox" id="{{ $value['value'] }}">
                 <img class="color" src="{{$value['photo_path']}}/{{$value['photo']}}" alt="">
                 <span>{{$value['value']}}</span>
               </label>
@@ -47,10 +50,10 @@
             {{-- @foreach($CPU as $CP)
               {{$CP}}
             @endforeach --}}
-            @foreach (collect($option)->unique()->toArray() as $value)
+            @foreach (collect($option)->unique()->toArray() as $key=>$value)
               <li>
                 <label for="{{ $value['value'] }}">
-                  <input wire:model="{{ $value['name'] }}" value="{{ $value['value'] }}" type="checkbox" id="{{ $value['value'] }}">
+                  <input wire:click="parametrsClicked" wire:model="parametrs" value="{{ $value['id'] }}" type="checkbox" id="{{ $value['value'] }}">
                   <span>{{ $value['value'] }}</span>
                 </label>
               </li>

@@ -14,6 +14,7 @@ use App\Http\Controllers\Front\SingleProductController;
 use App\Http\Controllers\Front\AllProductsController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\AddToCartController;
+use App\Http\Controllers\Front\MessageController;
 use App\Http\Controllers\Front\WishlistConrtoller;
 
 
@@ -95,13 +96,14 @@ Route::middleware([
     Route::get('/wishlist/{id}', [WishlistController::class, 'show']);
     Route::get('/profile', Profile::class)->name('front.profile');
     Route::get('/history', History::class)->name('front.history');
-    Route::get('/cart', Basket::class)->name('front.cart');
     Route::post('/cart/order', [CartController::class, 'cartOrder'])->name('basket-order-info');
     Route::get('/orders/user/{id}', [OrdersController::class, 'userOrder'])->name('user.orders');
 });
+
+Route::get('/cart', Basket::class)->name('front.cart');
+Route::get('/messages/create', [MessageController::class, 'create']);
 Route::get('/products/{id?}', [AllProductsController::class, 'index'])->name('front.all-products');
 Route::get('/single-product/{slug}', [SingleProductController::class, 'show'])->name('front.single-product');
-
 Route::get('/cart/add/{id}', AddToCart::class);
 // Route::get('/cart/add/{id}', [AddToCartController::class, 'addToCart']);
 // Route::post('add_to_wishlist', [WishlistConrtoller::class, 'add'])->name('add_to_wishlist');
@@ -112,7 +114,6 @@ Route::get('wishlist_count', function(){
 });
 
 Route::get('cart_count', function(){
-    
     $cart = session()->get('cart') ?? [];
     return count($cart);
 });
@@ -123,8 +124,6 @@ Route::get('favourites/{id}/check', function ($id){
     }else{
         return response()->json(false);
     }
-
-
 });
 
 
@@ -145,7 +144,6 @@ Route::get('favourites/{id}/check', function ($id){
 //         $option["price"] = $product_option->price;
 //         $optionArr[$option->name][] = $option;
 //     }
-
 //     return $optionArr;
 // });
 

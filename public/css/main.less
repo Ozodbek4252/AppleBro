@@ -228,6 +228,129 @@ section {
 }
 
 
+//____________FEEDBACK_________
+
+
+.feedback {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+	background: rgba(0, 0, 0, .79);
+	display: none;
+
+	&-content {
+		padding: 3rem 2.5rem;
+		border-radius: 1.6rem;
+		background: #fff;
+		text-align: center;
+		.AbsoluteCenter();
+		width: 25rem;
+		max-width: 95vw;
+		max-height: 95vh;
+		overflow: auto;
+	}
+
+
+
+	&-done {
+		display: none;
+
+		.feedback__text {
+			padding: 0 2rem;
+		}
+	}
+
+	&-flat {
+		.feedback__text {
+			padding: 0 2rem;
+		}
+
+		.feedback__title {
+			margin: 0 -1rem;
+		}
+	}
+
+	&__title {
+		font-weight: 700;
+		color: @dark;
+		font-size: 1.8rem;
+		margin-bottom: 0.5rem;
+	}
+
+	&__text {
+		color: #788179;
+		line-height: 160%;
+		margin-bottom: 1.5rem;
+	}
+
+	&-form {
+		text-align: left;
+
+		&__input {
+			margin-bottom: 1.5rem;
+			position: relative;
+
+			img {
+				.AbsoluteCenterY();
+				left: 1rem;
+				width: 1rem;
+			}
+
+			input {
+				display: block;
+				width: 100%;
+				padding: 0.9rem 1.5rem;
+				border-radius: 2rem;
+				color: #2c1200;
+				border: none;
+				background: #F7F5F4;
+				outline: none;
+
+				&::placeholder {
+					color: rgba(44, 18, 0, .5);
+				}
+			}
+		}
+	}
+
+	.btn {
+		margin-top: 1rem;
+		width: 100%;
+		height: 3rem;
+		background: @blue;
+		color: #fff;
+		border: none;
+		font-size: 0.9rem;
+		.Trans();
+
+		&:hover {
+			opacity: .8;
+		}
+	}
+
+	&__info {
+		margin-top: 1.5rem;
+		padding-top: .6rem;
+		border-top: 1px solid #E7E5EA;
+		font-size: .7rem;
+		color: #788179;
+		line-height: 171%;
+	}
+
+	&__img {
+		margin-bottom: 2rem;
+
+		img {
+			width: 9rem;
+			filter: drop-shadow(0px 2px 94px @blue);
+		}
+	}
+}
+
+
 //_____________BASKET__________
 
 .basket {
@@ -950,8 +1073,8 @@ section {
 				}
 
 				&.new-item__fav.active {
-					background: #FF1E1E;
-					box-shadow: 0px 0px .5rem rgba(255, 30, 30, 0.5);
+					// background: #FF1E1E;
+					// box-shadow: 0px 0px .5rem rgba(255, 30, 30, 0.5);
 
 					svg path {
 						fill: #fff;
@@ -1964,6 +2087,7 @@ section {
 
 	&__wrap {
 		display: flex;
+		flex-wrap: wrap;
 
 		.products-item {
 			width: 23.5%;
@@ -3713,7 +3837,6 @@ section {
 
 	.similar-products {
 		&__wrap {
-			flex-wrap: wrap;
 			justify-content: space-between;
 
 			.products-item {
@@ -3834,6 +3957,12 @@ section {
 @media (max-width: 767.98px) {
 	:root {
 		font-size: 14px;
+	}
+
+	.feedback {
+		&-content {
+			padding: 2rem;
+		}
 	}
 
 	.favourite {

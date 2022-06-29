@@ -21,7 +21,7 @@ return [
     "Возврат и гарантии" => "Qaytish va kafolatlar",
     "Покупка в кредит без переплаты" => "Ortiqcha to'lovsiz kreditga sotib oling",
     "Политика конфиденциальности" => "Maxfiylik siyosati",
-    "Вам перезвонить?" => "Sizga qayta qo'ng'iroq qilishsinmi?",
+    "Вам перезвонить?" => "Qayta qo'ng'iroq",
     "Добавлен в избранное" => "Sevimlilarga qo'shildi",
     "Оформить заказ" => "Ro'yxatdan o'chirish",
     "Аксессуары" => "Aksessuarlar",

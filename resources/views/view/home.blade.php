@@ -69,7 +69,7 @@
 
       <!-- ЕСЛИ ВИДЕО ЕСТЬ ТО КЛАСС main-carousel__item-video -->
 
-      
+
 
       <div class="main-carousel__item">
         <div class="container">
@@ -170,7 +170,7 @@
               </div>
             </div>
             <div class="new-item__name">
-              
+
             </div>
 
             <div class="new-item__price" style="margin-bottom: 5px; ">
@@ -179,22 +179,26 @@
                 $arr = [];
                 $details_price = 0;
               @endphp
-              <li>{{$newest_product->name}}</li>
-              @foreach($newest_product->product_options as $product_option)
+              <li>{{ $newest_product->name }}</li>
+              @foreach ($newest_product->product_options as $product_option)
                 @php
-                  if(!array_key_exists($product_option->name, $arr)){
-                    $arr[$product_option->name][] = $product_option->value;
-                    $details_price += \App\Models\ProductOption::where('product_id', $product_option->pivot->product_id)->where('option_id', $product_option->pivot->option_id)->first()->price;
+                  if (!array_key_exists($product_option->name, $arr)) {
+                      $arr[$product_option->name][] = $product_option->value;
+                      $details_price += \App\Models\ProductOption::where('product_id', $product_option->pivot->product_id)
+                          ->where('option_id', $product_option->pivot->option_id)
+                          ->first()->price;
                   }
-                  @endphp
+                @endphp
               @endforeach
-              @foreach($arr as $key => $value)
-                {{$value[0]}} @if(!$loop->last) / @endif
+              @foreach ($arr as $key => $value)
+                {{ $value[0] }} @if (!$loop->last)
+                  /
+                @endif
               @endforeach
             </div>
 
             <div class="new-item__price">
-              <strong>${{$newest_product->price+$details_price}} USD</strong>
+              <strong>${{ $newest_product->price + $details_price }} USD</strong>
             </div>
 
             <a href="{{ Route('front.single-product', $newest_product->slug) }}" class="new-item__link"></a>
@@ -253,18 +257,19 @@
         Apple
       </h2>
       <div class="brands-product__content">
-        @foreach($apple as $key=>$brand_category)
+        @foreach ($apple as $key => $brand_category)
           <div class="brands-product__item">
             <div class="brands-product__name">
-              {{$brand_category->name}}
-              @php 
+              {{ $brand_category->name }}
+              @php
                 $product = \App\Models\Product::where('category_id', $brand_category->id)->first();
+                $num_of_products = count($product->get());
               @endphp
-              </div>
-            <div class="brands-product__img">
-              <img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="Apple">
             </div>
-            <a href="#" class="brands-product__link"></a>
+            <div class="brands-product__img">
+              <img src="{{ $product->main_photo_path }}/{{ $product->main_photo }}" alt="Apple">
+            </div>
+            <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
           </div>
         @endforeach
         <div class="brands-product__item">
@@ -272,9 +277,9 @@
             Others
           </div>
           <div class="brands-product__other">
-            72+
+            {{ $num_of_products }}+
           </div>
-          <a href="#" class="brands-product__link"></a>
+          <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
         </div>
       </div>
     </div>
@@ -287,20 +292,19 @@
         Samsung
       </h2>
       <div class="brands-product__content">
-        @foreach($samsung as $key=>$brand_category)
+        @foreach ($samsung as $key => $brand_category)
           <div class="brands-product__item">
             <div class="brands-product__name">
-              {{$brand_category->name}}
-              @php 
+              {{ $brand_category->name }}
+              @php
                 $product = \App\Models\Product::where('category_id', $brand_category->id);
+                $num_of_products = count($product->get());
               @endphp
-              {{-- @dd($product->main_photo_path, $product->main_photo) --}}
             </div>
             <div class="brands-product__img">
-              <img src="{{$product->first()->main_photo_path}}/{{$product->first()->main_photo}}" alt="Samsung">
+              <img src="{{ $product->first()->main_photo_path }}/{{ $product->first()->main_photo }}" alt="Samsung">
             </div>
-            {{-- @dd($product->get()) --}}
-            <a href="#" class="brands-product__link"></a>
+            <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
           </div>
         @endforeach
         <div class="brands-product__item">
@@ -308,9 +312,9 @@
             {{ __('home.Others') }}
           </div>
           <div class="brands-product__other">
-            72+
+            {{ $num_of_products }}+
           </div>
-          <a href="#" class="brands-product__link"></a>
+          <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
         </div>
 
       </div>
@@ -324,18 +328,19 @@
         Xiaomi
       </h2>
       <div class="brands-product__content">
-        @foreach($xiaomi as $key=>$brand_category)
+        @foreach ($xiaomi as $key => $brand_category)
           <div class="brands-product__item">
             <div class="brands-product__name">
-              {{$brand_category->name}}
-              @php 
-                $product = \App\Models\Product::where('category_id', $brand_category->id)->first();
+              {{ $brand_category->name }}
+              @php
+                $product = \App\Models\Product::where('category_id', $brand_category->id);
+                $num_of_products = count($product->get());
               @endphp
             </div>
             <div class="brands-product__img">
-              <img src="{{$product->main_photo_path}}/{{$product->main_photo}}" alt="Xiaomi">
+              <img src="{{ $product->first()->main_photo_path }}/{{ $product->first()->main_photo }}" alt="Xiaomi">
             </div>
-            <a href="#" class="brands-product__link"></a>
+            <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
           </div>
         @endforeach
         <div class="brands-product__item">
@@ -343,9 +348,9 @@
             Others
           </div>
           <div class="brands-product__other">
-            72+
+            {{ $num_of_products }}+
           </div>
-          <a href="#" class="brands-product__link"></a>
+          <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
         </div>
       </div>
     </div>
@@ -427,4 +432,6 @@
       </div>
     </div>
   </section>
+
+
 @endsection

@@ -7,11 +7,12 @@
   <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body>
+  @include('components.front_feedback')
   @include('components.front_cart')
   @include('components.front_favourite')
   @include('components.front_mobile-menu')
   @include('components.front_header')
-
+  
   {{ isset($slot) ? $slot : ''}}
   @yield('content')
   

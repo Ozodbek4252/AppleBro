@@ -8,7 +8,7 @@ class CartModal extends Component
 {
     public $products, $total_price, $option_total_price = 0;
 
-    protected $listeners = ['refreshLivewire'];
+    protected $listeners = ['refreshLivewire', 'refreshCartModal' => 'render'];
 
     public function refreshLivewire($product_id = null){
         $this->render();
@@ -19,8 +19,9 @@ class CartModal extends Component
             session()->forget('cart.'.$id);
         }
     }
-    public function render(){
-    
+    public function render(){ 
+
+
       $this->total_price = 0;
       $this->products = session()->get('cart');
       if(!empty($this->products)){
