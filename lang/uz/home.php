@@ -40,7 +40,7 @@ return [
     "Оформления заказа" => "Ro'yxatdan o'chirilish",
     "Покупатель" => "Xaridor",
     "Имя" => "Ism",
-    "Фамилия" => "Familiya",
+    "Фамилия" => "Familya",
     "Телефон" => "Telefon",
     "Самовывоз" => "Olib ketish",
     "бесплатно" => "tekinga",
@@ -116,7 +116,7 @@ return [
     "Безопасная оплата через защищенный протокол HTTPS Принимаем карты МИР  VISA  Master Card всех банков в штатном режиме" => "Xavfsiz HTTPS protokoli orqali xavfsiz to'lov. Biz barcha banklarning MIR, VISA, Master Card kartalarini qabul qilamiz
     muntazam rejim.",
     " Адаптер питания" => "Quvvat adapteri",
-    "" => "",
+    "Адрес" => "Manzil",
     "" => "",
     "" => "",
     "" => "",

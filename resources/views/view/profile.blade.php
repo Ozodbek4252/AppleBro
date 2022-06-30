@@ -1,3 +1,6 @@
+@extends('layouts.front')
+
+@section('content')
 <div>
 	<section class="profile">
 
@@ -32,7 +35,7 @@
 						{{__('home.Имя')}}
 					</div>
 					<div class="profile-item__value">
-						Hayrulloh
+						{{$user?->name}}
 					</div>
 				</div>
 				<div class="profile-item">
@@ -40,7 +43,7 @@
 						{{__('home.Фамилия')}}
 					</div>
 					<div class="profile-item__value">
-						Mamasidiqov
+						{{$user->last_name}}
 					</div>
 				</div>
 				<div class="profile-item">
@@ -48,7 +51,7 @@
 						{{__('home.Номер телефона')}}
 					</div>
 					<div class="profile-item__value">
-						+998911529721
+						{{$user->phone}}
 					</div>
 				</div>
 				<div class="profile-item">
@@ -56,12 +59,12 @@
 						{{__('home.Адрес доставки')}}
 					</div>
 					<div class="profile-item__value">
-						----
+						{{$user->address}}
 					</div>
 				</div>
 				<div class="profile-btns">
-					<a href="#" class="btn">{{__('home.Выход')}}</a>
-					<a href="#" class="btn profile-edit">{{__('home.Редактировать')}}</a>
+					<a href="{{route('home')}}" class="btn">{{__('home.Выход')}}</a>
+					<a class="btn profile-edit">{{__('home.Редактировать')}}</a>
 				</div>
 			</div>
 		</div>
@@ -72,30 +75,37 @@
 
 	<div class="profile-popup">
 		<div class="profile-popup__content">
-			<div class="login__title">
-				{{__('home.Профиль')}}
-			</div>
-			<div class="login__input">
-				<span>{{__('home.Имя')}}</span>
-				<input type="text" required>
-			</div>
-			<div class="login__input">
-				<span>{{__('home.Фамилия')}}</span>
-				<input type="text" required>
-			</div>
-			<div class="login__input">
-				<span>{{__('home.Телефон')}}</span>
-				<input type="tel" class="form__tel" required>
-			</div>
-			<div class="login__input">
-				<span>{{__('home.Адрес')}}</span>
-				<input type="text" required>
-			</div>
-			<div class="profile-popup__btns">
-				<a href="#" class="btn reset">{{__('home.Сбросить')}}</a>
-				<a href="#" class="btn save">{{__('home.Сохранить')}}</a>
-			</div>
+			<form action="{{ Route('front.profile.store') }}" method="POST">
+				@csrf
+				<div class="login__title">
+					{{__('home.Профиль')}}
+				</div>
+				<div class="login__input">
+					<span>{{__('home.Имя')}}</span>
+					<input name="name" type="text" value="{{$user->name}}" required>
+				</div>
+				<div class="login__input">
+					<span>{{__('home.Фамилия')}}</span>
+					<input name="last_name" type="text" value="{{$user->last_name}}">
+				</div>
+				<div class="login__input">
+					<span>{{__('home.Телефон')}}</span>
+					<input name="phone" type="tel" class="form__tel" value="{{$user->phone}}">
+				</div>
+				<div class="login__input">
+					<span>{{__('home.Адрес')}}</span>
+					<input name="address" type="text" value="{{$user->address}}">
+				</div>
+				<div class="profile-popup__btns">
+					<a href="" class="btn reset">{{__('home.Сбросить')}}</a>
+					<button type="submit" style="background-color: #0967c5; width: 49%; color: #fff; border-radius: .4rem; border: none">
+						{{__('home.Сохранить')}}
+					</button>
+				</div>
+			</form>
 		</div>
 	</div>
 
 </div>
+
+@endsection
