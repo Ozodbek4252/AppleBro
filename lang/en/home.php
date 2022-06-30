@@ -116,7 +116,7 @@ return [
     "Безопасная оплата через защищенный протокол HTTPS Принимаем карты МИР  VISA  Master Card всех банков в штатном режиме" => "Secure payment via secure HTTPS protocol. We accept MIR, VISA, Master Card cards of all banks in
     regular mode.",
     " Адаптер питания" => "Power adapter",
-    "" => "",
+    "Адрес" => "Address",
     "" => "",
     "" => "",
     "" => "",
