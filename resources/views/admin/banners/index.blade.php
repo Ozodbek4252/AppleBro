@@ -4,7 +4,7 @@
   <div class="container-fluid">
 
     {{-- Slider Beginning --}}
-    <div class="col-xl-6">
+    <div class="col-xl-12">
       {{-- Flash Message for Adding Product Beginning --}}
       <div style="margin-bottom: 1rem;">
         @if (session()->has('success-slider'))
@@ -17,33 +17,39 @@
       </div>
       {{-- Flash Message for Adding Product End --}}
 
-      <div class="col-xl-12">
-        <form action="{{ Route('admin.banner.slider') }}" method="POST" enctype="multipart/form-data">
-          @csrf
-          <div class="card" style="display: flex; justify-content: space-between; flex-direction: row;">
-            <div class="col-xl-12">
-              <div class="card-body">
-                <h4 class="card-title">Slider Video</h4>
-                <p class="card-title-desc">Images in Bootstrap are made responsive
-                  with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
-                    100%;</code>
-                  and <code class="highlighter-rouge">height: auto;</code> are applied to
-                  the image so that it scales with the parent element.</p>
-                <div class="mb-2">
-                  <img src="/img/video.jpg" class="img-fluid" alt="Responsive image" style="width: 100%;">
-                </div>
+      <div class="flex col-xl-12" style="overflow-x: scroll;">
+        @foreach ($banners as $banner)
+          @if ($banner->type == 'slider')
+            <div class="col-xl-6 mr-3">
+              <div class="card" style="display: flex; justify-content: space-between; flex-direction: row;">
+                <div class="col-xl-12">
+                  <div class="card-body">
+                    <h4 class="card-title">Slider Video</h4>
+                    <p class="card-title-desc">Images in Bootstrap are made responsive
+                      with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
+                        100%;</code>
+                      and <code class="highlighter-rouge">height: auto;</code> are applied to
+                      the image so that it scales with the parent element.</p>
+                    <div class="mb-2">
+                      @if($banner->media_type == 'image')
+                        <img src="/{{$banner->image}}" class="img-fluid" alt="Responsive image" style="width: 100%;">
+                      @endif
 
-                <div class="mb-3 col-lg-3">
-                  <button style="submit" class="btn btn-warning waves-effect waves-light">Edit</button>
-                  <button style="submit" class="btn btn-danger waves-effect waves-light">Delete</button>
-                </div>
+                    </div>
 
+                    <div class="mb-3 col-lg-3">
+                      <a href="{{ Route('admin.banner.slider.edit', $banner) }}" class="btn btn-warning waves-effect waves-light">Edit</a>
+                      <button style="submit" class="btn btn-danger waves-effect waves-light">Delete</button>
+                    </div>
+
+                  </div>
+                </div>
               </div>
             </div>
-
-          </div>
-        </form>
+          @endif
+        @endforeach
       </div>
+
     </div>
     {{-- Slider End --}}
 

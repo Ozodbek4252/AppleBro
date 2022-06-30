@@ -22,25 +22,51 @@
           @csrf
           <div class="card" style="display: flex; justify-content: space-between; flex-direction: row;">
             <div class="col-xl-6">
-              <div class="card-body">
-                <h4 class="card-title">Slider Video</h4>
-                <p class="card-title-desc">Images in Bootstrap are made responsive
+
+              {{-- Slider Image Beginning --}}
+              <div class="card-body" style="padding-bottom: .25rem;">
+                <h4 class="card-title">Slider</h4>
+                {{-- <p class="card-title-desc">Images in Bootstrap are made responsive
                   with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
                     100%;</code>
                   and <code class="highlighter-rouge">height: auto;</code> are applied to
-                  the image so that it scales with the parent element.</p>
+                  the image so that it scales with the parent element.</p> --}}
                 <div class="mb-2">
-                  <img src="/img/video.jpg" class="img-fluid" alt="Responsive image" style="width: 100%;">
+                  <img src="/img/slider.png" class="img-fluid" alt="Responsive image" style="width: 100%;">
                 </div>
 
-                <div class="mb-3 col-lg-2">
-                  <input type="file" name="image" class="form-control-file" id="resume">
-                </div>
+                <div class="flex justify-between">
+                  <div class="col-lg-2" style="height: 38.62px;">
+                    <input type="file" name="image" class="form-control-file" id="resume">
+                  </div>
 
-                <button style="submit" class="btn btn-success waves-effect waves-light">Add</button>
+                  <button style="submit" class="btn btn-success waves-effect waves-light"
+                    style="height: 40px;">Add</button>
+                </div>
               </div>
-            </div>
+              {{-- Slider Image End --}}
 
+              <p style="margin: 0px; margin-left: 1.25rem;">Or</p>
+
+              {{-- Slider YouTube Link Beginning --}}
+              <div class="card-body" style="padding-top: .25rem;">
+                <div class="mt-4 flex justify-between" style="margin-top: .7rem !important;">
+                  <div class="col-10">
+                    <div class="input-group">
+                      <input name="video_link" type="text" class="form-control" id="specificSizeInputGroupUsername"
+                        placeholder="Paste YouTube Link">
+                    </div>
+                  </div>
+                  <div class="col-2 flex justify-end">
+                    <button style="submit" class="btn btn-success waves-effect waves-light"
+                    style="height: 40px;">Add</button>
+                    {{-- <button type="submit" class="btn btn-success">Add</button> --}}
+                  </div>
+                </div>
+              </div>
+              {{-- Slider YouTube Link End --}}
+
+            </div>
             <div class="col-xl-6">
               <div class="card-body">
 
@@ -141,7 +167,7 @@
                   the image so that it scales with the parent element.</p>
 
                 <div class="mb-3">
-                  <img src="/assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
+                  <img src="/img/major.png" class="img-fluid" alt="Responsive image">
                 </div>
                 <div class="mb-3" style="display: flex; justify-content: space-between;">
                   <input type="file" name="middle_image" class="form-control-file">
@@ -196,6 +222,7 @@
           </div>
         </form>
       </div>
+
     </div>
     {{-- Middle Big Banner End --}}
 
@@ -216,84 +243,84 @@
       {{-- Flash Message for Adding Product End --}}
 
       <div class="col-xl-12">
-      <div class="card" style="display: flex; justify-content: space-between; flex-direction: row;">
+        <div class="card" style="display: flex; justify-content: space-between; flex-direction: row;">
 
-        {{-- Left Beginning --}}
-        <div class="col-xl-6">
-          <div class="card-body">
-            <h4 class="card-title">Botton Banner Left</h4>
-            <p class="card-title-desc">Images in Bootstrap are made responsive
-              with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
-                100%;</code>
-              and <code class="highlighter-rouge">height: auto;</code> are applied to
-              the image so that it scales with the parent element.</p>
+          {{-- Left Beginning --}}
+          <div class="col-xl-6">
+            <div class="card-body">
+              <h4 class="card-title">Botton Banner Left</h4>
+              <p class="card-title-desc">Images in Bootstrap are made responsive
+                with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
+                  100%;</code>
+                and <code class="highlighter-rouge">height: auto;</code> are applied to
+                the image so that it scales with the parent element.</p>
 
-            <div class="mb-3">
-              <img src="/assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
-            </div>
-
-            <form action="{{ Route('admin.banner.small_1') }}" method="POST" enctype="multipart/form-data">
-              @csrf
-              <div class="mb-3" style="display: flex; justify-content: space-between; align-items: end;">
-                <input type="file" name="image" class="form-control-file">
-                <div class="mr-3">
-                  <label class="form-label">Product</label>
-                  <select name="product_id" class="form-control select2">
-                    <option value="{{ null }}">Select</option>
-                    @foreach ($products as $product)
-                      <option value="{{ $product->id }}">{{ $product->name }}</option>
-                    @endforeach
-                  </select>
-                </div>
-                <button type="submit" class="btn btn-success w-1 waves-effect waves-light"
-                  style="width: 80px;">Add</button>
+              <div class="mb-3">
+                <img src="/img/banner.png" class="img-fluid" alt="Responsive image">
               </div>
-            </form>
 
-
-          </div>
-        </div>
-        {{-- Left End --}}
-
-
-        {{-- Right Beginning --}}
-        <div class="col-xl-6">
-          <div class="card-body">
-            <h4 class="card-title">Botton Banner Right</h4>
-            <p class="card-title-desc">Images in Bootstrap are made responsive
-              with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
-                100%;</code>
-              and <code class="highlighter-rouge">height: auto;</code> are applied to
-              the image so that it scales with the parent element.</p>
-
-            <div class="mb-3">
-              <img src="/assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
-            </div>
-
-            <form action="{{ Route('admin.banner.small_2') }}" method="POST" enctype="multipart/form-data">
-              @csrf
-              <div class="mb-3" style="display: flex; justify-content: space-between; align-items: end;">
-                <input type="file" name="image" class="form-control-file">
-                <div class="mr-3">
-                  <label class="form-label">Product</label>
-                  <select name="product_id" class="form-control select2">
-                    <option value="{{ null }}">Select</option>
-                    @foreach ($products as $product)
-                      <option value="{{ $product->id }}">{{ $product->name }}</option>
-                    @endforeach
-                  </select>
+              <form action="{{ Route('admin.banner.small_1') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3" style="display: flex; justify-content: space-between; align-items: end;">
+                  <input type="file" name="image" class="form-control-file">
+                  <div class="mr-3">
+                    <label class="form-label">Product</label>
+                    <select name="product_id" class="form-control select2">
+                      <option value="{{ null }}">Select</option>
+                      @foreach ($products as $product)
+                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-success w-1 waves-effect waves-light"
+                    style="width: 80px;">Add</button>
                 </div>
-                <button type="submit" class="btn btn-success w-1 waves-effect waves-light"
-                  style="width: 80px;">Add</button>
-              </div>
-            </form>
+              </form>
 
 
+            </div>
           </div>
-        </div>
-        {{-- Right End --}}
+          {{-- Left End --}}
 
-      </div>
+
+          {{-- Right Beginning --}}
+          <div class="col-xl-6">
+            <div class="card-body">
+              <h4 class="card-title">Botton Banner Right</h4>
+              <p class="card-title-desc">Images in Bootstrap are made responsive
+                with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
+                  100%;</code>
+                and <code class="highlighter-rouge">height: auto;</code> are applied to
+                the image so that it scales with the parent element.</p>
+
+              <div class="mb-3">
+                <img src="/img/banner.png" class="img-fluid" alt="Responsive image">
+              </div>
+
+              <form action="{{ Route('admin.banner.small_2') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3" style="display: flex; justify-content: space-between; align-items: end;">
+                  <input type="file" name="image" class="form-control-file">
+                  <div class="mr-3">
+                    <label class="form-label">Product</label>
+                    <select name="product_id" class="form-control select2">
+                      <option value="{{ null }}">Select</option>
+                      @foreach ($products as $product)
+                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-success w-1 waves-effect waves-light"
+                    style="width: 80px;">Add</button>
+                </div>
+              </form>
+
+
+            </div>
+          </div>
+          {{-- Right End --}}
+
+        </div>
       </div>
     </div>
     {{-- Bottom Small Banners End --}}

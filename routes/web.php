@@ -82,12 +82,17 @@ Route::middleware([
             Route::post('/product/store', [ProductController::class, 'store'])->name('products.store');
             Route::put('/product/{id}', [ProductController::class, "update"])->name('products.update');
             Route::controller(BannerController::class)->group(function () {
-                Route::get('/banners', "index")->name('banners.index');
-                Route::get('/banners/create', "create")->name('banners.create');
-                Route::post('/banners/store', "store")->name('banner.slider');
-                Route::post('/banners/store_mid/store', "store_mid")->name('banner.middle');
-                Route::post('/banners/small_1/store', "small_1")->name('banner.small_1');
-                Route::post('/banners/small_2/store', "small_2")->name('banner.small_2');
+                Route::prefix('banners')->group(function () {
+                    Route::get('/', "index")->name('banners.index');
+                    Route::get('/create', "create")->name('banners.create');
+                    Route::post('/store', "store")->name('banner.slider');
+                    Route::post('/store_mid/store', "store_mid")->name('banner.middle');
+                    Route::post('/small_1/store', "small_1")->name('banner.small_1');
+                    Route::post('/small_2/store', "small_2")->name('banner.small_2');
+
+                    Route::get('/slider/edit/{banner}', "slider_edit")->name('banner.slider.edit');
+                    Route::put('/slider/update', "slider_update")->name('banner.slider.update');
+                });
             });
         });
     });

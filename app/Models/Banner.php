@@ -10,6 +10,7 @@ use App\Models\Product;
 class Banner extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     public function product()
     {
