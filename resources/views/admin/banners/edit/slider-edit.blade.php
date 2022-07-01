@@ -44,7 +44,7 @@
                   </div>
 
                   <button style="submit" class="btn btn-success waves-effect waves-light"
-                    style="height: 40px;">Add</button>
+                    style="height: 40px;">Update</button>
                 </div>
               </div>
               {{-- Slider Image End --}}
@@ -62,8 +62,7 @@
                   </div>
                   <div class="col-2 flex justify-end">
                     <button style="submit" class="btn btn-success waves-effect waves-light"
-                    style="height: 40px;">Add</button>
-                    {{-- <button type="submit" class="btn btn-success">Add</button> --}}
+                    style="height: 40px;">Update</button>
                   </div>
                 </div>
               </div>

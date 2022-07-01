@@ -92,6 +92,12 @@ Route::middleware([
 
                     Route::get('/slider/edit/{banner}', "slider_edit")->name('banner.slider.edit');
                     Route::put('/slider/update', "slider_update")->name('banner.slider.update');
+                    Route::get('/slider/delete/{banner}', "slider_delete")->name('banner.slider.delete');
+                    
+                    Route::get('/mid/edit/{banner}', "mid_edit")->name('banner.mid.edit');
+                    Route::put('/mid/update', "mid_update")->name('banner.mid.update');
+                    Route::get('/mid/delete/{banner}', "mid_delete")->name('banner.mid.delete');
+
                 });
             });
         });

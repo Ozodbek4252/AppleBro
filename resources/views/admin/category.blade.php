@@ -7,7 +7,6 @@
                 <div class="button-items mb-3">
                   <button 
                     @click="isOpen = true"
-                    {{-- wire:click="createShowModal"  --}}
                     type="button" 
                     class="btn btn-success waves-effect waves-light">Add Category</button>
                 </div>

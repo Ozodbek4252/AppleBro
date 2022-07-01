@@ -21,15 +21,102 @@
       </div>
     </div>
     <div class="mobile-menu__search">
-      <input type="text" placeholder="Поиск">	
+      {{-- <input type="text" placeholder="Поиск"> --}}
+      @livewire('front.search')
+      {{-- <div class="header-search__result">
+        <ul>
+          <li>
+            <a href="#">
+              <img src="img/apple1.png" alt="apple">
+              <p>Apple Iphone 12 Pro Max</p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/apple1.png" alt="apple">
+              <p>Apple Iphone 12 Pro Max</p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/apple1.png" alt="apple">
+              <p>Apple Iphone 12 Pro Max</p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/apple2.png" alt="apple">
+              <p>Apple Iphone 12 Pro Max</p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/apple2.png" alt="apple">
+              <p>Apple Iphone 12 Pro Max</p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/apple2.png" alt="apple">
+              <p>Apple Iphone 12 Pro Max</p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/apple2.png" alt="apple">
+              <p>Apple Iphone 12 Pro Max</p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/apple1.png" alt="apple">
+              <p>Apple Iphone 12 Pro Max</p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/apple1.png" alt="apple">
+              <p>Apple Iphone 12 Pro Max</p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div> --}}
     </div>
     <ul class="mobile-menu__menu">
       <li class="mobile-menu__item">
         <span>
           iPhone
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>	
+            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </span>
         <ul class="mobile-menu__submenu">
           <li>
@@ -93,8 +180,9 @@
         <span>
           Mac
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>	
+            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </span>
         <ul class="mobile-menu__submenu">
           <li>
@@ -121,10 +209,11 @@
       </li>
       <li class="mobile-menu__item">
         <span>
-          iPad 
+          iPad
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>	
+            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </span>
         <ul class="mobile-menu__submenu">
           <li>
@@ -151,10 +240,11 @@
       </li>
       <li class="mobile-menu__item">
         <span>
-          Apple Watch 
+          Apple Watch
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>	
+            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </span>
         <ul class="mobile-menu__submenu">
           <li>
@@ -183,8 +273,9 @@
         <span>
           AirPods
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>	
+            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </span>
         <ul class="mobile-menu__submenu">
           <li>
@@ -211,60 +302,62 @@
       </li>
       <li class="mobile-menu__item">
         <span>
-          {{__('home.Аксессуары')}}
+          {{ __('home.Аксессуары') }}
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>	
+            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </span>
         <ul class="mobile-menu__submenu">
           <li>
             <a href="#">
-              {{__('home.Аксессуары')}}
+              {{ __('home.Аксессуары') }}
             </a>
           </li>
           <li>
             <a href="#">
-              {{__('home.Аксессуары')}} X
+              {{ __('home.Аксессуары') }} X
             </a>
           </li>
           <li>
             <a href="#">
-              {{__('home.Аксессуары')}} X
+              {{ __('home.Аксессуары') }} X
             </a>
           </li>
           <li>
             <a href="#">
-              {{__('home.Аксессуары')}} X
+              {{ __('home.Аксессуары') }} X
             </a>
           </li>
         </ul>
       </li>
       <li class="mobile-menu__item">
         <span>
-          {{__('home.Другие')}} 
+          {{ __('home.Другие') }}
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>	
+            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </span>
         <ul class="mobile-menu__submenu">
           <li>
             <a href="#">
-              {{__('home.Другие')}}
+              {{ __('home.Другие') }}
             </a>
           </li>
           <li>
             <a href="#">
-              {{__('home.Другие')}} X
+              {{ __('home.Другие') }} X
             </a>
           </li>
           <li>
             <a href="#">
-              {{__('home.Другие')}} X
+              {{ __('home.Другие') }} X
             </a>
           </li>
           <li>
             <a href="#">
-              {{__('home.Другие')}} X
+              {{ __('home.Другие') }} X
             </a>
           </li>
         </ul>
@@ -273,27 +366,27 @@
     <ul class="mobile-menu__profile">
       <li>
         <a href="#">
-          <span>{{__('home.Профиль')}}</span>
+          <span>{{ __('home.Профиль') }}</span>
           <img src="/img/caret-right.svg" alt="ico">
         </a>
       </li>
       <li>
         <a href="#">
-          <span>{{__('home.Мои заказы')}}</span>
+          <span>{{ __('home.Мои заказы') }}</span>
           <img src="/img/caret-right.svg" alt="ico">
         </a>
       </li>
       <li>
         <a href="#">
-          <span>{{__('home.Выход')}}</span>
+          <span>{{ __('home.Выход') }}</span>
           <img src="/img/caret-right.svg" alt="ico">
         </a>
       </li>
     </ul>
     <div class="header__lang">
-      <a href="/languages/ru" >RU</a>
-      <a href="/languages/uz" >UZ</a>
-      <a href="/languages/en" >EN</a>
-  </div>
+      <a href="/languages/ru">RU</a>
+      <a href="/languages/uz">UZ</a>
+      <a href="/languages/en">EN</a>
+    </div>
   </div>
 </div>

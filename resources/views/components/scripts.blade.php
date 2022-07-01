@@ -15,4 +15,15 @@
 <!-- App js -->
 <script src="/assets/js/app.js"></script>
 <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
+<script>
+  $('.btn__delete').click(function(event){
+    event.preventDefault();
+    $('.popup__confirm').fadeIn();
+  })
+  $('.btn__close').click(function(event){
+    event.preventDefault();
+    $('.popup__confirm').fadeOut();
+  })
+</script>
 @livewireScripts
