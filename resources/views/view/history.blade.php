@@ -36,6 +36,8 @@
 						@php
 							$i = 1;
 						@endphp
+
+						
 						
 						@foreach($orders as $order)
 							<tr>
@@ -46,7 +48,7 @@
 									{{$order->id}}
 								</td>
 								<td>
-									1шт
+									{{collect($order->order_products)->sum('quantity')}}
 								</td>
 								<td>
 									{{$order->created_at}}
