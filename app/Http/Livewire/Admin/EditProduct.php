@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Product;
@@ -8,7 +7,6 @@ use \App\Models\Category;
 use App\Models\Option;
 use App\Models\ProductOption;
 use App\Models\ProductPhoto;
-use Illuminate\Support\Facades\File;
 use Livewire\WithFileUploads;
 class EditProduct extends Component
 {
@@ -17,15 +15,21 @@ class EditProduct extends Component
       $product,
       $selectedCategory,
       $productName,
-      $productPrice;
-
-  public 
+      $productPrice,
       $xususiyat_name,
       $xususiyat_value,
       $xususiyat_photo,
       $xususiyatSelected = 'Select',
       $i = 1,
       $keys = 1,
+      $characteristics_uz,
+      $characteristics_en,
+      $characteristics_ru,
+      $description_uz,
+      $description_en,
+      $description_ru,
+      $status,
+      $production_date,
       $inputs = [],
       $old_inputs = [],
       $option_id = [],
@@ -40,6 +44,14 @@ class EditProduct extends Component
     $this->productName = $this->product->name;
     $this->productPrice = $this->product->price;
     $this->selectedCategory = $this->product->category_id;
+    $this->status = $this->product->status;
+    $this->production_date = $this->product->production_date;
+    $this->description_uz = $this->product->description_uz;
+    $this->description_en = $this->product->description_en;
+    $this->description_ru = $this->product->description_ru;
+    $this->characteristics_uz = $this->product->characteristics_uz;
+    $this->characteristics_en = $this->product->characteristics_en;
+    $this->characteristics_ru = $this->product->characteristics_ru;
 
     $selectedOptions = ProductOption::where('product_id', $id)->get()->toArray();
       for ($m = 0; $m < count($selectedOptions); $m++){
@@ -95,14 +107,4 @@ class EditProduct extends Component
       'productOptions' => $productOptions,
     ]);
   }
-
-  // public function deleteProductMainPhoto($product){
-  //   $image = $product['main_photo_path'] .'/'. $product['main_photo'];
-  //   if(File::exists(public_path($image))){
-  //     File::delete(public_path($image));
-  //     $product->main_photo_path = null;
-  //     $product->main_photo = null;
-  //   }
-  // }
-
 }

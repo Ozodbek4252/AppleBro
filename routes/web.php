@@ -88,7 +88,7 @@ Route::middleware([
                     Route::get('/create', "create")->name('banners.create');
                     Route::post('/store', "store")->name('banner.slider');
                     Route::post('/store_mid/store', "store_mid")->name('banner.middle');
-                    Route::post('/small/store', "small")->name('banner.small');
+                    Route::post('/store_small/store', "store_small")->name('banner.small');
 
                     Route::get('/slider/edit/{banner}', "slider_edit")->name('banner.slider.edit');
                     Route::put('/slider/update', "slider_update")->name('banner.slider.update');

@@ -24,7 +24,7 @@ class BannerController extends Controller
     }
 
     public function store(Request $request){
-        $values = Arr::except($request->all(), ['data_id', '_token', 'image', 'video_link']);
+        $values = Arr::except($request->all(), ['data_id', 'image_mobile', '_token', 'image', 'video_link']);
         $values['type'] = 'slider';
 
         if($request->image){
@@ -33,6 +33,13 @@ class BannerController extends Controller
             $request->image->move(public_path('images/slider'), $imageName);
             $values['image'] = 'images/slider/'.$imageName;
             $values['media_type'] = 'image';
+            if($request->image_mobile){
+                // if image is uploaded
+                $imageName = Str::random(10).'-mobile.'.$request->image_mobile->extension();
+                $request->image_mobile->move(public_path('images/slider'), $imageName);
+                $values['image_mobile'] = 'images/slider/'.$imageName;
+                $values['media_type'] = 'image';
+            }
         }elseif($request->video_link){
             // if video is uploaded
             $values['image'] = str_replace("watch?v=","embed/",$request->video_link);
@@ -54,7 +61,7 @@ class BannerController extends Controller
         $banner->name_uz = $request->name_uz;
         $banner->name_ru = $request->name_ru;
         $banner->name_en = $request->name_en;
-        $banner->product_id = $request->product_id;
+        $banner->product_slug = $request->product_slug;
         
         $imageName = Str::random(10).'.'.$request->middle_image->extension();
         $request->middle_image->move(public_path('images/slider/middle'), $imageName);
@@ -66,11 +73,11 @@ class BannerController extends Controller
         return redirect()->back()->with('success-mid', 'Banner created successfully');
     }
     
-    public function small(Request $request){
+    public function store_small(Request $request){
         $banner = new \App\Models\Banner();
         $banner->media_type = 'image';
         $banner->type = 'small';
-        $banner->product_id = $request->product_id;
+        $banner->product_slug = $request->product_slug;
 
         $imageName = Str::random(10).'.'.$request->image->extension();
         $request->image->move(public_path('images/slider/small'), $imageName);
@@ -87,7 +94,7 @@ class BannerController extends Controller
     }
 
     public function slider_update(Request $request){
-        $values = Arr::except($request->all(), ['data_id', '_token', 'image', 'video_link', 'old_image']);
+        $values = Arr::except($request->all(), ['data_id', 'image_mobile', 'old_image_mobile', '_token', 'image', 'video_link', 'old_image']);
         $values['type'] = 'slider';
 
         if($request->image){
@@ -100,6 +107,18 @@ class BannerController extends Controller
             $request->image->move(public_path('images/slider'), $imageName);
             $values['image'] = 'images/slider/'.$imageName;
             $values['media_type'] = 'image';
+
+            if($request->image_mobile){
+                if(file_exists($request->old_image_mobile)){
+                    unlink($request->old_image_mobile);
+                }
+                // if image is uploaded
+                $imageName = Str::random(10).'-mobile.'.$request->image_mobile->extension();
+                $request->image_mobile->move(public_path('images/slider'), $imageName);
+                $values['image_mobile'] = 'images/slider/'.$imageName;
+                $values['media_type'] = 'image';
+            }
+
         }elseif($request->video_link){
             if(file_exists($request->old_image)){
                 unlink($request->old_image);
@@ -139,7 +158,7 @@ class BannerController extends Controller
         $banner->name_uz = $request->name_uz;
         $banner->name_ru = $request->name_ru;
         $banner->name_en = $request->name_en;
-        $banner->product_id = $request->product_id;
+        $banner->product_slug = $request->product_slug;
 
         // check if image is uploaded
         if($request->image){
@@ -182,7 +201,7 @@ class BannerController extends Controller
         $banner = Banner::find($request->data_id);
 
         $banner->type = 'small';
-        $banner->product_id = $request->product_id;
+        $banner->product_slug = $request->product_slug;
         
         // check if image is uploaded
         if($request->image){

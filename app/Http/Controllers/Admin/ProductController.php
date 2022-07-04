@@ -23,6 +23,8 @@ class ProductController extends Controller
     $product->name = $request->name;
     $product->price = $request->price;
     $product->category_id = $request->category;
+    $product->status = $request->status;
+    $product->production_date = $request->production_date;
     
     $product_image_folder_name = date('Y-m-d') .'_'. str_replace(' ', '-', strtolower($request->name));
     $product_image_path = 'images/productImages/'.$product_image_folder_name;
@@ -117,17 +119,18 @@ class ProductController extends Controller
     $product->name = $request->name;
     $product->price = $request->price;
     $product->category_id = $request->category;
+    $product->status = $request->status;
+    $product->production_date = $request->production_date;
+    $product->characteristic_uz = $request->characteristic_uz;
+    $product->characteristic_ru = $request->characteristic_ru;
+    $product->characteristic_en = $request->characteristic_en;
+    $product->description_uz = $request->description_uz;
+    $product->description_ru = $request->description_ru;
+    $product->description_en = $request->description_en;
     
     $product_image_folder_name = date('Y-m-d').'_'. str_replace(' ', '-', strtolower($request->name));
     $product_image_path = 'images/productImages/'.$product_image_folder_name;
     $photo_name = Str::random(10);
-
-      $product->characteristic_uz = $request->characteristic_uz;
-        $product->characteristic_ru = $request->characteristic_ru;
-        $product->characteristic_en = $request->characteristic_en;
-        $product->description_uz = $request->description_uz;
-        $product->description_ru = $request->description_ru;
-        $product->description_en = $request->description_en;
     
     if($request->hasFile('product_photo')){
       if (file_exists($product->main_photo_path)) {

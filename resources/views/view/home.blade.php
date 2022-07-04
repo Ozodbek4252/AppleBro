@@ -3,7 +3,7 @@
 @section('content')
   <section class="main">
     <div class="main-carousel owl-carousel">
-      <div class="main-carousel__item main-carousel__item-video">
+      {{-- <div class="main-carousel__item main-carousel__item-video">
         <div class="container">
           <div class="main-carousel__content">
             <h2 class="main-carousel__title big-title">
@@ -23,29 +23,37 @@
             Ваш браузер не поддерживает HTML5 видео.
           </video>
         </div>
-      </div>
-      <div class="main-carousel__item">
-        <div class="container">
-          <div class="main-carousel__content">
-            <h2 class="main-carousel__title big-title">
-              MacBook Pro 16-inch
-            </h2>
-            <div class="main-carousel__text">
-              Cамый мощный MacBook Pro в истории Cамый мощный MacBook Pro в истории. Cамый мощный MacBook Pro в истории'..
+      </div> --}}
+      @foreach ($banners as $banner)
+        @if ($banner->type == 'slider')
+          <div class="main-carousel__item">
+            <div class="container">
+              <div class="main-carousel__content">
+                <?php 
+                  $slider_name = 'name_'.$lang;
+                  $slider_description = 'desc_'.$lang;
+                  ?>
+                <h2 class="main-carousel__title big-title">
+                  {{$banner->$slider_name}}
+                </h2>
+                <div class="main-carousel__text">
+                  {{$banner->$slider_description}}
+                </div>
+                <a href="{{ Route('front.single-product', $banner->product_slug) }}" class="main-carousel__btn btn">
+                  {{ __('home.Купить') }}
+                </a>
+              </div>
             </div>
-            <a href="#" class="main-carousel__btn btn">
-              {{ __('home.Купить') }}
-            </a>
+            <div class="main-carousel__img">
+              <img src="/{{$banner->image}}" alt="Slider">
+            </div>
+            <div class="main-carousel__img main-carousel__img-mobi">
+              <img src="/{{$banner->image_mobile}}" alt="Slider">
+            </div>
           </div>
-        </div>
-        <div class="main-carousel__img">
-          <img src="/img/slider.png" alt="Slider">
-        </div>
-        <div class="main-carousel__img main-carousel__img-mobi">
-          <img src="/img/slider-mobile.png" alt="Slider">
-        </div>
-      </div>
-      <div class="main-carousel__item">
+        @endif
+      @endforeach
+      {{-- <div class="main-carousel__item">
         <div class="container">
           <div class="main-carousel__content">
             <h2 class="main-carousel__title big-title">
@@ -65,7 +73,7 @@
         <div class="main-carousel__img main-carousel__img-mobi">
           <img src="/img/slider-mobile.png" alt="Slider">
         </div>
-      </div>
+      </div> --}}
 
       <!-- ЕСЛИ ВИДЕО ЕСТЬ ТО КЛАСС main-carousel__item-video -->
 
@@ -234,20 +242,25 @@
 
   <!-- MAJOR -->
   <section class="major">
-    <div class="container">
-      <div class="major-wrap">
-        <div class="major__name big-title">
-          iPhone 13 Pro Max
+    @foreach ($banners as $banner)
+      @if ($banner->type == 'middle')
+        <div class="container">
+          <div class="major-wrap">
+            <div class="major__name big-title">
+              <?php $middle_name = 'name_' . $lang; ?>
+              {{ $banner->$middle_name }}
+            </div>
+            <div class="major__price">
+              от 11.800.000 Сум
+            </div>
+            <div class="major__img">
+              <img src="/{{ $banner->image }}" alt="Main Product">
+            </div>
+            <a href="{{ Route('front.single-product', $banner->product_slug) }}" class="major__link"></a>
+          </div>
         </div>
-        <div class="major__price">
-          от 11.800.000 Сум
-        </div>
-        <div class="major__img">
-          <img src="img/major.png" alt="Main Product">
-        </div>
-        <a href="#" class="major__link"></a>
-      </div>
-    </div>
+      @endif
+    @endforeach
   </section>
 
   <!-- BRANDS-PRODUCT -->
@@ -302,7 +315,8 @@
               @endphp
             </div>
             <div class="brands-product__img">
-              <img src="{{ $product->first()->main_photo_path }}/{{ $product->first()->main_photo }}" alt="Samsung">
+              <img src="{{ $product->first()->main_photo_path }}/{{ $product->first()->main_photo }}"
+                alt="Samsung">
             </div>
             <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
           </div>
@@ -338,7 +352,8 @@
               @endphp
             </div>
             <div class="brands-product__img">
-              <img src="{{ $product->first()->main_photo_path }}/{{ $product->first()->main_photo }}" alt="Xiaomi">
+              <img src="{{ $product->first()->main_photo_path }}/{{ $product->first()->main_photo }}"
+                alt="Xiaomi">
             </div>
             <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
           </div>
@@ -360,12 +375,13 @@
   <section class="banners">
     <div class="container">
       <div class="banners-content">
-        <a href="#" class="banners-item">
-          <img src="img/banner.png" alt="Banner">
-        </a>
-        <a href="#" class="banners-item">
-          <img src="img/banner.png" alt="Banner">
-        </a>
+        @foreach ($banners as $banner)
+          @if ($banner->type == 'small')
+            <a href="{{ Route('front.single-product', $banner->product_slug) }}" class="banners-item">
+              <img src="/{{ $banner->image }}" alt="Banner">
+            </a>
+          @endif
+        @endforeach
       </div>
     </div>
   </section>
@@ -432,6 +448,4 @@
       </div>
     </div>
   </section>
-
-
 @endsection

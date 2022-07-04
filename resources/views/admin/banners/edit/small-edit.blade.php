@@ -39,10 +39,10 @@
                 <input type="hidden" name="old_image" value="{{ $banner->image }}">
                 <div class="mr-3">
                   <label class="form-label">Product</label>
-                  <select name="product_id" class="form-control select2">
+                  <select name="product_slug" class="form-control select2">
                     <option value="{{ null }}">Select</option>
                     @foreach ($products as $product)
-                      <option @if ($product->id == $banner->product_id) selected @endif value="{{ $product->id }}">
+                      <option @if ($product->slug == $banner->product_slug) selected @endif value="{{ $product->slug }}">
                         {{ $product->name }}</option>
                     @endforeach
                   </select>

@@ -45,7 +45,8 @@
             <div class="col-md-2">
               <div class="mb-3">
                 <label class="form-label" for="photo">Photo</label>
-                <input name="product_photo" type="file" class="form-control" id="photo" placeholder="Photo" value="">
+                <input name="product_photo" type="file" class="form-control" id="photo" placeholder="Photo"
+                  value="">
               </div>
               <div class="col-md-6" style="display: flex;">
                 <img class="img-thumbnail" alt="200x200" width="200"
@@ -106,284 +107,306 @@
                 @endforeach
               </div>
             </div>
-            <div class="card-body row">
-              <div class="form-group col-md-4" style="width: 27.7rem">
-                  <label for="">Ko'rsatkich Uz</label>
-                  <textarea class="ckeditor form-control" name="characteristic_uz">{{ $product->characteristic_uz }}</textarea>
-              </div>
-              <div class="form-group col-md-4" style="width: 27.7rem">
-                  <label for="">Характеристики Py</label>
-                  <textarea class="ckeditor form-control" name="characteristic_ru">{{ $product->characteristic_ru }}</textarea>
-              </div>
+          </div>
+
+          <div class="card-body row">
             <div class="form-group col-md-4" style="width: 27.7rem">
-                <label for="">Characteristics En</label>
-                <textarea class="ckeditor form-control" name="characteristic_en">{{ $product->characteristic_en }}</textarea>
+              <label for="">Ko'rsatkich Uz</label>
+              <textarea wire:model="characteristics_uz" class="ckeditor form-control" name="characteristic_uz">{{ $characteristics_uz }}</textarea>
+            </div>
+            <div class="form-group col-md-4" style="width: 27.7rem">
+              <label for="">Характеристики Py</label>
+              <textarea wire:model="characteristics_ru" class="ckeditor form-control" name="characteristic_ru">{{ $characteristics_ru }}</textarea>
+            </div>
+            <div class="form-group col-md-4" style="width: 27.7rem">
+              <label for="">Characteristics En</label>
+              <textarea wire:model="characteristics_en" class="ckeditor form-control" name="characteristic_en">{{ $characteristics_en }}</textarea>
             </div>
           </div>
+
           <div class="card-body row">
             <h4 class="card-title">Описание</h4>
             <div class="form-group col-md-4" style="width: 27.7rem">
-                <label for="description_uz">malumot uz</label>
-                <textarea type="text" name="description_uz" class="form-control" multiple id="description_uz" placeholder="....." value="">{{$product->description_uz}}</textarea>
+              <label for="description_uz">malumot uz</label>
+              <textarea wire:model="description_uz" type="text" name="description_uz" class="form-control" multiple id="description_uz"
+                placeholder="....." value="">{{ $description_uz }}</textarea>
             </div>
             <div class="form-group col-md-4" style="width: 27.7rem">
-                <label for="description_ru">oписание py</label>
-                <textarea type="text" name="description_ru" class="form-control" multiple id="description_ru" placeholder="....." value="">{{$product->description_ru}}</textarea>
+              <label for="description_ru">oписание py</label>
+              <textarea wire:model="description_ru" type="text" name="description_ru" class="form-control" multiple id="description_ru"
+                placeholder="....." value="">{{ $description_ru }}</textarea>
             </div>
             <div class="form-group col-md-4" style="width: 27.7rem">
-                <label for="description_en">description en</label>
-                <textarea type="text" name="description_en" class="form-control" multiple id="description_en" placeholder="....." value="">{{$product->description_en}}</textarea>
+              <label for="description_en">description en</label>
+              <textarea wire:model="description_en" type="text" name="description_en" class="form-control" multiple id="description_en"
+                placeholder="....." value="">{{ $description_en }}</textarea>
+            </div>
+          </div>
+
+          <div class="card-body row">
+            <h4 class="card-title">Описание</h4>
+            <div class="form-group col-md-4" style="width: 27.7rem">
+              <label for="production_date">Production Date</label>
+              <input wire:model="production_date" type="text" name="production_date" class="form-control" placeholder='Ex: 2019'
+                id="production_date" value="">
+            </div>
+            <div class="form-group col-md-4" style="width: 27.7rem">
+              <label for="status_">Status</label>
+              <input wire:model="status" type="text" name="status" class="form-control" id="status_" placeholder="Ex: New"
+                value="">
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xl-3">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Xususiyatlari</h4>
-            <div class="mb-3">
-              <label class="form-label">Kategoriyani tanlang</label>
-              <select wire:model="xususiyatSelected" name="xususiyatSelected" wire:change="changeOption()"
-                class="form-control select2">
-                <option value="Select">Select</option>
-                @foreach ($xususiyatlar as $xususiyat)
-                  <option value="{{ $xususiyat->id }}">
-                    @if ($xususiyat)
-                      {{ $xususiyat->name }} - {{ $xususiyat->value }}
-                    @endif
-                  </option>
-                @endforeach
-              </select>
-            </div>
-            <div class="col-md-12">
+      <div class="row">
+        <div class="col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Xususiyatlari</h4>
               <div class="mb-3">
-                <label class="form-label" for="xususiyat_name">Name</label>
-                <input type="text" wire:model="xususiyat_name" class="form-control" placeholder="Name">
+                <label class="form-label">Kategoriyani tanlang</label>
+                <select wire:model="xususiyatSelected" name="xususiyatSelected" wire:change="changeOption()"
+                  class="form-control select2">
+                  <option value="Select">Select</option>
+                  @foreach ($xususiyatlar as $xususiyat)
+                    <option value="{{ $xususiyat->id }}">
+                      @if ($xususiyat)
+                        {{ $xususiyat->name }} - {{ $xususiyat->value }}
+                      @endif
+                    </option>
+                  @endforeach
+                </select>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="mb-3">
-                <label class="form-label" for="xususiyat_name">Value</label>
-                <input type="text" wire:model="xususiyat_value" class="form-control" placeholder="Value">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label" for="xususiyat_name">Name</label>
+                  <input type="text" wire:model="xususiyat_name" class="form-control" placeholder="Name">
+                </div>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="mb-3">
-                <label class="form-label" for="xususiyat_name">Photo</label>
-                <input type="file" wire:model="xususiyat_photo" class="form-control">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label" for="xususiyat_name">Value</label>
+                  <input type="text" wire:model="xususiyat_value" class="form-control" placeholder="Value">
+                </div>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="mb-3">
-                <button type="button" wire:click="addXususiyat" class="btn btn-success mr-3">Add</button>
-                @if ($xususiyatSelected != 'Select')
-                  <button type="button" wire:click="deleteOption()" class="btn btn-danger">Delete</button>
-                @endif
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label" for="xususiyat_name">Photo</label>
+                  <input type="file" wire:model="xususiyat_photo" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <button type="button" wire:click="addXususiyat" class="btn btn-success mr-3">Add</button>
+                  @if ($xususiyatSelected != 'Select')
+                    <button type="button" wire:click="deleteOption()" class="btn btn-danger">Delete</button>
+                  @endif
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-xl-9">
-        <div class="card">
-          <div class="card-body">
-            @if (session()->has('optionImage'))
-              <div
-                style="padding: .75rem; background: #feb2b2; color: #9b2c2c; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);"
-                class="alert alert-danger">
-                {{ session('optionImage') }}
-              </div>
-            @endif
-            <div style="margin-bottom: 1rem;">
-              @if (session()->has('option'))
+        <div class="col-xl-9">
+          <div class="card">
+            <div class="card-body">
+              @if (session()->has('optionImage'))
                 <div
                   style="padding: .75rem; background: #feb2b2; color: #9b2c2c; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);"
                   class="alert alert-danger">
-                  {{ session('option') }}
+                  {{ session('optionImage') }}
                 </div>
               @endif
-            </div>
-            <div class="col-md-12">
-              <div class="mb-3" style="display: flex; flex-direction: column;">
-                <div class="add-input mb-2">
-                  <div class="row">
-                    <div class="col-md-1">
-                      <div class="add-input">
-                        <div class="spinner-border text-info m-1" wire:loading wire:target="add({{ $i }})"
-                          role="status">
-                          <span class="sr-only">Loading...</span>
-                        </div>
-                        <button class="btn text-white btn-info btn-sm" wire:loading.attr="disabled"
-                          wire:click.prevent="add({{ $i }})"><i class="fa fa-plus"></i></button>
-                      </div>
-                    </div>
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label class="col-form-label-sm" for="validationTooltip02">Option Id</label>
-                      </div>
-                    </div>
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label class="col-form-label-sm" for="validationTooltip02" required>Price</label>
-                      </div>
-                    </div>
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label class="col-form-label-sm" for="validationTooltip02">Photos</label>
-                      </div>
-                    </div>
+              <div style="margin-bottom: 1rem;">
+                @if (session()->has('option'))
+                  <div
+                    style="padding: .75rem; background: #feb2b2; color: #9b2c2c; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);"
+                    class="alert alert-danger">
+                    {{ session('option') }}
                   </div>
-                </div>
-                @foreach ($productOptions as $key => $productOption)
-                  <div class="add-input mb-0 {{ $key }}">
+                @endif
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3" style="display: flex; flex-direction: column;">
+                  <div class="add-input mb-2">
                     <div class="row">
                       <div class="col-md-1">
-                        <input type="hidden" name="selectedProductOption[{{ $key }}]"
-                          wire:model="selectedProductOption.{{ $key }}" value="{{ $productOption->id }}">
-                        <button class="btn btn-danger btn-sm"
-                          wire:click.prevent="removeOption({{ $productOption->id }}, {{ $key }})"><i
-                            class="fa fa-minus"></i></button>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <select class="form-control form-control-sm" wire:model="option_id.{{ $key }}"
-                            name="option_id[{{ $key }}]">
-                            <option value="null">Select Option</option>
-                            @foreach ($options as $option)
-                              <option value="{{ $option->id }}">{{ $option->name }} ({{ $option->value }})
-                              </option>
-                            @endforeach
-                          </select>
+                        <div class="add-input">
+                          <div class="spinner-border text-info m-1" wire:loading
+                            wire:target="add({{ $i }})" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>
+                          <button class="btn text-white btn-info btn-sm" wire:loading.attr="disabled"
+                            wire:click.prevent="add({{ $i }})"><i class="fa fa-plus"></i></button>
                         </div>
                       </div>
                       <div class="col-md-2">
                         <div class="form-group">
-                          <input type="text" class="form-control form-control-sm" placeholder="price"
-                            wire:model="product_option_price.{{ $key }}"
-                            name="product_option_price[{{ $key }}]">
+                          <label class="col-form-label-sm" for="validationTooltip02">Option Id</label>
                         </div>
                       </div>
-                      <div class="col-md-5">
+                      <div class="col-md-2">
                         <div class="form-group">
-                          <input type="file" multiple class="form-control form-control-sm"
-                            wire:model="product_option_photos.{{ $key }}"
-                            name="product_option_photos[{{ $key }}][]">
-                          @if (\App\Models\Option::find($productOption->option_id)->name == 'Color')
-                            @php
-                              $productOptionPhotos = \App\Models\ProductPhoto::where('product_option_id', $productOption->id)->get();
-                            @endphp
-                            <div style="display: flex; flex-wrap: wrap;">
-                              @foreach ($productOptionPhotos as $id_of_photos => $productOptionPhoto)
-                                <div class="col-md-6 mt-2"
-                                  style="display: flex; flex-direction: column; align-items: end;">
-                                  {{-- <button type="button" class="btn-close" data-bs-dismiss="alert"
+                          <label class="col-form-label-sm" for="validationTooltip02" required>Price</label>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label class="col-form-label-sm" for="validationTooltip02">Photos</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  @foreach ($productOptions as $key => $productOption)
+                    <div class="add-input mb-0 {{ $key }}">
+                      <div class="row">
+                        <div class="col-md-1">
+                          <input type="hidden" name="selectedProductOption[{{ $key }}]"
+                            wire:model="selectedProductOption.{{ $key }}"
+                            value="{{ $productOption->id }}">
+                          <button class="btn btn-danger btn-sm"
+                            wire:click.prevent="removeOption({{ $productOption->id }}, {{ $key }})"><i
+                              class="fa fa-minus"></i></button>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <select class="form-control form-control-sm" wire:model="option_id.{{ $key }}"
+                              name="option_id[{{ $key }}]">
+                              <option value="null">Select Option</option>
+                              @foreach ($options as $option)
+                                <option value="{{ $option->id }}">{{ $option->name }} ({{ $option->value }})
+                                </option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <input type="text" class="form-control form-control-sm" placeholder="price"
+                              wire:model="product_option_price.{{ $key }}"
+                              name="product_option_price[{{ $key }}]">
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="form-group">
+                            <input type="file" multiple class="form-control form-control-sm"
+                              wire:model="product_option_photos.{{ $key }}"
+                              name="product_option_photos[{{ $key }}][]">
+                            @if (\App\Models\Option::find($productOption->option_id)->name == 'Color')
+                              @php
+                                $productOptionPhotos = \App\Models\ProductPhoto::where('product_option_id', $productOption->id)->get();
+                              @endphp
+                              <div style="display: flex; flex-wrap: wrap;">
+                                @foreach ($productOptionPhotos as $id_of_photos => $productOptionPhoto)
+                                  <div class="col-md-6 mt-2"
+                                    style="display: flex; flex-direction: column; align-items: end;">
+                                    {{-- <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     data-bs-toggle="modal" data-bs-target="#productMainPhotoDeleteModal"
                                     aria-label="Close"></button> --}}
-                                  <button type="button" class="btn-close" data-bs-toggle="modal"
-                                    aria-label="Close" data-bs-target="#Mark_{{ $productOptionPhoto->id }}"></button>
-                                  <img class="img-thumbnail" alt="200x200" width="200"
-                                    src="/{{ $productOptionPhoto->photo_path }}/{{ $productOptionPhoto->photo }}"
-                                    data-holder-rendered="true">
-                                </div>
-                                {{-- Modal Beginning --}}
-                                <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog"
-                                  aria-labelledby="Mark_{{ $productOptionPhoto->id }}"
-                                  id="Mark_{{ $productOptionPhoto->id }}" aria-hidden="false">
-                                  <div class="modal-dialog modal-xl">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <div>
-                                          <p class="text-red-500">Are you sure that you want to delete this image?
-                                          </p>
-                                          <img class="rounded me-2" alt="200x200" width="200"
-                                            src="/{{ $productOptionPhoto->photo_path }}/{{ $productOptionPhoto->photo }}"
-                                            data-holder-rendered="true">
+                                    <button type="button" class="btn-close" data-bs-toggle="modal"
+                                      aria-label="Close"
+                                      data-bs-target="#Mark_{{ $productOptionPhoto->id }}"></button>
+                                    <img class="img-thumbnail" alt="200x200" width="200"
+                                      src="/{{ $productOptionPhoto->photo_path }}/{{ $productOptionPhoto->photo }}"
+                                      data-holder-rendered="true">
+                                  </div>
+                                  {{-- Modal Beginning --}}
+                                  <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog"
+                                    aria-labelledby="Mark_{{ $productOptionPhoto->id }}"
+                                    id="Mark_{{ $productOptionPhoto->id }}" aria-hidden="false">
+                                    <div class="modal-dialog modal-xl">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <div>
+                                            <p class="text-red-500">Are you sure that you want to delete this image?
+                                            </p>
+                                            <img class="rounded me-2" alt="200x200" width="200"
+                                              src="/{{ $productOptionPhoto->photo_path }}/{{ $productOptionPhoto->photo }}"
+                                              data-holder-rendered="true">
+                                          </div>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                          </button>
                                         </div>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                          aria-label="Close">
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="row">
-                                          <div class="col-md-9">
-                                            <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
-                                              <button type="button" data-bs-dismiss="modal" aria-label="Close"
-                                                class="btn btn-success btn-sm">
-                                                Cencel
-                                              </button>
-                                              <button type="button" data-bs-dismiss="modal" aria-label="Close"
-                                                class="btn btn-danger btn-sm"
-                                                wire:click="deleteOptionImage({{ $productOptionPhoto->id }})">
-                                                Delete
-                                              </button>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                            <div class="col-md-9">
+                                              <div class="tab-content text-muted mt-4 mt-md-0"
+                                                id="v-pills-tabContent">
+                                                <button type="button" data-bs-dismiss="modal" aria-label="Close"
+                                                  class="btn btn-success btn-sm">
+                                                  Cencel
+                                                </button>
+                                                <button type="button" data-bs-dismiss="modal" aria-label="Close"
+                                                  class="btn btn-danger btn-sm"
+                                                  wire:click="deleteOptionImage({{ $productOptionPhoto->id }})">
+                                                  Delete
+                                                </button>
+                                              </div>
                                             </div>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
-                                {{-- Modal End --}}
+                                  {{-- Modal End --}}
+                                @endforeach
+                              </div>
+                            @endif
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr><br>
+                  @endforeach
+                  @foreach ($inputs as $key => $value)
+                    <div class="add-input mb-0 {{ $key }}">
+                      <div class="row">
+                        <div class="col-md-1">
+                          <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{ $key }})"><i
+                              class="fa fa-minus"></i></button>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <select class="form-control form-control-sm" wire:model="option_id.{{ $key }}"
+                              name="option_id[{{ $key }}]">
+                              <option value="null">Select Option</option>
+                              @foreach ($options as $option)
+                                <option value="{{ $option->id }}">{{ $option->name }} ({{ $option->value }})
+                                </option>
                               @endforeach
-                            </div>
-                          @endif
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <input type="text" class="form-control form-control-sm" placeholder="price"
+                              wire:model="product_option_price.{{ $key }}"
+                              name="product_option_price[{{ $key }}]">
+                            @error('product_option_price.' . $value)
+                              <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input type="file" multiple class="form-control form-control-sm"
+                              wire:model="product_option_photos.{{ $key }}"
+                              name="product_option_photos[{{ $key }}][]">
+                            @error('product_option_photos.' . $value)
+                              <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <hr><br>
-                @endforeach
-                @foreach ($inputs as $key => $value)
-                  <div class="add-input mb-0 {{ $key }}">
-                    <div class="row">
-                      <div class="col-md-1">
-                        <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{ $key }})"><i
-                            class="fa fa-minus"></i></button>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <select class="form-control form-control-sm" wire:model="option_id.{{ $key }}"
-                            name="option_id[{{ $key }}]">
-                            <option value="null">Select Option</option>
-                            @foreach ($options as $option)
-                              <option value="{{ $option->id }}">{{ $option->name }} ({{ $option->value }})
-                              </option>
-                            @endforeach
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="form-group">
-                          <input type="text" class="form-control form-control-sm" placeholder="price"
-                            wire:model="product_option_price.{{ $key }}"
-                            name="product_option_price[{{ $key }}]">
-                          @error('product_option_price.' . $value)
-                            <span class="text-danger error">{{ $message }}</span>
-                          @enderror
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <input type="file" multiple class="form-control form-control-sm"
-                            wire:model="product_option_photos.{{ $key }}"
-                            name="product_option_photos[{{ $key }}][]">
-                          @error('product_option_photos.' . $value)
-                            <span class="text-danger error">{{ $message }}</span>
-                          @enderror
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr><br>
-                @endforeach
+                    <hr><br>
+                  @endforeach
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <button class="btn btn-primary" type="submit" style="width: 200px;">Saqlash</button>
+      <button class="btn btn-primary" type="submit" style="width: 200px;">Saqlash</button>
   </form>
 </div>
