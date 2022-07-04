@@ -1,6 +1,6 @@
-{{-- @extends('layouts.front')
+@extends('layouts.front')
 
-@section('content') --}}
+@section('content')
 
 
 	<!-- HISTORY -->
@@ -33,89 +33,36 @@
 								{{__('home.Общая сумма')}}
 							</td>
 						</tr>
-						<tr>
-							<td>
-								1
-							</td>
-							<td>
-								244047
-							</td>
-							<td>
-								1шт
-							</td>
-							<td>
-							</td>
-							<td>
-								{{__('home.В процессе')}}
-							</td>
-							<td>
-								23 942 000 сум
-							</td>
-						</tr>
-						<tr>
-							<td>
-								1
-							</td>
-							<td>
-								244047
-							</td>
-							<td>
-								1шт
-							</td>
-							<td>
-								31.03.2022
-							</td>
-							<td>
-								{{__('home.В процессе')}}
-							</td>
-							<td>
-								23 942 000 сум
-							</td>
-						</tr>
-						<tr>
-							<td>
-								1
-							</td>
-							<td>
-								244047
-							</td>
-							<td>
-								1шт
-							</td>
-							<td>
-								31.03.2022
-							</td>
-							<td>
-								{{__('home.В процессе')}}
-							</td>
-							<td>
-								23 942 000 сум
-							</td>
-						</tr>
-						<tr>
-							<td>
-								1
-							</td>
-							<td>
-								244047
-							</td>
-							<td>
-								1шт
-							</td>
-							<td>
-								31.03.2022
-							</td>
-							<td>
-								{{__('home.В процессе')}}
-							</td>
-							<td>
-								23 942 000 сум
-							</td>
-						</tr>
+						@php
+							$i = 1;
+						@endphp
+						
+						@foreach($orders as $order)
+							<tr>
+								<td>
+									{{$i++}}
+								</td>
+								<td>
+									{{$order->id}}
+								</td>
+								<td>
+									1шт
+								</td>
+								<td>
+									{{$order->created_at}}
+								</td>
+								<td>
+									{{$order->status}}
+								</td>
+								<td>
+									${{$order->total_price}}
+								</td>
+							</tr>
+						@endforeach
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</section>
 	
-{{-- @endsection --}}
+@endsection

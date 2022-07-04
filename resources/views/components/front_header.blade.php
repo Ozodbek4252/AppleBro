@@ -167,7 +167,7 @@
                 @endif
               </li>
               <li>
-                <a href="{{ Route('front.history') }}">
+                <a href="{{ Route('profile.history') }}">
                   {{ __('home.Мои заказы') }}
                 </a>
               </li>
