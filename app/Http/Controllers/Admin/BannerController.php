@@ -172,10 +172,10 @@ class BannerController extends Controller
     }
 
     // bottom small banners
-    public function small_1_edit(Banner $banner){
+    public function small_edit(Banner $banner){
         $products = Product::all();
         
-        return view('admin.banners.edit.small-1-edit', ['banner'=>$banner, 'products'=>$products]);
+        return view('admin.banners.edit.small-edit', ['banner'=>$banner, 'products'=>$products]);
     }
 
     public function small_1_update(Request $request){

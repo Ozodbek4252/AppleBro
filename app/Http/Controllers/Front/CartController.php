@@ -33,8 +33,7 @@ class CartController extends Controller
 
             // Order Product
             foreach($cart as $id => $cart_product){
-                $a = \App\Models\ProductOption::where('product_id', $id)->where('option_id', $cart_product['options']['Color'])->first()->id;
-                $photo = \App\Models\ProductPhoto::where('product_option_id', $a)->first();
+                $photo = \App\Models\ProductPhoto::where('product_id', $id)->first();
 
                 $order_product = new OrderProduct();
                 $order_product->order_id = $order->id;

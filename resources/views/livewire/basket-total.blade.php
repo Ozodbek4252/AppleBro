@@ -26,12 +26,7 @@
           <div class="buy-carousel__item">
             <div class="buy-carousel__img">
               @php
-                $photo = \App\Models\ProductPhoto::where(
-                    'product_option_id',
-                    \App\Models\ProductOption::where('option_id', $product['options']['Color'])
-                        ->where('product_id', $id)
-                        ->first()->id,
-                )->first();
+              $photo = \App\Models\ProductPhoto::where('product_id', $id)->first();
               @endphp
               <img src="{{ $photo->photo_path }}/{{ $photo->photo }}" alt="product">
             </div>

@@ -17,7 +17,7 @@
                   $option["price"] = $product_option->price;
                   $optionArr[$option->name][] = $option;
               } 
-              $photo = \App\Models\ProductPhoto::where('product_option_id', \App\Models\ProductOption::where('option_id', $product['options']['Color'])->where('product_id', $id)->first()->id)->first();
+              $photo = \App\Models\ProductPhoto::where('product_id', $id)->first();
             @endphp
 
             <div class="buy-basket__item">
