@@ -148,13 +148,13 @@
               {{-- Delete Modal Beginning --}}
               <div class="popup__confirm"
                 style="
-              display:none; position: fixed; 
-              top: 50%; left: 50%; transform: translate(-50%, -50%); 
-              background-color:#ffffff; width: 500px; height: auto; 
-              z-index:999; 
-              border-radius: 10px;
-              box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.5);
-              ">
+                  display:none; position: fixed; 
+                  top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                  background-color:#ffffff; width: 500px; height: auto; 
+                  z-index:999; 
+                  border-radius: 10px;
+                  box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.5);
+                  ">
                 <div class="card-body">
 
                   <div style="margin: 1rem 0">
@@ -195,54 +195,28 @@
 
       <div class="col-xl-12">
         <div class="card" style="display: flex; justify-content: space-between; flex-direction: row;">
+          <?php $num = 0; ?>
+          @foreach ($banners as $banner)
+            @if ($banner->type == 'small')
+              <?php $num++ ?>
+              <div class="col-xl-6">
+                <div class="card-body">
+                  <h4 class="card-title">Botton Banner Left</h4>
+                  <div class="mb-3">
+                    <img src="/{{$banner->image}}" class="img-fluid" alt="Responsive image">
+                  </div>
 
-          {{-- Left Beginning --}}
-          <div class="col-xl-6">
-            <div class="card-body">
-              <h4 class="card-title">Botton Banner Left</h4>
-              <p class="card-title-desc">Images in Bootstrap are made responsive
-                with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
-                  100%;</code>
-                and <code class="highlighter-rouge">height: auto;</code> are applied to
-                the image so that it scales with the parent element.</p>
+                  <div class="mb-3">
+                    <a href="{{ Route('admin.banner.small.edit', $banner) }}" submit="submit"
+                      class="btn btn-warning waves-effect waves-light">Edit</a>
+                    <button submit="submit" class="btn btn-danger waves-effect waves-light">Delete</button>
+                  </div>
 
-              <div class="mb-3">
-                <img src="/assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
+                </div>
               </div>
-
-              <div class="mb-3">
-                <button submit="submit" class="btn btn-warning waves-effect waves-light">Edit</button>
-                <button submit="submit" class="btn btn-danger waves-effect waves-light">Delete</button>
-              </div>
-
-            </div>
-          </div>
-          {{-- Left End --}}
-
-
-          {{-- Right Beginning --}}
-          <div class="col-xl-6">
-            <div class="card-body">
-              <h4 class="card-title">Botton Banner Right</h4>
-              <p class="card-title-desc">Images in Bootstrap are made responsive
-                with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width:
-                  100%;</code>
-                and <code class="highlighter-rouge">height: auto;</code> are applied to
-                the image so that it scales with the parent element.</p>
-
-              <div class="mb-3">
-                <img src="/assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
-              </div>
-
-              <div class="mb-3">
-                <button submit="submit" class="btn btn-warning waves-effect waves-light">Edit</button>
-                <button submit="submit" class="btn btn-danger waves-effect waves-light">Delete</button>
-              </div>
-
-
-            </div>
-          </div>
-          {{-- Right End --}}
+              <?php if($num==2){break;} ?>
+            @endif
+          @endforeach
 
         </div>
       </div>

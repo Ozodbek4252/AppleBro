@@ -259,7 +259,7 @@
                 <img src="/img/banner.png" class="img-fluid" alt="Responsive image">
               </div>
 
-              <form action="{{ Route('admin.banner.small_1') }}" method="POST" enctype="multipart/form-data">
+              <form action="{{ Route('admin.banner.small') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3" style="display: flex; justify-content: space-between; align-items: end;">
                   <input type="file" name="image" class="form-control-file">
@@ -284,7 +284,7 @@
 
 
           {{-- Right Beginning --}}
-          <div class="col-xl-6">
+          {{-- <div class="col-xl-6">
             <div class="card-body">
               <h4 class="card-title">Botton Banner Right</h4>
               <p class="card-title-desc">Images in Bootstrap are made responsive
@@ -317,7 +317,7 @@
 
 
             </div>
-          </div>
+          </div> --}}
           {{-- Right End --}}
 
         </div>

@@ -2,6 +2,7 @@
   @if(!empty($products))
     @foreach($products as $id=>$product)
       @php
+      // dd($product);
         $product_options = \App\Models\ProductOption::where('product_id', $id)->get();
         $optionArr = [];
         foreach($product_options as $product_option){
@@ -9,7 +10,7 @@
             $option["price"] = $product_option->price;
             $optionArr[$option->name][] = $option;
         }
-        $photo = \App\Models\ProductPhoto::where('product_option_id', \App\Models\ProductOption::where('option_id', $product['options']['Color'])->where('product_id', $id)->first()->id)->first();
+        $photo = \App\Models\ProductPhoto::where('product_id', $id)->first();
       @endphp
 
       <div class="basket-item">
