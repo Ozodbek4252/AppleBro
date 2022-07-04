@@ -9,11 +9,13 @@ use Illuminate\Support\Collection;
 
 class PaginationHelper
 {
-    public static function paginate(Collection $results, $showPerPage)
+    public static function paginate($results, $showPerPage)
     {
+        // dd($results);
+        $results = new Collection($results);
         $pageNumber = Paginator::resolveCurrentPage('page');
         
-        $totalPageNumber = $results->count();
+        $totalPageNumber = count($results);
 
         return self::paginator($results->forPage($pageNumber, $showPerPage), $totalPageNumber, $showPerPage, $pageNumber, [
             'path' => Paginator::resolveCurrentPath(),

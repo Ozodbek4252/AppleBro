@@ -30,11 +30,9 @@ class AllProductsController extends Controller
       $products = $main_category->products;
     }
 
-    $showPerPage = 2;
+    $showPerPage = 9;
 
     $products = PaginationHelper::paginate($products, $showPerPage);
-
-    // dd($products->links());
 
     return view('view.all-products', [
       'main_category' => $main_category,
