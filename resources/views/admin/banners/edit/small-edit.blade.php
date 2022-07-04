@@ -23,19 +23,27 @@
             <h4 class="card-title">Botton Banner Left</h4>
 
             <div class="mb-3">
-              <img src="/img/banner.png" class="img-fluid" alt="Responsive image">
+              <img src="/{{ $banner->image }}" class="img-fluid" alt="Responsive image">
             </div>
 
-            <form action="{{ Route('admin.banner.small') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ Route('admin.banner.small.update') }}" method="POST" enctype="multipart/form-data">
+              @method('PUT')
               @csrf
               <div class="mb-3" style="display: flex; justify-content: space-between; align-items: end;">
                 <input type="file" name="image" class="form-control-file">
+
+                {{-- to find which banner to update --}}
+                <input type="hidden" name="data_id" value="{{ $banner->id }}">
+                
+                {{-- to know if image exist, if image is upload and, old image exists, delete that old image, and save new uploaded image --}}
+                <input type="hidden" name="old_image" value="{{ $banner->image }}">
                 <div class="mr-3">
                   <label class="form-label">Product</label>
                   <select name="product_id" class="form-control select2">
                     <option value="{{ null }}">Select</option>
                     @foreach ($products as $product)
-                      <option value="{{ $product->id }}">{{ $product->name }}</option>
+                      <option @if ($product->id == $banner->product_id) selected @endif value="{{ $product->id }}">
+                        {{ $product->name }}</option>
                     @endforeach
                   </select>
                 </div>

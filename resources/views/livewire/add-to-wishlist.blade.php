@@ -14,15 +14,6 @@
 
 <script>
   function favourite(id, path, photo, name) {
-    // if($('.product-item__fav_' + id).css('background-color') == 'rgb(255, 30, 30)'){
-    //   console.log('remove');
-    //   $('.product-item__fav_' + id).css('background-color', '#FFF');
-    //   $('#path' + id).attr('fill', '#7B7B7B');
-    // }else{
-    //   console.log('add');
-    //   $('.product-item__fav_' + id).css('background-color', '#FF1E1E');
-    //   $('#path' + id).attr('fill', '#fff');
-    // }
     let response = $.ajax({
       type: "GET",
       url: '/favourites/' + id + '/check',

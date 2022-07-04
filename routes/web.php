@@ -99,7 +99,8 @@ Route::middleware([
                     Route::get('/mid/delete/{banner}', "mid_delete")->name('banner.mid.delete');
                     
                     Route::get('/small/edit/{banner}', "small_edit")->name('banner.small.edit');
-
+                    Route::put('/small/update', "small_update")->name('banner.small.update');
+                    Route::get('/small/delete/{banner}', "small_delete")->name('banner.small.delete');
                 });
             });
         });
@@ -142,26 +143,14 @@ Route::get('favourites/{id}/check', function ($id){
     }
 });
 
+Route::get('carts/{id}/check', function ($id){
+    if(session()->get('cart')[$id]){
+        return response()->json(true);
+    }else{
+        return response()->json(false);
+    }
+});
 
-
-// Route::get('/test/{id}', function($id){
-//     $product = \App\Models\Product::find($id)->get();
-//     dd($product[0]->product_options[0]->option);
-// });
-
-
-
-// Route::get('/test/{id}', function($id){
-//     $product_options = ProductOption::where('product_id', $id)->get();
-
-//     $optionArr = [];
-//     foreach($product_options as $product_option){
-//         $option = Option::find($product_option->option_id);
-//         $option["price"] = $product_option->price;
-//         $optionArr[$option->name][] = $option;
-//     }
-//     return $optionArr;
-// });
 
 
 

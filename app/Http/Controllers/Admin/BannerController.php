@@ -178,9 +178,10 @@ class BannerController extends Controller
         return view('admin.banners.edit.small-edit', ['banner'=>$banner, 'products'=>$products]);
     }
 
-    public function small_1_update(Request $request){
+    public function small_update(Request $request){
         $banner = Banner::find($request->data_id);
-        $banner->type = 'small_1';
+
+        $banner->type = 'small';
         $banner->product_id = $request->product_id;
         
         // check if image is uploaded
@@ -200,57 +201,16 @@ class BannerController extends Controller
         
         $banner->save();
         
-        return redirect()->route('admin.banners.index')->with('success-small-1-updated', 'Small Banner 1 Successfully updated.');
+        return redirect()->route('admin.banners.index')->with('success-small-updated', 'Small Banner Successfully updated.');
     }
 
-    public function small_1_delete(Banner $banner){
+    public function small_delete(Banner $banner){
         if(file_exists($banner->image)){
             unlink($banner->image);
         }
         $banner->delete();
         
-        return redirect()->back()->with('success-small-1-deleted', 'Small Banner 1 Successfully deleted.');
-    }
-
-    // bottom small banners
-    public function small_2_edit(Banner $banner){
-        $products = Product::all();
-        
-        return view('admin.banners.edit.small-2-edit', ['banner'=>$banner, 'products'=>$products]);
-    }
-
-    public function small_2_update(Request $request){
-        $banner = Banner::find($request->data_id);
-        $banner->type = 'small_2';
-        $banner->product_id = $request->product_id;
-        
-        // check if image is uploaded
-        if($request->image){
-            // check if image is exists in public folder
-            if(file_exists($request->old_image)){
-                // if exists, delete it
-                unlink($request->old_image);
-            }
-            
-            // save image 
-            $imageName = Str::random(10).'.'.$request->image->extension();
-            $request->image->move(public_path('images/slider/small'), $imageName);
-            $banner->image = 'images/slider/small/'.$imageName;
-            $banner->media_type = 'image';
-        }
-        
-        $banner->save();
-        
-        return redirect()->route('admin.banners.index')->with('success-small-2-updated', 'Small Banner 2 Successfully updated.');
-    }
-
-    public function small_2_delete(Banner $banner){
-        if(file_exists($banner->image)){
-            unlink($banner->image);
-        }
-        $banner->delete();
-        
-        return redirect()->back()->with('success-small-2-deleted', 'Small Banner 2 Successfully deleted.');
+        return redirect()->back()->with('success-small-deleted', 'Small Banner Successfully deleted.');
     }
 
 }

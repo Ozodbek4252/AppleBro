@@ -189,6 +189,18 @@
             class="alert alert-success">
             {{ session('success-small') }}
           </div>
+        @elseif (session()->has('success-small-updated'))
+          <div
+            style="padding: .75rem; background: #9ae6b4; color: #276749; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);"
+            class="alert alert-success">
+            {{ session('success-small-updated') }}
+          </div>
+        @elseif(session()->has('success-small-deleted'))
+          <div
+            style="padding: .75rem; background: #e69a9a; color: #672727; border-radius: 0.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);"
+            class="alert alert-danger">
+            {{ session('success-small-deleted') }}
+          </div>
         @endif
       </div>
       {{-- Flash Message for Adding Product End --}}
@@ -198,23 +210,51 @@
           <?php $num = 0; ?>
           @foreach ($banners as $banner)
             @if ($banner->type == 'small')
-              <?php $num++ ?>
+              <?php $num++; ?>
               <div class="col-xl-6">
                 <div class="card-body">
                   <h4 class="card-title">Botton Banner Left</h4>
                   <div class="mb-3">
-                    <img src="/{{$banner->image}}" class="img-fluid" alt="Responsive image">
+                    <img src="/{{ $banner->image }}" class="img-fluid" alt="Responsive image">
                   </div>
 
                   <div class="mb-3">
                     <a href="{{ Route('admin.banner.small.edit', $banner) }}" submit="submit"
                       class="btn btn-warning waves-effect waves-light">Edit</a>
-                    <button submit="submit" class="btn btn-danger waves-effect waves-light">Delete</button>
+                    <button submit="submit" class="btn btn__delete btn-danger waves-effect waves-light">Delete</button>
                   </div>
 
                 </div>
               </div>
-              <?php if($num==2){break;} ?>
+              <?php if ($num == 2) {
+                  break;
+              } ?>
+
+              {{-- Delete Modal Beginning --}}
+              <div class="popup__confirm"
+                style="
+                  display:none; position: fixed; 
+                  top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                  background-color:#ffffff; width: 500px; height: auto; 
+                  z-index:999; 
+                  border-radius: 10px;
+                  box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.5);
+                  ">
+                <div class="card-body">
+
+                  <div style="margin: 1rem 0">
+                    Do you really want to delete this?
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between;">
+                    <button class="btn btn-primary btn__close" style="color: #fff">Close</button>
+                    <a href="{{ Route('admin.banner.small.delete', $banner) }}" method="get" class="btn btn-danger"
+                      style="color: #fff">Delete</a>
+                  </div>
+
+                </div>
+              </div>
+              {{-- Delete Modal End --}}
             @endif
           @endforeach
 
