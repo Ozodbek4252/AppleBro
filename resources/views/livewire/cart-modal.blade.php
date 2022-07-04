@@ -9,7 +9,7 @@
             $option = \App\Models\Option::find($product_option->option_id);
             $option["price"] = $product_option->price;
             $optionArr[$option->name][] = $option;
-        }
+          }
         $photo = \App\Models\ProductPhoto::where('product_id', $id)->first();
       @endphp
 
