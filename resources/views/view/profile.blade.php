@@ -9,7 +9,7 @@
 				<div class="profile__btn">
 					👋 {{__('home.Привет')}}, Hayrulloh
 				</div>
-				<a href="{{ Route('front.history') }}" class="profile__btn">
+				<a href="{{ Route('profile.history') }}" class="profile__btn">
 					🚚 {{__('home.История заказов')}}
 				</a>
 			</div>

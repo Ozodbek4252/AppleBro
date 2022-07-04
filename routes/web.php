@@ -17,6 +17,7 @@ use App\Http\Controllers\Front\AddToCartController;
 use App\Http\Controllers\Front\MessageController;
 use App\Http\Controllers\Front\WishlistConrtoller;
 use App\Http\Controllers\Front\ProfileController;
+use App\Http\Controllers\Front\HistoryController;
 
 
 use App\Http\Livewire\Admin\SingleProduct;
@@ -110,6 +111,7 @@ Route::middleware([
     Route::get('/profile', [ProfileController::class, 'index'])->name('front.profile');
     Route::post('/profile', [ProfileController::class, 'store'])->name('front.profile.store');
     Route::get('/history', History::class)->name('front.history');
+    Route::get('/profile/history', [HistoryController::class, 'index'])->name('profile.history');
     Route::post('/cart/order', [CartController::class, 'cartOrder'])->name('basket-order-info');
     Route::get('/orders/user/{id}', [OrdersController::class, 'userOrder'])->name('user.orders');
 });
