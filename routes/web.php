@@ -65,12 +65,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware([
     'auth:sanctum',
+    'isAdmin',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
     // Admin Routes
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::name('admin.')->group(function (){
             Route::get('/users', [UsersController::class, 'index'])->name('users');
             Route::get('/orders', [OrdersController::class, 'index'])->name('orders');
