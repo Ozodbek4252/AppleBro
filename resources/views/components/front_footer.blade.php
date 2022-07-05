@@ -123,7 +123,7 @@
             <div class="footer-bot__text">
                 {{__('home.Интернет-магазины')}} AppleBro.uz. {{__('home.Все права защищены')}}.
             </div>
-            <a href="#" class="footer__nova" target="_blank">
+            <a href="https://www.novastudio.uz/" class="footer__nova" target="_blank">
                 <img src="/img/novas.svg" alt="NovaS">
             </a>
         </div>
