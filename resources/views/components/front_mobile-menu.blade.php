@@ -14,169 +14,35 @@
           <img src="/img/basket.svg" alt="ico">
           <span>2</span>
         </a>
-        <a href="#">
-          <img src="/img/heart.svg" alt="ico">
-          <span>2</span>
-        </a>
       </div>
     </div>
     <div class="mobile-menu__search">
-      {{-- <input type="text" placeholder="Поиск"> --}}
       @livewire('front.search')
-      {{-- <div class="header-search__result">
-        <ul>
-          <li>
-            <a href="#">
-              <img src="img/apple1.png" alt="apple">
-              <p>Apple Iphone 12 Pro Max</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="img/apple1.png" alt="apple">
-              <p>Apple Iphone 12 Pro Max</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="img/apple1.png" alt="apple">
-              <p>Apple Iphone 12 Pro Max</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="img/apple2.png" alt="apple">
-              <p>Apple Iphone 12 Pro Max</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="img/apple2.png" alt="apple">
-              <p>Apple Iphone 12 Pro Max</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="img/apple2.png" alt="apple">
-              <p>Apple Iphone 12 Pro Max</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="img/apple2.png" alt="apple">
-              <p>Apple Iphone 12 Pro Max</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="img/apple1.png" alt="apple">
-              <p>Apple Iphone 12 Pro Max</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="img/apple1.png" alt="apple">
-              <p>Apple Iphone 12 Pro Max</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-                <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div> --}}
     </div>
     <ul class="mobile-menu__menu">
+      @foreach(\App\Models\Category::where('category_id', '!=', null)->with('products')->get() as $category)
       <li class="mobile-menu__item">
         <span>
-          iPhone
+          {{$category->name}}
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
               stroke-linejoin="round" />
           </svg>
         </span>
         <ul class="mobile-menu__submenu">
-          <li>
-            <a href="#">
-              iPhone
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPhone X
-            </a>
-          </li>
+          @foreach($category->products as $product)
+            <li>
+              <a href="{{ route('front.single-product', $product->slug) }}">
+                {{$product->name}}
+              </a>
+            </li>
+          @endforeach
         </ul>
       </li>
-      <li class="mobile-menu__item">
+      @endforeach
+
+      
+      {{-- <li class="mobile-menu__item">
         <span>
           Mac
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -361,9 +227,9 @@
             </a>
           </li>
         </ul>
-      </li>
+      </li> --}}
     </ul>
-    <ul class="mobile-menu__profile">
+    {{-- <ul class="mobile-menu__profile">
       <li>
         <a href="#">
           <span>{{ __('home.Профиль') }}</span>
@@ -382,7 +248,7 @@
           <img src="/img/caret-right.svg" alt="ico">
         </a>
       </li>
-    </ul>
+    </ul> --}}
     <div class="header__lang">
       <a href="/languages/ru">RU</a>
       <a href="/languages/uz">UZ</a>
