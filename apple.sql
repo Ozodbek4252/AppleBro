@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 30, 2022 at 12:23 PM
+-- Generation Time: Jul 07, 2022 at 08:10 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -39,20 +39,22 @@ CREATE TABLE IF NOT EXISTS `banners` (
   `desc_ru` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `desc_en` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_mobile` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `banners`
 --
 
-INSERT INTO `banners` (`id`, `type`, `media_type`, `name_uz`, `name_ru`, `name_en`, `desc_uz`, `desc_ru`, `desc_en`, `image`, `product_id`, `created_at`, `updated_at`) VALUES
-(14, 'middle', 'image', 'iPhone 13 Pro Max Uz', 'iPhone 13 Pro Max Ru', 'iPhone 13 Pro Max En', NULL, NULL, NULL, 'images/slider/middle/tSJTIZkJiW.png', '85', '2022-06-30 04:23:27', '2022-06-30 04:23:27'),
-(13, 'slider', 'image', 'MacBook Pro 14-inch uz uz', 'MacBook Pro 14-inch ru ru', 'MacBook Pro 14-inch en en', 'MacBook Pro 14-inch description uz', 'MacBook Pro 14-inch description ru', 'MacBook Pro 14-inch description en', 'images/slider/n8o6LkpwVv.png', '88', '2022-06-30 04:08:04', '2022-06-30 06:36:17'),
-(12, 'slider', 'image', 'iMac 27 Uz', 'iMac 27 Ru', 'iMac 27 En', 'iMac 27 Description  Uz', 'iMac 27 Description  Ru', 'iMac 27 Description  En', 'images/slider/RT02qUCIzp.png', '89', '2022-06-30 04:06:31', '2022-06-30 04:06:31');
+INSERT INTO `banners` (`id`, `type`, `media_type`, `name_uz`, `name_ru`, `name_en`, `desc_uz`, `desc_ru`, `desc_en`, `image`, `image_mobile`, `product_slug`, `created_at`, `updated_at`) VALUES
+(15, 'middle', 'image', 'iPhone 13 Pro Max Uz', 'iPhone 13 Pro Max Ru', 'iPhone 13 Pro Max En', NULL, NULL, NULL, 'images/slider/middle/Me2k0EHze7.png', NULL, 'iphone-13-pro-max-1955514324', '2022-07-01 11:00:42', '2022-07-04 04:07:18'),
+(20, 'slider', 'image', 'iPhone 12', 'iPhone 12', 'iPhone 12', 'Tarixdagi eng kuchli  iPhone 12. Eng kuchli iPhone 12. Eng kuchli  iPhone 12.', 'Cамый мощный MacBook Pro в истории Cамый мощный iPhone 12 в истории. Cамый мощный MacBook Pro в истории\'..', 'The most powerful  iPhone 1 ever The most powerful iPhone 12 ever. The most powerful  iPhone 1 ever..', 'images/slider/ZESKoOInrY.png', 'images/slider/LitPEvcl9p-mobile.png', 'iphone-12-1212354189', '2022-07-04 04:13:10', '2022-07-04 08:47:10'),
+(17, 'small', 'image', NULL, NULL, NULL, NULL, NULL, NULL, 'images/slider/small/qiDUqWnRx1.png', NULL, 'xiaomi-mi-11-lite-5g-1511854048', '2022-07-04 00:59:06', '2022-07-04 04:07:32'),
+(13, 'slider', 'image', 'MacBook Pro 14-inch uz uz', 'MacBook Pro 14-inch ru ru', 'MacBook Pro 14-inch en en', 'MacBook Pro 14-inch description uz', 'MacBook Pro 14-inch description ru', 'MacBook Pro 14-inch description en', 'images/slider/YNJcJNY0Ov.png', 'images/slider/iUzy55KlCb-mobile.png', 'macbook-pro-14-inch-1700429064', '2022-06-30 04:08:04', '2022-07-04 08:47:20');
 
 -- --------------------------------------------------------
 
@@ -68,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
@@ -256,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
@@ -266,7 +268,7 @@ INSERT INTO `orders` (`id`, `name`, `user_id`, `last_name`, `phone`, `total_pric
 (1, 'John', '2', 'Jim', '+998 44 444 44 44', '4140', 'pending', '2022-06-09 01:42:56', '2022-06-09 01:42:56'),
 (2, 'Jim', '2', 'Cerry', '+998 33 333 33 33', '6300', 'pending', '2022-06-09 01:47:32', '2022-06-09 01:47:32'),
 (3, 'asdas', '3', 'asdasd', '+998 44 444 44 44', '1640', 'pending', '2022-06-13 05:31:30', '2022-06-13 05:31:30'),
-(16, 'sder', '2', 'wer', '+998 32 423 42 34', '2605', 'pending', '2022-06-20 08:15:22', '2022-06-20 08:15:22');
+(19, 'Ibrohim', '2', 'Asadov', '+998 32 151 46 54', '9150', 'pending', '2022-07-04 02:11:01', '2022-07-04 02:11:01');
 
 -- --------------------------------------------------------
 
@@ -285,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `order_options` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_options`
@@ -306,13 +308,12 @@ INSERT INTO `order_options` (`id`, `order_product_id`, `option`, `value`, `photo
 (21, '8', 'RAM', '8 GB', 'u4wvCWL1k0.webp', 'images/productImages/2022-06-02_macbook-pro-14-inch', '2022-06-15 04:39:46', '2022-06-15 04:39:46'),
 (22, '8', 'ROM', '256 GB', 'u4wvCWL1k0.webp', 'images/productImages/2022-06-02_macbook-pro-14-inch', '2022-06-15 04:39:46', '2022-06-15 04:39:46'),
 (23, '8', 'Color', 'Blue', 'u4wvCWL1k0.webp', 'images/productImages/2022-06-02_macbook-pro-14-inch', '2022-06-15 04:39:46', '2022-06-15 04:39:46'),
-(24, '9', 'RAM', '6 GB', 'uKWNvDlwQ0-option_0.webp', 'images/productImages/2022-06-02_macbook-pro-14-inch', '2022-06-20 08:15:22', '2022-06-20 08:15:22'),
-(25, '9', 'ROM', '128 GB', 'uKWNvDlwQ0-option_0.webp', 'images/productImages/2022-06-02_macbook-pro-14-inch', '2022-06-20 08:15:22', '2022-06-20 08:15:22'),
-(26, '9', 'CPU', 'Intel Core i7-7700HQ', 'uKWNvDlwQ0-option_0.webp', 'images/productImages/2022-06-02_macbook-pro-14-inch', '2022-06-20 08:15:22', '2022-06-20 08:15:22'),
-(27, '9', 'Color', 'Blue', 'uKWNvDlwQ0-option_0.webp', 'images/productImages/2022-06-02_macbook-pro-14-inch', '2022-06-20 08:15:22', '2022-06-20 08:15:22'),
-(28, '10', 'Color', 'Pink', 'JKdvmYpQJn-option_0.webp', 'images/productImages/2022-06-02_iphone-11', '2022-06-20 08:15:22', '2022-06-20 08:15:22'),
-(29, '10', 'ROM', '128 GB', 'JKdvmYpQJn-option_0.webp', 'images/productImages/2022-06-02_iphone-11', '2022-06-20 08:15:22', '2022-06-20 08:15:22'),
-(30, '10', 'RAM', '6 GB', 'JKdvmYpQJn-option_0.webp', 'images/productImages/2022-06-02_iphone-11', '2022-06-20 08:15:22', '2022-06-20 08:15:22');
+(53, '17', 'RAM', '8 GB', 'J8OCBo2ZcD_3.webp', 'images/productImages/2022-06-02_iphone-13-pro-max', '2022-07-04 02:11:01', '2022-07-04 02:11:01'),
+(52, '17', 'ROM', '256 GB', 'J8OCBo2ZcD_3.webp', 'images/productImages/2022-06-02_iphone-13-pro-max', '2022-07-04 02:11:01', '2022-07-04 02:11:01'),
+(51, '17', 'Color', 'Silver', 'J8OCBo2ZcD_3.webp', 'images/productImages/2022-06-02_iphone-13-pro-max', '2022-07-04 02:11:01', '2022-07-04 02:11:01'),
+(50, '16', 'CPU', 'Intel Core i7', 'vDGhhUwPNv_2.webp', 'images/productImages/2022-06-02_imac-27', '2022-07-04 02:11:01', '2022-07-04 02:11:01'),
+(49, '16', 'ROM', '128 GB', 'vDGhhUwPNv_2.webp', 'images/productImages/2022-06-02_imac-27', '2022-07-04 02:11:01', '2022-07-04 02:11:01'),
+(48, '16', 'RAM', '8 GB', 'vDGhhUwPNv_2.webp', 'images/productImages/2022-06-02_imac-27', '2022-07-04 02:11:01', '2022-07-04 02:11:01');
 
 -- --------------------------------------------------------
 
@@ -330,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `order_products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_products`
@@ -345,8 +346,8 @@ INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `price
 (6, '3', '104', '2', '800', '2022-06-13 05:31:30', '2022-06-13 05:31:30'),
 (7, '3', '105', '1', '40', '2022-06-13 05:31:30', '2022-06-13 05:31:30'),
 (8, '4', '88', '1', '1830', '2022-06-15 04:39:46', '2022-06-15 04:39:46'),
-(9, '16', '88', '1', '1790', '2022-06-20 08:15:22', '2022-06-20 08:15:22'),
-(10, '16', '83', '1', '815', '2022-06-20 08:15:22', '2022-06-20 08:15:22');
+(17, '19', '85', '2', '1290', '2022-07-04 02:11:01', '2022-07-04 02:11:01'),
+(16, '19', '89', '3', '2190', '2022-07-04 02:11:01', '2022-07-04 02:11:01');
 
 -- --------------------------------------------------------
 
@@ -419,7 +420,7 @@ INSERT INTO `products` (`id`, `name`, `slug`, `category_id`, `price`, `quantity`
 (86, 'MacBook Pro 16-inch', 'macbook-pro-16-inch-662540088', 24, 1650, NULL, NULL, NULL, 'eoC57LtbsX.webp', 'images/productImages/2022-06-02_macbook-pro-16-inch', '2022-05-31 01:20:24', '2022-06-13 09:12:04'),
 (83, 'iPhone 11', 'iphone-11-1774381494', 22, 750, NULL, NULL, NULL, 'Pfw3oX0eBl.webp', 'images/productImages/2022-06-02_iphone-11', '2022-05-30 07:37:41', '2022-06-13 09:12:04'),
 (84, 'iPhone 12', 'iphone-12-1212354189', 22, 850, NULL, NULL, NULL, 'EpMLRNSfGq.webp', 'images/productImages/2022-06-02_iphone-12', '2022-05-30 08:15:48', '2022-06-13 09:12:04'),
-(78, 'iWatch clear', 'iwatch-clear-372550294', 23, 30, NULL, NULL, NULL, 'D7ZaOaccVV.webp', 'images/productImages/2022-06-02_iwatch-clear', '2022-05-30 04:02:09', '2022-06-13 09:12:04'),
+(78, 'iWatch clear', 'iwatch-clear-372550294', 23, 30, NULL, '2022', 'new', 'D7ZaOaccVV.webp', 'images/productImages/2022-06-02_iwatch-clear', '2022-05-30 04:02:09', '2022-06-13 09:12:04'),
 (79, 'apple watch vii2', 'apple-watch-vii2-1565751390', 23, 45, NULL, NULL, NULL, 'HhMajRM8O1.webp', 'images/productImages/2022-06-02_apple-watch-vii2', '2022-05-30 05:52:47', '2022-06-13 09:12:04'),
 (80, 'iWatch 2 collaction', 'iwatch-2-collaction-1048827776', 23, 35, NULL, NULL, NULL, 'PhYGSvXwA0.webp', 'images/productImages/2022-06-02_iwatch-2-collaction', '2022-05-30 06:12:27', '2022-06-13 09:12:04'),
 (81, 'iWatch 1', 'iwatch-1-189470231', 23, 40, NULL, NULL, NULL, 'vBhE7BbouU.webp', 'images/productImages/2022-06-02_iwatch-1', '2022-05-30 06:19:26', '2022-06-13 09:12:04'),
@@ -646,33 +647,33 @@ INSERT INTO `product_photos` (`id`, `product_id`, `product_option_id`, `photo`, 
 (288, '78', NULL, 'F0YDQC4J5y_1.webp', 'images/productImages/2022-06-02_iwatch-clear', '2022-06-02 02:26:27', '2022-06-02 02:26:27'),
 (289, '78', NULL, 'F0YDQC4J5y_2.webp', 'images/productImages/2022-06-02_iwatch-clear', '2022-06-02 02:26:27', '2022-06-02 02:26:27'),
 (290, '78', NULL, 'F0YDQC4J5y_3.webp', 'images/productImages/2022-06-02_iwatch-clear', '2022-06-02 02:26:27', '2022-06-02 02:26:27'),
-(108, NULL, '133', 'E8gAkDuy1A-option_0.jpg', '/images/productImages/2022-05-30_iwatch', '2022-05-30 03:41:50', '2022-05-30 03:41:50'),
+(108, NULL, '133', 'E8gAkDuy1A-option_0.jpg', 'images/productImages/2022-05-30_iwatch', '2022-05-30 03:41:50', '2022-05-30 03:41:50'),
 (107, '75', NULL, 'E8gAkDuy1A_2.webp', 'images/productImages/2022-05-30_iwatch', '2022-05-30 03:41:50', '2022-05-30 03:41:50'),
 (106, '75', NULL, 'E8gAkDuy1A_1.webp', 'images/productImages/2022-05-30_iwatch', '2022-05-30 03:41:50', '2022-05-30 03:41:50'),
-(103, '71', NULL, '1KPDblaFYq_1.webp', 'images/productImages/2022-05-30_iphone-11/2022-05-30_iphone-11', '2022-05-30 02:40:20', '2022-05-30 02:40:20'),
-(102, NULL, '126', 'cFmsOD1mAT-option_0.jpg', '/images/productImages/2022-05-30_iphone-x', '2022-05-30 02:14:35', '2022-05-30 02:14:35'),
+(103, '71', NULL, '1KPDblaFYq_1.webp', 'images/productImages/2022-05-30_iphone-11', '2022-05-30 02:40:20', '2022-05-30 02:40:20'),
+(102, NULL, '126', 'cFmsOD1mAT-option_0.jpg', 'images/productImages/2022-05-30_iphone-x', '2022-05-30 02:14:35', '2022-05-30 02:14:35'),
 (324, NULL, '161', '7BEL7eZ9Sd-option_0.webp', 'images/productImages/2022-06-02_iphone-11', '2022-06-02 03:56:12', '2022-06-02 03:56:12'),
 (101, '70', NULL, 'cFmsOD1mAT_2.webp', 'images/productImages/2022-05-30_iphone-x', '2022-05-30 02:14:35', '2022-05-30 02:14:35'),
-(100, '70', NULL, 'cFmsOD1mAT_1.webp', 'images/productImages/2022-05-30_iphone-x/2022-05-30_iphone-x', '2022-05-30 02:14:35', '2022-05-30 02:14:35'),
-(99, NULL, '120', 'fBJOgqrIok-option_0.jpg', '/images/productImages/2022-05-30_apple-watch', '2022-05-30 02:07:14', '2022-05-30 02:07:14'),
-(98, '69', NULL, 'fBJOgqrIok_2.webp', 'images/productImages/2022-05-30_apple-watch/2022-05-30_apple-watch', '2022-05-30 02:07:14', '2022-05-30 02:07:14'),
-(97, '69', NULL, 'fBJOgqrIok_1.webp', 'images/productImages/2022-05-30_apple-watch/2022-05-30_apple-watch', '2022-05-30 02:07:13', '2022-05-30 02:07:13'),
-(96, NULL, '119', 'd09aUVOUWN-option_0.jpg', '/images/productImages/2022-05-30_apple-watch', '2022-05-30 02:04:58', '2022-05-30 02:04:58'),
+(100, '70', NULL, 'cFmsOD1mAT_1.webp', 'images/productImages/2022-05-30_iphone-x', '2022-05-30 02:14:35', '2022-05-30 02:14:35'),
+(99, NULL, '120', 'fBJOgqrIok-option_0.jpg', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:07:14', '2022-05-30 02:07:14'),
+(98, '69', NULL, 'fBJOgqrIok_2.webp', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:07:14', '2022-05-30 02:07:14'),
+(97, '69', NULL, 'fBJOgqrIok_1.webp', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:07:13', '2022-05-30 02:07:13'),
+(96, NULL, '119', 'd09aUVOUWN-option_0.jpg', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:04:58', '2022-05-30 02:04:58'),
 (95, '68', NULL, 'd09aUVOUWN_3.webp', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:04:58', '2022-05-30 02:04:58'),
 (94, '68', NULL, 'd09aUVOUWN_2.webp', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:04:58', '2022-05-30 02:04:58'),
 (93, '68', NULL, 'd09aUVOUWN_1.webp', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:04:58', '2022-05-30 02:04:58'),
 (323, '83', NULL, 'vqVYSu3BUC_3.webp', 'images/productImages/2022-06-02_iphone-11', '2022-06-02 03:56:12', '2022-06-02 03:56:12'),
-(92, NULL, '118', '9iq6rYfGN3-option_0.jpg', '/images/productImages/2022-05-30_apple-watch', '2022-05-30 02:00:50', '2022-05-30 02:00:50'),
+(92, NULL, '118', '9iq6rYfGN3-option_0.jpg', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:00:50', '2022-05-30 02:00:50'),
 (91, '67', NULL, '9iq6rYfGN3_2.webp', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:00:50', '2022-05-30 02:00:50'),
-(90, '67', NULL, '9iq6rYfGN3_1.webp', 'images/productImages/2022-05-30_apple-watch/2022-05-30_apple-watch', '2022-05-30 02:00:50', '2022-05-30 02:00:50'),
-(89, NULL, '117', 'hrFT3yshKV-option_0.jpg', '/images/productImages/2022-05-30_apple-watch', '2022-05-30 01:58:29', '2022-05-30 01:58:29'),
-(88, '66', NULL, 'hrFT3yshKV_2.webp', 'images/productImages/2022-05-30_apple-watch/2022-05-30_apple-watch', '2022-05-30 01:58:29', '2022-05-30 01:58:29'),
-(87, '66', NULL, 'hrFT3yshKV_1.webp', 'images/productImages/2022-05-30_apple-watch/2022-05-30_apple-watch', '2022-05-30 01:58:29', '2022-05-30 01:58:29'),
-(86, NULL, '116', 'TMn56xlQiG-option_0.jpg', '/images/productImages/2022-05-30_apple-watch-wii2', '2022-05-30 01:53:30', '2022-05-30 01:53:30'),
-(85, '65', NULL, 'TMn56xlQiG_2.webp', 'images/productImages/2022-05-30_apple-watch-wii2/2022-05-30_apple-watch-wii2', '2022-05-30 01:53:30', '2022-05-30 01:53:30'),
-(84, '65', NULL, 'TMn56xlQiG_1.webp', 'images/productImages/2022-05-30_apple-watch-wii2/2022-05-30_apple-watch-wii2', '2022-05-30 01:53:30', '2022-05-30 01:53:30'),
-(83, '64', NULL, 'X1kjHMETt6_2.webp', 'images/productImages/2022-05-30_apple-watch-wii2/2022-05-30_apple-watch-wii2', '2022-05-30 01:52:06', '2022-05-30 01:52:06'),
-(82, '64', NULL, 'X1kjHMETt6_1.webp', 'images/productImages/2022-05-30_apple-watch-wii2/2022-05-30_apple-watch-wii2', '2022-05-30 01:52:06', '2022-05-30 01:52:06'),
+(90, '67', NULL, '9iq6rYfGN3_1.webp', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 02:00:50', '2022-05-30 02:00:50'),
+(89, NULL, '117', 'hrFT3yshKV-option_0.jpg', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 01:58:29', '2022-05-30 01:58:29'),
+(88, '66', NULL, 'hrFT3yshKV_2.webp', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 01:58:29', '2022-05-30 01:58:29'),
+(87, '66', NULL, 'hrFT3yshKV_1.webp', 'images/productImages/2022-05-30_apple-watch', '2022-05-30 01:58:29', '2022-05-30 01:58:29'),
+(86, NULL, '116', 'TMn56xlQiG-option_0.jpg', 'images/productImages/2022-05-30_apple-watch-wii2', '2022-05-30 01:53:30', '2022-05-30 01:53:30'),
+(85, '65', NULL, 'TMn56xlQiG_2.webp', 'images/productImages/2022-05-30_apple-watch-wii2', '2022-05-30 01:53:30', '2022-05-30 01:53:30'),
+(84, '65', NULL, 'TMn56xlQiG_1.webp', 'images/productImages/2022-05-30_apple-watch-wii2', '2022-05-30 01:53:30', '2022-05-30 01:53:30'),
+(83, '64', NULL, 'X1kjHMETt6_2.webp', 'images/productImages/2022-05-30_apple-watch-wii2', '2022-05-30 01:52:06', '2022-05-30 01:52:06'),
+(82, '64', NULL, 'X1kjHMETt6_1.webp', 'images/productImages/2022-05-30_apple-watch-wii2', '2022-05-30 01:52:06', '2022-05-30 01:52:06'),
 (271, '79', NULL, 'gjQccgSRSX_1.webp', 'images/productImages/2022-06-02_apple-watch-vii2', '2022-06-02 02:21:57', '2022-06-02 02:21:57'),
 (272, '79', NULL, 'gjQccgSRSX_2.webp', 'images/productImages/2022-06-02_apple-watch-vii2', '2022-06-02 02:21:57', '2022-06-02 02:21:57'),
 (273, '79', NULL, 'gjQccgSRSX_3.webp', 'images/productImages/2022-06-02_apple-watch-vii2', '2022-06-02 02:21:57', '2022-06-02 02:21:57'),
@@ -954,7 +955,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('A74Y9d96SOAiOhbsN5un2aB8bZfHWZFgqHfxy9gM', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiYlFrZG5XQlpwMTJ5UE02Q3NCdTRROWMwc3ExczFsZktPZHU3OUhKRyI7czo2OiJsb2NhbGUiO3M6MjoidXoiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjUwOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vYmFubmVycy9zbGlkZXIvZWRpdC8xMyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJHF6NTQxTHIyL3ZUdUU1WVQzOFR4RGVSYkc3Q1JiQ1lEM2dwWkllQk9RL05GbWx0UXBndWhxIjtzOjQ6ImNhcnQiO2E6MTp7aTo3ODthOjY6e3M6NDoibmFtZSI7czoxMjoiaVdhdGNoIGNsZWFyIjtzOjU6InByaWNlIjtpOjMyO3M6NToicGhvdG8iO3M6MTU6IkQ3WmFPYWNjVlYud2VicCI7czoxMDoicGhvdG9fcGF0aCI7czo0NDoiaW1hZ2VzL3Byb2R1Y3RJbWFnZXMvMjAyMi0wNi0wMl9pd2F0Y2gtY2xlYXIiO3M6Nzoib3B0aW9ucyI7YToxOntzOjU6IkNvbG9yIjtpOjU1O31zOjg6InF1YW50aXR5IjtpOjE7fX19', 1656588989);
+('LXvhFVdXZpWA953a9KbMNWcWZ0g1Jq6Bt97n5tdD', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiNnZEbUR3QWdLTU1ZeVRmcGN1eVBVS3dwTlBuNjlDRk04QnYzM3NTUSI7czo2OiJsb2NhbGUiO3M6MjoiZW4iO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRxejU0MUxyMi92VHVFNVlUMzhUeERlUmJHN0NSYkNZRDNncFpJZUJPUS9ORm1sdFFwZ3VocSI7czo0OiJjYXJ0IjthOjI6e2k6ODk7YTo2OntzOjQ6Im5hbWUiO3M6NzoiaU1hYyAyNyI7czo1OiJwcmljZSI7aToyMTkwO3M6NToicGhvdG8iO3M6MTU6IlNWMmJyakdFWEYud2VicCI7czoxMDoicGhvdG9fcGF0aCI7czozOToiaW1hZ2VzL3Byb2R1Y3RJbWFnZXMvMjAyMi0wNi0wMl9pbWFjLTI3IjtzOjc6Im9wdGlvbnMiO2E6Mzp7czozOiJSQU0iO2k6MTU7czozOiJST00iO2k6MTM7czozOiJDUFUiO2k6MjE7fXM6ODoicXVhbnRpdHkiO2k6MTt9aTo4NTthOjY6e3M6NDoibmFtZSI7czoxNzoiaVBob25lIDEzIHBybyBtYXgiO3M6NToicHJpY2UiO2k6MTI5MDtzOjU6InBob3RvIjtzOjE1OiIxTHFzMVlVcGVyLndlYnAiO3M6MTA6InBob3RvX3BhdGgiO3M6NDk6ImltYWdlcy9wcm9kdWN0SW1hZ2VzLzIwMjItMDYtMDlfaXBob25lLTEzLXByby1tYXgiO3M6Nzoib3B0aW9ucyI7YTozOntzOjU6IkNvbG9yIjtpOjU1O3M6MzoiUk9NIjtpOjEyO3M6MzoiUkFNIjtpOjE1O31zOjg6InF1YW50aXR5IjtpOjE7fX19', 1656943652),
+('KMh4VhnRsQgyMde6Tqcp50LMYdhnXEUH5vESxm4f', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiMEt2MERsbVNjdmoxOTNQQ0xXTnVHbDZIOHBCMkxuSThCdFEyOEdPOCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJsb2NhbGUiO3M6MjoicnUiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJHdyTURHOEdieTE1SEkzZ3RLVVQza3VCZmRTREc0R2pWT3pxMksvaHlWRlF1NUR4QUk0bi9xIjt9', 1657004933);
 
 -- --------------------------------------------------------
 
@@ -1002,7 +1004,7 @@ CREATE TABLE IF NOT EXISTS `wishlists` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=370 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=382 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wishlists`
@@ -1017,7 +1019,9 @@ INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_a
 (355, '3', '105', '2022-06-13 08:53:37', '2022-06-13 08:53:37'),
 (358, '3', '102', '2022-06-13 08:56:32', '2022-06-13 08:56:32'),
 (363, '3', '88', '2022-06-14 04:20:38', '2022-06-14 04:20:38'),
-(369, '2', '79', '2022-06-30 06:27:28', '2022-06-30 06:27:28');
+(374, '2', '87', '2022-07-04 03:01:28', '2022-07-04 03:01:28'),
+(369, '2', '79', '2022-06-30 06:27:28', '2022-06-30 06:27:28'),
+(381, '2', '85', '2022-07-04 03:59:39', '2022-07-04 03:59:39');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

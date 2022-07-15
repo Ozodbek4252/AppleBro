@@ -143,16 +143,15 @@
         <a href="" class="basket-open">
           <img src="/img/basket.svg" alt="ico">
           @livewire('cart-counter')
-
         </a>
-        <a href="{{ Route('front.wishlist') }}">
+        {{-- <a href="{{ Route('front.wishlist') }}">
           <img src="/img/heart.svg" alt="ico">
           @livewire('wishlist-counter')
         </a>
         <a href="" class="header-profile">
           <img src="/img/user.svg" alt="ico">
-        </a>
-        <div class="header-profile__dropdown">
+        </a> --}}
+        {{-- <div class="header-profile__dropdown">
           <ul>
             @if (Auth::check())
               <li>
@@ -195,7 +194,7 @@
               </li>
             @endif
           </ul>
-        </div>
+        </div> --}}
       </div>
       <div class="header-mobile">
         <img src="/img/menu.svg" alt="ico">
