@@ -3,32 +3,32 @@
     <div class="container">
       <div class="header__location">
         <img src="/img/location.svg" alt="ico">
-        <span>{{ __('home.tashkent') }}</span>
+        <span>{{__('home.tashkent') }}</span>
       </div>
       <ul class="header-top__menu">
         <li>
           {{-- <a href="#"> --}}
-            {{ __('home.О нас') }}
+            {{__('home.О нас') }}
           {{-- </a> --}}
         </li>
         <li>
           {{-- <a href="#"> --}}
-            {{ __('home.Магазины') }}
+            {{__('home.Магазины') }}
           {{-- </a> --}}
         </li>
         <li>
           {{-- <a href="#"> --}}
-            {{ __('home.Рассрочка') }}
+            {{__('home.Рассрочка') }}
           {{-- </a> --}}
         </li>
         <li>
           {{-- <a href="#"> --}}
-            {{ __('home.Оплата и доставка') }}
+            {{__('home.Оплата и доставка') }}
           {{-- </a> --}}
         </li>
         <li>
           {{-- <a href="#"> --}}
-            {{ __('home.Контакты') }}
+            {{__('home.Контакты') }}
           {{-- </a> --}}
         </li>
       </ul>
@@ -95,13 +95,13 @@
                   </a>
                 @else
                   <a href="{{ Route('front.profile') }}">
-                    {{ __('home.Профиль') }}
+                    {{ ('home.Профиль') }}
                   </a>
                 @endif
               </li>
               <li>
                 <a href="{{ Route('profile.history') }}">
-                  {{ __('home.Мои заказы') }}
+                  {{ ('home.Мои заказы') }}
                 </a>
               </li>
               <li>

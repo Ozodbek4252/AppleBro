@@ -177,7 +177,7 @@
                         <label for="{{ $product->id }}.{{ $color_each->id }}">
                           {{-- <input type="radio" name="{{ $product->id }}" id="{{ $product->id }}.{{ $color_each->id }}"> --}}
                           <span>
-                            <img src="{{ $color_each->photo_path }}/{{ $color_each->photo }}" alt="img" style="width: 40px; border-radius: 50%;">
+                            <img src="{{ $color_each->photo_path }}/{{ $color_each->photo }}" alt="img" style="width: 40px; border-radius: 50%; cursor: default">
                           </span>
                         </label>
                       @endforeach
