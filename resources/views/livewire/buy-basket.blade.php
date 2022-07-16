@@ -109,7 +109,7 @@
             </div>
             <div class="products-item__btns" onclick="refreshLivewire()">
               @livewire('add-to-cart', ['id' => $product->id])
-							@livewire('add-to-wishlist', ['id' => $product->id])
+							{{-- @livewire('add-to-wishlist', ['id' => $product->id]) --}}
             </div>
           </div>
           <div class="products-item__name">

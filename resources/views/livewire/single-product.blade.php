@@ -87,9 +87,9 @@
         <a wire:click="addToCart" onclick="refreshLivewire()" class="btn" style="cursor: pointer;">
           {{__('home.Добавить в корзину')}}
         </a>
-        <a href="#" class="btn btn-white" style="cursor: pointer;">
+        {{-- <a href="#" class="btn btn-white" style="cursor: pointer;">
           {{__('home.Купить в рассрочку')}}
-        </a>
+        </a> --}}
       </div>
     </div>
   </div>

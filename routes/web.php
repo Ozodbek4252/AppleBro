@@ -13,9 +13,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\SingleProductController;
 use App\Http\Controllers\Front\AllProductsController;
 use App\Http\Controllers\Front\CartController;
-use App\Http\Controllers\Front\AddToCartController;
 use App\Http\Controllers\Front\MessageController;
-use App\Http\Controllers\Front\WishlistConrtoller;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\HistoryController;
 
@@ -27,32 +25,9 @@ use App\Http\Livewire\ProductCreate;
 use App\Http\Livewire\AddToCart;
 use App\Http\Livewire\Category;
 use App\Http\Livewire\Wishlist;
-use App\Http\Livewire\Profile;
 use App\Http\Livewire\History;
 use App\Http\Livewire\Basket;
-use App\Http\Livewire\Favorite;
-use App\Http\Livewire\AllProducts;
-use App\Http\Livewire\Home;
 
-use App\Models\Option;
-use App\Models\ProductOption;
-
-// use App\Models\Category as ModelsCategory;
-// use App\Models\Category as ModelsCategory;
-// use App\Models\ProductOption;
-// use App\Models\Option;
-// use App\Models\Product as ModelsProduct;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/languages/{lang}', function ($lang) {
     if (in_array($lang, ['en', 'ru', 'uz'])) {

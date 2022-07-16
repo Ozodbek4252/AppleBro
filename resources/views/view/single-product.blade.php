@@ -154,7 +154,7 @@
 						</div>
 						<div class="new-item__btns" onclick="refreshLivewire()">
 							<livewire:add-to-cart :id="$item->id" :wire:key="$item->id">
-							<livewire:add-to-wishlist :id="$item->id" :wire:key="$item->id">
+							{{-- <livewire:add-to-wishlist :id="$item->id" :wire:key="$item->id"> --}}
 
 							{{-- @livewire('add-to-cart', ['id' => $item->id] :wire:key="$item->id") --}}
 							{{-- @livewire('add-to-wishlist', ['id' => $item->id] :wire:key="$item->id") --}}

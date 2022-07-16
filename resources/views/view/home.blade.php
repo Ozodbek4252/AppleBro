@@ -174,7 +174,7 @@
               </div>
               <div class="new-item__btns" onclick="refreshLivewire()">
                 @livewire('add-to-cart', ['id' => $newest_product->id])
-                @livewire('add-to-wishlist', ['id' => $newest_product->id])
+                {{-- @livewire('add-to-wishlist', ['id' => $newest_product->id]) --}}
               </div>
             </div>
             <div class="new-item__name">
