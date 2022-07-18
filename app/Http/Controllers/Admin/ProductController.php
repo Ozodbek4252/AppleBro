@@ -20,6 +20,9 @@ class ProductController extends Controller
 
   public function store(Request $request){
     $product = new Product;
+    if($request->pre_order){
+      $product->pre_order = 1;
+    }
     $product->name = $request->name;
     $product->price = $request->price;
     $product->category_id = $request->category;
@@ -116,6 +119,11 @@ class ProductController extends Controller
 
   public function update(Request $request, $id){
     $product = Product::find($id);
+    if($request->pre_order){
+      $product->pre_order = 1;
+    }else{
+      $product->pre_order = 0;
+    }
     $product->name = $request->name;
     $product->price = $request->price;
     $product->category_id = $request->category;

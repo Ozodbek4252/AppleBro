@@ -18,6 +18,7 @@ class CartModal extends Component
         if(isset($cart[$id])){
             session()->forget('cart.'.$id);
         }
+        $this->emit('deleteCart', $id);
     }
     public function render(){ 
 

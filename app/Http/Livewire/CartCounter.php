@@ -7,7 +7,7 @@ use Livewire\Component;
 class CartCounter extends Component
 {
     public $count = 0;
-    protected $listeners = ['refreshCart' => 'render'];
+    protected $listeners = ['refreshCart' => 'render', 'deleteCart' => 'render'];
     public function render()
     {
         $this->count = session()->get('cart') ? count(session()->get('cart')) : 0;

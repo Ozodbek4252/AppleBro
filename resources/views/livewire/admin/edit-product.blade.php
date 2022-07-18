@@ -155,6 +155,13 @@
               <input wire:model="status" type="text" name="status" class="form-control" id="status_" placeholder="Ex: New"
                 value="">
             </div>
+            <div class="form-group col-md-4" style="width: 27.7rem">
+              <h5 class="font-size-14 mb-3">Pre Order</h5>
+
+              <div class="form-check mb-3">
+                <input name="pre_order" @if($pre_order) checked @endif class="form-check-input" type="checkbox">
+              </div>
+            </div>
           </div>
         </div>
       </div>

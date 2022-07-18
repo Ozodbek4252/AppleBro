@@ -36,6 +36,7 @@ class EditProduct extends Component
       $selectedProductOption = [],
       $product_option_price = [],
       $product_option_photos = [],
+      $pre_order = 0,
       
       $product_option_photos_path = [];
   
@@ -52,6 +53,7 @@ class EditProduct extends Component
     $this->characteristics_uz = $this->product->characteristics_uz;
     $this->characteristics_en = $this->product->characteristics_en;
     $this->characteristics_ru = $this->product->characteristics_ru;
+    $this->pre_order = $this->product->pre_order;
 
     $selectedOptions = ProductOption::where('product_id', $id)->get()->toArray();
       for ($m = 0; $m < count($selectedOptions); $m++){

@@ -134,3 +134,6 @@ Route::get('carts/{id}/check', function ($id){
 
 
 
+Route::fallback(function () {
+    return view('components.utilities.404');
+});

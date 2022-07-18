@@ -29,15 +29,15 @@
           <div class="main-carousel__item">
             <div class="container">
               <div class="main-carousel__content">
-                <?php 
-                  $slider_name = 'name_'.$lang;
-                  $slider_description = 'desc_'.$lang;
-                  ?>
+                <?php
+                $slider_name = 'name_' . $lang;
+                $slider_description = 'desc_' . $lang;
+                ?>
                 <h2 class="main-carousel__title big-title">
-                  {{$banner->$slider_name}}
+                  {{ $banner->$slider_name }}
                 </h2>
                 <div class="main-carousel__text">
-                  {{$banner->$slider_description}}
+                  {{ $banner->$slider_description }}
                 </div>
                 <a href="{{ Route('front.single-product', $banner->product_slug) }}" class="main-carousel__btn btn">
                   {{ __('home.Купить') }}
@@ -45,10 +45,10 @@
               </div>
             </div>
             <div class="main-carousel__img">
-              <img src="/{{$banner->image}}" alt="Slider">
+              <img src="/{{ $banner->image }}" alt="Slider">
             </div>
             <div class="main-carousel__img main-carousel__img-mobi">
-              <img src="/{{$banner->image_mobile}}" alt="Slider">
+              <img src="/{{ $banner->image_mobile }}" alt="Slider">
             </div>
           </div>
         @endif
@@ -166,8 +166,14 @@
         @foreach ($newest_products as $newest_product)
           <div class="new-item">
             <div class="new-item__wrap">
-              <div class="new-item__tag">
-                {{ __('home.NEW') }}
+              <div style="display: flex; justify-content: space-between;">
+                <div class="new-item__tag">
+                  {{ __('home.NEW') }}
+                </div>
+                @if ($newest_product->pre_order)
+                  <div type="button" class="btn-success btn-rounded"
+                    style="background-color: #2ca67a; border-color: #2a9c72; padding: 7px; height: 1.3rem;  display: flex; justify-content: center; align-items: center; color: #fff; border-radius: 10px;">Pre Order</div>
+                @endif
               </div>
               <div class="new-item__img">
                 <img src="{{ $newest_product->main_photo_path }}/{{ $newest_product->main_photo }}" alt="Product">
