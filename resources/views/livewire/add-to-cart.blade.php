@@ -4,7 +4,7 @@
       
       @if(isset(session()->get('cart')[$product->id])) style="background-color: #0967c5" @endif
       >
-    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
+    <svg wire:loading.remove width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
       <path fill="#fff" 
           @if(isset(session()->get('cart')[$product->id])) style="stroke: #fff;" @endif d="M5.96905 6.625L5.30205 3.625H3.37305" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path fill="#fff" 
@@ -13,9 +13,11 @@
           @if(isset(session()->get('cart')[$product->id])) style="stroke: #fff;" @endif d="M17.4648 19.25C17.2578 19.25 17.0898 19.418 17.0918 19.625C17.0918 19.832 17.2598 20 17.4668 20C17.6738 20 17.8418 19.832 17.8418 19.625C17.8408 19.418 17.6728 19.25 17.4648 19.25" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path fill="#fff" 
           @if(isset(session()->get('cart')[$product->id])) style="stroke: #fff;" @endif d="M8.85593 19.25C8.64893 19.25 8.48093 19.418 8.48293 19.625C8.48193 19.832 8.64993 20 8.85693 20C9.06393 20 9.23193 19.832 9.23193 19.625C9.23193 19.418 9.06393 19.25 8.85593 19.25" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>                                    
+    </svg>
+    <div wire:loading wire:target="addToCart">
+      <div class="spinner-border text-success m-1" role="status"></div>
+    </div>
   </span>
-  {{-- @dd(session()->get('cart')) --}}
 </div>
 
 <script>

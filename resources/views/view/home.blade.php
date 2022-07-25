@@ -1,6 +1,7 @@
 @extends('layouts.front')
 
 @section('content')
+  {{-- Slider --}}
   <section class="main">
     <div class="main-carousel owl-carousel">
       {{-- <div class="main-carousel__item main-carousel__item-video">
@@ -123,36 +124,39 @@
 
 
   <!-- POPULAR -->
-  <section class="popular">
-    <div class="container">
-      <h2 class="popular__title big-title">
-        {{ __('home.Популярные категории') }}
-      </h2>
-      <div class="popular-content">
-        @foreach ($categories as $category)
-          <div class="popular-item">
-            <div class="popular-item__title">
-              {{ $category->name }}
+  @if ($popular->count() > 0)
+    <section class="popular">
+      <div class="container">
+        <h2 class="popular__title big-title">
+          {{ __('home.Популярные категории') }}
+        </h2>
+        <div class="popular-content">
+          <?php $count = 0; ?>
+          @foreach ($popular as $category)
+            <div class="popular-item">
+              <div class="popular-item__title">
+                {{ $category->name }}
+              </div>
+              <?php
+              $product = \App\Models\Product::where('category_id', $category->id)
+                  ->orderBy('price', 'asc')
+                  ->first();
+              ?>
+              @if ($product)
+                <div class="popular-item__price">
+                  от {{ $product->price }} USD
+                </div>
+                <div class="popular-item__img">
+                  <img src="{{ $product->main_photo_path }}/{{ $product->main_photo }}" alt="popular">
+                </div>
+              @endif
+              <a href="{{ Route('front.all-products', $category->id) }}" class="popular-item__link"></a>
             </div>
-            <?php
-            $product = \App\Models\Product::where('category_id', $category->id)
-                ->orderBy('price', 'asc')
-                ->first();
-            ?>
-            @if ($product)
-              <div class="popular-item__price">
-                от {{ $product->price }} USD
-              </div>
-              <div class="popular-item__img">
-                <img src="{{ $product->main_photo_path }}/{{ $product->main_photo }}" alt="popular">
-              </div>
-            @endif
-            <a href="{{ Route('front.all-products', $category->id) }}" class="popular-item__link"></a>
-          </div>
-        @endforeach
+          @endforeach
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  @endif
 
 
   <!-- NEW -->
@@ -172,13 +176,14 @@
                 </div>
                 @if ($newest_product->pre_order)
                   <div type="button" class="btn-success btn-rounded"
-                    style="background-color: #2ca67a; border-color: #2a9c72; padding: 7px; height: 1.3rem;  display: flex; justify-content: center; align-items: center; color: #fff; border-radius: 10px;">Pre Order</div>
+                    style="background-color: #2ca67a; border-color: #2a9c72; padding: 7px; height: 1.3rem;  display: flex; justify-content: center; align-items: center; color: #fff; border-radius: 10px;">
+                    Pre Order</div>
                 @endif
               </div>
               <div class="new-item__img">
                 <img src="{{ $newest_product->main_photo_path }}/{{ $newest_product->main_photo }}" alt="Product">
               </div>
-              <div class="new-item__btns" onclick="refreshLivewire()">
+              <div class="new-item__btns">
                 @livewire('add-to-cart', ['id' => $newest_product->id])
                 {{-- @livewire('add-to-wishlist', ['id' => $newest_product->id]) --}}
               </div>
@@ -233,13 +238,13 @@
         {{ __('home.Бренды') }}
       </h2>
       <div class="brands-content">
-        <a href="{{ Route('front.all-products', 18) }}" class="brands-item">
+        <a href="{{ Route('front.all-products', $apple->id) }}" class="brands-item">
           <img src="/img/brand1.png" alt="Brand">
         </a>
-        <a href="{{ Route('front.all-products', 19) }}" class="brands-item">
+        <a href="{{ Route('front.all-products', $samsung->id) }}" class="brands-item">
           <img src="/img/brand2.png" alt="Brand">
         </a>
-        <a href="{{ Route('front.all-products', 20) }}" class="brands-item">
+        <a href="{{ Route('front.all-products', $xiaomi->id) }}" class="brands-item">
           <img src="/img/brand3.png" alt="Brand">
         </a>
       </div>
@@ -276,13 +281,23 @@
         Apple
       </h2>
       <div class="brands-product__content">
-        @foreach ($apple as $key => $brand_category)
+        <?php
+          $num_of_products = 0;
+          $count = 0;
+        ?>
+        @foreach ($apple->categories as $key => $brand_category)
+          <?php $count++; ?>
+          @if ($count > 7)
+            @break
+          @endif
           <div class="brands-product__item">
             <div class="brands-product__name">
               {{ $brand_category->name }}
               @php
-                $product = \App\Models\Product::where('category_id', $brand_category->id)->first();
-                $num_of_products = count($product->get());
+                if ($brand_category->categories->count() > 0) {
+                    $product = \App\Models\Product::where('category_id', $brand_category->categories[0]->id)->first();
+                }
+                $num_of_products += count($brand_category->categories);
               @endphp
             </div>
             <div class="brands-product__img">
@@ -298,7 +313,7 @@
           <div class="brands-product__other">
             {{ $num_of_products }}+
           </div>
-          <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
+          <a href="{{ Route('front.all-products', $apple->id) }}" class="brands-product__link"></a>
         </div>
       </div>
     </div>
@@ -311,18 +326,27 @@
         Samsung
       </h2>
       <div class="brands-product__content">
-        @foreach ($samsung as $key => $brand_category)
+        <?php
+          $num_of_products = 0;
+          $count = 0;
+        ?>
+        @foreach ($samsung->categories as $key => $brand_category)
+          <?php $count++; ?>
+          @if ($count > 7)
+            @break
+          @endif
           <div class="brands-product__item">
             <div class="brands-product__name">
               {{ $brand_category->name }}
               @php
-                $product = \App\Models\Product::where('category_id', $brand_category->id);
-                $num_of_products = count($product->get());
+                if ($brand_category->categories->count() > 0) {
+                    $product = \App\Models\Product::where('category_id', $brand_category->categories[0]->id)->first();
+                }
+                $num_of_products += count($brand_category->categories);
               @endphp
             </div>
             <div class="brands-product__img">
-              <img src="{{ $product->first()->main_photo_path }}/{{ $product->first()->main_photo }}"
-                alt="Samsung">
+              <img src="{{ $product->main_photo_path }}/{{ $product->main_photo }}" alt="Apple">
             </div>
             <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
           </div>
@@ -334,9 +358,8 @@
           <div class="brands-product__other">
             {{ $num_of_products }}+
           </div>
-          <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
+          <a href="{{ Route('front.all-products', $samsung->id) }}" class="brands-product__link"></a>
         </div>
-
       </div>
     </div>
   </section>
@@ -348,18 +371,27 @@
         Xiaomi
       </h2>
       <div class="brands-product__content">
-        @foreach ($xiaomi as $key => $brand_category)
+        <?php
+          $num_of_products = 0;
+          $count = 0;
+        ?>
+        @foreach ($xiaomi->categories as $key => $brand_category)
+          <?php $count++; ?>
+          @if ($count > 7)
+            @break
+          @endif
           <div class="brands-product__item">
             <div class="brands-product__name">
               {{ $brand_category->name }}
               @php
-                $product = \App\Models\Product::where('category_id', $brand_category->id);
-                $num_of_products = count($product->get());
+                if ($brand_category->categories->count() > 0) {
+                    $product = \App\Models\Product::where('category_id', $brand_category->categories[0]->id)->first();
+                }
+                $num_of_products += count($brand_category->categories);
               @endphp
             </div>
             <div class="brands-product__img">
-              <img src="{{ $product->first()->main_photo_path }}/{{ $product->first()->main_photo }}"
-                alt="Xiaomi">
+              <img src="{{ $product->main_photo_path }}/{{ $product->main_photo }}" alt="Apple">
             </div>
             <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
           </div>
@@ -371,7 +403,7 @@
           <div class="brands-product__other">
             {{ $num_of_products }}+
           </div>
-          <a href="{{ Route('front.all-products', $brand_category->id) }}" class="brands-product__link"></a>
+          <a href="{{ Route('front.all-products', $xiaomi->id) }}" class="brands-product__link"></a>
         </div>
       </div>
     </div>

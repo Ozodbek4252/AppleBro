@@ -19,7 +19,9 @@ class Category extends Component
         $name, 
         $category,
         $modelId,
+        $popular,
         $deleteModal = false,
+        $editModalFormVisible = false,
         $isOpen = false;
 
     public function rules(){
@@ -33,24 +35,14 @@ class Category extends Component
         $category = new CategoryModel();
         $category->name = $this->name;
         $category->category_id = $this->category;
+        $category->popular = $this->popular;
         $category->save();
         $this->resetVars();
     }
 
     /**
-     * The create function.
-     *
-     * @return void
-     */
-    // public function create(){
-    //     $this->validate();
-    //     CategoryModel::create($this->modelData());
-    //     $this->modalFormVisible = false;
-    //     $this->resetVars();
-    // }
-
-    /**
      * The read function.
+     *
      *
      * @return void
      */
@@ -68,6 +60,27 @@ class Category extends Component
         $this->modalConfirmDeleteVisible = true;
     }
 
+    public function editShowModal($id){
+        $this->modelId = $id;
+        $this->editModalFormVisible = true;
+        $this->category = CategoryModel::where('id', $id)->first()->category_id;
+        $this->popular = CategoryModel::where('id', $id)->first()->popular;
+        $this->name = CategoryModel::where('id', $id)->first()->name;
+    }
+
+    public function update(){
+        $category = CategoryModel::find($this->modelId);
+        // CategoryModel::find($this->modelId)->update([
+            //     'name' => $this->name ?? null,
+            //     'category_id' => $this->category ?? null,
+            //     'popular' => $this->popular ?? null,
+            // ]);
+        $category->name = $this->name;
+        $category->category_id = $this->category;
+        $category->popular = $this->popular;
+        $category->save();
+    }
+
     /**
      * Resets all the variables 
      * to null.
@@ -75,13 +88,13 @@ class Category extends Component
      * @return void
      */
     public function resetVars(){ 
-        $this->name = $this->modelId = $this->category = null;
+        $this->name = $this->modelId = $this->category = $this->popular = null;
     }
 
     public function render()
     {
         $options = new Option;
-        $select_categories = CategoryModel::where('category_id', null)->get();
+        $select_categories = CategoryModel::all();
         return view('admin.category', [
             'categories' => $this->read(),
             'select_categories' => $select_categories,

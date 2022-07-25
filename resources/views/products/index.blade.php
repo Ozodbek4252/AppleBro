@@ -35,12 +35,24 @@
           {{-- Loop Category Names Beginning --}}
           <p class="card-title-desc mb-2">Select one of these categories to see list:</p>
           <div class="button-items mb-2" id="tooltip-container">
-            @foreach ($categories as $category)
+            @foreach (\App\Models\Category::where('category_id', null)->with('categories')->get()
+    as $category)
+              @foreach ($category->categories as $category)
+                @foreach ($category->categories as $category)
+                  <button wire:click="selectCategory({{ $category->id }})" type="button" class="btn btn-primary"
+                    data-bs-placement="top">
+                    {{ $category->name }}
+                  </button>
+                @endforeach
+              @endforeach
+            @endforeach
+
+            {{-- @foreach ($categories as $category)
               <button wire:click="selectCategory({{ $category->id }})" type="button" class="btn btn-primary"
                 data-bs-placement="top">
                 {{ $category->name }}
               </button>
-            @endforeach
+            @endforeach --}}
           </div>
           {{-- Loop Category Names End --}}
 
@@ -70,15 +82,15 @@
               ?>
               <tbody class="bg-white divide-y divide-gray-200">
                 @if ($products)
-                @foreach ($products as $product)
-                <tr>
-                  <?php
+                  @foreach ($products as $product)
+                    <tr>
+                      <?php
                       $product_options = \App\Models\ProductOption::where('product_id', $product->id)->get();
                       $optionArr = [];
                       // $option_name = '';
                       if ($product_options) {
-                        foreach ($product_options as $product_option) {
-                          $option = \App\Models\Option::find($product_option->option_id);
+                          foreach ($product_options as $product_option) {
+                              $option = \App\Models\Option::find($product_option->option_id);
                               $option['price'] = $product_option->price;
                               $option_name = $option->name;
                               $optionArr[$option_name][] = $option;
@@ -87,7 +99,8 @@
                       ?>
                       @if ($product->category_id == $category_id)
                         <td style="width: 60px;">{{ $num++ }}</td>
-                        <td class="px-6 py-2 text-sm whitespace-no-wrap"><a href="{{route('admin.single-product', $product->id)}}">{{ $product->name }}</a></td>
+                        <td class="px-6 py-2 text-sm whitespace-no-wrap"><a
+                            href="{{ route('admin.single-product', $product->id) }}">{{ $product->name }}</a></td>
                         <td class="px-6 py-2 text-sm whitespace-no-wrap">{{ $product->price }}</td>
                         <td class="px-6 py-2 text-sm whitespace-no-wrap">
                           @if ($optionArr)
@@ -96,7 +109,7 @@
                               @foreach ($optionArr[$key] as $option)
                                 <label for="product-color1-{{ $option['id'] }}">
                                   <span>{{ $option['value'] }}</span>
-                                  @if(!$loop->last)
+                                  @if (!$loop->last)
                                     /
                                   @endif
                                   @if ($option['name'] == 'Color')

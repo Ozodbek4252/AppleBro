@@ -11,8 +11,12 @@
                 <label class="form-label">Kategoriyani tanlang</label>
                 <select name="category" class="form-control select2">
                   <option>Select</option>
-                  @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                  @foreach (\App\Models\Category::where('category_id', null)->with('categories')->get() as $category)
+                    @foreach ($category->categories as $category)
+                      @foreach ($category->categories as $category)
+                          <option value="{{ $category->id }}">{{ $category->name }}</option>
+                      @endforeach
+                    @endforeach
                   @endforeach
                 </select>
               </div>

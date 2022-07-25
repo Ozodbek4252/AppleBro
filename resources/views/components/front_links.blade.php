@@ -4,6 +4,7 @@
 <title>{{ config('app.name', 'Laravel') }}</title>
 
 {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
+<link href="/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="/css/normalize.css">
 <link rel="stylesheet" href="/css/owl.carousel.css">

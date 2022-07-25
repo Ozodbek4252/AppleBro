@@ -3,32 +3,32 @@
     <div class="container">
       <div class="header__location">
         <img src="/img/location.svg" alt="ico">
-        <span>{{__('home.tashkent') }}</span>
+        <span>{{ __('home.tashkent') }}</span>
       </div>
       <ul class="header-top__menu">
         <li>
           {{-- <a href="#"> --}}
-            {{__('home.О нас') }}
+          {{ __('home.О нас') }}
           {{-- </a> --}}
         </li>
         <li>
           {{-- <a href="#"> --}}
-            {{__('home.Магазины') }}
+          {{ __('home.Магазины') }}
           {{-- </a> --}}
         </li>
         <li>
           {{-- <a href="#"> --}}
-            {{__('home.Рассрочка') }}
+          {{ __('home.Рассрочка') }}
           {{-- </a> --}}
         </li>
         <li>
           {{-- <a href="#"> --}}
-            {{__('home.Оплата и доставка') }}
+          {{ __('home.Оплата и доставка') }}
           {{-- </a> --}}
         </li>
         <li>
           {{-- <a href="#"> --}}
-            {{__('home.Контакты') }}
+          {{ __('home.Контакты') }}
           {{-- </a> --}}
         </li>
       </ul>
@@ -44,30 +44,34 @@
     <div class="container">
       <ul class="header-menu">
         <div class="header-search__input">
-          
+
           @livewire('front.search')
-          
+
         </div>
         <li class="header__logo">
           <a href="{{ Route('home') }}">
             <img src="/img/logo.svg" alt="Apple Bro">
           </a>
         </li>
-        @foreach (\App\Models\Category::all() as $category)
-          @if ($category->category_id == !null && count(\App\Models\Product::where('category_id', $category->id)->get()) > 0)
-            <li class="header-menu__item">
-              <span>{{ $category->name }} <img src="/img/arrow-down.svg" alt="ico"></span>
-              <ul class="header-submenu">
-                @foreach (\App\Models\Product::where('category_id', $category->id)->get() as $product)
-                  <li>
-                    <a href="{{ route('front.single-product', $product->slug) }}">
-                      {{ $product->name }}
-                    </a>
-                  </li>
-                @endforeach
-              </ul>
-            </li>
-          @endif
+        @foreach (\App\Models\Category::where('category_id', null)->with('categories')->get() as $category)
+          @foreach ($category->categories as $category)
+            @if (count($category->categories) > 0)
+              <li class="header-menu__item">
+                <a href="{{Route('front.all-products', $category->id)}}">
+                  <span>{{ $category->name }} <img src="/img/arrow-down.svg" alt="ico"></span>
+                </a>
+                <ul class="header-submenu">
+                  @foreach ($category->categories as $category)
+                    <li>
+                      <a href="{{ route('front.all-products', $category->id) }}">
+                        {{ $category->name }}
+                      </a>
+                    </li>
+                  @endforeach
+                </ul>
+              </li>
+            @endif
+          @endforeach
         @endforeach
       </ul>
       <div class="header__icons">

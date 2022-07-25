@@ -7,6 +7,7 @@
   <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body>
+
   @include('components.front_feedback')
   @include('components.front_cart')
   @include('components.front_favourite')

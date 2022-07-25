@@ -13,32 +13,66 @@ class AllProductsController extends Controller
     $products = [];
     $categories = [];
     $suggested_categories = [];
-    $main_category = Category::where('id', $id)->with('products')->first();
-    if(!$main_category->category_id){
-      $categories = Category::where('category_id', $id)->with('products')->get();
-      $suggested_categories = $categories;
-    }else{
-      $suggested_categories = Category::where('category_id', $main_category->category_id)->get();
-    }
+    $parent_category = Category::where('id', $id)->with('products')->first();
+    $status = '';
 
-    if($categories){
-      foreach($categories as $category){
+    if(!count($parent_category->categories)>0 && $parent_category->category_id){
+      // grandchild
+      $suggested_categories = Category::where('category_id', $parent_category->category_id)->with('products')->get();
+      $products = $parent_category->products;
+      $status = 'grandchild';
+    }elseif(count($parent_category->categories)>0 && $parent_category->category_id){
+      // child
+      $suggested_categories = Category::where('category_id', $parent_category->category_id)->with('products')->get();
+      $products = $parent_category->products;
+      foreach($parent_category->categories as $category){
         $products[] = $category->products;
       }
-      $products = collect($products)->collapse()->all();
-    }else{
-      $products = $main_category->products;
-    }
+      $products = collect($products)->collapse();
+      $status = 'child';
+    }elseif(count($parent_category->categories)>0 && !$parent_category->category_id){
+      // parent
+      $suggested_categories = Category::where('category_id', $parent_category->id)->get();
+      $status = 'parent';
+
+      foreach($parent_category->categories as $categories){
+        foreach($categories->categories as $category){
+          $products[] = $category->products;
+        }
+      }
+      $products = collect($products)->collapse();
+    };
+// dd($suggested_categories);
+
+    // if(!$parent_category->category_id){
+    //   $categories = Category::where('category_id', $id)->with('products')->get();
+    //   $suggested_categories = $categories;
+    // }else{
+    //   $suggested_categories = Category::where('category_id', $parent_category->category_id)->get();
+    // }
+
+
+
+    // if($categories){
+    //   foreach($categories as $category){
+    //     $products[] = $category->products;
+    //   }
+    //   $products = collect($products)->collapse()->all();
+    // }else{
+    //   $products = $parent_category->products;
+    // }
 
     $showPerPage = 9;
 
     $products = PaginationHelper::paginate($products, $showPerPage);
 
+
     return view('view.all-products', [
-      'main_category' => $main_category,
+      'main_category' => $parent_category,
       'category_id' => (int)$id,
       'products' => $products,
-      'suggested_categories' => $suggested_categories
+      'suggested_categories' => $suggested_categories,
+      'status' => $status,
     ]);
   }
 }

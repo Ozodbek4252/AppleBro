@@ -25,19 +25,51 @@
         @endif
 
         <div class="products-carousel__items owl-carousel">
+
+          {{-- @dd($suggested_categories[4]->categories->first()?->products) --}}
           @foreach ($suggested_categories as $suggested_category)
-            <a href="{{ Route('front.all-products', $suggested_category->id) }}" style="color: black;">
-              <div class="products-carousel__item">
-                <div class="products-carousel__img">
-                  <img
-                    src="{{ $suggested_category->products->first()->main_photo_path }}/{{ $suggested_category->products->first()->main_photo }}"
-                    alt="product">
+            {{-- for grandchild --}}
+            @if ($status == 'grandchld')
+              <a href="{{ Route('front.all-products', $suggested_category->id) }}" style="color: black;">
+                <div class="products-carousel__item">
+                  <div class="products-carousel__img">
+                    <img
+                      src="{{ $suggested_category->products->first()->main_photo_path }}/{{ $suggested_category->products->first()->main_photo }}"
+                      alt="product">
+                  </div>
+                  <div class="products-carousel__name">
+                    {{ $suggested_category->name }}
+                  </div>
                 </div>
-                <div class="products-carousel__name">
-                  {{ $suggested_category->name }}
+              </a>
+            @elseif($status == 'child' && $suggested_category->categories->first()?->products)
+              {{-- for child --}}
+              <a href="{{ Route('front.all-products', $suggested_category->id) }}" style="color: black;">
+                <div class="products-carousel__item">
+                  <div class="products-carousel__img">
+                    <img
+                      src="{{ $suggested_category->categories->first()?->products->first()->main_photo_path }}/{{ $suggested_category->categories->first()?->products->first()->main_photo }}"
+                      alt="product">
+                  </div>
+                  <div class="products-carousel__name">
+                    {{ $suggested_category->name }}
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            @elseif($status == 'parent' && $suggested_category->categories->first()?->products)
+              {{-- for parent --}}
+              <a href="{{ Route('front.all-products', $suggested_category->id) }}" style="color: black;">
+                <div class="products-carousel__item">
+                  <div class="products-carousel__img">
+                    <img
+                      src="{{ $suggested_category->categories->first()?->products->first()->main_photo_path }}/{{ $suggested_category->categories->first()?->products->first()->main_photo }}"
+                      alt="product">
+                  </div>
+                  <div class="products-carousel__name">
+                    {{ $suggested_category->name }}
+                  </div>
+                </div>
+            @endif
           @endforeach
         </div>
 
@@ -49,11 +81,9 @@
         @if ($main_category->category)
           <a
             href="{{ Route('front.all-products', $main_category->category->id) }}">{{ $main_category->category->name }}</a>
-          <a href="{{ Route('front.all-products', $main_category->id) }}"
-            class="current">{{ $main_category->name }}</a>
+          <a href="{{ Route('front.all-products', $main_category->id) }}" class="current">{{ $main_category->name }}</a>
         @else
-          <a href="{{ Route('front.all-products', $main_category->id) }}"
-            class="current">{{ $main_category->name }}</a>
+          <a href="{{ Route('front.all-products', $main_category->id) }}" class="current">{{ $main_category->name }}</a>
         @endif
       </div>
 
@@ -140,11 +170,10 @@
                   </div>
                 @endforeach
               @else
-              
-              @foreach ($products as $key => $product)
-              {{-- @dd($product) --}}
-              <div class="products-item">
-                @php
+                @foreach ($products as $key => $product)
+                  {{-- @dd($product) --}}
+                  <div class="products-item">
+                    @php
                       $arr = [];
                       $color = [];
                       $details_price = 0;
@@ -177,7 +206,8 @@
                         <label for="{{ $product->id }}.{{ $color_each->id }}">
                           {{-- <input type="radio" name="{{ $product->id }}" id="{{ $product->id }}.{{ $color_each->id }}"> --}}
                           <span>
-                            <img src="{{ $color_each->photo_path }}/{{ $color_each->photo }}" alt="img" style="width: 40px; border-radius: 50%; cursor: default">
+                            <img src="{{ $color_each->photo_path }}/{{ $color_each->photo }}" alt="img"
+                              style="width: 40px; border-radius: 50%; cursor: default">
                           </span>
                         </label>
                       @endforeach
