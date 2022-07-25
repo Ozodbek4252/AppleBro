@@ -274,7 +274,7 @@
 							{{__('home.Условия доставки')}}
 						</div>
 						<div class="product-advantages__text">
-							Доставляем максимально быстро. По всей UZB. Бесплатно от 10 000 $
+							{{__('home.Доставляем максимально быстро. По всей UZB. Бесплатно от')}} 10 000 $
 						</div>
 					</div>
 					<div class="product-advantages__item">
@@ -282,7 +282,7 @@
 							{{__('home.Возврат товаров')}}
 						</div>
 						<div class="product-advantages__text">
-							Вернуть просто. Из любой точки России. Без лишней бюрократии.
+							{{__('home.Вернуть просто. Из любой точки России. Без лишней бюрократии.')}}
 						</div>
 					</div>
 					<div class="product-advantages__item">
@@ -290,22 +290,17 @@
 							{{__('home.Способ оплаты')}}
 						</div>
 						<div class="product-advantages__text">
-							Безопасная оплата через защищенный протокол HTTPS. Принимаем карты МИР, VISA, Master Card всех банков в штатном режиме.
+							{{__('home.Xavfsiz HTTPS protokoli orqali xavfsiz to\'lov. Biz barcha banklarning MIR, VISA, Master Card kartalarini oddiy rejimda qabul qilamiz.')}}
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-	
-	<!-- SIMILAR-PRODUCTS -->
-
 	<section class="similar-products">
 		<div class="container">
 			<h2 class="similar-products__title medium-title">
 				{{__('home.Похожие продукты')}}
-
 				<a href="#">{{_-('home.Все')}}</a>
 			</h2>
 			<div class="similar-products__wrap">

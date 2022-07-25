@@ -42,7 +42,7 @@
           {{__('home.Оформить заказ')}}
       </a>
       <div class="basket-total__price">
-          <span>Итого: </span>
+          <span>{{__('home.Итого')}}: </span>
           ${{$total_price}} USD
       </div>
   </div>

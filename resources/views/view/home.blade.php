@@ -101,7 +101,6 @@
           <img src="/img/slider-mobile.png" alt="Slider">
         </div>
       </div>
-
     </div>
     <div class="main-arrows">
       <div class="container">
@@ -120,9 +119,6 @@
       </div>
     </div>
   </section>
-
-
-
   <!-- POPULAR -->
   @if ($popular->count() > 0)
     <section class="popular">
@@ -139,8 +135,8 @@
               </div>
               <?php
               $product = \App\Models\Product::where('category_id', $category->id)
-                  ->orderBy('price', 'asc')
-                  ->first();
+                ->orderBy('price', 'asc')
+                ->first();
               ?>
               @if ($product)
                 <div class="popular-item__price">
@@ -157,8 +153,6 @@
       </div>
     </section>
   @endif
-
-
   <!-- NEW -->
   <section class="new">
     <div class="container">
@@ -189,11 +183,8 @@
               </div>
             </div>
             <div class="new-item__name">
-
             </div>
-
             <div class="new-item__price" style="margin-bottom: 5px; ">
-
               @php
                 $arr = [];
                 $details_price = 0;
@@ -202,10 +193,10 @@
               @foreach ($newest_product->product_options as $product_option)
                 @php
                   if (!array_key_exists($product_option->name, $arr)) {
-                      $arr[$product_option->name][] = $product_option->value;
-                      $details_price += \App\Models\ProductOption::where('product_id', $product_option->pivot->product_id)
-                          ->where('option_id', $product_option->pivot->option_id)
-                          ->first()->price;
+                    $arr[$product_option->name][] = $product_option->value;
+                    $details_price += \App\Models\ProductOption::where('product_id', $product_option->pivot->product_id)
+                      ->where('option_id', $product_option->pivot->option_id)
+                      ->first()->price;
                   }
                 @endphp
               @endforeach
@@ -215,22 +206,15 @@
                 @endif
               @endforeach
             </div>
-
             <div class="new-item__price">
               <strong>${{ $newest_product->price + $details_price }} USD</strong>
             </div>
-
             <a href="{{ Route('front.single-product', $newest_product->slug) }}" class="new-item__link"></a>
           </div>
         @endforeach
-
       </div>
     </div>
   </section>
-
-
-
-
   <!-- BRANDS -->
   <section class="brands">
     <div class="container">
@@ -308,7 +292,7 @@
         @endforeach
         <div class="brands-product__item">
           <div class="brands-product__name">
-            Others
+            {{__('home.Others')}}
           </div>
           <div class="brands-product__other">
             {{ $num_of_products }}+

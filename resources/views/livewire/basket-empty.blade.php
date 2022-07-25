@@ -1,11 +1,7 @@
 @extends('layouts.front')
-
 @section('content')
-
-
 	<section class="buy">
 		<div class="container">
-
 			<div class="buy-head">
 				<div class="buy-head__wrap">
 					<div class="buy-head__step current">
@@ -13,7 +9,7 @@
 							1
 						</div>
 						<div class="buy-head__name">
-							Моя корзина
+							{{__('home.Моя корзина')}}
 						</div>
 					</div>
 					<div class="buy-head__step">
@@ -21,7 +17,7 @@
 							2
 						</div>
 						<div class="buy-head__name">
-							Оформление заказа
+							{{__('home.Оформление заказа')}}
 						</div>
 					</div>
 					<div class="buy-head__step">
@@ -29,7 +25,7 @@
 							3
 						</div>
 						<div class="buy-head__name">
-							Способ оплаты
+							{{__('home.Способ оплаты')}}
 						</div>
 					</div>
 					<div class="buy-head__line"></div>
@@ -40,15 +36,15 @@
 
 			<div class="buy-basket">
 				<h2 class="buy__title">
-					Моя корзина
+					{{__('home.Моя корзина')}}
 				</h2>
 				<div class="buy__empty">
-					В вашей корзине пока нет товаров
+					{{__('home.В вашей корзине пока нет товаров')}}
 				</div>
 				<h2 class="similar-products__title medium-title">
-					Похожие продукты
-	
-					<a href="#">Все</a>
+					{{__('home.Похожие продукты')}}
+					<?php $id = \App\Models\Category::where('name', 'Apple')->first()->id; ?>
+					<a href="{{Route('front.all-products', $id)}}">Все</a>
 				</h2>
 				<div class="similar-products__wrap">
 					<div class="products-item">
@@ -174,25 +170,25 @@
 
 			<div class="buy-order">
 				<h2 class="buy__title">
-					Оформления заказа
+					{{__('home.Оформления заказа')}}
 				</h2>
 				<div class="buy-wrap">
 					<div class="buy-main">
 						<div class="buy-order__info">
 							<div class="buy-order__title">
-								Покупатель
+								{{__('home.Покупатель')}}
 							</div>
 							<div class="buy-order__form">
 								<div class="buy-order__input">
-									<span>Имя</span>
+									<span>{{__('home.Имя')}}</span>
 									<input type="text" required>
 								</div>
 								<div class="buy-order__input">
-									<span>Фамилия</span>
+									<span>{{__('home.Фамилия')}}</span>
 									<input type="text" required>
 								</div>
 								<div class="buy-order__input">
-									<span>Телефон</span>
+									<span>{{__('home.Телефон')}}</span>
 									<input type="text" required class="form__tel">
 								</div>
 							</div>
@@ -200,37 +196,37 @@
 						<div class="buy-order__wrap">
 							<div class="buy-order__type">
 								<div class="buy-order__title">
-									Доставка
+									{{__('home.Доставка')}}
 								</div>
 								<label for="order1">
 									<input type="radio" name="order" id="order1">
 									<div>
-										Самовывоз
-										<span>— бесплатно</span>
+										{{__('home.Самовывоз')}}
+										<span>— {{__('home.бесплатно')}}</span>
 									</div>
 								</label>
 								<label for="order2">
 									<input type="radio" name="order" id="order2">
 									<div>
-										Доставка курьером
+										{{__('home.Доставка курьером')}}
 										<span>от 350 000 uzs</span>
 									</div>
 								</label>
 								<label for="order3">
 									<input type="radio" name="order" id="order3">
 									<div>
-										Экспресс-доставка
+										{{__('home.Экспресс-доставка')}}
 										<span>от 350 000 uzs</span>
 									</div>
 								</label>
 							</div>
 							<div class="buy-order__map">
 								<div class="buy-order__title">
-									Фирменный магазин
+									{{__('home.Фирменный магазин')}}
 								</div>
 								<div class="buy-order__text">
-									<p>Невский пр-т, 38</p>
-									<p>Открыто с 10:00 до 20:00</p>
+									<p>{{__('home.Невский пр-т')}}, 38</p>
+									<p>{{__('home.Открыто')}} с 10:00 до 20:00</p>
 								</div>
 								<div class="map">
 									<div id="map"></div>
@@ -241,7 +237,7 @@
 					<div class="buy-info">
 						<div class="buy-info__wrap">
 							<div class="buy-info__title">
-								Ваш заказ
+								{{__('home.Ваш заказ')}}
 							</div>
 							<div class="buy-carousel">
 								<div class="buy-carousel__arrows">
@@ -335,7 +331,7 @@
 							<ul class="buy-price">
 								<li>
 									<div class="buy-price__name">
-										Продукты(2)
+										{{__('home.Продукты')}}(2)
 									</div>
 									<div class="buy-price__value">
 										31 533 500 сум
@@ -343,7 +339,7 @@
 								</li>
 								<li>
 									<div class="buy-price__name">
-										Скидка
+										{{__('home.Скидка')}}
 									</div>
 									<div class="buy-price__value">
 										0 сум
@@ -351,7 +347,7 @@
 								</li>
 								<li>
 									<div class="buy-price__name">
-										Доставка
+										{{__('home.Доставка')}}
 									</div>
 									<div class="buy-price__value">
 										0 сум
@@ -359,13 +355,13 @@
 								</li>
 							</ul>
 							<div class="buy-total">
-								Всего
+								{{__('home.Всего')}}
 	
 								<span>31 533 500 сум</span>
 							</div>
 						</div>
 						<a href="#" class="buy-info__btn buy-info__btn-order btn">
-							Оформление заказа
+							{{__('home.Оформление заказа')}}
 						</a>
 					</div>
 				</div>
@@ -376,7 +372,7 @@
 
 			<div class="buy-pay">
 				<h2 class="buy__title">
-					Способ оплаты
+					{{__('home.Способ оплаты')}}
 				</h2>
 				<div class="buy-wrap">
 					<div class="buy-main">
@@ -402,7 +398,7 @@
 							<label for="card4">
 								<input type="radio" name="card" id="card4">
 								<div>
-									<span>Наличными</span>
+									<span>{{__('home.Наличными')}}</span>
 								</div>
 							</label>
 						</div>
@@ -410,7 +406,7 @@
 					<div class="buy-info">
 						<div class="buy-info__wrap">
 							<div class="buy-info__title">
-								Ваш заказ
+								{{__('home.Ваш заказ')}}
 							</div>
 							<div class="buy-carousel">
 								<div class="buy-carousel__arrows">
@@ -504,7 +500,7 @@
 							<ul class="buy-price">
 								<li>
 									<div class="buy-price__name">
-										Продукты(2)
+										{{__('home.Продукты')}}(2)
 									</div>
 									<div class="buy-price__value">
 										31 533 500 сум
@@ -512,7 +508,7 @@
 								</li>
 								<li>
 									<div class="buy-price__name">
-										Скидка
+										{{__('home.Скидка')}}
 									</div>
 									<div class="buy-price__value">
 										0 сум
@@ -520,7 +516,7 @@
 								</li>
 								<li>
 									<div class="buy-price__name">
-										Доставка
+										{{__('home.Доставка')}}
 									</div>
 									<div class="buy-price__value">
 										0 сум
@@ -528,13 +524,13 @@
 								</li>
 							</ul>
 							<div class="buy-total">
-								Всего
+								{{__('home.Всего')}}
 	
 								<span>31 533 500 сум</span>
 							</div>
 						</div>
 						<a href="#" class="buy-info__btn buy-info__btn-pay btn">
-							Оплатить заказ 
+							{{__('home.Оплатить заказ')}} 
 						</a>
 					</div>
 				</div>
