@@ -89,15 +89,15 @@
 @else
   <div class="buy-basket">
     <h2 class="buy__title">
-      Моя корзина
+      {{__('home.Моя корзина')}}
     </h2>
     <div class="buy__empty">
-      В вашей корзине пока нет товаров
+      {{__('home.В вашей корзине пока нет товаров')}}
     </div>
     <h2 class="similar-products__title medium-title">
-      Похожие продукты
-
-      <a href="#">Все</a>
+      {{__('home.Похожие продукты')}}
+      <?php $id = \App\Models\Category::where('name', 'Apple')->first()->id; ?>
+      <a href="{{Route('front.all-products', $id)}}">Все</a>
     </h2>
     <div class="similar-products__wrap">
 

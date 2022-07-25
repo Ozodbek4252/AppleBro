@@ -26,7 +26,6 @@
 
         <div class="products-carousel__items owl-carousel">
 
-          {{-- @dd($suggested_categories[4]->categories->first()?->products) --}}
           @foreach ($suggested_categories as $suggested_category)
             {{-- for grandchild --}}
             @if ($status == 'grandchld')
@@ -62,7 +61,7 @@
                 <div class="products-carousel__item">
                   <div class="products-carousel__img">
                     <img
-                      src="{{ $suggested_category->categories->first()?->products->first()->main_photo_path }}/{{ $suggested_category->categories->first()?->products->first()->main_photo }}"
+                      src="{{ $suggested_category->categories->first()?->products->first()?->main_photo_path }}/{{ $suggested_category->categories->first()?->products->first()?->main_photo }}"
                       alt="product">
                   </div>
                   <div class="products-carousel__name">
@@ -78,12 +77,14 @@
 
       <div class="breadcrumbs">
         <a href="{{ Route('home') }}">Home</a>
-        @if ($main_category->category)
-          <a
-            href="{{ Route('front.all-products', $main_category->category->id) }}">{{ $main_category->category->name }}</a>
-          <a href="{{ Route('front.all-products', $main_category->id) }}" class="current">{{ $main_category->name }}</a>
-        @else
-          <a href="{{ Route('front.all-products', $main_category->id) }}" class="current">{{ $main_category->name }}</a>
+        @if($main_category)
+          @if ($main_category->category)
+            <a
+              href="{{ Route('front.all-products', $main_category->category->id) }}">{{ $main_category->category->name }}</a>
+            <a href="{{ Route('front.all-products', $main_category->id) }}" class="current">{{ $main_category->name }}</a>
+          @else
+            <a href="{{ Route('front.all-products', $main_category->id) }}" class="current">{{ $main_category->name }}</a>
+          @endif
         @endif
       </div>
 
@@ -171,7 +172,6 @@
                 @endforeach
               @else
                 @foreach ($products as $key => $product)
-                  {{-- @dd($product) --}}
                   <div class="products-item">
                     @php
                       $arr = [];
@@ -229,28 +229,6 @@
             </div>
 
             {{ $products->links() }}
-            {{-- <ul class="products-pagination">
-              <li>
-                <a href="#" class="current">
-                  1
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  2
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  3
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  4
-                </a>
-              </li>
-            </ul> --}}
           </div>
         </div>
 
