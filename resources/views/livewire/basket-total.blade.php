@@ -33,7 +33,7 @@
             <div class="buy-carousel__name">
               {{ $product['name'] }}
             </div>
-            <a href="#"></a>
+            {{-- <a href="#"></a> --}}
           </div>
         @endforeach
       </div>

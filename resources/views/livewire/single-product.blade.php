@@ -1,8 +1,8 @@
 <div>
   <div class="breadcrumbs">
     <a href="{{ Route('home') }}">Home</a>
-    <a href="#">Mac</a>
-    <a href="{{ Route('front.single-product', $data_id) }}" class="current">{{ $product->name }}</a>
+    <a href="{{Route('front.all-products', $product->category->category)}}">{{$product->category->category->name}}</a>
+    <a href="{{ Route('front.single-product', $slug) }}" class="current">{{ $product->name }}</a>
   </div>
 
 

@@ -13,6 +13,7 @@ class SingleProduct extends Component
     public 
         $lang,
         $data_id, 
+        $slug,
         $product, 
         $RAM,
         $ROM,
@@ -31,6 +32,7 @@ class SingleProduct extends Component
 
     public function mount($id){
         $this->data_id = $id;
+        $this->slug = Product::find($id)->slug;
         $this->product = Product::find($id);
         $this->price = $this->product->price;
 

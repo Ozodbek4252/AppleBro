@@ -97,7 +97,7 @@
 					<input name="address" type="text" value="{{$user->address}}">
 				</div>
 				<div class="profile-popup__btns">
-					<a href="" class="btn reset">{{__('home.Сбросить')}}</a>
+					<a class="btn reset">{{__('home.Сбросить')}}</a>
 					<button type="submit" style="background-color: #0967c5; width: 49%; color: #fff; border-radius: .4rem; border: none">
 						{{__('home.Сохранить')}}
 					</button>
