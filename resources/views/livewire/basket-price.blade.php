@@ -13,10 +13,6 @@
               @endphp
               <img src="{{ $photo->photo_path }}/{{ $photo->photo }}" alt="product">
             </div>
-            <div class="buy-carousel__name">
-              MacBook Air MacBook Air MacBook Air
-            </div>
-            <a href="#"></a>
           </div>
         @endforeach
       @endif

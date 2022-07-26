@@ -62,6 +62,7 @@ p {
 body {
   font-family: 'SF Pro Display', sans-serif;
   font-size: 0.8rem;
+  background-color: #ffffff;
 }
 .overflowH {
   overflow: hidden;

@@ -107,7 +107,7 @@
                     </li>
                 </ul>
                 <div class="footer-info__feedback">
-                    <a href="#" class="btn feedback-open" style="text-align: center;">
+                    <a class="btn feedback-open" style="text-align: center;">
                         {{__('home.Вам перезвонить?')}}
                     </a>
                 </div>

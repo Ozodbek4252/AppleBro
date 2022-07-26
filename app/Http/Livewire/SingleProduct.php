@@ -89,8 +89,8 @@ class SingleProduct extends Component
                     ]
                 ];
                 session()->put('cart', $cart);
-            }else{
-                if(isset($cart[$this->data_id])){
+        }else{
+            if(isset($cart[$this->data_id])){
                 unset($cart[$this->data_id]);
                 $cart[$this->data_id] = [
                     "name" => $this->product->name,
@@ -112,6 +112,10 @@ class SingleProduct extends Component
             }
             session()->put('cart', $cart);
         }
+
+
+        $this->emit('refreshCart');
+        $this->emit('refreshCartModal');
     }
 
     protected $listeners = ['refreshLivewire'];

@@ -5,12 +5,12 @@
         <img src="/img/close.svg" alt="ico">
       </div>
       <div class="mobile-menu__logo">
-        <a href="index.html">
+        <a href="/">
           <img src="/img/logo.svg" alt="AppleBro">
         </a>
       </div>
       <div class="mobile-menu__icons">
-        <a href="#" class="basket-open">
+        <a class="basket-open">
           <img src="/img/basket.svg" alt="ico">
           <span>2</span>
         </a>
@@ -229,26 +229,6 @@
         </ul>
       </li> --}}
     </ul>
-    {{-- <ul class="mobile-menu__profile">
-      <li>
-        <a href="#">
-          <span>{{ __('home.Профиль') }}</span>
-          <img src="/img/caret-right.svg" alt="ico">
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span>{{ __('home.Мои заказы') }}</span>
-          <img src="/img/caret-right.svg" alt="ico">
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span>{{ __('home.Выход') }}</span>
-          <img src="/img/caret-right.svg" alt="ico">
-        </a>
-      </li>
-    </ul> --}}
     <div class="header__lang">
       <a href="/languages/ru">RU</a>
       <a href="/languages/uz">UZ</a>
