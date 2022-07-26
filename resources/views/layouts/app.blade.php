@@ -3,7 +3,6 @@
 <head>
   @include('components.styles')
   @yield('style')
-
   <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body>

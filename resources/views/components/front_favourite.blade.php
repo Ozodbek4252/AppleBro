@@ -5,7 +5,7 @@
 				<img src="/img/apple1.png" alt="img">
 			</div>
 			<div class="favourite__name">
-				iPhone 13 Pro Max" (M1 Max, 10 CPU/32 GPU 202...
+				iPhone 13 Pro Max" (M1 Max, 10 CPU/32 GPU 202...)
 			</div>
 			<div class="favourite__btn btn">
 				{{__('home.Добавлен в избранное')}}

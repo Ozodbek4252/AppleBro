@@ -2,10 +2,10 @@
   <div class="feedback-content">
     <div class="feedback-wrap">
       <div class="feedback__title">
-        Обратный звонок
+        {{__('home.Обратный звонок')}}
       </div>
       <div class="feedback__text">
-        Оставьте ваши контактные данные, и мы с вами свяжемся.
+        {{__('home.Оставьте ваши контактные данные, и мы с вами свяжемся.')}}
       </div>
       <div class="feedback-form">
         <div class="feedback-form__input">
@@ -15,11 +15,11 @@
           <input id="feedback-form__tel" type="tel" class="form__tel" required placeholder="Телефон">
         </div>
         <button class="btn" onclick="message()">
-          Отправить
+          {{__('home.Отправить')}}
         </button>
       </div>
       <div class="feedback__info">
-        Нажимая кнопку «Отправить», вы подтверждаете свое согласие на обработку персональных данных
+        {{__('home.Нажимая кнопку «Отправить», вы подтверждаете свое согласие на обработку персональных данных')}}
       </div>
     </div>
 
@@ -28,13 +28,13 @@
         <img src="img/done.svg" alt="ico">
       </div>
       <div class="feedback__title">
-        Мы вам перезвоним
+        {{__('home.Мы вам перезвоним')}}
       </div>
       <div class="feedback__text">
-        Спасибо, ваша заявка принята! Мы свяжемся с вами в ближайшее время.
+        {{__('home.Спасибо, ваша заявка принята! Мы свяжемся с вами в ближайшее время.')}}
       </div>
       <button class="btn feedback-close" onclick="closeMessage()">
-        На главную
+        {{__('home.На главную')}}
       </button>
     </div>
   </div>

@@ -20,214 +20,29 @@
       @livewire('front.search')
     </div>
     <ul class="mobile-menu__menu">
-      @foreach(\App\Models\Category::where('category_id', '!=', null)->with('products')->get() as $category)
-      <li class="mobile-menu__item">
-        <span>
-          {{$category->name}}
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </span>
-        <ul class="mobile-menu__submenu">
-          @foreach($category->products as $product)
-            <li>
-              <a href="{{ route('front.single-product', $product->slug) }}">
-                {{$product->name}}
+      @foreach (\App\Models\Category::where('category_id', null)->with('categories')->get() as $category)
+        @foreach ($category->categories as $category)
+          @if (count($category->categories) > 0)
+            <li class="mobile-menu__item">
+              <span>
+                  {{ $category->name }} 
+                  <img src="/img/arrow-down.svg" alt="ico">
+              </span>
+              <a href="{{Route('front.all-products', $category->id)}}">
               </a>
+              <ul class="mobile-menu__submenu">
+                  @foreach ($category->categories as $category)
+                    <li>
+                      <a href="{{ route('front.all-products', $category->id) }}">
+                        {{ $category->name }}
+                      </a>
+                    </li>
+                  @endforeach
+              </ul>
             </li>
-          @endforeach
-        </ul>
-      </li>
+          @endif
+        @endforeach
       @endforeach
-
-      
-      {{-- <li class="mobile-menu__item">
-        <span>
-          Mac
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </span>
-        <ul class="mobile-menu__submenu">
-          <li>
-            <a href="#">
-              Mac
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Mac X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Mac X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Mac X
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="mobile-menu__item">
-        <span>
-          iPad
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </span>
-        <ul class="mobile-menu__submenu">
-          <li>
-            <a href="#">
-              iPad
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPad X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPad X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              iPad X
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="mobile-menu__item">
-        <span>
-          Apple Watch
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </span>
-        <ul class="mobile-menu__submenu">
-          <li>
-            <a href="#">
-              Apple Watch
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Apple Watch X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Apple Watch X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Apple Watch X
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="mobile-menu__item">
-        <span>
-          AirPods
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </span>
-        <ul class="mobile-menu__submenu">
-          <li>
-            <a href="#">
-              AirPods
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              AirPods X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              AirPods X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              AirPods X
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="mobile-menu__item">
-        <span>
-          {{ __('home.Аксессуары') }}
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </span>
-        <ul class="mobile-menu__submenu">
-          <li>
-            <a href="#">
-              {{ __('home.Аксессуары') }}
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              {{ __('home.Аксессуары') }} X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              {{ __('home.Аксессуары') }} X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              {{ __('home.Аксессуары') }} X
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="mobile-menu__item">
-        <span>
-          {{ __('home.Другие') }}
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 6L8 11L3 6" stroke="white" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </span>
-        <ul class="mobile-menu__submenu">
-          <li>
-            <a href="#">
-              {{ __('home.Другие') }}
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              {{ __('home.Другие') }} X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              {{ __('home.Другие') }} X
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              {{ __('home.Другие') }} X
-            </a>
-          </li>
-        </ul>
-      </li> --}}
     </ul>
     <div class="header__lang">
       <a href="/languages/ru">RU</a>

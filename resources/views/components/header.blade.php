@@ -222,7 +222,8 @@
             @csrf
             <x-jet-dropdown-link href="{{ route('logout') }}"
               onclick="event.preventDefault();
-                                      this.closest('form').submit();">
+                
+                this.closest('form').submit();">
               <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i>
               {{ __('Log Out') }}
             </x-jet-dropdown-link>
